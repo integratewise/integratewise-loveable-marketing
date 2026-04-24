@@ -9,38 +9,338 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SolutionsRouteImport } from './routes/solutions'
+import { Route as ProductRouteImport } from './routes/product'
+import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as PlatformRouteImport } from './routes/platform'
+import { Route as ManifestoRouteImport } from './routes/manifesto'
+import { Route as CustomerZeroRouteImport } from './routes/customer-zero'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SolutionsPersonalOpsRouteImport } from './routes/solutions.personal-ops'
+import { Route as SolutionsBusinessOpsRouteImport } from './routes/solutions.business-ops'
+import { Route as SolutionsAccountSuccessRouteImport } from './routes/solutions.account-success'
+import { Route as ProductWorkbenchRouteImport } from './routes/product.workbench'
+import { Route as ProductTheTwinRouteImport } from './routes/product.the-twin'
+import { Route as ProductReferenceLayerRouteImport } from './routes/product.reference-layer'
+import { Route as ProductHowItWorksRouteImport } from './routes/product.how-it-works'
+import { Route as ProductApprovalRouteImport } from './routes/product.approval'
+import { Route as PlatformTheSpineRouteImport } from './routes/platform.the-spine'
+import { Route as PlatformSecurityRouteImport } from './routes/platform.security'
+import { Route as PlatformIntegrationsRouteImport } from './routes/platform.integrations'
+import { Route as PlatformInfrastructureRouteImport } from './routes/platform.infrastructure'
+import { Route as PlatformHowItWorksRouteImport } from './routes/platform.how-it-works'
 
+const SolutionsRoute = SolutionsRouteImport.update({
+  id: '/solutions',
+  path: '/solutions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductRoute = ProductRouteImport.update({
+  id: '/product',
+  path: '/product',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlatformRoute = PlatformRouteImport.update({
+  id: '/platform',
+  path: '/platform',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ManifestoRoute = ManifestoRouteImport.update({
+  id: '/manifesto',
+  path: '/manifesto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomerZeroRoute = CustomerZeroRouteImport.update({
+  id: '/customer-zero',
+  path: '/customer-zero',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SolutionsPersonalOpsRoute = SolutionsPersonalOpsRouteImport.update({
+  id: '/personal-ops',
+  path: '/personal-ops',
+  getParentRoute: () => SolutionsRoute,
+} as any)
+const SolutionsBusinessOpsRoute = SolutionsBusinessOpsRouteImport.update({
+  id: '/business-ops',
+  path: '/business-ops',
+  getParentRoute: () => SolutionsRoute,
+} as any)
+const SolutionsAccountSuccessRoute = SolutionsAccountSuccessRouteImport.update({
+  id: '/account-success',
+  path: '/account-success',
+  getParentRoute: () => SolutionsRoute,
+} as any)
+const ProductWorkbenchRoute = ProductWorkbenchRouteImport.update({
+  id: '/workbench',
+  path: '/workbench',
+  getParentRoute: () => ProductRoute,
+} as any)
+const ProductTheTwinRoute = ProductTheTwinRouteImport.update({
+  id: '/the-twin',
+  path: '/the-twin',
+  getParentRoute: () => ProductRoute,
+} as any)
+const ProductReferenceLayerRoute = ProductReferenceLayerRouteImport.update({
+  id: '/reference-layer',
+  path: '/reference-layer',
+  getParentRoute: () => ProductRoute,
+} as any)
+const ProductHowItWorksRoute = ProductHowItWorksRouteImport.update({
+  id: '/how-it-works',
+  path: '/how-it-works',
+  getParentRoute: () => ProductRoute,
+} as any)
+const ProductApprovalRoute = ProductApprovalRouteImport.update({
+  id: '/approval',
+  path: '/approval',
+  getParentRoute: () => ProductRoute,
+} as any)
+const PlatformTheSpineRoute = PlatformTheSpineRouteImport.update({
+  id: '/the-spine',
+  path: '/the-spine',
+  getParentRoute: () => PlatformRoute,
+} as any)
+const PlatformSecurityRoute = PlatformSecurityRouteImport.update({
+  id: '/security',
+  path: '/security',
+  getParentRoute: () => PlatformRoute,
+} as any)
+const PlatformIntegrationsRoute = PlatformIntegrationsRouteImport.update({
+  id: '/integrations',
+  path: '/integrations',
+  getParentRoute: () => PlatformRoute,
+} as any)
+const PlatformInfrastructureRoute = PlatformInfrastructureRouteImport.update({
+  id: '/infrastructure',
+  path: '/infrastructure',
+  getParentRoute: () => PlatformRoute,
+} as any)
+const PlatformHowItWorksRoute = PlatformHowItWorksRouteImport.update({
+  id: '/how-it-works',
+  path: '/how-it-works',
+  getParentRoute: () => PlatformRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/customer-zero': typeof CustomerZeroRoute
+  '/manifesto': typeof ManifestoRoute
+  '/platform': typeof PlatformRouteWithChildren
+  '/pricing': typeof PricingRoute
+  '/product': typeof ProductRouteWithChildren
+  '/solutions': typeof SolutionsRouteWithChildren
+  '/platform/how-it-works': typeof PlatformHowItWorksRoute
+  '/platform/infrastructure': typeof PlatformInfrastructureRoute
+  '/platform/integrations': typeof PlatformIntegrationsRoute
+  '/platform/security': typeof PlatformSecurityRoute
+  '/platform/the-spine': typeof PlatformTheSpineRoute
+  '/product/approval': typeof ProductApprovalRoute
+  '/product/how-it-works': typeof ProductHowItWorksRoute
+  '/product/reference-layer': typeof ProductReferenceLayerRoute
+  '/product/the-twin': typeof ProductTheTwinRoute
+  '/product/workbench': typeof ProductWorkbenchRoute
+  '/solutions/account-success': typeof SolutionsAccountSuccessRoute
+  '/solutions/business-ops': typeof SolutionsBusinessOpsRoute
+  '/solutions/personal-ops': typeof SolutionsPersonalOpsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/customer-zero': typeof CustomerZeroRoute
+  '/manifesto': typeof ManifestoRoute
+  '/platform': typeof PlatformRouteWithChildren
+  '/pricing': typeof PricingRoute
+  '/product': typeof ProductRouteWithChildren
+  '/solutions': typeof SolutionsRouteWithChildren
+  '/platform/how-it-works': typeof PlatformHowItWorksRoute
+  '/platform/infrastructure': typeof PlatformInfrastructureRoute
+  '/platform/integrations': typeof PlatformIntegrationsRoute
+  '/platform/security': typeof PlatformSecurityRoute
+  '/platform/the-spine': typeof PlatformTheSpineRoute
+  '/product/approval': typeof ProductApprovalRoute
+  '/product/how-it-works': typeof ProductHowItWorksRoute
+  '/product/reference-layer': typeof ProductReferenceLayerRoute
+  '/product/the-twin': typeof ProductTheTwinRoute
+  '/product/workbench': typeof ProductWorkbenchRoute
+  '/solutions/account-success': typeof SolutionsAccountSuccessRoute
+  '/solutions/business-ops': typeof SolutionsBusinessOpsRoute
+  '/solutions/personal-ops': typeof SolutionsPersonalOpsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
+  '/customer-zero': typeof CustomerZeroRoute
+  '/manifesto': typeof ManifestoRoute
+  '/platform': typeof PlatformRouteWithChildren
+  '/pricing': typeof PricingRoute
+  '/product': typeof ProductRouteWithChildren
+  '/solutions': typeof SolutionsRouteWithChildren
+  '/platform/how-it-works': typeof PlatformHowItWorksRoute
+  '/platform/infrastructure': typeof PlatformInfrastructureRoute
+  '/platform/integrations': typeof PlatformIntegrationsRoute
+  '/platform/security': typeof PlatformSecurityRoute
+  '/platform/the-spine': typeof PlatformTheSpineRoute
+  '/product/approval': typeof ProductApprovalRoute
+  '/product/how-it-works': typeof ProductHowItWorksRoute
+  '/product/reference-layer': typeof ProductReferenceLayerRoute
+  '/product/the-twin': typeof ProductTheTwinRoute
+  '/product/workbench': typeof ProductWorkbenchRoute
+  '/solutions/account-success': typeof SolutionsAccountSuccessRoute
+  '/solutions/business-ops': typeof SolutionsBusinessOpsRoute
+  '/solutions/personal-ops': typeof SolutionsPersonalOpsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/contact'
+    | '/customer-zero'
+    | '/manifesto'
+    | '/platform'
+    | '/pricing'
+    | '/product'
+    | '/solutions'
+    | '/platform/how-it-works'
+    | '/platform/infrastructure'
+    | '/platform/integrations'
+    | '/platform/security'
+    | '/platform/the-spine'
+    | '/product/approval'
+    | '/product/how-it-works'
+    | '/product/reference-layer'
+    | '/product/the-twin'
+    | '/product/workbench'
+    | '/solutions/account-success'
+    | '/solutions/business-ops'
+    | '/solutions/personal-ops'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/contact'
+    | '/customer-zero'
+    | '/manifesto'
+    | '/platform'
+    | '/pricing'
+    | '/product'
+    | '/solutions'
+    | '/platform/how-it-works'
+    | '/platform/infrastructure'
+    | '/platform/integrations'
+    | '/platform/security'
+    | '/platform/the-spine'
+    | '/product/approval'
+    | '/product/how-it-works'
+    | '/product/reference-layer'
+    | '/product/the-twin'
+    | '/product/workbench'
+    | '/solutions/account-success'
+    | '/solutions/business-ops'
+    | '/solutions/personal-ops'
+  id:
+    | '__root__'
+    | '/'
+    | '/contact'
+    | '/customer-zero'
+    | '/manifesto'
+    | '/platform'
+    | '/pricing'
+    | '/product'
+    | '/solutions'
+    | '/platform/how-it-works'
+    | '/platform/infrastructure'
+    | '/platform/integrations'
+    | '/platform/security'
+    | '/platform/the-spine'
+    | '/product/approval'
+    | '/product/how-it-works'
+    | '/product/reference-layer'
+    | '/product/the-twin'
+    | '/product/workbench'
+    | '/solutions/account-success'
+    | '/solutions/business-ops'
+    | '/solutions/personal-ops'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactRoute: typeof ContactRoute
+  CustomerZeroRoute: typeof CustomerZeroRoute
+  ManifestoRoute: typeof ManifestoRoute
+  PlatformRoute: typeof PlatformRouteWithChildren
+  PricingRoute: typeof PricingRoute
+  ProductRoute: typeof ProductRouteWithChildren
+  SolutionsRoute: typeof SolutionsRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/solutions': {
+      id: '/solutions'
+      path: '/solutions'
+      fullPath: '/solutions'
+      preLoaderRoute: typeof SolutionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/product': {
+      id: '/product'
+      path: '/product'
+      fullPath: '/product'
+      preLoaderRoute: typeof ProductRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/platform': {
+      id: '/platform'
+      path: '/platform'
+      fullPath: '/platform'
+      preLoaderRoute: typeof PlatformRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/manifesto': {
+      id: '/manifesto'
+      path: '/manifesto'
+      fullPath: '/manifesto'
+      preLoaderRoute: typeof ManifestoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customer-zero': {
+      id: '/customer-zero'
+      path: '/customer-zero'
+      fullPath: '/customer-zero'
+      preLoaderRoute: typeof CustomerZeroRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +348,164 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/solutions/personal-ops': {
+      id: '/solutions/personal-ops'
+      path: '/personal-ops'
+      fullPath: '/solutions/personal-ops'
+      preLoaderRoute: typeof SolutionsPersonalOpsRouteImport
+      parentRoute: typeof SolutionsRoute
+    }
+    '/solutions/business-ops': {
+      id: '/solutions/business-ops'
+      path: '/business-ops'
+      fullPath: '/solutions/business-ops'
+      preLoaderRoute: typeof SolutionsBusinessOpsRouteImport
+      parentRoute: typeof SolutionsRoute
+    }
+    '/solutions/account-success': {
+      id: '/solutions/account-success'
+      path: '/account-success'
+      fullPath: '/solutions/account-success'
+      preLoaderRoute: typeof SolutionsAccountSuccessRouteImport
+      parentRoute: typeof SolutionsRoute
+    }
+    '/product/workbench': {
+      id: '/product/workbench'
+      path: '/workbench'
+      fullPath: '/product/workbench'
+      preLoaderRoute: typeof ProductWorkbenchRouteImport
+      parentRoute: typeof ProductRoute
+    }
+    '/product/the-twin': {
+      id: '/product/the-twin'
+      path: '/the-twin'
+      fullPath: '/product/the-twin'
+      preLoaderRoute: typeof ProductTheTwinRouteImport
+      parentRoute: typeof ProductRoute
+    }
+    '/product/reference-layer': {
+      id: '/product/reference-layer'
+      path: '/reference-layer'
+      fullPath: '/product/reference-layer'
+      preLoaderRoute: typeof ProductReferenceLayerRouteImport
+      parentRoute: typeof ProductRoute
+    }
+    '/product/how-it-works': {
+      id: '/product/how-it-works'
+      path: '/how-it-works'
+      fullPath: '/product/how-it-works'
+      preLoaderRoute: typeof ProductHowItWorksRouteImport
+      parentRoute: typeof ProductRoute
+    }
+    '/product/approval': {
+      id: '/product/approval'
+      path: '/approval'
+      fullPath: '/product/approval'
+      preLoaderRoute: typeof ProductApprovalRouteImport
+      parentRoute: typeof ProductRoute
+    }
+    '/platform/the-spine': {
+      id: '/platform/the-spine'
+      path: '/the-spine'
+      fullPath: '/platform/the-spine'
+      preLoaderRoute: typeof PlatformTheSpineRouteImport
+      parentRoute: typeof PlatformRoute
+    }
+    '/platform/security': {
+      id: '/platform/security'
+      path: '/security'
+      fullPath: '/platform/security'
+      preLoaderRoute: typeof PlatformSecurityRouteImport
+      parentRoute: typeof PlatformRoute
+    }
+    '/platform/integrations': {
+      id: '/platform/integrations'
+      path: '/integrations'
+      fullPath: '/platform/integrations'
+      preLoaderRoute: typeof PlatformIntegrationsRouteImport
+      parentRoute: typeof PlatformRoute
+    }
+    '/platform/infrastructure': {
+      id: '/platform/infrastructure'
+      path: '/infrastructure'
+      fullPath: '/platform/infrastructure'
+      preLoaderRoute: typeof PlatformInfrastructureRouteImport
+      parentRoute: typeof PlatformRoute
+    }
+    '/platform/how-it-works': {
+      id: '/platform/how-it-works'
+      path: '/how-it-works'
+      fullPath: '/platform/how-it-works'
+      preLoaderRoute: typeof PlatformHowItWorksRouteImport
+      parentRoute: typeof PlatformRoute
+    }
   }
 }
 
+interface PlatformRouteChildren {
+  PlatformHowItWorksRoute: typeof PlatformHowItWorksRoute
+  PlatformInfrastructureRoute: typeof PlatformInfrastructureRoute
+  PlatformIntegrationsRoute: typeof PlatformIntegrationsRoute
+  PlatformSecurityRoute: typeof PlatformSecurityRoute
+  PlatformTheSpineRoute: typeof PlatformTheSpineRoute
+}
+
+const PlatformRouteChildren: PlatformRouteChildren = {
+  PlatformHowItWorksRoute: PlatformHowItWorksRoute,
+  PlatformInfrastructureRoute: PlatformInfrastructureRoute,
+  PlatformIntegrationsRoute: PlatformIntegrationsRoute,
+  PlatformSecurityRoute: PlatformSecurityRoute,
+  PlatformTheSpineRoute: PlatformTheSpineRoute,
+}
+
+const PlatformRouteWithChildren = PlatformRoute._addFileChildren(
+  PlatformRouteChildren,
+)
+
+interface ProductRouteChildren {
+  ProductApprovalRoute: typeof ProductApprovalRoute
+  ProductHowItWorksRoute: typeof ProductHowItWorksRoute
+  ProductReferenceLayerRoute: typeof ProductReferenceLayerRoute
+  ProductTheTwinRoute: typeof ProductTheTwinRoute
+  ProductWorkbenchRoute: typeof ProductWorkbenchRoute
+}
+
+const ProductRouteChildren: ProductRouteChildren = {
+  ProductApprovalRoute: ProductApprovalRoute,
+  ProductHowItWorksRoute: ProductHowItWorksRoute,
+  ProductReferenceLayerRoute: ProductReferenceLayerRoute,
+  ProductTheTwinRoute: ProductTheTwinRoute,
+  ProductWorkbenchRoute: ProductWorkbenchRoute,
+}
+
+const ProductRouteWithChildren =
+  ProductRoute._addFileChildren(ProductRouteChildren)
+
+interface SolutionsRouteChildren {
+  SolutionsAccountSuccessRoute: typeof SolutionsAccountSuccessRoute
+  SolutionsBusinessOpsRoute: typeof SolutionsBusinessOpsRoute
+  SolutionsPersonalOpsRoute: typeof SolutionsPersonalOpsRoute
+}
+
+const SolutionsRouteChildren: SolutionsRouteChildren = {
+  SolutionsAccountSuccessRoute: SolutionsAccountSuccessRoute,
+  SolutionsBusinessOpsRoute: SolutionsBusinessOpsRoute,
+  SolutionsPersonalOpsRoute: SolutionsPersonalOpsRoute,
+}
+
+const SolutionsRouteWithChildren = SolutionsRoute._addFileChildren(
+  SolutionsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactRoute: ContactRoute,
+  CustomerZeroRoute: CustomerZeroRoute,
+  ManifestoRoute: ManifestoRoute,
+  PlatformRoute: PlatformRouteWithChildren,
+  PricingRoute: PricingRoute,
+  ProductRoute: ProductRouteWithChildren,
+  SolutionsRoute: SolutionsRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
