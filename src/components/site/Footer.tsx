@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Container } from "./Container";
+import spineLogo from "@/assets/spine-logo.svg";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -9,12 +10,8 @@ export function Footer() {
       <Container className="py-16">
         <div className="grid gap-10 md:grid-cols-5">
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2">
-              <span
-                aria-hidden
-                className="inline-block size-7 rounded-md"
-                style={{ background: "var(--gradient-button-primary)" }}
-              />
+            <div className="flex items-center gap-2.5">
+              <img src={spineLogo} alt="" aria-hidden className="h-[28px] w-auto" />
               <span className="text-[17px] font-semibold tracking-tight text-foreground">
                 IntegrateWise
               </span>
