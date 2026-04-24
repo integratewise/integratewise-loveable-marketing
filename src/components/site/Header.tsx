@@ -57,7 +57,7 @@ export function Header() {
             <button
               type="button"
               onClick={() => openDemo("Header")}
-              className="btn-primary-iw hidden sm:inline-flex !px-4 !py-2.5 text-[14px]"
+              className="btn-primary-iw inline-flex !px-4 !py-2.5 text-[14px]"
             >
               Book a Demo
             </button>
