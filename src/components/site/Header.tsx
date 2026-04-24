@@ -5,7 +5,7 @@ import { Container } from "./Container";
 import { PRIMARY_NAV } from "@/lib/site";
 import { useDemoModal } from "./demo-modal-context";
 import { cn } from "@/lib/utils";
-import spineLogo from "@/assets/spine-logo.svg";
+import { SpineLogo } from "./SpineLogo";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -34,12 +34,7 @@ export function Header() {
           )}
         >
           <Link to="/" className="flex items-center gap-2.5" aria-label="IntegrateWise home">
-            <img
-              src={spineLogo}
-              alt=""
-              aria-hidden
-              className="h-[26px] w-auto"
-            />
+            <SpineLogo className="h-[26px] w-auto text-foreground" />
             <span className="text-[17px] font-semibold tracking-tight text-foreground">
               IntegrateWise
             </span>
@@ -62,7 +57,7 @@ export function Header() {
             <button
               type="button"
               onClick={() => openDemo("Header")}
-              className="btn-primary-iw hidden sm:inline-flex !px-4 !py-2.5 text-[14px]"
+              className="btn-primary-iw inline-flex !px-4 !py-2.5 text-[14px]"
             >
               Book a Demo
             </button>
