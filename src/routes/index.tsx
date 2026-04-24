@@ -61,7 +61,7 @@ function HomePage() {
           <ConnectorOrbit size={820} className="opacity-30" />
         </div>
         <Container>
-          <div className="grid items-center gap-10 pb-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-12 lg:pb-20">
+          <div className="grid items-start gap-10 pb-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-12 lg:pb-20">
             {/* LEFT — copy (canonical, locked) */}
             <div className="fade-up">
               <Badge variant="muted">Customer Zero is the founder</Badge>
