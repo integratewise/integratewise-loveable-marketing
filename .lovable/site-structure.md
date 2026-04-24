@@ -210,3 +210,34 @@ No new tables. No live LLM calls — Workbench and AttentionLayer stay JSON-driv
 - Real Twin or live integration calls
 - Blog / changelog content (routes remain stubs)
 - Self-serve sign-up / billing flow
+
+---
+
+## 11. Pandawa-rhythm refresh (2026-04 update)
+
+### Top nav (final shape)
+`Platform ▾   Product ▾   Solutions ▾   Resources ▾   Pricing            [ Book a Demo ]`
+
+### Solutions ▾ mega-menu
+- **Overview** → `/solutions` ("Same Memory. Same Twin. Shaped for each team's work.")
+- **By outcome** → Account Success · Business Ops · Personal Ops [Waitlist]
+- **By role** → Sales Ops · Finance Ops
+- **Footer** → "Browse all 6 industries" with chips: SaaS · eCommerce · Healthcare · FinTech · Manufacturing · Professional Services
+
+Single source of truth: `SOLUTIONS_GROUPS` in `src/lib/site.ts`.
+
+### Home rhythm (15 blocks)
+1. AnnouncementBar → 2. Hero split (Attention+Workbench locked above the fold) → 3. ConnectorMarquee → 4. PainTrio → 5. FeatureCardGrid → 6. SpeedStrip → 7. HowItWorks4 → 8. UnfairAdvantage → 9. SolutionsDoors → 10. IntegrationsGrid → 11. Testimonials → 12. PricingTeaser → 13. FounderBlock → 14. FaqAccordion → 15. ClosingCtaBand.
+
+### Hero constraints (locked)
+- H1 always: **"Your work resets every day."**
+- Subcopy from canonical HOME (Gmail / Slack / yesterday's notes reset story).
+- Layout: copy left, **Attention strip on top of Workbench** stacked in one column on the right.
+- **Above-the-fold rule (desktop ≥1024px):** AnnouncementBar (36px) + Header (~84px) + hero top padding ≤ ~160px combined; hero section uses `lg:min-h-[calc(100svh-44px)]` so the Attention+Workbench combo is visible at 1280×720 and above.
+- Mobile/tablet: stacks below copy.
+
+### Kill list (extends §6)
+Add: `start writing` · `connect your stack` · `no-code workflow builder` · `get started in minutes` · `start in 60 seconds` · `human API between your tools`.
+
+### New components
+`AnnouncementBar` · `PainTrio` · `FeatureCardGrid` · `SpeedStrip` · `HowItWorks4` · `UnfairAdvantage` · `SolutionsDoors` · `IntegrationsGrid` · `Testimonials` · `PricingTeaser` · `FounderBlock` · `FaqAccordion` · `ClosingCtaBand`. All in `src/components/site/`. Home content centralized in `src/content/home-content.ts`.
