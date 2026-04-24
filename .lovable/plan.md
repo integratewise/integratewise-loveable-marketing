@@ -1,196 +1,164 @@
-# IntegrateWise — Site Build Plan (Nexify Theme + Blueprint)
 
-Rebuild the public marketing site to match the uploaded **Site & Product Blueprint** (vocabulary, narrative, IA) styled with the uploaded **Nexify theme** (`integratewise-nexify-theme.css`).
+# IntegrateWise — Blueprint v2 + integratewise.ai animations
 
----
-
-## 1. Design system (locked — Nexify)
-
-The uploaded CSS is the single source of truth. We import it as `src/styles/theme.css`, then mirror its tokens into Tailwind v4's `@theme` block so utilities resolve.
-
-**Foundations**
-- Page bg `#111111` · Card `#1C1C1C` · Elevated `#232323` · Overlay `rgba(17,17,17,.72)`
-- Text primary `#FFFFFF` · secondary `#9CA3AF` · muted `rgba(255,255,255,.65)`
-- Borders subtle `rgba(255,255,255,.10)` · strong `.18` · interactive `rgba(251,191,36,.45)`
-
-**Brand**
-- Accent **peach** `#FFE1CC` → blends to white in gradients
-- Highlight **amber** `#FBBF24` — used for interactive/focus rings, badge text, "Live" status
-- Hero & H1 use `--gradient-heading-highlight` (peach→white, clipped to text)
-
-**Status:** success `#22C55E` · warning `#FBBF24` · error `#F87171` · info `#60A5FA`
-
-**Type (Inter)**
-- Display 72/56/40 · H1 64/48/36 · H2 44/36/30 · H3 28/24/22
-- Body lg 20/1.6 · body 16/1.7 · label 14 · nav 15 · button 16
-- Tight letter-spacing on display/H1/H2 (`-0.04` to `-0.03em`)
-
-**Layout & spacing**
-- Container max **1280px**, section padding **128/96/64px**
-- 8-step spacing scale (4 → 128px)
-- Grid gaps 32/24/20
-
-**Radii:** button-sm 8 · button-md 12 · card 16 · card-lg 24 · pill 999
-
-**Components (recipes baked in the CSS)**
-- **Primary button** — peach→white gradient bg, `#111` text, 12px radius, `0 10px 30px rgba(255,225,204,.18)` glow → `.24` on hover
-- **Secondary button** — `rgba(255,255,255,.02)` bg, `.12` border → hover border turns amber `.45`
-- **Card** — `#1C1C1C` bg, subtle border, `0 20px 60px rgba(0,0,0,.35)` shadow; hover lifts shadow + amber border
-- **Glass nav** — `rgba(17,17,17,.72)` + 12px blur + `.08` border, 72px tall, 16px radius
-- **Badge** — amber tint pill (`bg #FBBF24/12`, text `#FBBF24`, border `#FBBF24/28`)
-- **Input** — `#1C1C1C` bg, 12px radius, focus border amber `.45`
-- **Transitions** — 300ms ease across buttons/cards
-
-**Effects**
-- Card glow: `--gradient-card-glow` radial peach at top-left of feature cards
-- Marquee: 20s linear infinite for any logo/connector strip
-- Respects `prefers-reduced-motion`
+The visual theme stays as-is (Nexify dark glass, peach→white gradient hero, amber accents). What changes is **content structure**, **vocabulary**, and **motion**. The hero anchor flips from "Build memory for your work" to **"Your work resets every day."** and every page now opens with an **Attention Layer** moment before the Workbench appears.
 
 ---
 
-## 2. Vocabulary lock
+## 1. Vocabulary + CTA updates (global)
 
-**Use exactly:** Spine · Memory · Workbench · Twin · Approval · Reference Layer · Customer Zero · Human API. Approved phrases: *"Separate memories. Coherent life."* · *"Private by architecture. Shared by choice. Guided by you."*
+Locked terms going in: **Memory · Attention Layer · Workbench · Twin · Approval · Spine (Platform page only) · Reference Layer**.
 
-**Retire everywhere:** Adaptive Spine · Adaptive Opus · Three Data Ecosystems · single shared pool · Cognitive OS · 8-stage normalizer · System of Context · B2B enterprise platform · Start Free · Start Free Trial · No credit card required · 14-day free trial · Connect in 2 minutes.
+Twin re-positioning everywhere: "**connects what changed, explains why it matters, and prepares what to do next.**" (replaces the old "watches Memory and suggests" framing).
 
-**Tool-word hierarchy** (avoid generic "tools" everywhere): *Apps* (homepage), *Systems* (trust/platform), *Sources* (ingestion), *Work tools* (product context).
+Approved phrases to seed across pages:
+- "Your work resets every day." (category anchor — first line of Home)
+- "Within seconds, you see what changed."
+- "You don't rebuild context anymore." (Product hero)
+- "3 things need your attention." (Attention Layer label)
+- "Truth you own. AI you rent. Approval in between."
+
+Kill list scrub: "Adaptive Spine" (in headers), "Entity 360", "Stop juggling apps", "Are you juggling tabs…?", "Three Data Ecosystems", any remnant of "Start Free / Start Free Trial / No credit card / Connect in 2 minutes".
+
+CTAs unchanged from current: **Book a Demo** (primary), **Join Early Access** (secondary), **Join the Waitlist** for Personal Ops only.
 
 ---
 
-## 3. Information architecture (real routes, no hash nav)
+## 2. New global component: `AttentionLayer`
+
+A small, prominent card-strip used **above the Workbench on every page**:
 
 ```text
-/                                  Home
-/manifesto                         Manifesto
-
-/platform                          Platform overview
-/platform/how-it-works             5-step flow into Memory
-/platform/the-spine                What the Spine is
-/platform/integrations             Connector catalog (Live / Coming Soon badges)
-/platform/security                 Four promises + data protection
-/platform/infrastructure           Speed, durability, model flexibility
-
-/product                           Product overview
-/product/workbench                 Canonical Workbench page
-/product/the-twin                  What the Twin does / does not
-/product/approval                  Approval gate
-/product/reference-layer           Separate memories. Coherent life.
-/product/how-it-works              Watch · Suggest · Approve · Act · Learn
-
-/solutions                         Solutions hub
-/solutions/account-success
-/solutions/business-ops
-/solutions/sales-ops
-/solutions/finance-ops
-/solutions/personal-ops            (Waitlist CTA + Waitlist badge)
-/solutions/by-industry             Industry index
-/solutions/by-industry/$industry   Dynamic industry-detail template
-
-/pricing                           Starter / Growth / Command
-/customer-zero                     Founder story
-/contact                           Demo + general contact form
+┌─────────────────────────────────────────────────┐
+│ RIGHT NOW                3 things need attention │
+│ ⚠ Acme Corp · Usage dropped 31% this week        │
+│ ⚠ Invoice INV-2048 · Overdue 14 days             │
+│ ⚠ Northwind · No reply in 9 days                 │
+│ Twin has prepared responses. Review when ready.  │
+└─────────────────────────────────────────────────┘
 ```
 
-Each route ships its own `head()` (title, description, og:title, og:description). Per-route `og:image` only where a meaningful share image exists.
+- New file: `src/components/site/AttentionLayer.tsx`
+- Takes `{ label, signals: [{ entity, change, severity }], note }`
+- Per-page signals live in `src/content/attention-scenarios.ts` (one per route — Home, Product, each Solution page, each Industry page, Personal Ops, etc.)
+- Sits directly above the existing `Workbench` component on every page that currently shows the Workbench
 
 ---
 
-## 4. Page narrative pattern (every content page)
+## 3. Page changes
 
-```text
-Hero  →  Problem (pain)  →  Hidden cost (consequence)  →  Core promise
-     →  Simple how (5 steps)  →  Trust / control (4 guardrails)
-     →  What this looks like (Workbench preview)  →  Before vs After
-     →  Example output (Acme Corp card)  →  CTA
+### Home (`/`)
+
+Restructure hero + add new sections per v2:
+
+1. **Hero** — replace heading with **"Your work resets every day."** sub-copy: "You open Gmail. You check Slack…" + promise paragraph ending in "Within seconds of opening, you see what changed." Trust strip stays.
+2. **Attention Layer** (new) — Acme usage drop, INV-2048 overdue, Northwind silent
+3. **Workbench preview** (existing component, kept)
+4. **Problem** — "Stop rebuilding the same work."
+5. **Consequence** — "Rebuilding the story drains time and trust."
+6. **Promise** — "One place where your work becomes Memory."
+7. **How it works** — 5-step flow updated to: Memory → **Attention** → Workbench → Twin (new copy) → Approval
+8. **Three Memory Scopes** — User · Work · Org, "Private by architecture. Shared by choice."
+9. **Trust & Control** — 4 guarantees
+10. **Proof stats** — 23% / $8M+ / 5–8 hrs / 30-day payback
+11. **Customer Zero** teaser
+12. **Footer CTA** band
+
+### Product (`/product`)
+
+- Hero changes to **"You don't rebuild context anymore."**
+- Add Attention Layer above existing Workbench
+- Add **Twin vs Others** comparison table (5-row table from v2 spec)
+
+### The Twin (`/product/the-twin`)
+
+- Update hero + "What it does / does not do" lists to v2 wording
+- Add the Twin vs Others table
+- Keep Workbench scenario, prepend Attention Layer
+
+### All Solutions pages (Personal/Account/Business/Sales/Finance Ops)
+
+- Each gets an Attention Layer block specific to that role (signals from v2 spec)
+- Existing Workbench stays
+- Personal Ops keeps Waitlist badge + Waitlist CTA
+
+### Pricing (`/pricing`)
+
+- Adjust plan rows to match v2 entitlements (Sync 4h/1h/15min · 5/20/Unlimited connectors · Read-only/Limited write/Full TruthLayer · 90/365/Unlimited history)
+- Add **ROI Calculator** card (interactive, client-only): seats slider, hours saved/week (default 6), hourly cost ($50) → Weekly/Monthly/Annual savings + payback days + ROI multiple. CTA "Book a Demo" below.
+
+### New routes (currently missing)
+
+- `/why` — single page from v2 §WHY copy
+- `/about` — separate from `/customer-zero`, founder bio + near-miss story
+- `/solutions/sales-ops`
+- `/solutions/finance-ops`
+- `/solutions/by-industry` (index with 6 industry cards + Live/Coming Soon badges)
+- `/solutions/by-industry/$industry` (dynamic template; static `loader` returning industry data for SaaS · eCommerce · Healthcare · FinTech · Manufacturing · Professional Services)
+
+Each gets its own `head()` with title/description/og:title/og:description.
+
+### Footer
+
+Update footer columns to v2 spec: Platform (Spine · Memory · Integrations · Security · Docs · API) · Solutions (Account Success · Business Ops · By Role · By Industry) · Company (Story · Principles · Contact · Blog · Careers) · Legal (Privacy · Terms · Cookies). "Docs/API/Blog/Careers/Principles" remain stub routes via existing `StubPage`.
+
+---
+
+## 4. Animations — match integratewise.ai feel
+
+The reference site uses three signature motion patterns. Implement them with Tailwind + small utility CSS in `src/styles.css` (no new heavyweight library). Respect `prefers-reduced-motion`.
+
+### a. Scroll-reveal fade-up on every section
+Already partly present (`fade-up` class). Upgrade to an **IntersectionObserver-driven** hook so reveals fire on scroll-in (not just on mount). New file `src/hooks/use-reveal.ts` + class `.reveal` (initial: `opacity 0, translate-y-3`, on `.is-in`: `opacity 1, translate-y-0, transition 600ms ease-out`). Apply to every `<Section>` child block.
+
+### b. Connector orbit (hero background)
+The reference site shows app logos drifting in concentric orbits around a central glowing mark. Build `src/components/site/ConnectorOrbit.tsx`:
+- Absolute-positioned SVG with 2 concentric rings
+- 8–12 connector logos (Salesforce, HubSpot, Slack, Gmail, Stripe, Jira, Notion, Zendesk, Shopify, QuickBooks, Intercom, GitHub) placed on the rings
+- Each ring rotates with `@keyframes orbit-rotate` (60s and 90s, opposite directions, linear infinite)
+- Logos counter-rotate so they stay upright
+- Soft amber radial glow at center matching our existing peach/amber palette
+- Used on Home hero (behind text) and Platform hero
+- Pauses under `prefers-reduced-motion`
+
+Logos: download SVGs into `src/assets/logos/` (12 files) and import as ES modules.
+
+### c. Marquee connector strip
+Below hero: horizontally scrolling logo strip, 20s linear infinite, fades at edges. Already have `--transition-marquee` token. Add component `src/components/site/ConnectorMarquee.tsx` reusing the same logo set. Pauses on hover and under reduced-motion.
+
+### d. Subtle micro-interactions
+- Card hover lift (already in theme) — verify on every card grid
+- Button glow expand on hover (already in theme)
+- Attention-Layer signal rows: stagger fade-in (50ms apart) on first reveal
+- Twin suggestion panel: gentle pulsing dot next to "Twin" label
+
+All motion gated by:
+```css
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .orbit-ring, .marquee-track, .twin-pulse { animation: none !important; transition: none !important; opacity: 1; transform: none; }
+}
 ```
 
-Headline copy taken verbatim from the blueprint. Sections built from a small set of reusable components (`Hero`, `NarrativeBlock`, `FiveSteps`, `TrustWalls`, `BeforeAfter`, `ExampleOutput`, `CTAStrip`) so new pages are fast to assemble.
+---
+
+## 5. Build sequence
+
+1. Vocabulary + Twin re-positioning sweep across existing pages
+2. New `AttentionLayer` component + `attention-scenarios.ts` + add to Home, Product, all Solutions
+3. Home hero rewrite + new sections (Consequence, Promise, Three Scopes refinements, Proof stats)
+4. Animations: `use-reveal` hook, `ConnectorOrbit`, `ConnectorMarquee`, reduced-motion guard
+5. New routes: `/why`, `/about`, `/solutions/sales-ops`, `/solutions/finance-ops`, `/solutions/by-industry`, `/solutions/by-industry/$industry`
+6. Pricing: entitlement update + ROI calculator
+7. Footer column update + Twin vs Others table
+8. QA: vocabulary audit (zero kill-list terms), CTA audit, per-route meta check, motion-reduce check, mobile pass
 
 ---
 
-## 5. The Workbench demo (centerpiece)
+## 6. Out of scope
 
-Static, JSON-driven, no live API. Reused across Home, `/product/workbench`, every Solutions page, every Industry page.
+- No theme/color changes (Nexify dark stays exactly as-is)
+- No new backend tables (existing `demo_requests`, `early_access`, `waitlist`, `connector_requests` cover all forms; `/about` and `/why` use existing demo modal)
+- No live integrations or real Twin/LLM calls — Workbench + Attention Layer remain JSON-driven
+- No blog/changelog content (routes stay as stubs)
 
-- **Left column:** Memory cards (entity facts: e.g., "Acme Corp · Usage down 32% · 2 tickets open · Renewal in 21 days")
-- **Right column:** Twin Suggestion panel — what it wants to do, why, what it looked at, confidence, what will happen if approved
-- **Bottom bar:** **Approve · Edit · Reject** buttons (visual; clicking shows a confirmation toast)
-
-Per-page JSON in `src/content/workbench-scenarios.ts` swaps the entity/signals/suggestion so Account Success shows churn risk, Finance Ops shows an invoice story, etc.
-
----
-
-## 6. CTA discipline
-
-| CTA | Where | Behavior |
-|---|---|---|
-| **Book a Demo** | Primary on Home, Platform, Product, Twin, Solutions (except Personal), Pricing, Industry pages, sticky nav | Opens demo form modal → Cloud `demo_requests` |
-| **Join Early Access** | Secondary in hero / footer | Cloud `early_access` |
-| **Join the Waitlist** | Personal Ops card + page, Customer Zero | Cloud `waitlist` (with source page) |
-| **Request a Connector** | `/platform/integrations` | Cloud `connector_requests` |
-
-Personal Ops solution card carries a visible **Waitlist** badge (amber pill).
-
-Hero trust strip (replacing forbidden trial badges): **SOC 2 Compliant · Approval-gated · Memory stays yours**.
-
----
-
-## 7. Forms (Lovable Cloud)
-
-Four insert-only Cloud tables with no select for anonymous:
-- `demo_requests` — name, work email, company, role, main use case, team size, notes
-- `early_access` — email, optional role
-- `waitlist` — email, source page
-- `connector_requests` — connector name, email, optional notes
-
-Each form: inline validation, thank-you state, writes via a TanStack Start server function. No auth required.
-
----
-
-## 8. Visual & motion details
-
-- Floating background **peach + warm-purple orbs** at very low opacity (0.04) drifting slowly — keeps the staging vibe but with Nexify hues
-- H1 uses the peach→white gradient text treatment from `--gradient-heading-highlight`
-- Section bands alternate `--bg-base` (#111) and a slightly darker `#0E0E0E` for rhythm
-- Cards use `--gradient-card-glow` radial in the top-left on hover for a subtle warm halo
-- Primary CTA shows the peach glow shadow; on hover the shadow expands (token already defined)
-- Connector strip uses `--transition-marquee` 20s linear loop
-- Subtle scroll fade-up reveal (300ms, ease) on every section
-- Cursor spotlight effect on dark sections (optional, off when reduced-motion)
-
----
-
-## 9. Build order
-
-1. **Theme foundation** — drop `integratewise-nexify-theme.css` into `src/styles/theme.css`, wire into `src/styles.css`, mirror tokens into Tailwind v4 `@theme`, update shadcn/ui base components to consume them
-2. **Shell** — glass nav (Platform · Product · Solutions · Pricing · Twin · Company + sticky **Book a Demo**), footer, reusable section components, Workbench demo component, three form modals
-3. **Home + Manifesto** — full narrative arc end-to-end as the reference page
-4. **Platform cluster** (overview + 5 sub-pages)
-5. **Product cluster** (overview + 5 sub-pages incl. canonical Workbench)
-6. **Solutions cluster** (hub + 5 role pages + by-industry index + dynamic industry template)
-7. **Pricing, Customer Zero, Contact**
-8. **Cloud forms** wired and tested with a real submission
-9. **QA pass** — vocabulary audit (zero retired terms), CTA audit (zero forbidden CTAs), per-route meta check, mobile layout pass, reduced-motion check
-
----
-
-## 10. Technical notes (for the builder)
-
-- TanStack Start file-based routes; dynamic industry route is `solutions.by-industry.$industry.tsx`
-- `Workbench` is a single component taking `{ entity, memoryCards, suggestion }`; data lives in `src/content/workbench-scenarios.ts`
-- Page copy lives co-located in each route file (no CMS) so it ships with SSR
-- Forms use TanStack Start server functions writing to Lovable Cloud tables with insert-only RLS
-- Strict TS, named exports, no `any`, no `console.log` in shipped code
-- Every route defines `errorComponent` and `notFoundComponent`; root has a 404 boundary; router has `defaultErrorComponent`
-
----
-
-## 11. Out of scope
-
-- No live integrations, no real OAuth, no real Twin/LLM calls (Workbench is a static showcase)
-- No customer login, no in-app dashboard
-- No blog / changelog (can be added later)
-- English only for v1
-
-When you approve, I switch to build mode and ship this end to end.
+On approval I'll switch to build mode and ship in the order above.
