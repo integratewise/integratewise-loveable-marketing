@@ -14,10 +14,8 @@ import {
   Plug,
   Lock,
   Telescope,
+  type LucideIcon,
 } from "lucide-react";
-import { Container } from "@/components/site/Container";
-import { Section } from "@/components/site/Section";
-import { Reveal } from "@/components/site/Reveal";
 import { useDemoModal } from "@/components/site/demo-modal-context";
 
 export const Route = createFileRoute("/about")({
@@ -45,7 +43,7 @@ type TimelineEntry = {
   title: string;
   body: string;
   quote: string;
-  icon: typeof AlertTriangle;
+  icon: LucideIcon;
   stat: string;
   statLabel: string;
 };
@@ -101,7 +99,7 @@ const TIMELINE: TimelineEntry[] = [
   },
 ];
 
-const PRINCIPLES = [
+const PRINCIPLES: { icon: LucideIcon; title: string; body: string; tag: string }[] = [
   {
     icon: UserCheck,
     title: "You Stay in Control",
@@ -140,26 +138,52 @@ const PRINCIPLES = [
   },
 ];
 
+function StatPanel({ stat, label }: { stat: string; label: string }) {
+  return (
+    <div className="about-stat-card p-8">
+      <div className="text-center">
+        <div className="mb-2 text-4xl font-bold text-brand-accent">{stat}</div>
+        <div className="text-text-secondary">{label}</div>
+      </div>
+    </div>
+  );
+}
+
+function TimelineCard({ entry }: { entry: TimelineEntry }) {
+  const Icon = entry.icon;
+  return (
+    <div className="about-card rounded-2xl p-8">
+      <div className="mb-4 flex items-center gap-3">
+        <div className="about-icon-tile flex h-12 w-12 items-center justify-center rounded-lg">
+          <Icon size={18} className="text-brand-accent" />
+        </div>
+        <div>
+          <div className="text-sm font-semibold text-brand-accent">{entry.era}</div>
+          <div className="text-lg font-bold text-foreground">{entry.title}</div>
+        </div>
+      </div>
+      <p className="mb-4 leading-relaxed text-text-secondary">{entry.body}</p>
+      <p className="text-sm text-text-muted">"{entry.quote}"</p>
+    </div>
+  );
+}
+
 function AboutPage() {
   const { open } = useDemoModal();
 
   return (
-    <>
-      {/* Hero */}
-      <section className="relative flex min-h-[600px] flex-col items-center justify-center overflow-hidden px-4 pt-32 pb-20">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute left-1/2 top-1/2 -z-0 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(255,225,204,0.12) 0%, rgba(17,17,17,0) 70%)",
-          }}
-        />
+    <main>
+      {/* Hero — h-[600px], custom purple glow, pt-32 pb-20 */}
+      <section
+        id="about-hero-section"
+        className="relative flex h-[600px] flex-col items-center justify-center overflow-hidden px-4 pt-32 pb-20"
+      >
+        <div className="about-hero-glow" aria-hidden />
         <div className="relative z-10 mx-auto max-w-5xl text-center">
-          <span className="badge-iw badge-iw-muted mb-6">
-            <Heart size={12} className="text-brand-highlight" /> Our Story
+          <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-[#1c1c1c] px-4 py-1.5 text-xs font-semibold text-text-secondary">
+            <Heart size={12} className="text-[#ffb22c]" /> Our Story
           </span>
-          <h1 className="heading-display mb-6 tracking-tight">
+          <h1 className="mb-6 text-4xl font-bold leading-tight tracking-tight md:text-6xl">
             <span className="text-gradient-hero">Transforming Work</span>
             <br />
             <span className="text-foreground">Through Unified Memory</span>
@@ -172,14 +196,14 @@ function AboutPage() {
             <button
               type="button"
               onClick={() => open("demo")}
-              className="btn-primary-iw"
+              className="rounded-xl bg-gradient-to-r from-[#FFE1CC] to-white px-8 py-4 text-base font-bold text-[#111111] shadow-xl transition-transform hover:scale-105"
             >
               Book a Demo
             </button>
             <button
               type="button"
               onClick={() => open("sales")}
-              className="btn-secondary-iw"
+              className="rounded-xl border border-white/20 px-8 py-4 text-base font-semibold text-foreground transition-all hover:bg-white/5"
             >
               Talk to Sales
             </button>
@@ -187,14 +211,14 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* Timeline */}
-      <Section className="bg-section-alt">
-        <Container>
+      {/* Timeline — alt-dark #0a0a0a banding */}
+      <section id="story-timeline-section" className="about-bg-alt px-4 py-20">
+        <div className="mx-auto max-w-6xl">
           <div className="mb-16 text-center">
-            <span className="badge-iw badge-iw-muted mb-6">
-              <MapPin size={12} className="text-brand-highlight" /> Our Journey
+            <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-[#1c1c1c] px-4 py-1.5 text-xs font-semibold text-text-secondary">
+              <MapPin size={12} className="text-[#ffb22c]" /> Our Journey
             </span>
-            <h2 className="heading-h2 mb-6">
+            <h2 className="mb-6 text-3xl font-bold md:text-5xl">
               <span className="text-gradient-hero">How We Got Here</span>
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-text-secondary">
@@ -203,80 +227,28 @@ function AboutPage() {
             </p>
           </div>
 
-          <div className="relative">
-            {/* center line */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 lg:block"
-              style={{
-                background:
-                  "linear-gradient(180deg, var(--brand-accent) 0%, color-mix(in oklab, var(--brand-accent) 30%, transparent) 100%)",
-              }}
-            />
+          <div className="about-timeline-line relative">
             <div className="space-y-16">
-              {TIMELINE.map((t, i) => {
-                const Icon = t.icon;
+              {TIMELINE.map((entry, i) => {
                 const cardLeft = i % 2 === 0;
-                const card = (
-                  <Reveal>
-                    <div className="card-iw p-8">
-                      <div className="mb-4 flex items-center gap-3">
-                        <div
-                          className="flex h-12 w-12 items-center justify-center rounded-lg"
-                          style={{
-                            background:
-                              "linear-gradient(90deg, color-mix(in oklab, var(--brand-accent) 20%, transparent), color-mix(in oklab, #ffffff 12%, transparent))",
-                          }}
-                        >
-                          <Icon size={18} className="text-brand-accent" />
-                        </div>
-                        <div>
-                          <div className="text-sm font-semibold text-brand-accent">
-                            {t.era}
-                          </div>
-                          <div className="text-lg font-bold text-foreground">
-                            {t.title}
-                          </div>
-                        </div>
-                      </div>
-                      <p className="mb-4 leading-relaxed text-text-secondary">
-                        {t.body}
-                      </p>
-                      <p className="text-sm italic text-text-muted">"{t.quote}"</p>
-                    </div>
-                  </Reveal>
-                );
-                const stat = (
-                  <Reveal>
-                    <div
-                      className="rounded-2xl p-8 text-center"
-                      style={{
-                        background:
-                          "linear-gradient(135deg, color-mix(in oklab, var(--brand-accent) 12%, transparent), color-mix(in oklab, #ffffff 6%, transparent))",
-                        border: "1px solid var(--border-subtle)",
-                      }}
-                    >
-                      <div className="mb-2 text-4xl font-bold text-brand-accent">
-                        {t.stat}
-                      </div>
-                      <div className="text-text-secondary">{t.statLabel}</div>
-                    </div>
-                  </Reveal>
-                );
                 return (
                   <div
-                    key={t.title}
-                    className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2"
+                    key={entry.title}
+                    className="about-timeline-item grid grid-cols-1 items-center gap-8 lg:grid-cols-2"
                   >
                     {cardLeft ? (
                       <>
-                        {card}
-                        {stat}
+                        <div className="order-2 lg:order-1">
+                          <TimelineCard entry={entry} />
+                        </div>
+                        <div className="order-1 lg:order-2">
+                          <StatPanel stat={entry.stat} label={entry.statLabel} />
+                        </div>
                       </>
                     ) : (
                       <>
-                        {stat}
-                        {card}
+                        <StatPanel stat={entry.stat} label={entry.statLabel} />
+                        <TimelineCard entry={entry} />
                       </>
                     )}
                   </div>
@@ -284,17 +256,17 @@ function AboutPage() {
               })}
             </div>
           </div>
-        </Container>
-      </Section>
+        </div>
+      </section>
 
       {/* Principles */}
-      <Section>
-        <Container>
+      <section id="principles-section" className="px-4 py-20">
+        <div className="mx-auto max-w-6xl">
           <div className="mb-16 text-center">
-            <span className="badge-iw badge-iw-muted mb-6">
-              <Compass size={12} className="text-brand-highlight" /> Core Values
+            <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-[#1c1c1c] px-4 py-1.5 text-xs font-semibold text-text-secondary">
+              <Compass size={12} className="text-[#ffb22c]" /> Core Values
             </span>
-            <h2 className="heading-h2 mb-6">
+            <h2 className="mb-6 text-3xl font-bold md:text-5xl">
               <span className="text-gradient-hero">What Guides Us</span>
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-text-secondary">
@@ -307,123 +279,112 @@ function AboutPage() {
             {PRINCIPLES.map((p) => {
               const Icon = p.icon;
               return (
-                <Reveal key={p.title}>
-                  <div className="card-iw h-full p-8">
-                    <div
-                      className="mb-6 flex h-16 w-16 items-center justify-center rounded-xl"
-                      style={{
-                        background:
-                          "linear-gradient(90deg, color-mix(in oklab, var(--brand-accent) 20%, transparent), color-mix(in oklab, #ffffff 12%, transparent))",
-                      }}
-                    >
-                      <Icon size={26} className="text-brand-accent" />
-                    </div>
-                    <h3 className="heading-h3 mb-4">{p.title}</h3>
-                    <p className="mb-4 leading-relaxed text-text-secondary">
-                      {p.body}
-                    </p>
-                    <div className="text-sm font-medium text-brand-accent">
-                      {p.tag}
-                    </div>
+                <div
+                  key={p.title}
+                  className="principle-card about-card rounded-2xl p-8"
+                >
+                  <div className="about-icon-tile mb-6 flex h-16 w-16 items-center justify-center rounded-xl">
+                    <Icon size={26} className="text-brand-accent" />
                   </div>
-                </Reveal>
+                  <h3 className="mb-4 text-xl font-bold text-foreground">
+                    {p.title}
+                  </h3>
+                  <p className="mb-4 leading-relaxed text-text-secondary">
+                    {p.body}
+                  </p>
+                  <div className="text-sm font-medium text-brand-accent">
+                    {p.tag}
+                  </div>
+                </div>
               );
             })}
           </div>
-        </Container>
-      </Section>
+        </div>
+      </section>
 
-      {/* Vision */}
-      <Section className="bg-section-alt">
-        <Container>
-          <div className="mx-auto max-w-5xl text-center">
-            <span className="badge-iw badge-iw-muted mb-8">
-              <Telescope size={12} className="text-brand-highlight" /> Looking
-              Ahead
-            </span>
-            <h2 className="heading-h2 mb-8">
-              <span className="text-gradient-hero">Our Vision</span>
-            </h2>
-            <Reveal>
-              <div className="card-iw mb-12 p-12">
-                <p className="mb-8 text-xl leading-relaxed text-foreground/90">
-                  "We're building a world where every knowledge worker has an AI
-                  partner that truly understands their work — where context flows
-                  seamlessly across tools, and human intelligence is amplified,
-                  not replaced."
-                </p>
-                <div className="flex items-center justify-center gap-4">
-                  <div
-                    className="flex h-16 w-16 items-center justify-center rounded-full text-xl font-bold text-text-inverse"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, var(--brand-accent), #ffffff)",
-                    }}
-                    aria-hidden
-                  >
-                    SC
-                  </div>
-                  <div className="text-left">
-                    <div className="text-lg font-semibold text-foreground">
-                      Sarah Chen
-                    </div>
-                    <div className="text-sm text-text-secondary">
-                      Founder & CEO
-                    </div>
-                  </div>
-                </div>
+      {/* Vision — alt-dark */}
+      <section id="vision-section" className="about-bg-alt px-4 py-20">
+        <div className="mx-auto max-w-5xl text-center">
+          <span className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-[#1c1c1c] px-4 py-1.5 text-xs font-semibold text-text-secondary">
+            <Telescope size={12} className="text-[#ffb22c]" /> Looking Ahead
+          </span>
+          <h2 className="mb-8 text-3xl font-bold md:text-5xl">
+            <span className="text-gradient-hero">Our Vision</span>
+          </h2>
+          <div className="about-card mb-12 rounded-3xl p-12">
+            <p className="mb-8 text-xl leading-relaxed text-foreground/90">
+              "We're building a world where every knowledge worker has an AI
+              partner that truly understands their work — where context flows
+              seamlessly across tools, and human intelligence is amplified, not
+              replaced."
+            </p>
+            <div className="flex items-center justify-center gap-4">
+              <div
+                className="flex h-16 w-16 items-center justify-center rounded-full text-xl font-bold text-[#111111]"
+                style={{
+                  background:
+                    "linear-gradient(135deg, #FFE1CC, #ffffff)",
+                  border: "2px solid rgba(255,255,255,0.20)",
+                }}
+                aria-hidden
+              >
+                SC
               </div>
-            </Reveal>
-
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-              {[
-                ["10M+", "Knowledge workers empowered"],
-                ["500+", "Tools connected"],
-                ["100%", "Human-centered"],
-              ].map(([n, l]) => (
-                <div key={l} className="text-center">
-                  <div className="mb-2 text-3xl font-bold text-brand-accent">
-                    {n}
-                  </div>
-                  <div className="text-text-secondary">{l}</div>
+              <div className="text-left">
+                <div className="text-lg font-semibold text-foreground">
+                  Sarah Chen
                 </div>
-              ))}
+                <div className="text-sm text-text-secondary">Founder & CEO</div>
+              </div>
             </div>
           </div>
-        </Container>
-      </Section>
+
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            {[
+              ["10M+", "Knowledge workers empowered"],
+              ["500+", "Tools connected"],
+              ["100%", "Human-centered"],
+            ].map(([n, l]) => (
+              <div key={l} className="text-center">
+                <div className="mb-2 text-3xl font-bold text-brand-accent">
+                  {n}
+                </div>
+                <div className="text-text-secondary">{l}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* CTA */}
-      <Section>
-        <Container>
-          <div className="mx-auto max-w-5xl text-center">
-            <h2 className="heading-h1 mb-8">
-              <span className="text-gradient-hero">Ready to Transform</span>
-              <br />
-              <span className="text-foreground">Your Workflow?</span>
-            </h2>
-            <p className="mx-auto mb-10 max-w-2xl text-lg text-text-secondary">
-              Join teams building the future of work with unified digital memory.
-            </p>
-            <div className="flex flex-col justify-center gap-4 sm:flex-row">
-              <button
-                type="button"
-                onClick={() => open("demo")}
-                className="btn-primary-iw"
-              >
-                Book a Demo
-              </button>
-              <button
-                type="button"
-                onClick={() => open("sales")}
-                className="btn-secondary-iw"
-              >
-                Talk to Sales
-              </button>
-            </div>
+      <section id="cta-section" className="px-4 py-20">
+        <div className="mx-auto max-w-5xl text-center">
+          <h2 className="mb-8 text-4xl font-bold md:text-6xl">
+            <span className="text-gradient-hero">Ready to Transform</span>
+            <br />
+            <span className="text-foreground">Your Workflow?</span>
+          </h2>
+          <p className="mx-auto mb-10 max-w-2xl text-lg text-text-secondary">
+            Join teams building the future of work with unified digital memory.
+          </p>
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
+            <button
+              type="button"
+              onClick={() => open("demo")}
+              className="rounded-2xl bg-gradient-to-r from-[#FFE1CC] to-white px-10 py-5 text-xl font-bold text-[#111111] shadow-2xl transition-transform hover:scale-105"
+            >
+              Book a Demo
+            </button>
+            <button
+              type="button"
+              onClick={() => open("sales")}
+              className="rounded-2xl border border-white/20 px-10 py-5 text-xl font-semibold text-foreground transition-all hover:bg-white/5"
+            >
+              Talk to Sales
+            </button>
           </div>
-        </Container>
-      </Section>
-    </>
+        </div>
+      </section>
+    </main>
   );
 }
