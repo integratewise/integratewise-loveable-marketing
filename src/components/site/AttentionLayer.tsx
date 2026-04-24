@@ -1,5 +1,4 @@
 import { AlertTriangle, Sparkles } from "lucide-react";
-import { Reveal } from "./Reveal";
 import { cn } from "@/lib/utils";
 
 export interface AttentionSignal {
@@ -48,18 +47,17 @@ export function AttentionLayer({ scenario, className }: { scenario: AttentionSce
         {signals.map((s, i) => {
           const color = sevColor[s.severity ?? "medium"];
           return (
-            <Reveal
-              as="li"
+            <li
               key={i}
-              delay={i * 80}
-              className="flex items-start gap-3 rounded-xl border border-border bg-elevated/50 px-4 py-3"
+              className="fade-up flex items-start gap-3 rounded-xl border border-border bg-elevated/50 px-4 py-3"
+              style={{ animationDelay: `${i * 80}ms` }}
             >
               <AlertTriangle size={16} style={{ color }} className="mt-0.5 shrink-0" />
               <div className="min-w-0 flex-1">
                 <p className="text-[14px] font-medium text-foreground">{s.entity}</p>
                 <p className="text-[13px] text-text-secondary">{s.change}</p>
               </div>
-            </Reveal>
+            </li>
           );
         })}
       </ul>
