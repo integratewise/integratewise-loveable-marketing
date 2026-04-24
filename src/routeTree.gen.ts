@@ -9,8 +9,14 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ManifestoRouteImport } from './routes/manifesto'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ManifestoRoute = ManifestoRouteImport.update({
+  id: '/manifesto',
+  path: '/manifesto',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +25,39 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/manifesto': typeof ManifestoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/manifesto': typeof ManifestoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/manifesto': typeof ManifestoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/manifesto'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/manifesto'
+  id: '__root__' | '/' | '/manifesto'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ManifestoRoute: typeof ManifestoRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/manifesto': {
+      id: '/manifesto'
+      path: '/manifesto'
+      fullPath: '/manifesto'
+      preLoaderRoute: typeof ManifestoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +70,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ManifestoRoute: ManifestoRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
