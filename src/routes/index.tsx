@@ -19,6 +19,8 @@ import { Workbench } from "@/components/site/Workbench";
 import { AttentionLayer } from "@/components/site/AttentionLayer";
 import { ConnectorMarquee } from "@/components/site/ConnectorMarquee";
 import { ConnectorOrbit } from "@/components/site/ConnectorOrbit";
+import { MemoryLoop } from "@/components/site/MemoryLoop";
+import { ScopesOrbital } from "@/components/site/ScopesOrbital";
 import { homeScenario } from "@/content/workbench-scenarios";
 import { homeAttention } from "@/content/attention-scenarios";
 import { useDemoModal } from "@/components/site/demo-modal-context";
@@ -163,68 +165,49 @@ function HomePage() {
         </Container>
       </Section>
 
-      {/* PROMISE / HOW IT WORKS */}
+      {/* PROMISE / HOW IT WORKS — visual loop */}
       <Section>
         <Container>
-          <Reveal className="mx-auto max-w-2xl text-center">
-            <Badge variant="muted">How it works</Badge>
-            <h2 className="heading-h2 mt-4">One place where your work becomes Memory.</h2>
-            <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
-              The Spine brings records, messages, updates, and changes together into Memory. Memory compounds — it does not reset. Within seconds, you see what changed.
-            </p>
-          </Reveal>
-
-          <ol className="mt-12 grid gap-4 md:grid-cols-3 lg:grid-cols-5">
-            {[
-              { n: 1, icon: Brain, title: "Memory", body: "Your data becomes Memory — one connected record." },
-              { n: 2, icon: Eye, title: "Attention", body: "Three things need your attention — surfaced immediately." },
-              { n: 3, icon: Workflow, title: "Workbench", body: "Adapts the experience around the work in front of you." },
-              { n: 4, icon: Sparkles, title: "Twin", body: "Connects what changed, explains why, prepares what to do next." },
-              { n: 5, icon: ShieldCheck, title: "Approval", body: "You decide every move. The Twin never acts alone." },
-            ].map((s, i) => (
-              <Reveal as="li" key={s.n} delay={i * 70} className="card-iw p-5">
-                <div className="flex items-center gap-3">
-                  <span className="inline-flex size-8 items-center justify-center rounded-lg bg-elevated text-[12px] font-semibold text-brand-accent">
-                    {s.n}
-                  </span>
-                  <s.icon size={18} className="text-brand-highlight" />
-                </div>
-                <h3 className="mt-4 text-[17px] font-semibold text-foreground">{s.title}</h3>
-                <p className="mt-1.5 text-[13.5px] leading-relaxed text-text-secondary">{s.body}</p>
-              </Reveal>
-            ))}
-          </ol>
-
-          <Reveal className="mt-6 flex items-center justify-center gap-2 text-[13px] text-text-secondary">
-            <Repeat size={14} className="text-brand-accent" />
-            Every approved action becomes new Memory. Tomorrow starts smarter than today.
-          </Reveal>
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <Reveal>
+              <Badge variant="muted">How it works</Badge>
+              <h2 className="heading-h2 mt-4">A loop that never resets.</h2>
+              <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
+                Memory holds what happened. Attention surfaces what changed. The Workbench shapes the work. Twin proposes the next move. You approve — and it becomes Memory.
+              </p>
+              <ul className="mt-6 space-y-2 text-[14px] text-foreground/85">
+                <li className="flex items-center gap-2"><Brain size={14} className="text-brand-accent" /> One connected record across your apps</li>
+                <li className="flex items-center gap-2"><Eye size={14} className="text-brand-accent" /> Three things need your attention — daily</li>
+                <li className="flex items-center gap-2"><Sparkles size={14} className="text-brand-accent" /> Twin prepares the response, you approve</li>
+                <li className="flex items-center gap-2"><Repeat size={14} className="text-brand-accent" /> Every approval compounds into knowledge</li>
+              </ul>
+            </Reveal>
+            <Reveal delay={120}>
+              <MemoryLoop />
+            </Reveal>
+          </div>
         </Container>
       </Section>
 
-      {/* THREE MEMORY SCOPES */}
+      {/* THREE MEMORY SCOPES — orbital visual */}
       <Section alt>
         <Container>
-          <Reveal className="mx-auto max-w-2xl text-center">
-            <Badge variant="muted">Memory scopes</Badge>
-            <h2 className="heading-h2 mt-4">Separate memories. Coherent life.</h2>
-            <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
-              Private by architecture. Shared by choice. Guided by you.
-            </p>
-          </Reveal>
-
-          <div className="mt-12 grid gap-5 md:grid-cols-3">
-            {[
-              { icon: User, name: "User Memory", body: "Your personal context. Yours alone. Never mixed with the company." },
-              { icon: Workflow, name: "Work Memory", body: "The shared context of a team or workspace. Visible to teammates by design." },
-              { icon: Building2, name: "Org Memory", body: "Org-wide truth — accounts, finance, ops — governed by approval and access rules." },
-            ].map((m, i) => (
-              <Reveal key={m.name} delay={i * 60} className="card-iw p-6">
-                <m.icon size={22} className="text-brand-accent" />
-                <h3 className="mt-4 heading-h3">{m.name}</h3>
-                <p className="mt-2 text-[14.5px] leading-relaxed text-text-secondary">{m.body}</p>
-              </Reveal>
-            ))}
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            <Reveal>
+              <ScopesOrbital />
+            </Reveal>
+            <Reveal delay={120}>
+              <Badge variant="muted">Memory scopes</Badge>
+              <h2 className="heading-h2 mt-4">Separate memories. Coherent life.</h2>
+              <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
+                Private by architecture. Shared by choice.
+              </p>
+              <div className="mt-6 space-y-3">
+                <div className="flex items-start gap-3"><User size={18} className="mt-0.5 text-brand-accent" /><div><p className="text-[15px] font-semibold text-foreground">User Memory</p><p className="text-[13.5px] text-text-secondary">Yours alone. Never mixed with the company.</p></div></div>
+                <div className="flex items-start gap-3"><Workflow size={18} className="mt-0.5 text-brand-accent" /><div><p className="text-[15px] font-semibold text-foreground">Work Memory</p><p className="text-[13.5px] text-text-secondary">Shared with your team by design.</p></div></div>
+                <div className="flex items-start gap-3"><Building2 size={18} className="mt-0.5 text-brand-accent" /><div><p className="text-[15px] font-semibold text-foreground">Org Memory</p><p className="text-[13.5px] text-text-secondary">Org-wide truth, governed by approval and access.</p></div></div>
+              </div>
+            </Reveal>
           </div>
         </Container>
       </Section>
