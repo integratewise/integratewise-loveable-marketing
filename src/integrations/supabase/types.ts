@@ -14,7 +14,114 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      connector_requests: {
+        Row: {
+          connector_name: string
+          created_at: string
+          email: string
+          id: string
+          notes: string | null
+        }
+        Insert: {
+          connector_name: string
+          created_at?: string
+          email: string
+          id?: string
+          notes?: string | null
+        }
+        Update: {
+          connector_name?: string
+          created_at?: string
+          email?: string
+          id?: string
+          notes?: string | null
+        }
+        Relationships: []
+      }
+      demo_requests: {
+        Row: {
+          company: string
+          created_at: string
+          id: string
+          name: string
+          notes: string | null
+          role: string | null
+          source_page: string | null
+          team_size: string | null
+          use_case: string | null
+          work_email: string
+        }
+        Insert: {
+          company: string
+          created_at?: string
+          id?: string
+          name: string
+          notes?: string | null
+          role?: string | null
+          source_page?: string | null
+          team_size?: string | null
+          use_case?: string | null
+          work_email: string
+        }
+        Update: {
+          company?: string
+          created_at?: string
+          id?: string
+          name?: string
+          notes?: string | null
+          role?: string | null
+          source_page?: string | null
+          team_size?: string | null
+          use_case?: string | null
+          work_email?: string
+        }
+        Relationships: []
+      }
+      early_access: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          role: string | null
+          source_page: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          role?: string | null
+          source_page?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          role?: string | null
+          source_page?: string | null
+        }
+        Relationships: []
+      }
+      waitlist: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          source_page: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          source_page?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          source_page?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
