@@ -5,7 +5,7 @@ import { Container } from "./Container";
 import { PRIMARY_NAV } from "@/lib/site";
 import { useDemoModal } from "./demo-modal-context";
 import { cn } from "@/lib/utils";
-import spineLogo from "@/assets/spine-logo.svg";
+import { SpineLogo } from "./SpineLogo";
 
 export function Header() {
   const [open, setOpen] = useState(false);
