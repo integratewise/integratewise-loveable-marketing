@@ -34,12 +34,7 @@ export function Header() {
           )}
         >
           <Link to="/" className="flex items-center gap-2.5" aria-label="IntegrateWise home">
-            <img
-              src={spineLogo}
-              alt=""
-              aria-hidden
-              className="h-[26px] w-auto"
-            />
+            <SpineLogo className="h-[26px] w-auto text-foreground" />
             <span className="text-[17px] font-semibold tracking-tight text-foreground">
               IntegrateWise
             </span>
