@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Container } from "./Container";
-import spineLogo from "@/assets/spine-logo.svg";
+import { SpineLogo } from "./SpineLogo";
 
 export function Footer() {
   const year = new Date().getFullYear();
