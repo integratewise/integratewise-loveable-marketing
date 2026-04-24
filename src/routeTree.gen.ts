@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WhyRouteImport } from './routes/why'
 import { Route as SolutionsRouteImport } from './routes/solutions'
 import { Route as ProductRouteImport } from './routes/product'
 import { Route as PricingRouteImport } from './routes/pricing'
@@ -16,8 +17,12 @@ import { Route as PlatformRouteImport } from './routes/platform'
 import { Route as ManifestoRouteImport } from './routes/manifesto'
 import { Route as CustomerZeroRouteImport } from './routes/customer-zero'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SolutionsSalesOpsRouteImport } from './routes/solutions.sales-ops'
 import { Route as SolutionsPersonalOpsRouteImport } from './routes/solutions.personal-ops'
+import { Route as SolutionsFinanceOpsRouteImport } from './routes/solutions.finance-ops'
+import { Route as SolutionsByIndustryRouteImport } from './routes/solutions.by-industry'
 import { Route as SolutionsBusinessOpsRouteImport } from './routes/solutions.business-ops'
 import { Route as SolutionsAccountSuccessRouteImport } from './routes/solutions.account-success'
 import { Route as ProductWorkbenchRouteImport } from './routes/product.workbench'
@@ -30,7 +35,13 @@ import { Route as PlatformSecurityRouteImport } from './routes/platform.security
 import { Route as PlatformIntegrationsRouteImport } from './routes/platform.integrations'
 import { Route as PlatformInfrastructureRouteImport } from './routes/platform.infrastructure'
 import { Route as PlatformHowItWorksRouteImport } from './routes/platform.how-it-works'
+import { Route as SolutionsByIndustryIndustryRouteImport } from './routes/solutions.by-industry.$industry'
 
+const WhyRoute = WhyRouteImport.update({
+  id: '/why',
+  path: '/why',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SolutionsRoute = SolutionsRouteImport.update({
   id: '/solutions',
   path: '/solutions',
@@ -66,14 +77,34 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SolutionsSalesOpsRoute = SolutionsSalesOpsRouteImport.update({
+  id: '/sales-ops',
+  path: '/sales-ops',
+  getParentRoute: () => SolutionsRoute,
+} as any)
 const SolutionsPersonalOpsRoute = SolutionsPersonalOpsRouteImport.update({
   id: '/personal-ops',
   path: '/personal-ops',
+  getParentRoute: () => SolutionsRoute,
+} as any)
+const SolutionsFinanceOpsRoute = SolutionsFinanceOpsRouteImport.update({
+  id: '/finance-ops',
+  path: '/finance-ops',
+  getParentRoute: () => SolutionsRoute,
+} as any)
+const SolutionsByIndustryRoute = SolutionsByIndustryRouteImport.update({
+  id: '/by-industry',
+  path: '/by-industry',
   getParentRoute: () => SolutionsRoute,
 } as any)
 const SolutionsBusinessOpsRoute = SolutionsBusinessOpsRouteImport.update({
@@ -136,9 +167,16 @@ const PlatformHowItWorksRoute = PlatformHowItWorksRouteImport.update({
   path: '/how-it-works',
   getParentRoute: () => PlatformRoute,
 } as any)
+const SolutionsByIndustryIndustryRoute =
+  SolutionsByIndustryIndustryRouteImport.update({
+    id: '/$industry',
+    path: '/$industry',
+    getParentRoute: () => SolutionsByIndustryRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/customer-zero': typeof CustomerZeroRoute
   '/manifesto': typeof ManifestoRoute
@@ -146,6 +184,7 @@ export interface FileRoutesByFullPath {
   '/pricing': typeof PricingRoute
   '/product': typeof ProductRouteWithChildren
   '/solutions': typeof SolutionsRouteWithChildren
+  '/why': typeof WhyRoute
   '/platform/how-it-works': typeof PlatformHowItWorksRoute
   '/platform/infrastructure': typeof PlatformInfrastructureRoute
   '/platform/integrations': typeof PlatformIntegrationsRoute
@@ -158,10 +197,15 @@ export interface FileRoutesByFullPath {
   '/product/workbench': typeof ProductWorkbenchRoute
   '/solutions/account-success': typeof SolutionsAccountSuccessRoute
   '/solutions/business-ops': typeof SolutionsBusinessOpsRoute
+  '/solutions/by-industry': typeof SolutionsByIndustryRouteWithChildren
+  '/solutions/finance-ops': typeof SolutionsFinanceOpsRoute
   '/solutions/personal-ops': typeof SolutionsPersonalOpsRoute
+  '/solutions/sales-ops': typeof SolutionsSalesOpsRoute
+  '/solutions/by-industry/$industry': typeof SolutionsByIndustryIndustryRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/customer-zero': typeof CustomerZeroRoute
   '/manifesto': typeof ManifestoRoute
@@ -169,6 +213,7 @@ export interface FileRoutesByTo {
   '/pricing': typeof PricingRoute
   '/product': typeof ProductRouteWithChildren
   '/solutions': typeof SolutionsRouteWithChildren
+  '/why': typeof WhyRoute
   '/platform/how-it-works': typeof PlatformHowItWorksRoute
   '/platform/infrastructure': typeof PlatformInfrastructureRoute
   '/platform/integrations': typeof PlatformIntegrationsRoute
@@ -181,11 +226,16 @@ export interface FileRoutesByTo {
   '/product/workbench': typeof ProductWorkbenchRoute
   '/solutions/account-success': typeof SolutionsAccountSuccessRoute
   '/solutions/business-ops': typeof SolutionsBusinessOpsRoute
+  '/solutions/by-industry': typeof SolutionsByIndustryRouteWithChildren
+  '/solutions/finance-ops': typeof SolutionsFinanceOpsRoute
   '/solutions/personal-ops': typeof SolutionsPersonalOpsRoute
+  '/solutions/sales-ops': typeof SolutionsSalesOpsRoute
+  '/solutions/by-industry/$industry': typeof SolutionsByIndustryIndustryRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/customer-zero': typeof CustomerZeroRoute
   '/manifesto': typeof ManifestoRoute
@@ -193,6 +243,7 @@ export interface FileRoutesById {
   '/pricing': typeof PricingRoute
   '/product': typeof ProductRouteWithChildren
   '/solutions': typeof SolutionsRouteWithChildren
+  '/why': typeof WhyRoute
   '/platform/how-it-works': typeof PlatformHowItWorksRoute
   '/platform/infrastructure': typeof PlatformInfrastructureRoute
   '/platform/integrations': typeof PlatformIntegrationsRoute
@@ -205,12 +256,17 @@ export interface FileRoutesById {
   '/product/workbench': typeof ProductWorkbenchRoute
   '/solutions/account-success': typeof SolutionsAccountSuccessRoute
   '/solutions/business-ops': typeof SolutionsBusinessOpsRoute
+  '/solutions/by-industry': typeof SolutionsByIndustryRouteWithChildren
+  '/solutions/finance-ops': typeof SolutionsFinanceOpsRoute
   '/solutions/personal-ops': typeof SolutionsPersonalOpsRoute
+  '/solutions/sales-ops': typeof SolutionsSalesOpsRoute
+  '/solutions/by-industry/$industry': typeof SolutionsByIndustryIndustryRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/contact'
     | '/customer-zero'
     | '/manifesto'
@@ -218,6 +274,7 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/product'
     | '/solutions'
+    | '/why'
     | '/platform/how-it-works'
     | '/platform/infrastructure'
     | '/platform/integrations'
@@ -230,10 +287,15 @@ export interface FileRouteTypes {
     | '/product/workbench'
     | '/solutions/account-success'
     | '/solutions/business-ops'
+    | '/solutions/by-industry'
+    | '/solutions/finance-ops'
     | '/solutions/personal-ops'
+    | '/solutions/sales-ops'
+    | '/solutions/by-industry/$industry'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/contact'
     | '/customer-zero'
     | '/manifesto'
@@ -241,6 +303,7 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/product'
     | '/solutions'
+    | '/why'
     | '/platform/how-it-works'
     | '/platform/infrastructure'
     | '/platform/integrations'
@@ -253,10 +316,15 @@ export interface FileRouteTypes {
     | '/product/workbench'
     | '/solutions/account-success'
     | '/solutions/business-ops'
+    | '/solutions/by-industry'
+    | '/solutions/finance-ops'
     | '/solutions/personal-ops'
+    | '/solutions/sales-ops'
+    | '/solutions/by-industry/$industry'
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/contact'
     | '/customer-zero'
     | '/manifesto'
@@ -264,6 +332,7 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/product'
     | '/solutions'
+    | '/why'
     | '/platform/how-it-works'
     | '/platform/infrastructure'
     | '/platform/integrations'
@@ -276,11 +345,16 @@ export interface FileRouteTypes {
     | '/product/workbench'
     | '/solutions/account-success'
     | '/solutions/business-ops'
+    | '/solutions/by-industry'
+    | '/solutions/finance-ops'
     | '/solutions/personal-ops'
+    | '/solutions/sales-ops'
+    | '/solutions/by-industry/$industry'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   CustomerZeroRoute: typeof CustomerZeroRoute
   ManifestoRoute: typeof ManifestoRoute
@@ -288,10 +362,18 @@ export interface RootRouteChildren {
   PricingRoute: typeof PricingRoute
   ProductRoute: typeof ProductRouteWithChildren
   SolutionsRoute: typeof SolutionsRouteWithChildren
+  WhyRoute: typeof WhyRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/why': {
+      id: '/why'
+      path: '/why'
+      fullPath: '/why'
+      preLoaderRoute: typeof WhyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/solutions': {
       id: '/solutions'
       path: '/solutions'
@@ -341,6 +423,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -348,11 +437,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/solutions/sales-ops': {
+      id: '/solutions/sales-ops'
+      path: '/sales-ops'
+      fullPath: '/solutions/sales-ops'
+      preLoaderRoute: typeof SolutionsSalesOpsRouteImport
+      parentRoute: typeof SolutionsRoute
+    }
     '/solutions/personal-ops': {
       id: '/solutions/personal-ops'
       path: '/personal-ops'
       fullPath: '/solutions/personal-ops'
       preLoaderRoute: typeof SolutionsPersonalOpsRouteImport
+      parentRoute: typeof SolutionsRoute
+    }
+    '/solutions/finance-ops': {
+      id: '/solutions/finance-ops'
+      path: '/finance-ops'
+      fullPath: '/solutions/finance-ops'
+      preLoaderRoute: typeof SolutionsFinanceOpsRouteImport
+      parentRoute: typeof SolutionsRoute
+    }
+    '/solutions/by-industry': {
+      id: '/solutions/by-industry'
+      path: '/by-industry'
+      fullPath: '/solutions/by-industry'
+      preLoaderRoute: typeof SolutionsByIndustryRouteImport
       parentRoute: typeof SolutionsRoute
     }
     '/solutions/business-ops': {
@@ -439,6 +549,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlatformHowItWorksRouteImport
       parentRoute: typeof PlatformRoute
     }
+    '/solutions/by-industry/$industry': {
+      id: '/solutions/by-industry/$industry'
+      path: '/$industry'
+      fullPath: '/solutions/by-industry/$industry'
+      preLoaderRoute: typeof SolutionsByIndustryIndustryRouteImport
+      parentRoute: typeof SolutionsByIndustryRoute
+    }
   }
 }
 
@@ -481,16 +598,33 @@ const ProductRouteChildren: ProductRouteChildren = {
 const ProductRouteWithChildren =
   ProductRoute._addFileChildren(ProductRouteChildren)
 
+interface SolutionsByIndustryRouteChildren {
+  SolutionsByIndustryIndustryRoute: typeof SolutionsByIndustryIndustryRoute
+}
+
+const SolutionsByIndustryRouteChildren: SolutionsByIndustryRouteChildren = {
+  SolutionsByIndustryIndustryRoute: SolutionsByIndustryIndustryRoute,
+}
+
+const SolutionsByIndustryRouteWithChildren =
+  SolutionsByIndustryRoute._addFileChildren(SolutionsByIndustryRouteChildren)
+
 interface SolutionsRouteChildren {
   SolutionsAccountSuccessRoute: typeof SolutionsAccountSuccessRoute
   SolutionsBusinessOpsRoute: typeof SolutionsBusinessOpsRoute
+  SolutionsByIndustryRoute: typeof SolutionsByIndustryRouteWithChildren
+  SolutionsFinanceOpsRoute: typeof SolutionsFinanceOpsRoute
   SolutionsPersonalOpsRoute: typeof SolutionsPersonalOpsRoute
+  SolutionsSalesOpsRoute: typeof SolutionsSalesOpsRoute
 }
 
 const SolutionsRouteChildren: SolutionsRouteChildren = {
   SolutionsAccountSuccessRoute: SolutionsAccountSuccessRoute,
   SolutionsBusinessOpsRoute: SolutionsBusinessOpsRoute,
+  SolutionsByIndustryRoute: SolutionsByIndustryRouteWithChildren,
+  SolutionsFinanceOpsRoute: SolutionsFinanceOpsRoute,
   SolutionsPersonalOpsRoute: SolutionsPersonalOpsRoute,
+  SolutionsSalesOpsRoute: SolutionsSalesOpsRoute,
 }
 
 const SolutionsRouteWithChildren = SolutionsRoute._addFileChildren(
@@ -499,6 +633,7 @@ const SolutionsRouteWithChildren = SolutionsRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   CustomerZeroRoute: CustomerZeroRoute,
   ManifestoRoute: ManifestoRoute,
@@ -506,6 +641,7 @@ const rootRouteChildren: RootRouteChildren = {
   PricingRoute: PricingRoute,
   ProductRoute: ProductRouteWithChildren,
   SolutionsRoute: SolutionsRouteWithChildren,
+  WhyRoute: WhyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
