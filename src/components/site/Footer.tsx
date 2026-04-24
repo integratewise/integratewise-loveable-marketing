@@ -17,42 +17,44 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-text-secondary">
-              Your data becomes Digital Memory. Your Twin proposes the next move. You approve every action.
+              Your work resets every day. IntegrateWise stops that. Your data becomes Memory.
+              Your Twin connects, explains, and prepares — you approve every move.
             </p>
             <p className="mt-6 text-[13px] text-text-secondary">
-              SOC 2 Compliant · Approval-gated · Memory stays yours
+              SOC 2 Type II · GDPR Ready · Tenant Isolation · Approval-gated
             </p>
           </div>
 
           <FooterCol
             title="Platform"
             links={[
-              { to: "/platform", label: "Overview" },
-              { to: "/platform/how-it-works", label: "How it works" },
-              { to: "/platform/the-spine", label: "The Spine" },
+              { to: "/platform/the-spine", label: "Spine" },
+              { to: "/platform", label: "Memory" },
               { to: "/platform/integrations", label: "Integrations" },
               { to: "/platform/security", label: "Security" },
+              { to: "/platform/how-it-works", label: "How it works" },
               { to: "/platform/infrastructure", label: "Infrastructure" },
             ]}
           />
           <FooterCol
-            title="Product"
+            title="Solutions"
             links={[
-              { to: "/product", label: "Overview" },
-              { to: "/product/workbench", label: "Workbench" },
-              { to: "/product/the-twin", label: "The Twin" },
-              { to: "/product/approval", label: "Approval Gate" },
-              { to: "/product/reference-layer", label: "Reference Layer" },
-              { to: "/product/how-it-works", label: "How it works" },
+              { to: "/solutions/account-success", label: "Account Success" },
+              { to: "/solutions/business-ops", label: "Business Ops" },
+              { to: "/solutions/sales-ops", label: "Sales Ops" },
+              { to: "/solutions/finance-ops", label: "Finance Ops" },
+              { to: "/solutions/personal-ops", label: "Personal Ops" },
+              { to: "/solutions/by-industry", label: "By Industry" },
             ]}
           />
           <FooterCol
             title="Company"
             links={[
-              { to: "/solutions", label: "Solutions" },
-              { to: "/pricing", label: "Pricing" },
+              { to: "/about", label: "About" },
               { to: "/customer-zero", label: "Customer Zero" },
               { to: "/manifesto", label: "Manifesto" },
+              { to: "/why", label: "Why" },
+              { to: "/pricing", label: "Pricing" },
               { to: "/contact", label: "Contact" },
             ]}
           />
@@ -60,7 +62,7 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-border pt-6 text-[13px] text-text-secondary md:flex-row md:items-center">
           <p>© {year} IntegrateWise. All rights reserved.</p>
-          <p>Built by an operator. Customer Zero is the founder.</p>
+          <p>Truth you own. AI you rent. Approval in between.</p>
         </div>
       </Container>
     </footer>
