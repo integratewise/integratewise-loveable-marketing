@@ -11,7 +11,7 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-5">
           <div className="md:col-span-2">
             <div className="flex items-center gap-2.5">
-              <img src={spineLogo} alt="" aria-hidden className="h-[28px] w-auto" />
+              <SpineLogo className="h-[28px] w-auto text-foreground" />
               <span className="text-[17px] font-semibold tracking-tight text-foreground">
                 IntegrateWise
               </span>
