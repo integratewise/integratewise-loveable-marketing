@@ -5,6 +5,7 @@ import { Container } from "./Container";
 import { PRIMARY_NAV } from "@/lib/site";
 import { useDemoModal } from "./demo-modal-context";
 import { cn } from "@/lib/utils";
+import spineLogo from "@/assets/spine-logo.svg";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -32,11 +33,12 @@ export function Header() {
             scrolled && "shadow-card",
           )}
         >
-          <Link to="/" className="flex items-center gap-2">
-            <span
+          <Link to="/" className="flex items-center gap-2.5" aria-label="IntegrateWise home">
+            <img
+              src={spineLogo}
+              alt=""
               aria-hidden
-              className="inline-block size-7 rounded-md"
-              style={{ background: "var(--gradient-button-primary)" }}
+              className="h-[26px] w-auto"
             />
             <span className="text-[17px] font-semibold tracking-tight text-foreground">
               IntegrateWise
