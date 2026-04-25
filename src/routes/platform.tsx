@@ -141,7 +141,7 @@ function PlatformPage() {
               memory of your work that lives in one place.
             </p>
             <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
-              <button onClick={open} className="btn-primary-iw">
+              <button onClick={() => open()} className="btn-primary-iw">
                 Book a demo <ArrowRight size={16} />
               </button>
               <a href="#how" className="btn-secondary-iw">
@@ -543,10 +543,10 @@ function PlatformPage() {
               dashboards, no scripts.
             </p>
             <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
-              <button onClick={open} className="btn-primary-iw">
+              <button onClick={() => open()} className="btn-primary-iw">
                 Book a demo <ArrowRight size={16} />
               </button>
-              <button onClick={open} className="btn-secondary-iw">
+              <button onClick={() => open()} className="btn-secondary-iw">
                 Talk about your stack
               </button>
             </div>
