@@ -18,6 +18,7 @@ import { Route as PlatformRouteImport } from './routes/platform'
 import { Route as ManifestoRouteImport } from './routes/manifesto'
 import { Route as CustomerZeroRouteImport } from './routes/customer-zero'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CompanyRouteImport } from './routes/company'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SolutionsSalesOpsRouteImport } from './routes/solutions.sales-ops'
@@ -81,6 +82,11 @@ const CustomerZeroRoute = CustomerZeroRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompanyRoute = CompanyRouteImport.update({
+  id: '/company',
+  path: '/company',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -183,6 +189,7 @@ const SolutionsByIndustryIndustryRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/company': typeof CompanyRoute
   '/contact': typeof ContactRoute
   '/customer-zero': typeof CustomerZeroRoute
   '/manifesto': typeof ManifestoRoute
@@ -213,6 +220,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/company': typeof CompanyRoute
   '/contact': typeof ContactRoute
   '/customer-zero': typeof CustomerZeroRoute
   '/manifesto': typeof ManifestoRoute
@@ -244,6 +252,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/company': typeof CompanyRoute
   '/contact': typeof ContactRoute
   '/customer-zero': typeof CustomerZeroRoute
   '/manifesto': typeof ManifestoRoute
@@ -276,6 +285,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/company'
     | '/contact'
     | '/customer-zero'
     | '/manifesto'
@@ -306,6 +316,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/company'
     | '/contact'
     | '/customer-zero'
     | '/manifesto'
@@ -336,6 +347,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/company'
     | '/contact'
     | '/customer-zero'
     | '/manifesto'
@@ -367,6 +379,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  CompanyRoute: typeof CompanyRoute
   ContactRoute: typeof ContactRoute
   CustomerZeroRoute: typeof CustomerZeroRoute
   ManifestoRoute: typeof ManifestoRoute
@@ -441,6 +454,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/company': {
+      id: '/company'
+      path: '/company'
+      fullPath: '/company'
+      preLoaderRoute: typeof CompanyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -654,6 +674,7 @@ const SolutionsRouteWithChildren = SolutionsRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  CompanyRoute: CompanyRoute,
   ContactRoute: ContactRoute,
   CustomerZeroRoute: CustomerZeroRoute,
   ManifestoRoute: ManifestoRoute,

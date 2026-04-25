@@ -158,6 +158,7 @@ export const RESOURCES_LINKS: NavLeaf[] = [
   { to: "/manifesto", label: "Manifesto", blurb: "Principles we build by.", icon: FileText },
   { to: "/customer-zero", label: "Customer Zero", blurb: "I run it on itself.", icon: Rocket },
   { to: "/about", label: "About", blurb: "Founder bio + the near-miss story.", icon: User },
+  { to: "/company", label: "Company", blurb: "Why IntegrateWise exists.", icon: Building2 },
   { to: "/contact", label: "Contact", blurb: "Founder-led contact.", icon: Briefcase },
 ];
 
