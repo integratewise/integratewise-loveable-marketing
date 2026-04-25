@@ -41,10 +41,9 @@ export function Footer() {
             links={[
               { to: "/solutions/account-success", label: "Account Success" },
               { to: "/solutions/business-ops", label: "Business Ops" },
-              { to: "/solutions/sales-ops", label: "Sales Ops" },
-              { to: "/solutions/finance-ops", label: "Finance Ops" },
-              { to: "/solutions/personal-space", label: "Personal Ops" },
+              { to: "/solutions/personal-space", label: "Personal Space" },
               { to: "/solutions/by-industry", label: "By Industry" },
+              { to: "/solutions/by-role", label: "By Role" },
             ]}
           />
           <FooterCol
