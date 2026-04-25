@@ -190,7 +190,7 @@ function HomePage() {
           <div className="mx-auto mt-10 grid max-w-5xl gap-4 md:grid-cols-3">
             {[
               { t: "Apps flow in", b: "OAuth connect. No code. No CSV exports." },
-              { t: "Truth & Context emerges", b: "Duplicates merge. Conflicts resolve. One Digital Memory." },
+              { t: "Truth & Context converge reality", b: "Duplicates merge. Conflicts resolve. One Digital Memory." },
               { t: "Tools can change", b: "Swap any app. The Spine adapts automatically." },
             ].map((s, i) => (
               <div key={s.t} className="flex gap-3 rounded-xl border border-border bg-white/[0.02] p-5">
