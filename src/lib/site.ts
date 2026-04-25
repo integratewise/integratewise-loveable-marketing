@@ -194,7 +194,23 @@ export const PRIMARY_NAV: ReadonlyArray<NavGroup> = [
         ],
       },
       { heading: "By outcome", items: SOLUTIONS_BY_OUTCOME },
-      { heading: "By role", items: SOLUTIONS_BY_ROLE },
+      {
+        heading: "Filters",
+        items: [
+          {
+            to: SOLUTIONS_BY_INDUSTRY_INDEX.to,
+            label: SOLUTIONS_BY_INDUSTRY_INDEX.label,
+            blurb: SOLUTIONS_BY_INDUSTRY_INDEX.blurb,
+            icon: SOLUTIONS_BY_INDUSTRY_INDEX.icon,
+          },
+          {
+            to: SOLUTIONS_BY_ROLE_INDEX.to,
+            label: SOLUTIONS_BY_ROLE_INDEX.label,
+            blurb: SOLUTIONS_BY_ROLE_INDEX.blurb,
+            icon: SOLUTIONS_BY_ROLE_INDEX.icon,
+          },
+        ],
+      },
     ],
     footer: {
       label: "Browse all 6 industries",
