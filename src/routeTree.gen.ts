@@ -24,6 +24,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as SolutionsSalesOpsRouteImport } from './routes/solutions.sales-ops'
 import { Route as SolutionsPersonalSpaceRouteImport } from './routes/solutions.personal-space'
 import { Route as SolutionsFinanceOpsRouteImport } from './routes/solutions.finance-ops'
+import { Route as SolutionsByRoleRouteImport } from './routes/solutions.by-role'
 import { Route as SolutionsByIndustryRouteImport } from './routes/solutions.by-industry'
 import { Route as SolutionsBusinessOpsRouteImport } from './routes/solutions.business-ops'
 import { Route as SolutionsAccountSuccessRouteImport } from './routes/solutions.account-success'
@@ -112,6 +113,11 @@ const SolutionsPersonalSpaceRoute = SolutionsPersonalSpaceRouteImport.update({
 const SolutionsFinanceOpsRoute = SolutionsFinanceOpsRouteImport.update({
   id: '/finance-ops',
   path: '/finance-ops',
+  getParentRoute: () => SolutionsRoute,
+} as any)
+const SolutionsByRoleRoute = SolutionsByRoleRouteImport.update({
+  id: '/by-role',
+  path: '/by-role',
   getParentRoute: () => SolutionsRoute,
 } as any)
 const SolutionsByIndustryRoute = SolutionsByIndustryRouteImport.update({
@@ -212,6 +218,7 @@ export interface FileRoutesByFullPath {
   '/solutions/account-success': typeof SolutionsAccountSuccessRoute
   '/solutions/business-ops': typeof SolutionsBusinessOpsRoute
   '/solutions/by-industry': typeof SolutionsByIndustryRouteWithChildren
+  '/solutions/by-role': typeof SolutionsByRoleRoute
   '/solutions/finance-ops': typeof SolutionsFinanceOpsRoute
   '/solutions/personal-space': typeof SolutionsPersonalSpaceRoute
   '/solutions/sales-ops': typeof SolutionsSalesOpsRoute
@@ -243,6 +250,7 @@ export interface FileRoutesByTo {
   '/solutions/account-success': typeof SolutionsAccountSuccessRoute
   '/solutions/business-ops': typeof SolutionsBusinessOpsRoute
   '/solutions/by-industry': typeof SolutionsByIndustryRouteWithChildren
+  '/solutions/by-role': typeof SolutionsByRoleRoute
   '/solutions/finance-ops': typeof SolutionsFinanceOpsRoute
   '/solutions/personal-space': typeof SolutionsPersonalSpaceRoute
   '/solutions/sales-ops': typeof SolutionsSalesOpsRoute
@@ -275,6 +283,7 @@ export interface FileRoutesById {
   '/solutions/account-success': typeof SolutionsAccountSuccessRoute
   '/solutions/business-ops': typeof SolutionsBusinessOpsRoute
   '/solutions/by-industry': typeof SolutionsByIndustryRouteWithChildren
+  '/solutions/by-role': typeof SolutionsByRoleRoute
   '/solutions/finance-ops': typeof SolutionsFinanceOpsRoute
   '/solutions/personal-space': typeof SolutionsPersonalSpaceRoute
   '/solutions/sales-ops': typeof SolutionsSalesOpsRoute
@@ -308,6 +317,7 @@ export interface FileRouteTypes {
     | '/solutions/account-success'
     | '/solutions/business-ops'
     | '/solutions/by-industry'
+    | '/solutions/by-role'
     | '/solutions/finance-ops'
     | '/solutions/personal-space'
     | '/solutions/sales-ops'
@@ -339,6 +349,7 @@ export interface FileRouteTypes {
     | '/solutions/account-success'
     | '/solutions/business-ops'
     | '/solutions/by-industry'
+    | '/solutions/by-role'
     | '/solutions/finance-ops'
     | '/solutions/personal-space'
     | '/solutions/sales-ops'
@@ -370,6 +381,7 @@ export interface FileRouteTypes {
     | '/solutions/account-success'
     | '/solutions/business-ops'
     | '/solutions/by-industry'
+    | '/solutions/by-role'
     | '/solutions/finance-ops'
     | '/solutions/personal-space'
     | '/solutions/sales-ops'
@@ -496,6 +508,13 @@ declare module '@tanstack/react-router' {
       path: '/finance-ops'
       fullPath: '/solutions/finance-ops'
       preLoaderRoute: typeof SolutionsFinanceOpsRouteImport
+      parentRoute: typeof SolutionsRoute
+    }
+    '/solutions/by-role': {
+      id: '/solutions/by-role'
+      path: '/by-role'
+      fullPath: '/solutions/by-role'
+      preLoaderRoute: typeof SolutionsByRoleRouteImport
       parentRoute: typeof SolutionsRoute
     }
     '/solutions/by-industry': {
@@ -653,6 +672,7 @@ interface SolutionsRouteChildren {
   SolutionsAccountSuccessRoute: typeof SolutionsAccountSuccessRoute
   SolutionsBusinessOpsRoute: typeof SolutionsBusinessOpsRoute
   SolutionsByIndustryRoute: typeof SolutionsByIndustryRouteWithChildren
+  SolutionsByRoleRoute: typeof SolutionsByRoleRoute
   SolutionsFinanceOpsRoute: typeof SolutionsFinanceOpsRoute
   SolutionsPersonalSpaceRoute: typeof SolutionsPersonalSpaceRoute
   SolutionsSalesOpsRoute: typeof SolutionsSalesOpsRoute
@@ -662,6 +682,7 @@ const SolutionsRouteChildren: SolutionsRouteChildren = {
   SolutionsAccountSuccessRoute: SolutionsAccountSuccessRoute,
   SolutionsBusinessOpsRoute: SolutionsBusinessOpsRoute,
   SolutionsByIndustryRoute: SolutionsByIndustryRouteWithChildren,
+  SolutionsByRoleRoute: SolutionsByRoleRoute,
   SolutionsFinanceOpsRoute: SolutionsFinanceOpsRoute,
   SolutionsPersonalSpaceRoute: SolutionsPersonalSpaceRoute,
   SolutionsSalesOpsRoute: SolutionsSalesOpsRoute,

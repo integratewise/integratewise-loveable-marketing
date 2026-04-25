@@ -3,7 +3,6 @@ import { ArrowRight } from "lucide-react";
 import { Reveal } from "./Reveal";
 import {
   SOLUTIONS_BY_OUTCOME,
-  SOLUTIONS_BY_ROLE,
   SOLUTIONS_BY_INDUSTRY_INDEX,
   SOLUTIONS_INDUSTRIES,
 } from "@/lib/site";
@@ -11,11 +10,11 @@ import { useDemoModal } from "./demo-modal-context";
 
 export function SolutionsDoors() {
   const { open, openWaitlist } = useDemoModal();
-  const all = [...SOLUTIONS_BY_OUTCOME, ...SOLUTIONS_BY_ROLE];
+  const all = SOLUTIONS_BY_OUTCOME;
 
   return (
     <div className="space-y-6">
-      <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-5">
+      <div className="grid gap-4 md:grid-cols-3">
         {all.map((s, i) => (
           <Reveal key={s.to} delay={i * 50} className="card-iw flex h-full flex-col p-5">
             <div className="flex items-center justify-between">

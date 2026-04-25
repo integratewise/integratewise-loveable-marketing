@@ -84,24 +84,16 @@ export const SOLUTIONS_BY_OUTCOME: SolutionItem[] = [
   },
 ];
 
-export const SOLUTIONS_BY_ROLE: SolutionItem[] = [
-  {
-    to: "/solutions/sales-ops",
-    label: "Sales Ops",
-    blurb: "Pipeline with the full story behind every move.",
-    icon: Target,
-  },
-  {
-    to: "/solutions/finance-ops",
-    label: "Finance Ops",
-    blurb: "Decisions backed by evidence. Strict approvals, full history.",
-    icon: Receipt,
-  },
-];
+export const SOLUTIONS_BY_ROLE_INDEX = {
+  to: "/solutions/by-role",
+  label: "By Role",
+  blurb: "Filter the same workspace by your role.",
+  icon: Target,
+} as const;
 
 export const SOLUTIONS_BY_INDUSTRY_INDEX = {
   to: "/solutions/by-industry",
-  label: "Browse all 6 industries",
+  label: "By Industry",
   blurb: "Templates shaped for how your industry actually works.",
   icon: Boxes,
 } as const;
@@ -122,7 +114,7 @@ export const SOLUTIONS_INDUSTRIES: IndustryItem[] = [
 export const SOLUTIONS_GROUPS = {
   overview: SOLUTIONS_OVERVIEW,
   byOutcome: SOLUTIONS_BY_OUTCOME,
-  byRole: SOLUTIONS_BY_ROLE,
+  byRole: SOLUTIONS_BY_ROLE_INDEX,
   byIndustry: SOLUTIONS_BY_INDUSTRY_INDEX,
   industries: SOLUTIONS_INDUSTRIES,
 } as const;
@@ -202,7 +194,23 @@ export const PRIMARY_NAV: ReadonlyArray<NavGroup> = [
         ],
       },
       { heading: "By outcome", items: SOLUTIONS_BY_OUTCOME },
-      { heading: "By role", items: SOLUTIONS_BY_ROLE },
+      {
+        heading: "Filters",
+        items: [
+          {
+            to: SOLUTIONS_BY_INDUSTRY_INDEX.to,
+            label: SOLUTIONS_BY_INDUSTRY_INDEX.label,
+            blurb: SOLUTIONS_BY_INDUSTRY_INDEX.blurb,
+            icon: SOLUTIONS_BY_INDUSTRY_INDEX.icon,
+          },
+          {
+            to: SOLUTIONS_BY_ROLE_INDEX.to,
+            label: SOLUTIONS_BY_ROLE_INDEX.label,
+            blurb: SOLUTIONS_BY_ROLE_INDEX.blurb,
+            icon: SOLUTIONS_BY_ROLE_INDEX.icon,
+          },
+        ],
+      },
     ],
     footer: {
       label: "Browse all 6 industries",
