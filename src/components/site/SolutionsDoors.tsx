@@ -14,7 +14,7 @@ export function SolutionsDoors() {
 
   return (
     <div className="space-y-6">
-      <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-5">
+      <div className="grid gap-4 md:grid-cols-3">
         {all.map((s, i) => (
           <Reveal key={s.to} delay={i * 50} className="card-iw flex h-full flex-col p-5">
             <div className="flex items-center justify-between">
