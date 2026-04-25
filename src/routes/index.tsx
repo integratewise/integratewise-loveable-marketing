@@ -163,13 +163,14 @@ function HomePage() {
             <div className="card-iw p-8">
               <div className="grid grid-cols-3 gap-3">
                 {[
-                  { label: "Truth", icon: Database },
-                  { label: "Context", icon: Layers },
-                  { label: "Memory", icon: Brain },
+                  { label: "Truth", icon: Database, sub: "What's actually happening" },
+                  { label: "Context", icon: Layers, sub: "Why it's happening" },
+                  { label: "Session Summaries", icon: Brain, sub: "Governed AI knowledge" },
                 ].map((s) => (
                   <div key={s.label} className="rounded-xl border border-border bg-white/[0.02] p-3 text-center">
                     <s.icon size={18} className="mx-auto text-brand-accent" />
                     <div className="mt-1.5 text-[13px] font-semibold text-foreground">{s.label}</div>
+                    <div className="mt-0.5 text-[11px] text-text-secondary">{s.sub}</div>
                   </div>
                 ))}
               </div>
