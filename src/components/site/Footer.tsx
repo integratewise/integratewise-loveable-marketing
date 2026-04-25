@@ -43,7 +43,7 @@ export function Footer() {
               { to: "/solutions/business-ops", label: "Business Ops" },
               { to: "/solutions/sales-ops", label: "Sales Ops" },
               { to: "/solutions/finance-ops", label: "Finance Ops" },
-              { to: "/solutions/personal-ops", label: "Personal Ops" },
+              { to: "/solutions/personal-space", label: "Personal Ops" },
               { to: "/solutions/by-industry", label: "By Industry" },
             ]}
           />

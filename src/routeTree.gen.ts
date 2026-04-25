@@ -21,7 +21,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SolutionsSalesOpsRouteImport } from './routes/solutions.sales-ops'
-import { Route as SolutionsPersonalOpsRouteImport } from './routes/solutions.personal-ops'
+import { Route as SolutionsPersonalSpaceRouteImport } from './routes/solutions.personal-space'
 import { Route as SolutionsFinanceOpsRouteImport } from './routes/solutions.finance-ops'
 import { Route as SolutionsByIndustryRouteImport } from './routes/solutions.by-industry'
 import { Route as SolutionsBusinessOpsRouteImport } from './routes/solutions.business-ops'
@@ -98,9 +98,9 @@ const SolutionsSalesOpsRoute = SolutionsSalesOpsRouteImport.update({
   path: '/sales-ops',
   getParentRoute: () => SolutionsRoute,
 } as any)
-const SolutionsPersonalOpsRoute = SolutionsPersonalOpsRouteImport.update({
-  id: '/personal-ops',
-  path: '/personal-ops',
+const SolutionsPersonalSpaceRoute = SolutionsPersonalSpaceRouteImport.update({
+  id: '/personal-space',
+  path: '/personal-space',
   getParentRoute: () => SolutionsRoute,
 } as any)
 const SolutionsFinanceOpsRoute = SolutionsFinanceOpsRouteImport.update({
@@ -206,7 +206,7 @@ export interface FileRoutesByFullPath {
   '/solutions/business-ops': typeof SolutionsBusinessOpsRoute
   '/solutions/by-industry': typeof SolutionsByIndustryRouteWithChildren
   '/solutions/finance-ops': typeof SolutionsFinanceOpsRoute
-  '/solutions/personal-ops': typeof SolutionsPersonalOpsRoute
+  '/solutions/personal-space': typeof SolutionsPersonalSpaceRoute
   '/solutions/sales-ops': typeof SolutionsSalesOpsRoute
   '/solutions/by-industry/$industry': typeof SolutionsByIndustryIndustryRoute
 }
@@ -236,7 +236,7 @@ export interface FileRoutesByTo {
   '/solutions/business-ops': typeof SolutionsBusinessOpsRoute
   '/solutions/by-industry': typeof SolutionsByIndustryRouteWithChildren
   '/solutions/finance-ops': typeof SolutionsFinanceOpsRoute
-  '/solutions/personal-ops': typeof SolutionsPersonalOpsRoute
+  '/solutions/personal-space': typeof SolutionsPersonalSpaceRoute
   '/solutions/sales-ops': typeof SolutionsSalesOpsRoute
   '/solutions/by-industry/$industry': typeof SolutionsByIndustryIndustryRoute
 }
@@ -267,7 +267,7 @@ export interface FileRoutesById {
   '/solutions/business-ops': typeof SolutionsBusinessOpsRoute
   '/solutions/by-industry': typeof SolutionsByIndustryRouteWithChildren
   '/solutions/finance-ops': typeof SolutionsFinanceOpsRoute
-  '/solutions/personal-ops': typeof SolutionsPersonalOpsRoute
+  '/solutions/personal-space': typeof SolutionsPersonalSpaceRoute
   '/solutions/sales-ops': typeof SolutionsSalesOpsRoute
   '/solutions/by-industry/$industry': typeof SolutionsByIndustryIndustryRoute
 }
@@ -299,7 +299,7 @@ export interface FileRouteTypes {
     | '/solutions/business-ops'
     | '/solutions/by-industry'
     | '/solutions/finance-ops'
-    | '/solutions/personal-ops'
+    | '/solutions/personal-space'
     | '/solutions/sales-ops'
     | '/solutions/by-industry/$industry'
   fileRoutesByTo: FileRoutesByTo
@@ -329,7 +329,7 @@ export interface FileRouteTypes {
     | '/solutions/business-ops'
     | '/solutions/by-industry'
     | '/solutions/finance-ops'
-    | '/solutions/personal-ops'
+    | '/solutions/personal-space'
     | '/solutions/sales-ops'
     | '/solutions/by-industry/$industry'
   id:
@@ -359,7 +359,7 @@ export interface FileRouteTypes {
     | '/solutions/business-ops'
     | '/solutions/by-industry'
     | '/solutions/finance-ops'
-    | '/solutions/personal-ops'
+    | '/solutions/personal-space'
     | '/solutions/sales-ops'
     | '/solutions/by-industry/$industry'
   fileRoutesById: FileRoutesById
@@ -464,11 +464,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SolutionsSalesOpsRouteImport
       parentRoute: typeof SolutionsRoute
     }
-    '/solutions/personal-ops': {
-      id: '/solutions/personal-ops'
-      path: '/personal-ops'
-      fullPath: '/solutions/personal-ops'
-      preLoaderRoute: typeof SolutionsPersonalOpsRouteImport
+    '/solutions/personal-space': {
+      id: '/solutions/personal-space'
+      path: '/personal-space'
+      fullPath: '/solutions/personal-space'
+      preLoaderRoute: typeof SolutionsPersonalSpaceRouteImport
       parentRoute: typeof SolutionsRoute
     }
     '/solutions/finance-ops': {
@@ -634,7 +634,7 @@ interface SolutionsRouteChildren {
   SolutionsBusinessOpsRoute: typeof SolutionsBusinessOpsRoute
   SolutionsByIndustryRoute: typeof SolutionsByIndustryRouteWithChildren
   SolutionsFinanceOpsRoute: typeof SolutionsFinanceOpsRoute
-  SolutionsPersonalOpsRoute: typeof SolutionsPersonalOpsRoute
+  SolutionsPersonalSpaceRoute: typeof SolutionsPersonalSpaceRoute
   SolutionsSalesOpsRoute: typeof SolutionsSalesOpsRoute
 }
 
@@ -643,7 +643,7 @@ const SolutionsRouteChildren: SolutionsRouteChildren = {
   SolutionsBusinessOpsRoute: SolutionsBusinessOpsRoute,
   SolutionsByIndustryRoute: SolutionsByIndustryRouteWithChildren,
   SolutionsFinanceOpsRoute: SolutionsFinanceOpsRoute,
-  SolutionsPersonalOpsRoute: SolutionsPersonalOpsRoute,
+  SolutionsPersonalSpaceRoute: SolutionsPersonalSpaceRoute,
   SolutionsSalesOpsRoute: SolutionsSalesOpsRoute,
 }
 
