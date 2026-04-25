@@ -529,7 +529,7 @@ function ProductFrame() {
           {/* Notification chip */}
           <div className="mt-4 flex flex-wrap items-center gap-2 rounded-lg border border-brand-highlight/30 bg-brand-highlight/10 px-3 py-2 text-[12.5px] text-foreground">
             <Bell size={14} className="text-brand-highlight" />
-            <span className="font-semibold">Schema Drift Detected</span>
+            <span className="font-semibold">Schema Drift Detected </span>
             <span className="text-text-secondary">— Jira Integration · 2 fields changed upstream. Auto-correction proposed.</span>
             <button type="button" className="ml-auto rounded-md border border-border px-2 py-0.5 text-[11.5px] font-semibold text-foreground hover:bg-white/5">
               Review
