@@ -3,7 +3,6 @@ import { ArrowRight } from "lucide-react";
 import { Reveal } from "./Reveal";
 import {
   SOLUTIONS_BY_OUTCOME,
-  SOLUTIONS_BY_ROLE,
   SOLUTIONS_BY_INDUSTRY_INDEX,
   SOLUTIONS_INDUSTRIES,
 } from "@/lib/site";
@@ -11,7 +10,7 @@ import { useDemoModal } from "./demo-modal-context";
 
 export function SolutionsDoors() {
   const { open, openWaitlist } = useDemoModal();
-  const all = [...SOLUTIONS_BY_OUTCOME, ...SOLUTIONS_BY_ROLE];
+  const all = SOLUTIONS_BY_OUTCOME;
 
   return (
     <div className="space-y-6">
