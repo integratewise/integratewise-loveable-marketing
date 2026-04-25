@@ -372,8 +372,9 @@ function CompanyPage() {
                   </div>
                   <div className="space-y-4 text-[16px] leading-relaxed text-text-secondary">
                     <p>
-                      IntegrateWise is built by a solo founder who has actually lived in CRMs,
-                      billing tools, support queues, and spreadsheets — not just in slide decks.
+                      IntegrateWise is built by a solo founder — a former Customer Success Manager
+                      and current Business Ops operator — who has actually lived in CRMs, billing
+                      tools, support queues, and spreadsheets, not just in slide decks.
                     </p>
                     <p>
                       The Adaptive Spine, Workbench, and Twin are shaped from that operator's

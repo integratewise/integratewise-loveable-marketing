@@ -124,6 +124,29 @@ function TwinPage() {
               actions, and never crosses into your systems without your say-so.
             </p>
           </Reveal>
+
+          <Reveal delay={120} className="mx-auto mt-10 max-w-3xl">
+            <div className="card-iw p-6">
+              <p className="text-[12px] font-semibold uppercase tracking-wider text-brand-accent">
+                The signal equation
+              </p>
+              <p className="mt-3 text-[15px] leading-relaxed text-foreground/90">
+                Usage drop <span className="text-text-secondary">(Truth)</span> + budget freeze in
+                email <span className="text-text-secondary">(Context)</span> + escalation rule you
+                approved <span className="text-text-secondary">(Session Summary)</span> ={" "}
+                <span className="text-brand-accent">churn-risk signal with full evidence.</span>
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal delay={180} className="mx-auto mt-6 max-w-3xl">
+            <div className="rounded-xl border border-brand-accent/30 bg-brand-accent/5 px-5 py-4 text-center">
+              <p className="text-[14px] text-foreground/90">
+                Twin never writes into Digital Memory or your tools on its own; every action goes
+                through the <span className="text-brand-accent">Approval Gate</span>.
+              </p>
+            </div>
+          </Reveal>
         </Container>
       </Section>
 

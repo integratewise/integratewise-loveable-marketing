@@ -190,7 +190,7 @@ function HomePage() {
           <div className="mx-auto mt-10 grid max-w-5xl gap-4 md:grid-cols-3">
             {[
               { t: "Apps flow in", b: "OAuth connect. No code. No CSV exports." },
-              { t: "Truth & Context converge reality", b: "Duplicates merge. Conflicts resolve. One Digital Memory." },
+              { t: "Truth & context converge into reality", b: "Duplicates merge. Conflicts resolve. One Digital Memory." },
               { t: "Tools can change", b: "Swap any app. The Spine adapts automatically." },
             ].map((s, i) => (
               <div key={s.t} className="flex gap-3 rounded-xl border border-border bg-white/[0.02] p-5">
@@ -529,7 +529,7 @@ function ProductFrame() {
           {/* Notification chip */}
           <div className="mt-4 flex flex-wrap items-center gap-2 rounded-lg border border-brand-highlight/30 bg-brand-highlight/10 px-3 py-2 text-[12.5px] text-foreground">
             <Bell size={14} className="text-brand-highlight" />
-            <span className="font-semibold">Schema Drift Detected</span>
+            <span className="font-semibold">Schema Drift Detected </span>
             <span className="text-text-secondary">— Jira Integration · 2 fields changed upstream. Auto-correction proposed.</span>
             <button type="button" className="ml-auto rounded-md border border-border px-2 py-0.5 text-[11.5px] font-semibold text-foreground hover:bg-white/5">
               Review

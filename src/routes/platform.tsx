@@ -355,6 +355,12 @@ function PlatformPage() {
               </div>
             </Reveal>
           </div>
+
+          <Reveal delay={200} className="mx-auto mt-6 max-w-3xl text-center">
+            <p className="text-[14px] italic text-text-secondary">
+              We don't mirror every field; we ingest only what the Spine is designed to remember.
+            </p>
+          </Reveal>
         </Container>
       </Section>
 
