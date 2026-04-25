@@ -255,7 +255,7 @@ function HomePage() {
             <span className="badge-iw">Trust & Governance</span>
             <h2 className="heading-h2 mt-4">AI that cannot act without you.</h2>
             <p className="mt-4 text-[16px] text-text-secondary">
-              Every insight comes with evidence. Every action waits for your approval.
+              Every signal is Truth + Context + governed Session Summaries — with full evidence visible before you approve.
             </p>
           </Reveal>
 
