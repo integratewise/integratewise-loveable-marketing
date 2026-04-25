@@ -211,7 +211,7 @@ function HomePage() {
           <Reveal className="mx-auto max-w-3xl text-center">
             <h2 className="heading-h2">The Spine connects.</h2>
             <p className="mt-4 text-[16px] text-text-secondary">
-              Manage accounts, track tasks, run workflows. The Twin watches everything and proposes what's next.
+              The Cognitive Layer reads Truth, Context, and governed Session Summaries together — then your Twin proposes the next move with full evidence.
             </p>
           </Reveal>
           <Reveal className="mt-12">
