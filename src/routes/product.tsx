@@ -149,7 +149,8 @@ function ProductPage() {
             <p className="mx-auto mt-5 text-[17px] leading-relaxed text-text-secondary">
               You don't need another dashboard. You need one living screen that matches your day.
               The Adaptive Workbench reads from your Digital Memory and reshapes itself around your
-              clients, projects, filings, and tasks.
+              clients, projects, filings, and tasks. The Workbench is where stitching between apps
+              happens, so you stop being the Human API.
             </p>
             <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
               <button onClick={() => open()} className="btn-primary-iw">
