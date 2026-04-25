@@ -163,13 +163,14 @@ function HomePage() {
             <div className="card-iw p-8">
               <div className="grid grid-cols-3 gap-3">
                 {[
-                  { label: "Truth", icon: Database },
-                  { label: "Context", icon: Layers },
-                  { label: "Memory", icon: Brain },
+                  { label: "Truth", icon: Database, sub: "What's actually happening" },
+                  { label: "Context", icon: Layers, sub: "Why it's happening" },
+                  { label: "Session Summaries", icon: Brain, sub: "Governed AI knowledge" },
                 ].map((s) => (
                   <div key={s.label} className="rounded-xl border border-border bg-white/[0.02] p-3 text-center">
                     <s.icon size={18} className="mx-auto text-brand-accent" />
                     <div className="mt-1.5 text-[13px] font-semibold text-foreground">{s.label}</div>
+                    <div className="mt-0.5 text-[11px] text-text-secondary">{s.sub}</div>
                   </div>
                 ))}
               </div>
@@ -210,7 +211,7 @@ function HomePage() {
           <Reveal className="mx-auto max-w-3xl text-center">
             <h2 className="heading-h2">The Spine connects.</h2>
             <p className="mt-4 text-[16px] text-text-secondary">
-              Manage accounts, track tasks, run workflows. The Twin watches everything and proposes what's next.
+              The Cognitive Layer reads Truth, Context, and governed Session Summaries together — then your Twin proposes the next move with full evidence.
             </p>
           </Reveal>
           <Reveal className="mt-12">
@@ -254,7 +255,7 @@ function HomePage() {
             <span className="badge-iw">Trust & Governance</span>
             <h2 className="heading-h2 mt-4">AI that cannot act without you.</h2>
             <p className="mt-4 text-[16px] text-text-secondary">
-              Every insight comes with evidence. Every action waits for your approval.
+              Every signal is Truth + Context + governed Session Summaries — with full evidence visible before you approve.
             </p>
           </Reveal>
 
@@ -282,11 +283,10 @@ function HomePage() {
               <span>2 min ago</span>
             </div>
             <blockquote className="mt-3 border-l-2 border-brand-accent/60 pl-4 text-[15.5px] leading-relaxed text-foreground/90">
-              Account <span className="font-semibold">Acme Corp</span> shows 40% usage drop + champion departed +
-              3 support tickets this week. Recommend escalation to VP with QBR deck.
+              Account <span className="font-semibold">Acme Corp</span>: usage drop <span className="text-text-secondary">(Truth)</span> + budget freeze in email <span className="text-text-secondary">(Context)</span> + escalation rule <span className="text-text-secondary">(Session Summaries)</span>. Recommend escalation to VP with QBR deck.
             </blockquote>
             <div className="mt-3 text-[13px] text-text-secondary">
-              Evidence: 4 sources · Confidence: 87%.
+              Evidence: 3 sources across Truth + Context + Session Summaries · Confidence: 87%.
             </div>
             <div className="mt-4 flex gap-2">
               <button type="button" className="btn-primary-iw !px-4 !py-2 text-[13px]">Approve</button>
