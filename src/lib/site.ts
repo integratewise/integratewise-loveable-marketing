@@ -76,7 +76,7 @@ export const SOLUTIONS_BY_OUTCOME: SolutionItem[] = [
     icon: Activity,
   },
   {
-    to: "/solutions/personal-ops",
+    to: "/solutions/personal-space",
     label: "Personal Ops",
     blurb: "Your day, finally assembled.",
     icon: User,
