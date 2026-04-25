@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WhyRouteImport } from './routes/why'
+import { Route as TwinRouteImport } from './routes/twin'
 import { Route as SolutionsRouteImport } from './routes/solutions'
 import { Route as ProductRouteImport } from './routes/product'
 import { Route as PricingRouteImport } from './routes/pricing'
@@ -40,6 +41,11 @@ import { Route as SolutionsByIndustryIndustryRouteImport } from './routes/soluti
 const WhyRoute = WhyRouteImport.update({
   id: '/why',
   path: '/why',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TwinRoute = TwinRouteImport.update({
+  id: '/twin',
+  path: '/twin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SolutionsRoute = SolutionsRouteImport.update({
@@ -184,6 +190,7 @@ export interface FileRoutesByFullPath {
   '/pricing': typeof PricingRoute
   '/product': typeof ProductRouteWithChildren
   '/solutions': typeof SolutionsRouteWithChildren
+  '/twin': typeof TwinRoute
   '/why': typeof WhyRoute
   '/platform/how-it-works': typeof PlatformHowItWorksRoute
   '/platform/infrastructure': typeof PlatformInfrastructureRoute
@@ -213,6 +220,7 @@ export interface FileRoutesByTo {
   '/pricing': typeof PricingRoute
   '/product': typeof ProductRouteWithChildren
   '/solutions': typeof SolutionsRouteWithChildren
+  '/twin': typeof TwinRoute
   '/why': typeof WhyRoute
   '/platform/how-it-works': typeof PlatformHowItWorksRoute
   '/platform/infrastructure': typeof PlatformInfrastructureRoute
@@ -243,6 +251,7 @@ export interface FileRoutesById {
   '/pricing': typeof PricingRoute
   '/product': typeof ProductRouteWithChildren
   '/solutions': typeof SolutionsRouteWithChildren
+  '/twin': typeof TwinRoute
   '/why': typeof WhyRoute
   '/platform/how-it-works': typeof PlatformHowItWorksRoute
   '/platform/infrastructure': typeof PlatformInfrastructureRoute
@@ -274,6 +283,7 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/product'
     | '/solutions'
+    | '/twin'
     | '/why'
     | '/platform/how-it-works'
     | '/platform/infrastructure'
@@ -303,6 +313,7 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/product'
     | '/solutions'
+    | '/twin'
     | '/why'
     | '/platform/how-it-works'
     | '/platform/infrastructure'
@@ -332,6 +343,7 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/product'
     | '/solutions'
+    | '/twin'
     | '/why'
     | '/platform/how-it-works'
     | '/platform/infrastructure'
@@ -362,6 +374,7 @@ export interface RootRouteChildren {
   PricingRoute: typeof PricingRoute
   ProductRoute: typeof ProductRouteWithChildren
   SolutionsRoute: typeof SolutionsRouteWithChildren
+  TwinRoute: typeof TwinRoute
   WhyRoute: typeof WhyRoute
 }
 
@@ -372,6 +385,13 @@ declare module '@tanstack/react-router' {
       path: '/why'
       fullPath: '/why'
       preLoaderRoute: typeof WhyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/twin': {
+      id: '/twin'
+      path: '/twin'
+      fullPath: '/twin'
+      preLoaderRoute: typeof TwinRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/solutions': {
@@ -641,6 +661,7 @@ const rootRouteChildren: RootRouteChildren = {
   PricingRoute: PricingRoute,
   ProductRoute: ProductRouteWithChildren,
   SolutionsRoute: SolutionsRouteWithChildren,
+  TwinRoute: TwinRoute,
   WhyRoute: WhyRoute,
 }
 export const routeTree = rootRouteImport
