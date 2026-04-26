@@ -170,7 +170,7 @@ function HomePage() {
             {[
               { t: "Apps flow in", b: "OAuth connect. No code. No CSV exports." },
               { t: "Truth & context converge into reality", b: "Duplicates merge. Conflicts resolve. One Digital Memory." },
-              { t: "Tools can change", b: "Swap any app. The Spine adapts automatically." },
+              { t: "AI can change but Memory Persist", b: "AI can change. Tools can change. Memory remains. The Adaptive Spine keeps your Digital Memory stable underneath." },
             ].map((s, i) => (
               <div key={s.t} className="flex gap-3 rounded-xl border border-border bg-white/[0.02] p-5">
                 <span className="text-[13px] font-semibold text-brand-accent">0{i + 1}</span>
