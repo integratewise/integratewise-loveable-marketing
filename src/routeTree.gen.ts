@@ -12,13 +12,17 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WhyRouteImport } from './routes/why'
 import { Route as TwinRouteImport } from './routes/twin'
 import { Route as SolutionsRouteImport } from './routes/solutions'
+import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as ProductRouteImport } from './routes/product'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PlatformRouteImport } from './routes/platform'
 import { Route as ManifestoRouteImport } from './routes/manifesto'
+import { Route as DocsRouteImport } from './routes/docs'
 import { Route as CustomerZeroRouteImport } from './routes/customer-zero'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CompanyRouteImport } from './routes/company'
+import { Route as ChangelogRouteImport } from './routes/changelog'
+import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SolutionsSalesOpsRouteImport } from './routes/solutions.sales-ops'
@@ -55,6 +59,11 @@ const SolutionsRoute = SolutionsRouteImport.update({
   path: '/solutions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResourcesRoute = ResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductRoute = ProductRouteImport.update({
   id: '/product',
   path: '/product',
@@ -75,6 +84,11 @@ const ManifestoRoute = ManifestoRouteImport.update({
   path: '/manifesto',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DocsRoute = DocsRouteImport.update({
+  id: '/docs',
+  path: '/docs',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CustomerZeroRoute = CustomerZeroRouteImport.update({
   id: '/customer-zero',
   path: '/customer-zero',
@@ -88,6 +102,16 @@ const ContactRoute = ContactRouteImport.update({
 const CompanyRoute = CompanyRouteImport.update({
   id: '/company',
   path: '/company',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChangelogRoute = ChangelogRouteImport.update({
+  id: '/changelog',
+  path: '/changelog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -195,13 +219,17 @@ const SolutionsByIndustryIndustryRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/blog': typeof BlogRoute
+  '/changelog': typeof ChangelogRoute
   '/company': typeof CompanyRoute
   '/contact': typeof ContactRoute
   '/customer-zero': typeof CustomerZeroRoute
+  '/docs': typeof DocsRoute
   '/manifesto': typeof ManifestoRoute
   '/platform': typeof PlatformRouteWithChildren
   '/pricing': typeof PricingRoute
   '/product': typeof ProductRouteWithChildren
+  '/resources': typeof ResourcesRoute
   '/solutions': typeof SolutionsRouteWithChildren
   '/twin': typeof TwinRoute
   '/why': typeof WhyRoute
@@ -227,13 +255,17 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/blog': typeof BlogRoute
+  '/changelog': typeof ChangelogRoute
   '/company': typeof CompanyRoute
   '/contact': typeof ContactRoute
   '/customer-zero': typeof CustomerZeroRoute
+  '/docs': typeof DocsRoute
   '/manifesto': typeof ManifestoRoute
   '/platform': typeof PlatformRouteWithChildren
   '/pricing': typeof PricingRoute
   '/product': typeof ProductRouteWithChildren
+  '/resources': typeof ResourcesRoute
   '/solutions': typeof SolutionsRouteWithChildren
   '/twin': typeof TwinRoute
   '/why': typeof WhyRoute
@@ -260,13 +292,17 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/blog': typeof BlogRoute
+  '/changelog': typeof ChangelogRoute
   '/company': typeof CompanyRoute
   '/contact': typeof ContactRoute
   '/customer-zero': typeof CustomerZeroRoute
+  '/docs': typeof DocsRoute
   '/manifesto': typeof ManifestoRoute
   '/platform': typeof PlatformRouteWithChildren
   '/pricing': typeof PricingRoute
   '/product': typeof ProductRouteWithChildren
+  '/resources': typeof ResourcesRoute
   '/solutions': typeof SolutionsRouteWithChildren
   '/twin': typeof TwinRoute
   '/why': typeof WhyRoute
@@ -294,13 +330,17 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/blog'
+    | '/changelog'
     | '/company'
     | '/contact'
     | '/customer-zero'
+    | '/docs'
     | '/manifesto'
     | '/platform'
     | '/pricing'
     | '/product'
+    | '/resources'
     | '/solutions'
     | '/twin'
     | '/why'
@@ -326,13 +366,17 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/blog'
+    | '/changelog'
     | '/company'
     | '/contact'
     | '/customer-zero'
+    | '/docs'
     | '/manifesto'
     | '/platform'
     | '/pricing'
     | '/product'
+    | '/resources'
     | '/solutions'
     | '/twin'
     | '/why'
@@ -358,13 +402,17 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/blog'
+    | '/changelog'
     | '/company'
     | '/contact'
     | '/customer-zero'
+    | '/docs'
     | '/manifesto'
     | '/platform'
     | '/pricing'
     | '/product'
+    | '/resources'
     | '/solutions'
     | '/twin'
     | '/why'
@@ -391,13 +439,17 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  BlogRoute: typeof BlogRoute
+  ChangelogRoute: typeof ChangelogRoute
   CompanyRoute: typeof CompanyRoute
   ContactRoute: typeof ContactRoute
   CustomerZeroRoute: typeof CustomerZeroRoute
+  DocsRoute: typeof DocsRoute
   ManifestoRoute: typeof ManifestoRoute
   PlatformRoute: typeof PlatformRouteWithChildren
   PricingRoute: typeof PricingRoute
   ProductRoute: typeof ProductRouteWithChildren
+  ResourcesRoute: typeof ResourcesRoute
   SolutionsRoute: typeof SolutionsRouteWithChildren
   TwinRoute: typeof TwinRoute
   WhyRoute: typeof WhyRoute
@@ -424,6 +476,13 @@ declare module '@tanstack/react-router' {
       path: '/solutions'
       fullPath: '/solutions'
       preLoaderRoute: typeof SolutionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources': {
+      id: '/resources'
+      path: '/resources'
+      fullPath: '/resources'
+      preLoaderRoute: typeof ResourcesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/product': {
@@ -454,6 +513,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ManifestoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/docs': {
+      id: '/docs'
+      path: '/docs'
+      fullPath: '/docs'
+      preLoaderRoute: typeof DocsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/customer-zero': {
       id: '/customer-zero'
       path: '/customer-zero'
@@ -473,6 +539,20 @@ declare module '@tanstack/react-router' {
       path: '/company'
       fullPath: '/company'
       preLoaderRoute: typeof CompanyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/changelog': {
+      id: '/changelog'
+      path: '/changelog'
+      fullPath: '/changelog'
+      preLoaderRoute: typeof ChangelogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -695,13 +775,17 @@ const SolutionsRouteWithChildren = SolutionsRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  BlogRoute: BlogRoute,
+  ChangelogRoute: ChangelogRoute,
   CompanyRoute: CompanyRoute,
   ContactRoute: ContactRoute,
   CustomerZeroRoute: CustomerZeroRoute,
+  DocsRoute: DocsRoute,
   ManifestoRoute: ManifestoRoute,
   PlatformRoute: PlatformRouteWithChildren,
   PricingRoute: PricingRoute,
   ProductRoute: ProductRouteWithChildren,
+  ResourcesRoute: ResourcesRoute,
   SolutionsRoute: SolutionsRouteWithChildren,
   TwinRoute: TwinRoute,
   WhyRoute: WhyRoute,
