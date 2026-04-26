@@ -254,25 +254,26 @@ function HomePage() {
             ))}
           </div>
 
-          <div className="mx-auto mt-10 max-w-3xl card-iw p-6">
-            <div className="flex items-center gap-2 text-[13px] text-text-secondary">
-              <span className="size-2 rounded-full bg-brand-highlight twin-pulse" />
-              <span className="font-semibold text-foreground">Twin Recommendation</span>
-              <span>·</span>
-              <span>Churn risk detected</span>
-              <span>·</span>
-              <span>2 min ago</span>
-            </div>
-            <blockquote className="mt-3 border-l-2 border-brand-accent/60 pl-4 text-[15.5px] leading-relaxed text-foreground/90">
-              Account <span className="font-semibold">Acme Corp</span>: usage drop <span className="text-text-secondary">(Truth)</span> + budget freeze in email <span className="text-text-secondary">(Context)</span> + escalation rule <span className="text-text-secondary">(Session Summaries)</span>. Recommend escalation to VP with QBR deck.
-            </blockquote>
-            <div className="mt-3 text-[13px] text-text-secondary">
-              Evidence: 3 sources across Truth + Context + Session Summaries · Confidence: 87%.
-            </div>
-            <div className="mt-4 flex gap-2">
-              <button type="button" className="btn-primary-iw !px-4 !py-2 text-[13px]">Approve</button>
-              <button type="button" className="btn-secondary-iw !px-4 !py-2 text-[13px]">Reject</button>
-            </div>
+          <div className="mx-auto mt-10 max-w-3xl">
+            <TwinSignals>
+              <div className="card-iw p-6">
+                <div className="flex items-center gap-2 text-[13px] text-text-secondary">
+                  <span className="size-2 rounded-full bg-brand-highlight twin-pulse" />
+                  <span className="font-semibold text-foreground">Twin Recommendation</span>
+                  <span>·</span>
+                  <span>Churn risk detected</span>
+                  <span>·</span>
+                  <span>2 min ago</span>
+                </div>
+                <blockquote className="mt-3 border-l-2 border-brand-accent/60 pl-4 text-[15.5px] leading-relaxed text-foreground/90">
+                  Account <span className="font-semibold">Acme Corp</span>: usage drop <span className="text-text-secondary">(Truth)</span> + budget freeze in email <span className="text-text-secondary">(Context)</span> + escalation rule <span className="text-text-secondary">(Session Summaries)</span>. Recommend escalation to VP with QBR deck.
+                </blockquote>
+                <div className="mt-3 text-[13px] text-text-secondary">
+                  Evidence: 3 sources across Truth + Context + Session Summaries · Confidence: 87%.
+                </div>
+                <ApprovalGate />
+              </div>
+            </TwinSignals>
           </div>
 
           <ul className="mx-auto mt-8 grid max-w-4xl gap-3 md:grid-cols-3">
