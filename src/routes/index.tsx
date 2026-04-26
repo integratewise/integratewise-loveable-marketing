@@ -7,6 +7,9 @@ import { AnnouncementBar } from "@/components/site/AnnouncementBar";
 import { ClosingCtaBand } from "@/components/site/ClosingCtaBand";
 import { useDemoModal } from "@/components/site/demo-modal-context";
 import { CONNECTOR_LOGOS } from "@/components/site/ConnectorMarquee";
+import { SpineFlow } from "@/components/site/motion/SpineFlow";
+import { WorkbenchMorph } from "@/components/site/motion/WorkbenchMorph";
+import { TwinSignals, ApprovalGate } from "@/components/site/motion/TwinSignals";
 import airtable from "@/assets/logos/airtable.svg";
 import asana from "@/assets/logos/asana.svg";
 import gdrive from "@/assets/logos/google-drive.svg";
@@ -131,33 +134,9 @@ function HomePage() {
             </p>
           </Reveal>
 
-          <div className="mt-14 grid items-center gap-10 lg:grid-cols-2">
-            {/* Connector cluster → Spine */}
-            <div className="card-iw p-8">
-              <div className="grid grid-cols-3 items-center gap-6">
-                <div className="flex flex-col gap-3">
-                  {CONNECTOR_LOGOS.slice(0, 3).map((l) => (
-                    <ConnectorChip key={l.name} src={l.src} name={l.name} />
-                  ))}
-                </div>
-                <div className="flex flex-col items-center justify-center">
-                  <div
-                    className="grid size-24 place-items-center rounded-full border border-brand-highlight/40 text-brand-accent"
-                    style={{ background: "var(--gradient-orb-peach)" }}
-                  >
-                    <Network size={32} />
-                  </div>
-                  <span className="mt-3 text-[13px] font-semibold uppercase tracking-[0.18em] text-foreground">
-                    Spine
-                  </span>
-                </div>
-                <div className="flex flex-col gap-3">
-                  {CONNECTOR_LOGOS.slice(3, 6).map((l) => (
-                    <ConnectorChip key={l.name} src={l.src} name={l.name} />
-                  ))}
-                </div>
-              </div>
-            </div>
+          <div className="mt-14 grid items-start gap-10 lg:grid-cols-2">
+            {/* Connector cluster → Spine → Digital Memory (animated) */}
+            <SpineFlow />
 
             {/* Truth/Context/Memory → Workspaces */}
             <div className="card-iw p-8">
@@ -215,7 +194,9 @@ function HomePage() {
             </p>
           </Reveal>
           <Reveal className="mt-12">
-            <ProductFrame />
+            <WorkbenchMorph>
+              <ProductFrame />
+            </WorkbenchMorph>
           </Reveal>
         </Container>
       </Section>
@@ -273,25 +254,26 @@ function HomePage() {
             ))}
           </div>
 
-          <div className="mx-auto mt-10 max-w-3xl card-iw p-6">
-            <div className="flex items-center gap-2 text-[13px] text-text-secondary">
-              <span className="size-2 rounded-full bg-brand-highlight twin-pulse" />
-              <span className="font-semibold text-foreground">Twin Recommendation</span>
-              <span>·</span>
-              <span>Churn risk detected</span>
-              <span>·</span>
-              <span>2 min ago</span>
-            </div>
-            <blockquote className="mt-3 border-l-2 border-brand-accent/60 pl-4 text-[15.5px] leading-relaxed text-foreground/90">
-              Account <span className="font-semibold">Acme Corp</span>: usage drop <span className="text-text-secondary">(Truth)</span> + budget freeze in email <span className="text-text-secondary">(Context)</span> + escalation rule <span className="text-text-secondary">(Session Summaries)</span>. Recommend escalation to VP with QBR deck.
-            </blockquote>
-            <div className="mt-3 text-[13px] text-text-secondary">
-              Evidence: 3 sources across Truth + Context + Session Summaries · Confidence: 87%.
-            </div>
-            <div className="mt-4 flex gap-2">
-              <button type="button" className="btn-primary-iw !px-4 !py-2 text-[13px]">Approve</button>
-              <button type="button" className="btn-secondary-iw !px-4 !py-2 text-[13px]">Reject</button>
-            </div>
+          <div className="mx-auto mt-10 max-w-3xl">
+            <TwinSignals>
+              <div className="card-iw p-6">
+                <div className="flex items-center gap-2 text-[13px] text-text-secondary">
+                  <span className="size-2 rounded-full bg-brand-highlight twin-pulse" />
+                  <span className="font-semibold text-foreground">Twin Recommendation</span>
+                  <span>·</span>
+                  <span>Churn risk detected</span>
+                  <span>·</span>
+                  <span>2 min ago</span>
+                </div>
+                <blockquote className="mt-3 border-l-2 border-brand-accent/60 pl-4 text-[15.5px] leading-relaxed text-foreground/90">
+                  Account <span className="font-semibold">Acme Corp</span>: usage drop <span className="text-text-secondary">(Truth)</span> + budget freeze in email <span className="text-text-secondary">(Context)</span> + escalation rule <span className="text-text-secondary">(Session Summaries)</span>. Recommend escalation to VP with QBR deck.
+                </blockquote>
+                <div className="mt-3 text-[13px] text-text-secondary">
+                  Evidence: 3 sources across Truth + Context + Session Summaries · Confidence: 87%.
+                </div>
+                <ApprovalGate />
+              </div>
+            </TwinSignals>
           </div>
 
           <ul className="mx-auto mt-8 grid max-w-4xl gap-3 md:grid-cols-3">

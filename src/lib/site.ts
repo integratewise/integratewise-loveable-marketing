@@ -146,6 +146,10 @@ export const PRODUCT_LINKS: NavLeaf[] = [
 ];
 
 export const RESOURCES_LINKS: NavLeaf[] = [
+  { to: "/resources", label: "Resources hub", blurb: "Docs, changelog, blog, stories.", icon: LayoutDashboard },
+  { to: "/docs", label: "Docs", blurb: "Concepts, getting started, reference.", icon: FileText },
+  { to: "/changelog", label: "Changelog", blurb: "How IntegrateWise is learning with you.", icon: Activity },
+  { to: "/blog", label: "Blog", blurb: "Stories from the end of the Human API.", icon: FileText },
   { to: "/why", label: "Why", blurb: "The category thesis.", icon: Star },
   { to: "/manifesto", label: "Manifesto", blurb: "Principles we build by.", icon: FileText },
   { to: "/customer-zero", label: "Customer Zero", blurb: "I run it on itself.", icon: Rocket },
