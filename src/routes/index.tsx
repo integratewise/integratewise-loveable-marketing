@@ -194,7 +194,9 @@ function HomePage() {
             </p>
           </Reveal>
           <Reveal className="mt-12">
-            <ProductFrame />
+            <WorkbenchMorph>
+              <ProductFrame />
+            </WorkbenchMorph>
           </Reveal>
         </Container>
       </Section>
