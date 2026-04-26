@@ -134,33 +134,9 @@ function HomePage() {
             </p>
           </Reveal>
 
-          <div className="mt-14 grid items-center gap-10 lg:grid-cols-2">
-            {/* Connector cluster → Spine */}
-            <div className="card-iw p-8">
-              <div className="grid grid-cols-3 items-center gap-6">
-                <div className="flex flex-col gap-3">
-                  {CONNECTOR_LOGOS.slice(0, 3).map((l) => (
-                    <ConnectorChip key={l.name} src={l.src} name={l.name} />
-                  ))}
-                </div>
-                <div className="flex flex-col items-center justify-center">
-                  <div
-                    className="grid size-24 place-items-center rounded-full border border-brand-highlight/40 text-brand-accent"
-                    style={{ background: "var(--gradient-orb-peach)" }}
-                  >
-                    <Network size={32} />
-                  </div>
-                  <span className="mt-3 text-[13px] font-semibold uppercase tracking-[0.18em] text-foreground">
-                    Spine
-                  </span>
-                </div>
-                <div className="flex flex-col gap-3">
-                  {CONNECTOR_LOGOS.slice(3, 6).map((l) => (
-                    <ConnectorChip key={l.name} src={l.src} name={l.name} />
-                  ))}
-                </div>
-              </div>
-            </div>
+          <div className="mt-14 grid items-start gap-10 lg:grid-cols-2">
+            {/* Connector cluster → Spine → Digital Memory (animated) */}
+            <SpineFlow />
 
             {/* Truth/Context/Memory → Workspaces */}
             <div className="card-iw p-8">
