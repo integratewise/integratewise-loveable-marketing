@@ -53,6 +53,9 @@ export function Footer() {
               { to: "/customer-zero", label: "Customer Zero" },
               { to: "/manifesto", label: "Manifesto" },
               { to: "/why", label: "Why" },
+              { to: "/blog", label: "Blog" },
+              { to: "/docs", label: "Docs" },
+              { to: "/changelog", label: "Changelog" },
               { to: "/pricing", label: "Pricing" },
               { to: "/contact", label: "Contact" },
             ]}
