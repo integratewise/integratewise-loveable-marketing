@@ -288,8 +288,22 @@ function HomePage() {
           <p className="mx-auto mt-8 max-w-3xl text-center text-[15px] leading-relaxed text-foreground/85">
             Truth, Context and Session Summaries meet in one place, but never lose their identity. Truth remains Truth. Context remains Context. Session Summaries stay clearly marked as AI-generated and approved.
           </p>
-          <p className="mx-auto mt-3 max-w-3xl text-center text-[13.5px] text-text-secondary">
-            Raw AI chat never writes directly into Memory.
+
+          {/* Concrete walkthrough — one account through the three lines */}
+          <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-border bg-white/[0.02] p-6">
+            <div className="text-[12px] font-semibold uppercase tracking-[0.16em] text-brand-accent">
+              Worked example · Acme Corp renewal
+            </div>
+            <ul className="mt-4 space-y-3 text-[14.5px] leading-relaxed text-foreground/90">
+              <li><span className="font-semibold text-foreground">Truth</span> — Stripe shows two failed payments. Usage down 38% over 14 days.</li>
+              <li><span className="font-semibold text-foreground">Context</span> — A Gmail thread mentions a budget freeze. WhatsApp note: "champion left in March."</li>
+              <li><span className="font-semibold text-foreground">Session Summary</span> — Last QBR, you and the CSM agreed: at-risk accounts under $500K go to escalation, not discount.</li>
+              <li className="text-text-secondary">Twin reads all three together and proposes the next step — never one source on its own.</li>
+            </ul>
+          </div>
+
+          <p className="mx-auto mt-6 max-w-3xl text-center text-[13.5px] text-text-secondary">
+            Raw AI chat never writes directly into Memory — so hallucinations can't contaminate your source of truth, and every AI-derived line carries an approver and a timestamp for audit.
           </p>
           <div className="mx-auto mt-8 flex max-w-3xl flex-wrap justify-center gap-2">
             {["Account Success", "Business Ops", "Personal Space"].map((w) => (
