@@ -380,6 +380,8 @@ function HomePage() {
               { app: "Jira", body: "Escalate tickets to P1." },
               { app: "Slack", body: "Alert a channel." },
               { app: "Salesforce", body: "Update an opportunity." },
+              { app: "Stripe", body: "Pause a failing subscription." },
+              { app: "Zendesk", body: "Re-route to a senior agent." },
             ].map((a) => (
               <div key={a.app} className="flex items-center gap-3 rounded-xl border border-border bg-white/[0.02] p-4">
                 <span className="rounded-md border border-border bg-bg-elevated px-2.5 py-1 text-[12.5px] font-semibold text-foreground">{a.app}</span>
@@ -387,6 +389,20 @@ function HomePage() {
               </div>
             ))}
           </div>
+          <p className="mx-auto mt-6 max-w-3xl text-center text-[14px] text-text-secondary">
+            CRM, support, billing, comms — the same Approval pattern extends to every connected tool.
+          </p>
+
+          <div className="mx-auto mt-6 flex max-w-3xl flex-wrap justify-center gap-2">
+            <span className="text-[13px] text-text-secondary">Approve from</span>
+            {["Workspace", "Slack", "Email"].map((s) => (
+              <span key={s} className="rounded-full border border-border bg-white/[0.03] px-3 py-1 text-[12.5px] font-semibold text-foreground/90">
+                {s}
+              </span>
+            ))}
+            <span className="text-[13px] text-text-secondary">— wherever your day already happens.</span>
+          </div>
+
           <p className="mx-auto mt-8 max-w-2xl text-center text-[15px] font-semibold text-foreground">
             AI proposes. You decide.
           </p>
