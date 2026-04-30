@@ -48,7 +48,7 @@ function HomePage() {
 
   return (
     <>
-      <AnnouncementBar />
+      
 
       {/* ========================= 1. HERO ========================= */}
       <section className="relative overflow-hidden pt-32 pb-20 lg:pt-40 lg:pb-28" aria-label="Hero">
