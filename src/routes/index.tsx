@@ -3,7 +3,7 @@ import { ArrowRight, Brain, Lightbulb, UserCheck, Zap, Search, Plus, Download, B
 import { Container } from "@/components/site/Container";
 import { Section } from "@/components/site/Section";
 import { Reveal } from "@/components/site/Reveal";
-import { AnnouncementBar } from "@/components/site/AnnouncementBar";
+
 import { ClosingCtaBand } from "@/components/site/ClosingCtaBand";
 import { ProductVideo } from "@/components/site/ProductVideo";
 import { AfterApprovalLoop } from "@/components/site/AfterApprovalLoop";
