@@ -62,15 +62,18 @@ function HomePage() {
               Stop being the{" "}
               <span className="text-gradient-hero">human API between your tools.</span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-[18px] leading-relaxed text-text-secondary">
-              One workspace. Full context. Every action under your control.
+            <p className="mx-auto mt-6 max-w-3xl text-[17px] leading-relaxed text-text-secondary">
+              Your work runs through Salesforce, HubSpot, Stripe, Jira, Notion, Slack, Zendesk, Gmail, Shopify, QuickBooks and more. Every day you copy-paste between tabs, rebuild the same story in your head, and carry the risk when something slips.
+            </p>
+            <p className="mx-auto mt-4 max-w-3xl text-[16px] leading-relaxed text-text-secondary">
+              IntegrateWise gives your work a Spine and a Workspace on top of it — one place where Truth and Context stay in sync, your Twin watches quietly, and no action leaves without your Approval.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <button type="button" onClick={() => open("Home hero")} className="btn-primary-iw">
                 Book a demo <ArrowRight size={16} />
               </button>
               <Link to="/platform/how-it-works" className="btn-secondary-iw">
-                See How It Works
+                See how it works
               </Link>
             </div>
           </div>
@@ -133,7 +136,10 @@ function HomePage() {
             <span className="badge-iw badge-iw-muted">The Spine</span>
             <h2 className="heading-h2 mt-4">One layer connects everything.</h2>
             <p className="mt-4 text-[16px] text-text-secondary">
-              Apps plug in. Data normalizes. Truth stays intact — even when tools change.
+              Apps plug in. Data normalises. Truth stays intact — even when tools change.
+            </p>
+            <p className="mt-3 text-[13.5px] uppercase tracking-[0.18em] text-text-secondary">
+              Salesforce · HubSpot · Stripe · Jira · Notion · Slack
             </p>
           </Reveal>
 
@@ -172,8 +178,8 @@ function HomePage() {
           <div className="mx-auto mt-10 grid max-w-5xl gap-4 md:grid-cols-3">
             {[
               { t: "Apps flow in", b: "OAuth connect. No code. No CSV exports." },
-              { t: "Truth & context converge into reality", b: "Duplicates merge. Conflicts resolve. One Digital Memory." },
-              { t: "AI can change. Memory persists.", b: "AI can change. Tools can change. Memory remains. The Adaptive Spine keeps your Digital Memory stable underneath." },
+              { t: "Truth & Context converge into reality", b: "Duplicates merge. Conflicts resolve. One Digital Memory." },
+              { t: "AI can change. Memory persists.", b: "AI can change. Tools can change. Memory remains. The Spine keeps your Digital Memory stable underneath." },
             ].map((s, i) => (
               <div key={s.t} className="flex gap-3 rounded-xl border border-border bg-white/[0.02] p-5">
                 <span className="text-[13px] font-semibold text-brand-accent">0{i + 1}</span>
@@ -183,6 +189,81 @@ function HomePage() {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Spine grows along with you — Day 1 / 30 / 90 */}
+          <Reveal className="mx-auto mt-14 max-w-5xl">
+            <div className="text-center">
+              <span className="badge-iw badge-iw-muted">Spine grows along with you</span>
+            </div>
+            <div className="mt-6 grid gap-4 md:grid-cols-3">
+              {[
+                { day: "Day 1", body: "Accounts, tasks, upcoming work." },
+                { day: "Day 30", body: "Patterns, owners, relationships." },
+                { day: "Day 90", body: "A living memory of how you operate." },
+              ].map((d) => (
+                <div key={d.day} className="card-iw p-6">
+                  <div className="text-[12.5px] font-semibold uppercase tracking-[0.16em] text-brand-accent">{d.day}</div>
+                  <p className="mt-2 text-[15px] text-foreground/90">{d.body}</p>
+                </div>
+              ))}
+            </div>
+            <p className="mt-6 text-center text-[14.5px] text-text-secondary">
+              Not an ETL dump. A living memory that earns its depth.
+            </p>
+          </Reveal>
+        </Container>
+      </Section>
+
+      {/* ========================= 3b. DIGITAL MEMORY — three lines ========================= */}
+      <Section alt>
+        <Container>
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <span className="badge-iw badge-iw-muted">Digital Memory</span>
+            <h2 className="heading-h2 mt-4">Three lines of Digital Memory.</h2>
+          </Reveal>
+          <div className="mx-auto mt-12 grid max-w-5xl gap-5 md:grid-cols-3">
+            {[
+              {
+                icon: Database,
+                tag: "Truth",
+                lead: "What's actually happening",
+                body: "Invoices, payouts, refunds, usage events, tickets, renewals, filings.",
+              },
+              {
+                icon: Layers,
+                tag: "Context",
+                lead: "Why it's happening",
+                body: "Emails, WhatsApp threads, chats, docs, notes, SOWs around that work.",
+              },
+              {
+                icon: Brain,
+                tag: "Session Summaries",
+                lead: "Governed AI knowledge",
+                body: "Short AI-generated summaries you've read and approved — never raw chat.",
+              },
+            ].map((m) => (
+              <div key={m.tag} className="card-iw p-6">
+                <m.icon size={20} className="text-brand-accent" />
+                <div className="mt-3 text-[17px] font-semibold text-foreground">{m.tag}</div>
+                <div className="mt-1 text-[13px] uppercase tracking-wider text-text-secondary">{m.lead}</div>
+                <p className="mt-3 text-[14.5px] leading-relaxed text-text-secondary">{m.body}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mx-auto mt-8 max-w-3xl text-center text-[15px] leading-relaxed text-foreground/85">
+            Truth, Context and Session Summaries meet in one place, but never lose their identity. Truth remains Truth. Context remains Context. Session Summaries stay clearly marked as AI-generated and approved.
+          </p>
+          <p className="mx-auto mt-3 max-w-3xl text-center text-[13.5px] text-text-secondary">
+            Raw AI chat never writes directly into Memory.
+          </p>
+          <div className="mx-auto mt-8 flex max-w-3xl flex-wrap justify-center gap-2">
+            {["Account Success", "Business Ops", "Personal Space"].map((w) => (
+              <span key={w} className="rounded-full border border-border bg-white/[0.03] px-3 py-1 text-[13px] text-foreground/90">
+                {w}
+              </span>
+            ))}
+            <span className="text-[13px] text-text-secondary">— all sit on the same Digital Memory.</span>
           </div>
         </Container>
       </Section>
