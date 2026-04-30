@@ -178,6 +178,35 @@ export function ProductVideo({
 
   const showVideoElement = !isMobile || hasStarted;
 
+  // Resolve each chapter's start time in seconds against the loaded
+  // duration. When `startSeconds` is provided we honour it directly;
+  // otherwise we map the 0..1 fraction onto the live duration so the
+  // overlay still works before the final cut timings are wired in.
+  const chapterTimes = chapters.map((c) =>
+    typeof c.startSeconds === "number" ? c.startSeconds : c.start * (duration || 0),
+  );
+  const activeChapterIndex = (() => {
+    if (!chapters.length) return -1;
+    let idx = 0;
+    for (let i = 0; i < chapterTimes.length; i++) {
+      if (currentTime + 0.05 >= chapterTimes[i]) idx = i;
+    }
+    return idx;
+  })();
+  const activeChapter = chapters[activeChapterIndex];
+
+  function jumpToChapter(i: number) {
+    const video = videoRef.current;
+    const t = chapterTimes[i];
+    if (!video || typeof t !== "number") return;
+    if (isMobile && !hasStarted) {
+      video.muted = false;
+      setHasStarted(true);
+    }
+    video.currentTime = t;
+    video.play().catch(() => undefined);
+  }
+
   return (
     <Section alt={alt}>
       <Container>
