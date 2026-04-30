@@ -57,16 +57,16 @@ function HomePage() {
 
         <Container>
           <div className="fade-up mx-auto max-w-4xl text-center">
-            <span className="badge-iw badge-iw-muted">Still juggling your work?</span>
+            <span className="badge-iw badge-iw-muted">An approval-gated AI ops layer for Account Success, RevOps & BizOps</span>
             <h1 className="heading-display mt-6">
               Stop being the{" "}
               <span className="text-gradient-hero">human API between your tools.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-3xl text-[17px] leading-relaxed text-text-secondary">
-              Your work runs through Salesforce, HubSpot, Stripe, Jira, Notion, Slack, Zendesk, Gmail, Shopify, QuickBooks and more. Every day you copy-paste between tabs, rebuild the same story in your head, and carry the risk when something slips.
+              Your work runs through Salesforce, HubSpot, Stripe, Jira, Notion, Slack, Zendesk, Gmail, Shopify, QuickBooks and more — and you're the one stitching it together.
             </p>
             <p className="mx-auto mt-4 max-w-3xl text-[16px] leading-relaxed text-text-secondary">
-              IntegrateWise gives your work a Spine and a Workspace on top of it — one place where Truth and Context stay in sync, your Twin watches quietly, and no action leaves without your Approval.
+              IntegrateWise connects your tools into a governed <span className="text-foreground">Digital Memory</span> and an approval-gated <span className="text-foreground">AI Twin</span> that proposes the next move — with full evidence, on every account.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <button type="button" onClick={() => open("Home hero")} className="btn-primary-iw">
@@ -76,6 +76,9 @@ function HomePage() {
                 See how it works
               </Link>
             </div>
+            <p className="mt-3 text-[13px] text-text-secondary">
+              30 minutes. On your own data. No rebuild.
+            </p>
           </div>
 
           {/* Logo strip — parallaxed for subtle depth between hero copy and connectors */}
