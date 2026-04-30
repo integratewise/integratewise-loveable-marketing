@@ -73,8 +73,8 @@ function HomePage() {
             </div>
           </div>
 
-          {/* Logo strip */}
-          <div className="mt-16">
+          {/* Logo strip — parallaxed for subtle depth between hero copy and connectors */}
+          <Parallax y={-24} className="mt-16">
             <p className="text-center text-[12.5px] font-semibold uppercase tracking-[0.18em] text-text-secondary">
               Connect the apps you already use
             </p>
@@ -88,7 +88,7 @@ function HomePage() {
                 ))}
               </div>
             </div>
-          </div>
+          </Parallax>
         </Container>
       </section>
 
@@ -100,7 +100,7 @@ function HomePage() {
             <h2 className="heading-h2 mt-4">The Core Problem of 2025</h2>
             <p className="mt-4 text-[17px] text-text-secondary">You are the bridge. And it's exhausting.</p>
           </Reveal>
-          <div className="mx-auto mt-12 grid max-w-5xl gap-5 md:grid-cols-3">
+          <StaggerGroup className="mx-auto mt-12 grid max-w-5xl gap-5 md:grid-cols-3" stagger={0.09}>
             {[
               {
                 title: "Data scattered.",
@@ -114,13 +114,13 @@ function HomePage() {
                 title: "Automation rogue.",
                 body: "Things fire without you, so trust quietly erodes.",
               },
-            ].map((p, i) => (
-              <Reveal key={p.title} delay={i * 80} className="card-iw p-7">
+            ].map((p) => (
+              <StaggerItem key={p.title} className="card-iw p-7">
                 <h3 className="text-[18px] font-semibold text-foreground">{p.title}</h3>
                 <p className="mt-2 text-[15px] leading-relaxed text-text-secondary">{p.body}</p>
-              </Reveal>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGroup>
         </Container>
       </Section>
 
