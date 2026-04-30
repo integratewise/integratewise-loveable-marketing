@@ -73,28 +73,110 @@ export const SOLUTIONS_OVERVIEW = {
   icon: LayoutDashboard,
 } as const;
 
-export const SOLUTIONS_BY_OUTCOME: SolutionItem[] = [
+export const SOLUTIONS_BY_FUNCTION: SolutionItem[] = [
   {
     to: "/solutions/account-success",
     label: "Account Success",
-    blurb: "Walk into every customer conversation already knowing what changed.",
-    icon: Handshake,
+    blurb: "Entity matching and dedup",
+    icon: Users,
   },
   {
     to: "/solutions/business-ops",
     label: "Business Ops",
-    blurb: "One screen. Everything that changed since Friday.",
-    icon: Activity,
+    blurb: "The live operating picture",
+    icon: BarChart3,
   },
   {
     to: "/solutions/personal-space",
     label: "Personal Space",
-    blurb: "Your day, finally assembled.",
-    icon: User,
+    blurb: "Your workspace, your context",
+    icon: Sparkles,
     waitlist: true,
   },
 ];
 
+// Kept for backwards compatibility with existing imports.
+export const SOLUTIONS_BY_OUTCOME = SOLUTIONS_BY_FUNCTION;
+
+export const SOLUTIONS_BY_INDUSTRY: SolutionItem[] = [
+  {
+    to: "/solutions/by-industry/saas",
+    label: "SaaS",
+    blurb: "Renewals, expansion, adoption",
+    icon: LineChart,
+  },
+  {
+    to: "/solutions/by-industry/professional-services",
+    label: "Services & Agencies",
+    blurb: "Projects, utilisation, billing",
+    icon: Wrench,
+  },
+  {
+    to: "/solutions/by-industry/manufacturing",
+    label: "Manufacturing & Trade",
+    blurb: "Orders, shipments, exceptions",
+    icon: Package,
+  },
+  {
+    to: "/solutions/by-industry/ecommerce",
+    label: "Retail & Ecommerce",
+    blurb: "Stock, orders, returns, support",
+    icon: ShoppingCart,
+  },
+  {
+    to: "/solutions/by-industry/professional-services",
+    label: "Professional Services",
+    blurb: "Engagements, billing, relationships",
+    icon: Briefcase,
+  },
+  {
+    to: "/solutions/by-industry/fintech",
+    label: "Finance",
+    blurb: "Revenue, risk, collections, cash",
+    icon: TrendingUp,
+  },
+];
+
+export const SOLUTIONS_BY_ROLE: SolutionItem[] = [
+  {
+    to: "/solutions/account-success",
+    label: "Customer Success & TAMs",
+    blurb: "Save accounts, accelerate renewals",
+    icon: UserCircle,
+  },
+  {
+    to: "/solutions/by-role",
+    label: "Founders & CXOs",
+    blurb: "Monday brief, board pack, full view",
+    icon: Telescope,
+  },
+  {
+    to: "/solutions/business-ops",
+    label: "Rev / Business Ops",
+    blurb: "Pipeline, headcount, risk — connected",
+    icon: SlidersHorizontal,
+  },
+  {
+    to: "/solutions/business-ops",
+    label: "Operations & Delivery",
+    blurb: "Projects, utilisation, exceptions",
+    icon: Truck,
+  },
+  {
+    to: "/solutions/business-ops",
+    label: "Finance Leaders",
+    blurb: "Cash, collections, runway",
+    icon: CircleDollarSign,
+  },
+  {
+    to: "/solutions/personal-space",
+    label: "Individual Professionals",
+    blurb: "Morning brief, session memory",
+    icon: User,
+  },
+];
+
+// Backwards-compatible single-link references used elsewhere.
 export const SOLUTIONS_BY_ROLE_INDEX = {
   to: "/solutions/by-role",
   label: "By Role",
