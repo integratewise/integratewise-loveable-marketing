@@ -55,7 +55,7 @@ export function ProductVideo({
   src,
   webm,
   poster,
-  urlLabel = "workbench.integratewise.app/accounts",
+  urlLabel = "workspace.integratewise.app/accounts",
   alt = false,
 }: Props) {
   const isMobile = useIsMobile();

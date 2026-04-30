@@ -515,7 +515,7 @@ function WorkbenchFrame({ compact = false }: { compact?: boolean }) {
         <span className="h-2.5 w-2.5 rounded-full bg-state-success/70" />
         <div className="ml-3 flex flex-1 items-center gap-2 rounded-md border border-border bg-elevated/60 px-3 py-1 text-[12px] text-text-secondary">
           <Search size={12} />
-          workbench.integratewise.app / accounts
+          workspace.integratewise.app / accounts
         </div>
       </div>
 

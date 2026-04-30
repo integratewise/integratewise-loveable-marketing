@@ -159,7 +159,7 @@ function HomePage() {
                 <div className="h-8 w-px bg-gradient-to-b from-brand-accent/60 to-transparent" />
               </div>
               <div className="grid grid-cols-3 gap-3">
-                {["Account Success", "Business Ops", "Personal Ops"].map((w) => (
+                {["Account Success", "Business Ops", "Personal Space"].map((w) => (
                   <div key={w} className="rounded-xl border border-border bg-bg-elevated p-3 text-center">
                     <span className="text-[13px] font-semibold text-foreground">{w}</span>
                   </div>
