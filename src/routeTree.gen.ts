@@ -28,9 +28,7 @@ import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SolutionsSalesOpsRouteImport } from './routes/solutions.sales-ops'
-import { Route as SolutionsRoleRouteImport } from './routes/solutions.role'
 import { Route as SolutionsPersonalSpaceRouteImport } from './routes/solutions.personal-space'
-import { Route as SolutionsIndustryRouteImport } from './routes/solutions.industry'
 import { Route as SolutionsFinanceOpsRouteImport } from './routes/solutions.finance-ops'
 import { Route as SolutionsByRoleRouteImport } from './routes/solutions.by-role'
 import { Route as SolutionsByIndustryRouteImport } from './routes/solutions.by-industry'
@@ -144,19 +142,9 @@ const SolutionsSalesOpsRoute = SolutionsSalesOpsRouteImport.update({
   path: '/sales-ops',
   getParentRoute: () => SolutionsRoute,
 } as any)
-const SolutionsRoleRoute = SolutionsRoleRouteImport.update({
-  id: '/role',
-  path: '/role',
-  getParentRoute: () => SolutionsRoute,
-} as any)
 const SolutionsPersonalSpaceRoute = SolutionsPersonalSpaceRouteImport.update({
   id: '/personal-space',
   path: '/personal-space',
-  getParentRoute: () => SolutionsRoute,
-} as any)
-const SolutionsIndustryRoute = SolutionsIndustryRouteImport.update({
-  id: '/industry',
-  path: '/industry',
   getParentRoute: () => SolutionsRoute,
 } as any)
 const SolutionsFinanceOpsRoute = SolutionsFinanceOpsRouteImport.update({
@@ -281,9 +269,7 @@ export interface FileRoutesByFullPath {
   '/solutions/by-industry': typeof SolutionsByIndustryRouteWithChildren
   '/solutions/by-role': typeof SolutionsByRoleRoute
   '/solutions/finance-ops': typeof SolutionsFinanceOpsRoute
-  '/solutions/industry': typeof SolutionsIndustryRoute
   '/solutions/personal-space': typeof SolutionsPersonalSpaceRoute
-  '/solutions/role': typeof SolutionsRoleRoute
   '/solutions/sales-ops': typeof SolutionsSalesOpsRoute
   '/solutions/by-industry/$industry': typeof SolutionsByIndustryIndustryRoute
 }
@@ -322,9 +308,7 @@ export interface FileRoutesByTo {
   '/solutions/by-industry': typeof SolutionsByIndustryRouteWithChildren
   '/solutions/by-role': typeof SolutionsByRoleRoute
   '/solutions/finance-ops': typeof SolutionsFinanceOpsRoute
-  '/solutions/industry': typeof SolutionsIndustryRoute
   '/solutions/personal-space': typeof SolutionsPersonalSpaceRoute
-  '/solutions/role': typeof SolutionsRoleRoute
   '/solutions/sales-ops': typeof SolutionsSalesOpsRoute
   '/solutions/by-industry/$industry': typeof SolutionsByIndustryIndustryRoute
 }
@@ -364,9 +348,7 @@ export interface FileRoutesById {
   '/solutions/by-industry': typeof SolutionsByIndustryRouteWithChildren
   '/solutions/by-role': typeof SolutionsByRoleRoute
   '/solutions/finance-ops': typeof SolutionsFinanceOpsRoute
-  '/solutions/industry': typeof SolutionsIndustryRoute
   '/solutions/personal-space': typeof SolutionsPersonalSpaceRoute
-  '/solutions/role': typeof SolutionsRoleRoute
   '/solutions/sales-ops': typeof SolutionsSalesOpsRoute
   '/solutions/by-industry/$industry': typeof SolutionsByIndustryIndustryRoute
 }
@@ -407,9 +389,7 @@ export interface FileRouteTypes {
     | '/solutions/by-industry'
     | '/solutions/by-role'
     | '/solutions/finance-ops'
-    | '/solutions/industry'
     | '/solutions/personal-space'
-    | '/solutions/role'
     | '/solutions/sales-ops'
     | '/solutions/by-industry/$industry'
   fileRoutesByTo: FileRoutesByTo
@@ -448,9 +428,7 @@ export interface FileRouteTypes {
     | '/solutions/by-industry'
     | '/solutions/by-role'
     | '/solutions/finance-ops'
-    | '/solutions/industry'
     | '/solutions/personal-space'
-    | '/solutions/role'
     | '/solutions/sales-ops'
     | '/solutions/by-industry/$industry'
   id:
@@ -489,9 +467,7 @@ export interface FileRouteTypes {
     | '/solutions/by-industry'
     | '/solutions/by-role'
     | '/solutions/finance-ops'
-    | '/solutions/industry'
     | '/solutions/personal-space'
-    | '/solutions/role'
     | '/solutions/sales-ops'
     | '/solutions/by-industry/$industry'
   fileRoutesById: FileRoutesById
@@ -652,25 +628,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SolutionsSalesOpsRouteImport
       parentRoute: typeof SolutionsRoute
     }
-    '/solutions/role': {
-      id: '/solutions/role'
-      path: '/role'
-      fullPath: '/solutions/role'
-      preLoaderRoute: typeof SolutionsRoleRouteImport
-      parentRoute: typeof SolutionsRoute
-    }
     '/solutions/personal-space': {
       id: '/solutions/personal-space'
       path: '/personal-space'
       fullPath: '/solutions/personal-space'
       preLoaderRoute: typeof SolutionsPersonalSpaceRouteImport
-      parentRoute: typeof SolutionsRoute
-    }
-    '/solutions/industry': {
-      id: '/solutions/industry'
-      path: '/industry'
-      fullPath: '/solutions/industry'
-      preLoaderRoute: typeof SolutionsIndustryRouteImport
       parentRoute: typeof SolutionsRoute
     }
     '/solutions/finance-ops': {
@@ -853,9 +815,7 @@ interface SolutionsRouteChildren {
   SolutionsByIndustryRoute: typeof SolutionsByIndustryRouteWithChildren
   SolutionsByRoleRoute: typeof SolutionsByRoleRoute
   SolutionsFinanceOpsRoute: typeof SolutionsFinanceOpsRoute
-  SolutionsIndustryRoute: typeof SolutionsIndustryRoute
   SolutionsPersonalSpaceRoute: typeof SolutionsPersonalSpaceRoute
-  SolutionsRoleRoute: typeof SolutionsRoleRoute
   SolutionsSalesOpsRoute: typeof SolutionsSalesOpsRoute
 }
 
@@ -865,9 +825,7 @@ const SolutionsRouteChildren: SolutionsRouteChildren = {
   SolutionsByIndustryRoute: SolutionsByIndustryRouteWithChildren,
   SolutionsByRoleRoute: SolutionsByRoleRoute,
   SolutionsFinanceOpsRoute: SolutionsFinanceOpsRoute,
-  SolutionsIndustryRoute: SolutionsIndustryRoute,
   SolutionsPersonalSpaceRoute: SolutionsPersonalSpaceRoute,
-  SolutionsRoleRoute: SolutionsRoleRoute,
   SolutionsSalesOpsRoute: SolutionsSalesOpsRoute,
 }
 
