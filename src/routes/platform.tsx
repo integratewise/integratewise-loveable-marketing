@@ -130,7 +130,7 @@ function PlatformPage() {
       <Section orbs className="!pt-20 lg:!pt-28">
         <Container>
           <div className="mx-auto max-w-3xl text-center">
-            <Badge variant="muted">Platform</Badge>
+            <Badge variant="muted">Still juggling your work?</Badge>
             <h1 className="heading-h1 mt-5">
               Where scattered data becomes{" "}
               <span className="text-gradient-hero">Digital Memory.</span>

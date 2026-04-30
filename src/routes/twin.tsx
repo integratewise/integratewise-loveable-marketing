@@ -83,7 +83,7 @@ function TwinPage() {
         <Container>
           <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_1fr]">
             <Reveal>
-              <Badge variant="muted">Twin</Badge>
+              <Badge variant="muted">Still juggling your work?</Badge>
               <h1 className="heading-h1 mt-5">
                 Not usual AI.{" "}
                 <span className="text-gradient-hero">Your Twin reads your Digital Memory.</span>

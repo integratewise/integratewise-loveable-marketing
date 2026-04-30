@@ -79,7 +79,7 @@ function SolutionsPage() {
       <Section orbs className="!pt-20 lg:!pt-28">
         <Container>
           <div className="mx-auto max-w-3xl text-center">
-            <Badge variant="muted">Solutions</Badge>
+            <Badge variant="muted">Still juggling your work?</Badge>
             <h1 className="heading-h1 mt-5">
               One Spine. <span className="text-gradient-hero">Many ways of working.</span>
             </h1>

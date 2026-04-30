@@ -59,7 +59,7 @@ function ResourcesPage() {
         <span aria-hidden className="orb orb-peach" style={{ width: 540, height: 540, top: -160, left: "55%" }} />
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="badge-iw badge-iw-muted">Resources</span>
+            <span className="badge-iw badge-iw-muted">Still juggling your work?</span>
             <h1 className="heading-display mt-6">
               <span className="block">Everything that helps you</span>
               <span className="block text-gradient-hero">stop being the Human API.</span>

@@ -95,7 +95,7 @@ function CompanyPage() {
         <Container>
           <div className="mx-auto max-w-3xl text-center">
             <Reveal>
-              <Badge variant="muted">Company</Badge>
+              <Badge variant="muted">Still juggling your work?</Badge>
               <h1 className="heading-h1 mt-5">
                 Built because{" "}
                 <span className="text-gradient-hero">work lost its memory.</span>

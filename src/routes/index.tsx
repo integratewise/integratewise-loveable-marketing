@@ -24,7 +24,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "One workspace. Full context. Every action under your control. The Knowledge Workspace over the Spine — apps connect, truth stays intact, your Twin proposes what's next.",
+          "One workspace. Full context. Every action under your control. Still juggling your work? — apps connect, truth stays intact, your Twin proposes what's next.",
       },
       { property: "og:title", content: "IntegrateWise — Stop being the human API between your tools." },
       {
@@ -57,7 +57,7 @@ function HomePage() {
 
         <Container>
           <div className="fade-up mx-auto max-w-4xl text-center">
-            <span className="badge-iw badge-iw-muted">The Knowledge Workspace over the Spine</span>
+            <span className="badge-iw badge-iw-muted">Still juggling your work?</span>
             <h1 className="heading-display mt-6">
               <span className="block">Stop being the</span>
               <span className="block text-gradient-hero">human API between your tools.</span>
