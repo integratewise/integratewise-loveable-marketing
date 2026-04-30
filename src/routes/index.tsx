@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Brain, Lightbulb, UserCheck, Zap, Search, Plus, Download, Bell, ShieldCheck, Activity, FileText, Cpu, Database, Workflow, Layers, Network } from "lucide-react";
+import { ArrowRight, Brain, Lightbulb, UserCheck, Zap, Search, Plus, Download, Bell, ShieldCheck, Activity, FileText, Cpu, Database, Workflow, Network } from "lucide-react";
 import { Container } from "@/components/site/Container";
 import { Section } from "@/components/site/Section";
 import { Reveal } from "@/components/site/Reveal";
@@ -9,7 +9,7 @@ import { ProductVideo } from "@/components/site/ProductVideo";
 import { AfterApprovalLoop } from "@/components/site/AfterApprovalLoop";
 import { useDemoModal } from "@/components/site/demo-modal-context";
 import { CONNECTOR_LOGOS } from "@/components/site/ConnectorMarquee";
-import { SpineFlow } from "@/components/site/motion/SpineFlow";
+
 import { WorkbenchMorph } from "@/components/site/motion/WorkbenchMorph";
 import { TwinSignals, ApprovalGate } from "@/components/site/motion/TwinSignals";
 import { StaggerGroup, StaggerItem, Parallax } from "@/components/site/motion/Stagger";
@@ -136,38 +136,6 @@ function HomePage() {
               Apps plug in. Data normalizes. Truth stays intact — even when tools change.
             </p>
           </Reveal>
-
-          <div className="mt-14 grid items-start gap-10 lg:grid-cols-2">
-            {/* Connector cluster → Spine → Digital Memory (animated) */}
-            <SpineFlow />
-
-            {/* Truth/Context/Memory → Workspaces */}
-            <div className="card-iw p-8">
-              <div className="grid grid-cols-3 gap-3">
-                {[
-                  { label: "Truth", icon: Database, sub: "What's actually happening" },
-                  { label: "Context", icon: Layers, sub: "Why it's happening" },
-                  { label: "Session Summaries", icon: Brain, sub: "Governed AI knowledge" },
-                ].map((s) => (
-                  <div key={s.label} className="rounded-xl border border-border bg-white/[0.02] p-3 text-center">
-                    <s.icon size={18} className="mx-auto text-brand-accent" />
-                    <div className="mt-1.5 text-[13px] font-semibold text-foreground">{s.label}</div>
-                    <div className="mt-0.5 text-[11px] text-text-secondary">{s.sub}</div>
-                  </div>
-                ))}
-              </div>
-              <div className="my-5 flex justify-center">
-                <div className="h-8 w-px bg-gradient-to-b from-brand-accent/60 to-transparent" />
-              </div>
-              <div className="grid grid-cols-3 gap-3">
-                {["Account Success", "Business Ops", "Personal Space"].map((w) => (
-                  <div key={w} className="rounded-xl border border-border bg-bg-elevated p-3 text-center">
-                    <span className="text-[13px] font-semibold text-foreground">{w}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
 
           <div className="mx-auto mt-10 grid max-w-5xl gap-4 md:grid-cols-3">
             {[
