@@ -57,16 +57,16 @@ function HomePage() {
 
         <Container>
           <div className="fade-up mx-auto max-w-4xl text-center">
-            <span className="badge-iw badge-iw-muted">Still juggling your work?</span>
+            <span className="badge-iw badge-iw-muted">An approval-gated AI ops layer for Account Success, RevOps & BizOps</span>
             <h1 className="heading-display mt-6">
               Stop being the{" "}
               <span className="text-gradient-hero">human API between your tools.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-3xl text-[17px] leading-relaxed text-text-secondary">
-              Your work runs through Salesforce, HubSpot, Stripe, Jira, Notion, Slack, Zendesk, Gmail, Shopify, QuickBooks and more. Every day you copy-paste between tabs, rebuild the same story in your head, and carry the risk when something slips.
+              Your work runs through Salesforce, HubSpot, Stripe, Jira, Notion, Slack, Zendesk, Gmail, Shopify, QuickBooks and more — and you're the one stitching it together.
             </p>
             <p className="mx-auto mt-4 max-w-3xl text-[16px] leading-relaxed text-text-secondary">
-              IntegrateWise gives your work a Spine and a Workspace on top of it — one place where Truth and Context stay in sync, your Twin watches quietly, and no action leaves without your Approval.
+              IntegrateWise connects your tools into a governed <span className="text-foreground">Digital Memory</span> and an approval-gated <span className="text-foreground">AI Twin</span> that proposes the next move — with full evidence, on every account.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <button type="button" onClick={() => open("Home hero")} className="btn-primary-iw">
@@ -76,6 +76,9 @@ function HomePage() {
                 See how it works
               </Link>
             </div>
+            <p className="mt-3 text-[13px] text-text-secondary">
+              30 minutes. On your own data. No rebuild.
+            </p>
           </div>
 
           {/* Logo strip — parallaxed for subtle depth between hero copy and connectors */}
@@ -126,6 +129,37 @@ function HomePage() {
               </StaggerItem>
             ))}
           </StaggerGroup>
+        </Container>
+      </Section>
+
+      {/* ========================= 2b. MODEL PRIMER ========================= */}
+      <Section>
+        <Container>
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <span className="badge-iw badge-iw-muted">The model in 5 lines</span>
+            <h2 className="heading-h2 mt-4">Five parts, one loop.</h2>
+            <p className="mt-4 text-[15.5px] text-text-secondary">
+              Each term has one job. They repeat across this page in the same words.
+            </p>
+          </Reveal>
+          <div className="mx-auto mt-10 grid max-w-5xl gap-3 md:grid-cols-5">
+            {[
+              { icon: Network, t: "Spine", b: "Connects and normalises data from your tools." },
+              { icon: Database, t: "Digital Memory", b: "Truth, Context and approved Session Summaries — together." },
+              { icon: Layers, t: "Workspace", b: "The screen where you see accounts, risks and actions." },
+              { icon: Brain, t: "Twin", b: "AI that reads Memory and proposes the next move." },
+              { icon: ShieldCheck, t: "Approval", b: "Nothing executes without you. Full audit trail." },
+            ].map((m) => (
+              <div key={m.t} className="card-iw p-5">
+                <m.icon size={18} className="text-brand-accent" />
+                <div className="mt-3 text-[15px] font-semibold text-foreground">{m.t}</div>
+                <p className="mt-1.5 text-[13px] leading-snug text-text-secondary">{m.b}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mx-auto mt-6 max-w-3xl text-center text-[13.5px] text-text-secondary">
+            Apps → Spine → Digital Memory → Workspace → Twin → Approval → back into Memory. That's the loop.
+          </p>
         </Container>
       </Section>
 
@@ -254,8 +288,22 @@ function HomePage() {
           <p className="mx-auto mt-8 max-w-3xl text-center text-[15px] leading-relaxed text-foreground/85">
             Truth, Context and Session Summaries meet in one place, but never lose their identity. Truth remains Truth. Context remains Context. Session Summaries stay clearly marked as AI-generated and approved.
           </p>
-          <p className="mx-auto mt-3 max-w-3xl text-center text-[13.5px] text-text-secondary">
-            Raw AI chat never writes directly into Memory.
+
+          {/* Concrete walkthrough — one account through the three lines */}
+          <div className="mx-auto mt-10 max-w-3xl rounded-2xl border border-border bg-white/[0.02] p-6">
+            <div className="text-[12px] font-semibold uppercase tracking-[0.16em] text-brand-accent">
+              Worked example · Acme Corp renewal
+            </div>
+            <ul className="mt-4 space-y-3 text-[14.5px] leading-relaxed text-foreground/90">
+              <li><span className="font-semibold text-foreground">Truth</span> — Stripe shows two failed payments. Usage down 38% over 14 days.</li>
+              <li><span className="font-semibold text-foreground">Context</span> — A Gmail thread mentions a budget freeze. WhatsApp note: "champion left in March."</li>
+              <li><span className="font-semibold text-foreground">Session Summary</span> — Last QBR, you and the CSM agreed: at-risk accounts under $500K go to escalation, not discount.</li>
+              <li className="text-text-secondary">Twin reads all three together and proposes the next step — never one source on its own.</li>
+            </ul>
+          </div>
+
+          <p className="mx-auto mt-6 max-w-3xl text-center text-[13.5px] text-text-secondary">
+            Raw AI chat never writes directly into Memory — so hallucinations can't contaminate your source of truth, and every AI-derived line carries an approver and a timestamp for audit.
           </p>
           <div className="mx-auto mt-8 flex max-w-3xl flex-wrap justify-center gap-2">
             {["Account Success", "Business Ops", "Personal Space"].map((w) => (
@@ -332,6 +380,8 @@ function HomePage() {
               { app: "Jira", body: "Escalate tickets to P1." },
               { app: "Slack", body: "Alert a channel." },
               { app: "Salesforce", body: "Update an opportunity." },
+              { app: "Stripe", body: "Pause a failing subscription." },
+              { app: "Zendesk", body: "Re-route to a senior agent." },
             ].map((a) => (
               <div key={a.app} className="flex items-center gap-3 rounded-xl border border-border bg-white/[0.02] p-4">
                 <span className="rounded-md border border-border bg-bg-elevated px-2.5 py-1 text-[12.5px] font-semibold text-foreground">{a.app}</span>
@@ -339,6 +389,20 @@ function HomePage() {
               </div>
             ))}
           </div>
+          <p className="mx-auto mt-6 max-w-3xl text-center text-[14px] text-text-secondary">
+            CRM, support, billing, comms — the same Approval pattern extends to every connected tool.
+          </p>
+
+          <div className="mx-auto mt-6 flex max-w-3xl flex-wrap justify-center gap-2">
+            <span className="text-[13px] text-text-secondary">Approve from</span>
+            {["Workspace", "Slack", "Email"].map((s) => (
+              <span key={s} className="rounded-full border border-border bg-white/[0.03] px-3 py-1 text-[12.5px] font-semibold text-foreground/90">
+                {s}
+              </span>
+            ))}
+            <span className="text-[13px] text-text-secondary">— wherever your day already happens.</span>
+          </div>
+
           <p className="mx-auto mt-8 max-w-2xl text-center text-[15px] font-semibold text-foreground">
             AI proposes. You decide.
           </p>
@@ -390,6 +454,9 @@ function HomePage() {
               <p className="mt-4 text-[16px] text-text-secondary">
                 Every tool connected. Every action approved.
               </p>
+              <p className="mt-4 text-[14.5px] leading-relaxed text-text-secondary">
+                No fragile Looker or Salesforce dashboard to maintain — Memory already has the truth, so the view is the work, not a copy of it.
+              </p>
             </div>
             <div className="grid gap-4 sm:grid-cols-3">
               {[
@@ -404,6 +471,15 @@ function HomePage() {
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* No-code configurability callout */}
+          <div className="mt-8 flex flex-wrap items-center gap-3 rounded-xl border border-brand-accent/30 bg-brand-accent/5 px-5 py-4">
+            <ShieldCheck size={18} className="text-brand-accent" />
+            <p className="text-[14px] text-foreground/90">
+              <span className="font-semibold text-foreground">Ops configures, not engineering.</span>{" "}
+              <span className="text-text-secondary">Health scores, risk rules, fields and views are configured inside the Workspace — no engineering ticket, no schema migration.</span>
+            </p>
           </div>
         </Container>
       </Section>
@@ -505,8 +581,8 @@ function HomePage() {
               {
                 icon: Database,
                 title: "Schema Registry",
-                body: "Tracks every data shape from every connector. Detects drift, resolves conflicts, and keeps your truth layer clean — automatically.",
-                meta: "Auto-healing data contracts",
+                body: "Tracks every data shape from every connector. When a Salesforce field is renamed or a Stripe webhook payload changes, the Registry catches it before your dashboard silently breaks — and proposes the fix.",
+                meta: "No more silent dashboard breakage",
               },
             ].map((c, i) => (
               <Reveal key={c.title} delay={i * 80} className="card-iw p-7">
@@ -574,10 +650,11 @@ function HomePage() {
       {/* ========================= 9. PROOF / TRUST STRIP ========================= */}
       <Section className="!py-12">
         <Container>
-          <div className="grid gap-3 md:grid-cols-3">
+          <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
             {[
-              { t: "Cloudflare Workers", b: "Edge-first. Sub-50ms globally." },
-              { t: "Enterprise-ready", b: "SOC 2 Type II. GDPR compliant." },
+              { t: "Edge-first", b: "Cloudflare Workers. Sub-50ms globally." },
+              { t: "SOC 2 Type II · GDPR", b: "Compliant by architecture, not by checklist." },
+              { t: "Single-tenant by default", b: "Your data, your isolation. EU residency available." },
               { t: "Founder-led", b: "Every customer has a direct line." },
             ].map((p) => (
               <div key={p.t} className="flex items-center gap-3 rounded-xl border border-border bg-white/[0.02] px-5 py-4">
