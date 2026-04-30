@@ -345,16 +345,29 @@ export function ProductVideo({
                   </button>
                   <div
                     onClick={seek}
-                    className="pointer-events-auto h-1.5 flex-1 cursor-pointer overflow-hidden rounded-full bg-white/15"
+                    className="pointer-events-auto relative h-1.5 flex-1 cursor-pointer rounded-full bg-white/15"
                     role="progressbar"
                     aria-valuenow={Math.round(progress)}
                     aria-valuemin={0}
                     aria-valuemax={100}
                   >
                     <div
-                      className="h-full rounded-full bg-brand-accent transition-[width] duration-150 ease-out"
+                      className="absolute inset-y-0 left-0 rounded-full bg-brand-accent transition-[width] duration-150 ease-out"
                       style={{ width: `${progress}%` }}
                     />
+                    {/* Chapter tick marks aligned with the chapter strip above. */}
+                    {duration > 0
+                      ? chapterTimes.map((t, i) =>
+                          i === 0 ? null : (
+                            <span
+                              key={chapters[i].id}
+                              aria-hidden
+                              className="absolute top-1/2 h-2.5 w-px -translate-y-1/2 bg-white/60"
+                              style={{ left: `${(t / duration) * 100}%` }}
+                            />
+                          ),
+                        )
+                      : null}
                   </div>
                 </div>
               ) : null}
