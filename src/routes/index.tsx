@@ -438,6 +438,9 @@ function HomePage() {
               <p className="mt-4 text-[16px] text-text-secondary">
                 Every tool connected. Every action approved.
               </p>
+              <p className="mt-4 text-[14.5px] leading-relaxed text-text-secondary">
+                No fragile Looker or Salesforce dashboard to maintain — Memory already has the truth, so the view is the work, not a copy of it.
+              </p>
             </div>
             <div className="grid gap-4 sm:grid-cols-3">
               {[
@@ -452,6 +455,15 @@ function HomePage() {
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* No-code configurability callout */}
+          <div className="mt-8 flex flex-wrap items-center gap-3 rounded-xl border border-brand-accent/30 bg-brand-accent/5 px-5 py-4">
+            <ShieldCheck size={18} className="text-brand-accent" />
+            <p className="text-[14px] text-foreground/90">
+              <span className="font-semibold text-foreground">Ops configures, not engineering.</span>{" "}
+              <span className="text-text-secondary">Health scores, risk rules, fields and views are configured inside the Workspace — no engineering ticket, no schema migration.</span>
+            </p>
           </div>
         </Container>
       </Section>
