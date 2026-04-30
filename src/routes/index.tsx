@@ -112,13 +112,13 @@ function HomePage() {
                 <li aria-hidden>·</li>
                 <li>Approval-gated</li>
               </ul>
-            </Reveal>
+            </div>
 
             {/* RIGHT — Attention strip on top, Workbench below, in one stacked unit */}
-            <Reveal delay={120} className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4">
               <AttentionLayer scenario={homeAttention} />
               <Workbench scenario={homeScenario} />
-            </Reveal>
+            </div>
           </div>
 
           {/* Connector marquee — beneath the fold */}
