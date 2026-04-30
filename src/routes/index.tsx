@@ -10,6 +10,7 @@ import { CONNECTOR_LOGOS } from "@/components/site/ConnectorMarquee";
 import { SpineFlow } from "@/components/site/motion/SpineFlow";
 import { WorkbenchMorph } from "@/components/site/motion/WorkbenchMorph";
 import { TwinSignals, ApprovalGate } from "@/components/site/motion/TwinSignals";
+import { StaggerGroup, StaggerItem, Parallax } from "@/components/site/motion/Stagger";
 import airtable from "@/assets/logos/airtable.svg";
 import asana from "@/assets/logos/asana.svg";
 import gdrive from "@/assets/logos/google-drive.svg";
