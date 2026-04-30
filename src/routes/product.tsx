@@ -30,6 +30,14 @@ import { Badge } from "@/components/site/Badge";
 import { Reveal } from "@/components/site/Reveal";
 import { ProductVideo } from "@/components/site/ProductVideo";
 import { useDemoModal } from "@/components/site/demo-modal-context";
+import { StickySubNav } from "@/components/site/StickySubNav";
+
+const SUBNAV_ITEMS = [
+  { id: "workspace", label: "Workspace" },
+  { id: "how-it-works", label: "How it works" },
+  { id: "digital-memory", label: "Digital Memory" },
+  { id: "security", label: "Security" },
+];
 
 export const Route = createFileRoute("/product")({
   head: () => ({
@@ -138,8 +146,10 @@ function ProductPage() {
 
   return (
     <>
-      {/* 1. Hero */}
-      <Section id="overview" orbs className="!pt-20 lg:!pt-28">
+      <StickySubNav items={SUBNAV_ITEMS} />
+
+      {/* 1. Hero — #workspace */}
+      <Section id="workspace" orbs className="!pt-20 lg:!pt-28">
         <Container>
           <div className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Still juggling your work?</Badge>
@@ -170,7 +180,7 @@ function ProductPage() {
       </Section>
 
       {/* 2. From empty dashboards to a living workspace */}
-      <Section id="living-workspace" alt>
+      <Section id="how-it-works" alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Living workspace</Badge>
@@ -204,7 +214,7 @@ function ProductPage() {
                   As you grow
                 </p>
                 <ul className="mt-4 space-y-3 text-[14px] leading-relaxed text-foreground/90">
-                  <li>• As more data flows into the Adaptive Spine, your Digital Memory deepens.</li>
+                  <li>• As more data flows into the Spine, your Digital Memory deepens.</li>
                   <li>
                     • Workspace views evolve: richer client views, project boards, account health,
                     filings, and risks.
@@ -216,6 +226,36 @@ function ProductPage() {
               </div>
             </Reveal>
           </div>
+
+          {/* Inline loop diagram */}
+          <Reveal delay={200} className="mx-auto mt-10 max-w-5xl">
+            <div className="card-iw flex flex-wrap items-center justify-center gap-2 p-4 text-[12.5px] font-medium text-foreground/85">
+              {[
+                "Apps",
+                "Spine",
+                "Digital Memory",
+                "Workspace",
+                "Twin",
+                "Approval",
+                "Loop",
+              ].map((label, i, arr) => (
+                <span key={label} className="flex items-center gap-2">
+                  <span
+                    className={
+                      label === "Workspace"
+                        ? "rounded-md bg-brand-accent/15 px-2.5 py-1 text-brand-accent"
+                        : "rounded-md border border-border bg-elevated/50 px-2.5 py-1"
+                    }
+                  >
+                    {label}
+                  </span>
+                  {i < arr.length - 1 && (
+                    <ArrowRight size={12} className="text-text-secondary" />
+                  )}
+                </span>
+              ))}
+            </div>
+          </Reveal>
         </Container>
       </Section>
 
@@ -332,15 +372,84 @@ function ProductPage() {
 
           <Reveal delay={300} className="mx-auto mt-8 max-w-3xl text-center">
             <p className="text-[14px] leading-relaxed text-text-secondary">
-              Every view is backed by the same Adaptive Spine and Digital Memory. Change the way you
+              Every view is backed by the same Spine and Digital Memory. Change the way you
               group work; the underlying Memory stays consistent.
             </p>
           </Reveal>
         </Container>
       </Section>
 
+      {/* 5b. Built on Digital Memory — #digital-memory */}
+      <Section id="digital-memory" alt>
+        <Container>
+          <div className="mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-[1.1fr_1fr]">
+            <Reveal>
+              <Badge variant="muted">Digital Memory</Badge>
+              <h2 className="heading-h2 mt-4">Built on Digital Memory.</h2>
+              <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
+                The Workspace doesn't start from empty states. Because it reads directly from your
+                Digital Memory, every view is backed by the same Spine, Truth, Context and Session
+                Summaries defined on the Platform page. Change the way you group work; the
+                underlying Memory stays consistent.
+              </p>
+              <a
+                href="/platform#digital-memory"
+                className="mt-5 inline-flex items-center gap-1.5 text-[14px] font-medium text-brand-accent hover:underline"
+              >
+                Learn how Digital Memory is built <ArrowRight size={14} />
+              </a>
+            </Reveal>
+
+            <Reveal delay={120}>
+              <div className="card-iw p-5">
+                <p className="text-[11px] font-semibold uppercase tracking-wider text-brand-accent">
+                  Three lines, one Memory
+                </p>
+                <ul className="mt-4 space-y-3">
+                  {[
+                    {
+                      label: "Truth",
+                      sub: "What actually happened",
+                      tone: "var(--state-success)",
+                    },
+                    {
+                      label: "Context",
+                      sub: "Why it happened",
+                      tone: "var(--state-info)",
+                    },
+                    {
+                      label: "Session Summaries",
+                      sub: "Governed AI knowledge",
+                      tone: "var(--brand-accent)",
+                    },
+                  ].map((l) => (
+                    <li
+                      key={l.label}
+                      className="flex items-center gap-3 rounded-lg border border-border bg-elevated/50 px-3 py-2.5"
+                    >
+                      <span
+                        className="h-2.5 w-2.5 shrink-0 rounded-full"
+                        style={{ background: l.tone }}
+                      />
+                      <div className="min-w-0">
+                        <p className="text-[13px] font-semibold text-foreground">{l.label}</p>
+                        <p className="text-[11.5px] text-text-secondary">{l.sub}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-4 text-[11.5px] text-text-secondary">
+                  Workspace stitches all three into one screen — Truth and Context never blur,
+                  Session Summaries stay marked as approved.
+                </p>
+              </div>
+            </Reveal>
+          </div>
+        </Container>
+      </Section>
+
       {/* 6. Evidence */}
-      <Section id="evidence" alt>
+      <Section id="evidence">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Evidence</Badge>
@@ -401,7 +510,7 @@ function ProductPage() {
       </Section>
 
       {/* 7. Approval Gate */}
-      <Section id="approval-gate">
+      <Section id="security" alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Approval Gate</Badge>
@@ -475,7 +584,7 @@ function ProductPage() {
       </Section>
 
       {/* 8. CTA */}
-      <Section id="demo" alt>
+      <Section id="demo">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <h2 className="heading-h2">See your Workspace built on your own data.</h2>
