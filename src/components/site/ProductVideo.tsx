@@ -89,6 +89,7 @@ export function ProductVideo({
   poster,
   urlLabel = "workspace.integratewise.app/accounts",
   alt = false,
+  chapters = DEFAULT_CHAPTERS,
 }: Props) {
   const isMobile = useIsMobile();
   const videoRef = useRef<HTMLVideoElement>(null);
