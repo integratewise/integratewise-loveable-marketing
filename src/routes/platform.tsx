@@ -316,7 +316,7 @@ function PlatformPage() {
       </Section>
 
       {/* 4. Adaptive Spine — growing schema, selective ingest */}
-      <Section alt id="how-it-works">
+      <Section alt id="connectors">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Adaptive Spine</Badge>
@@ -379,7 +379,7 @@ function PlatformPage() {
       </Section>
 
       {/* 5. AI library */}
-      <Section>
+      <Section id="integrations">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">AI library</Badge>
@@ -426,7 +426,7 @@ function PlatformPage() {
       </Section>
 
       {/* 6. From apps to Memory in three steps */}
-      <Section alt>
+      <Section alt id="how-it-works">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">How it works</Badge>
@@ -463,7 +463,7 @@ function PlatformPage() {
       </Section>
 
       {/* 7. Memory scopes */}
-      <Section>
+      <Section id="security">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Memory scopes</Badge>
