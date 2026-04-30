@@ -97,6 +97,8 @@ export function ProductVideo({
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [hasStarted, setHasStarted] = useState(false);
+  const [duration, setDuration] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
 
   // Desktop: autoplay muted on scroll-into-view.
   useEffect(() => {
