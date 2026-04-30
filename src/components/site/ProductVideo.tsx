@@ -235,6 +235,49 @@ export function ProductVideo({
               <div className="w-12" />
             </div>
 
+            {/* Chapter strip — Apps → Spine → Workspace → Twin → Approval → Loop */}
+            <div
+              className="flex items-stretch gap-1 overflow-x-auto border-b border-border/60 bg-background/30 px-3 py-2"
+              role="tablist"
+              aria-label="Walkthrough chapters"
+            >
+              {chapters.map((c, i) => {
+                const isActive = i === activeChapterIndex;
+                return (
+                  <button
+                    key={c.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={isActive}
+                    onClick={() => jumpToChapter(i)}
+                    className={[
+                      "flex shrink-0 items-center gap-2 rounded-md px-2.5 py-1 text-[11.5px] font-medium font-mono uppercase tracking-wider transition-colors",
+                      isActive
+                        ? "bg-brand-accent/15 text-brand-accent"
+                        : "text-text-secondary hover:bg-foreground/5 hover:text-foreground",
+                    ].join(" ")}
+                  >
+                    <span
+                      className={[
+                        "inline-flex h-4 w-4 items-center justify-center rounded-full text-[9px]",
+                        isActive
+                          ? "bg-brand-accent text-background"
+                          : "bg-foreground/10 text-text-secondary",
+                      ].join(" ")}
+                    >
+                      {i + 1}
+                    </span>
+                    {c.label}
+                    {i < chapters.length - 1 ? (
+                      <span aria-hidden className="ml-1 text-text-secondary/40">
+                        →
+                      </span>
+                    ) : null}
+                  </button>
+                );
+              })}
+            </div>
+
             {/* 16:9 stage */}
             <div className="relative aspect-video w-full bg-black">
               {showVideoElement ? (
