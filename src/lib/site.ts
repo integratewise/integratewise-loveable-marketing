@@ -275,46 +275,14 @@ export const PRIMARY_NAV: ReadonlyArray<NavGroup> = [
     label: "Product",
     groups: [{ heading: "Product", items: PRODUCT_LINKS }],
   },
-  { kind: "link", label: "Twin", to: "/twin" },
   {
     kind: "menu",
     label: "Solutions",
     groups: [
-      {
-        heading: "Overview",
-        items: [
-          {
-            to: SOLUTIONS_OVERVIEW.to,
-            label: SOLUTIONS_OVERVIEW.label,
-            blurb: SOLUTIONS_OVERVIEW.blurb,
-            icon: SOLUTIONS_OVERVIEW.icon,
-          },
-        ],
-      },
-      { heading: "By outcome", items: SOLUTIONS_BY_OUTCOME },
-      {
-        heading: "Filters",
-        items: [
-          {
-            to: SOLUTIONS_BY_INDUSTRY_INDEX.to,
-            label: SOLUTIONS_BY_INDUSTRY_INDEX.label,
-            blurb: SOLUTIONS_BY_INDUSTRY_INDEX.blurb,
-            icon: SOLUTIONS_BY_INDUSTRY_INDEX.icon,
-          },
-          {
-            to: SOLUTIONS_BY_ROLE_INDEX.to,
-            label: SOLUTIONS_BY_ROLE_INDEX.label,
-            blurb: SOLUTIONS_BY_ROLE_INDEX.blurb,
-            icon: SOLUTIONS_BY_ROLE_INDEX.icon,
-          },
-        ],
-      },
+      { heading: "By Function", items: SOLUTIONS_BY_FUNCTION },
+      { heading: "By Industry", items: SOLUTIONS_BY_INDUSTRY },
+      { heading: "By Role", items: SOLUTIONS_BY_ROLE },
     ],
-    footer: {
-      label: "Browse all 6 industries",
-      to: SOLUTIONS_BY_INDUSTRY_INDEX.to,
-      chips: SOLUTIONS_INDUSTRIES,
-    },
   },
   { kind: "link", label: "Pricing", to: "/pricing" },
   { kind: "link", label: "Company", to: "/company" },
