@@ -411,7 +411,7 @@ function ProductPage() {
       </Section>
 
       {/* 7. Approval Gate */}
-      <Section id="approval-gate">
+      <Section id="security">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Approval Gate</Badge>
