@@ -24,6 +24,36 @@ import { Section } from "@/components/site/Section";
 import { Reveal } from "@/components/site/Reveal";
 import { Badge } from "@/components/site/Badge";
 
+/**
+ * Chapter on the walkthrough timeline. `start` is a fraction of total
+ * duration (0..1) so we don't have to hard-code seconds before the final
+ * cut lands. When the real MP4 ships, swap to absolute seconds by passing
+ * a `chapters` prop with `startSeconds`.
+ */
+export interface VideoChapter {
+  id: string;
+  label: string;
+  /** 0..1 fraction of total duration where this chapter begins. */
+  start: number;
+  /** Optional absolute seconds; overrides `start` when provided. */
+  startSeconds?: number;
+}
+
+/**
+ * Default chapter map — mirrors the locked architecture beats the
+ * walkthrough is scripted to: Apps → Spine → Workspace → Twin →
+ * Approval → Loop. Even spacing is a placeholder until the final cut
+ * timings are known.
+ */
+const DEFAULT_CHAPTERS: VideoChapter[] = [
+  { id: "apps", label: "Apps", start: 0 / 6 },
+  { id: "spine", label: "Spine", start: 1 / 6 },
+  { id: "workspace", label: "Workspace", start: 2 / 6 },
+  { id: "twin", label: "Twin", start: 3 / 6 },
+  { id: "approval", label: "Approval", start: 4 / 6 },
+  { id: "loop", label: "Loop", start: 5 / 6 },
+];
+
 interface Props {
   eyebrow?: string;
   title: string;
@@ -34,6 +64,8 @@ interface Props {
   /** Faux browser URL shown in the chrome bar. */
   urlLabel?: string;
   alt?: boolean;
+  /** Override the default Apps→Spine→Workspace→Twin→Approval→Loop chapters. */
+  chapters?: VideoChapter[];
 }
 
 function useIsMobile() {
