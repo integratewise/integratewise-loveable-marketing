@@ -1,227 +1,401 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SolutionPage } from "@/components/site/SolutionTemplate";
+import {
+  ArrowRight,
+  Sparkles,
+  AlertTriangle,
+  CreditCard,
+  TrendingUp,
+  Users,
+  Plug,
+  LayoutGrid,
+  Settings2,
+  Briefcase,
+  ShieldCheck,
+} from "lucide-react";
+import { Container } from "@/components/site/Container";
+import { Section } from "@/components/site/Section";
+import { Badge } from "@/components/site/Badge";
+import { Reveal } from "@/components/site/Reveal";
+import { useDemoModal } from "@/components/site/demo-modal-context";
+import { StickySubNav } from "@/components/site/StickySubNav";
 
 export const Route = createFileRoute("/solutions/business-ops")({
   head: () => ({
     meta: [
-      { title: "Business Ops — Run the day from one screen." },
+      { title: "Business Ops — Run the day from one screen" },
       {
         name: "description",
         content:
-          "Founders, COOs, and finance leads across SaaS, agency, retail, and services run the day from one Workspace built on Org Memory.",
+          "For founders, COOs and ops leaders. A Business Workspace on Org Memory, with a Twin that prepares morning briefs and Approval-gated actions across revenue, collections and risk.",
       },
       { property: "og:title", content: "Business Ops — IntegrateWise" },
       {
         property: "og:description",
-        content: "Yesterday's revenue, open invoices, key risks, capacity — in one screen.",
+        content:
+          "From many dashboards to one operating view. Twin proposes; you approve.",
       },
     ],
   }),
   component: BusinessOpsPage,
 });
 
+const SUBNAV_ITEMS = [
+  { id: "overview", label: "Overview" },
+  { id: "workspace", label: "Workspace" },
+  { id: "brief", label: "Morning brief" },
+  { id: "examples", label: "Examples" },
+  { id: "getting-started", label: "Getting started" },
+];
+
+const LOB_ROWS = [
+  {
+    name: "SaaS — Mid-market",
+    mrr: "₹84L",
+    collections: "94%",
+    atRisk: "₹6.2L",
+    tickets: 12,
+    tone: "success" as const,
+  },
+  {
+    name: "SaaS — Enterprise",
+    mrr: "₹1.2Cr",
+    collections: "88%",
+    atRisk: "₹14L",
+    tickets: 7,
+    tone: "warning" as const,
+  },
+  {
+    name: "Services — Retainers",
+    mrr: "₹42L",
+    collections: "91%",
+    atRisk: "₹3.8L",
+    tickets: 4,
+    tone: "success" as const,
+  },
+  {
+    name: "Services — Projects",
+    mrr: "₹28L",
+    collections: "76%",
+    atRisk: "₹9.1L",
+    tickets: 9,
+    tone: "warning" as const,
+  },
+];
+
+const BRIEF_ITEMS = [
+  {
+    icon: AlertTriangle,
+    body: "3 accounts moved to at-risk.",
+  },
+  {
+    icon: CreditCard,
+    body: "₹14L stuck beyond normal collection window.",
+  },
+  {
+    icon: Users,
+    body: "Support queue above threshold in one region.",
+  },
+  {
+    icon: TrendingUp,
+    body: "2 projects slipped their milestone.",
+  },
+];
+
+const EXAMPLES = [
+  {
+    title: "Collections loop",
+    body:
+      "Twin surfaces invoices beyond normal window, groups by client impact, and prepares reminders and internal notes for finance. You approve which to send.",
+    icon: CreditCard,
+  },
+  {
+    title: "Renewal & forecast loop",
+    body:
+      "Twin highlights deals stuck, renewals at risk and segments beating plan. You approve forecast adjustments with full proof.",
+    icon: TrendingUp,
+  },
+  {
+    title: "Capacity & risk loop",
+    body:
+      "Twin connects ticket load, project slippage and pipeline to show where capacity is tight. You approve hiring, reprioritisation or temporary pauses.",
+    icon: Briefcase,
+  },
+];
+
+const STEPS = [
+  {
+    n: "01",
+    title: "Connect finance, CRM and support",
+    body: "Pick one line of business. Use OAuth or API keys.",
+    icon: Plug,
+  },
+  {
+    n: "02",
+    title: "Open the Business Workspace",
+    body: "Give a small leadership pod access — founder, COO, head of ops.",
+    icon: LayoutGrid,
+  },
+  {
+    n: "03",
+    title: "Turn on a morning brief",
+    body: "Enable one or two Twin actions in proposals-only mode.",
+    icon: Sparkles,
+  },
+  {
+    n: "04",
+    title: "Expand to more teams",
+    body: "Once the new loop feels natural, add lines of business and roles.",
+    icon: Settings2,
+  },
+];
+
 function BusinessOpsPage() {
+  const { open } = useDemoModal();
+
   return (
-    <SolutionPage
-      preLabel="Solution · Business Ops"
-      h1Lead="Run the day"
-      h1Accent="from one screen."
-      subcopy="Founders, owners, and operations leads across SaaS, services, retail and more all fight the same battle: spreadsheets and tabs before decisions. Business Ops gives you a daily Workspace built on your Org Memory."
-      primaryCta={{ label: "Book a demo", kind: "demo" }}
-      secondaryCtaHref="#mapper"
-      secondaryCtaLabel="See it for your role"
-      menu={[
-        {
-          label: "Function",
-          links: [{ href: "#function-business-ops", label: "Business Ops" }],
-        },
-        {
-          label: "Role",
-          links: [
-            { href: "#role-founder", label: "Founder" },
-            { href: "#role-ops", label: "COO / Ops lead" },
-            { href: "#role-finance", label: "Finance head" },
-          ],
-        },
-        {
-          label: "Industry",
-          links: [
-            { href: "#industry-saas", label: "SaaS" },
-            { href: "#industry-agency", label: "Agency" },
-            { href: "#industry-retail", label: "Retail" },
-            { href: "#industry-services", label: "Services" },
-          ],
-        },
-      ]}
-      mapperTitle="See your Monday morning."
-      roleOptions={[
-        { value: "founder", label: "Founder" },
-        { value: "ops", label: "COO / Ops lead" },
-        { value: "finance", label: "Finance head" },
-        { value: "gm", label: "General manager" },
-      ]}
-      industryOptions={[
-        { value: "saas", label: "SaaS" },
-        { value: "agency", label: "Agency" },
-        { value: "retail", label: "Retail" },
-        { value: "services", label: "Services" },
-      ]}
-      combos={[
-        {
-          role: "founder",
-          industry: "agency",
-          without: [
-            "Monday starts with 5 spreadsheets — revenue, collections, hiring, utilisation, issues.",
-            "Ask 3 different people for the same number.",
-            "Meetings start late because numbers don't match.",
-            "End the day still not knowing what actually moved over the weekend.",
-          ],
-          with: [
-            "Business Workspace shows yesterday's revenue, open invoices, key risks, and capacity in one view.",
-            "Org Memory holds all key metrics and changes; Twin prepares a short Monday brief.",
-            "You open one screen and know what to talk about, without Excel.",
-            "Every number is traceable back to the original tool — no spreadsheet rebuilds.",
-          ],
-        },
-        {
-          role: "founder",
-          industry: "saas",
-          without: [
-            "Pull MRR from billing, churn from CRM, signups from analytics, hiring from a doc.",
-            "Spend Monday rebuilding a status deck instead of shipping.",
-            "Miss the one account that quietly slipped because nothing tied the signals together.",
-          ],
-          with: [
-            "Workspace shows MRR, churn risks, pipeline, hiring, and key issues in one view.",
-            "Twin links usage drops with email signals to flag at-risk accounts before churn.",
-            "Org Memory keeps your last decisions and their outcomes — no more 'why did we do this?'",
-          ],
-        },
-        {
-          role: "ops",
-          industry: "services",
-          without: [
-            "Project status across PM tool, billing, sheets, and team chats.",
-            "Chase managers for utilisation and collection updates every week.",
-            "Issues escalate before you see the early signal.",
-          ],
-          with: [
-            "Ops Workspace shows projects, utilisation, collections, and open issues stitched together.",
-            "Twin proposes which projects need attention and which collections are slipping.",
-            "Decisions log into Org Memory so the next week starts where this one ended.",
-          ],
-        },
-        {
-          role: "finance",
-          industry: "retail",
-          without: [
-            "Daily sales in POS, credit in a notebook, supplier payments in WhatsApp, GST in Tally.",
-            "Reconciliation takes evenings, not minutes.",
-            "Discover bounced payments days late.",
-          ],
-          with: [
-            "Finance Workspace shows daily sales, credit outstanding, supplier dues, and GST status in one view.",
-            "Org Memory keeps every payment event linked to its source.",
-            "Twin flags payment failures and overdue credit — you approve reminders before they go out.",
-          ],
-        },
-        {
-          role: "gm",
-          industry: "retail",
-          without: [
-            "Sales in POS, inventory in a separate tool, staff shifts in WhatsApp, complaints in email.",
-            "Walk into the store unsure what's broken or what sold well yesterday.",
-          ],
-          with: [
-            "Workspace shows yesterday's sales, low-stock alerts, staff schedule, and open complaints in one view.",
-            "Twin proposes restocks and shift adjustments — you approve before anything changes.",
-          ],
-        },
-      ]}
-      sections={[
-        {
-          id: "function-business-ops",
-          group: "Function",
-          title: "One Workspace for business health.",
-          body: [
-            "One Workspace view for business health — driven by Org Memory from the Adaptive Spine.",
-            "Revenue, collections, tickets, hiring, and key tasks pulled into one stitched overview.",
-            "Twin prepares a morning brief; you approve which actions to run.",
-          ],
-        },
-        {
-          id: "role-founder",
-          group: "Role",
-          title: "For founders and owners.",
-          body: [
-            "Without: Monday spent rebuilding numbers in 5 spreadsheets before any real work happens.",
-            "With: open one Workspace and see revenue, risks, capacity, and what changed over the weekend.",
-            "Twin's morning brief becomes your weekly leadership ritual — you approve every action.",
-          ],
-        },
-        {
-          id: "role-ops",
-          group: "Role",
-          title: "For COOs and operations leads.",
-          body: [
-            "Without: chasing managers for utilisation, project status, and collections every week.",
-            "With: one stitched Ops Workspace showing projects, utilisation, collections, and open issues.",
-            "Twin highlights which projects, teams, or collections need attention this week.",
-          ],
-        },
-        {
-          id: "role-finance",
-          group: "Role",
-          title: "For finance and collections leads.",
-          body: [
-            "Without: reconciling sales, credit, payments, and GST across Tally, billing, sheets, and email.",
-            "With: a Finance Workspace tied to Org Memory — every number traceable to its source.",
-            "Twin proposes payment reminders and surfaces overdue credit — you approve before it's sent.",
-          ],
-        },
-        {
-          id: "industry-saas",
-          group: "Industry",
-          title: "Daily SaaS health.",
-          body: [
-            "MRR, churn signals, pipeline, hiring, and key issues stitched into one Workspace view.",
-            "Twin connects usage drops with conversations to surface at-risk accounts early.",
-            "Org Memory keeps decisions and outcomes — no more 'why did we choose that pricing?'",
-          ],
-        },
-        {
-          id: "industry-agency",
-          group: "Industry",
-          title: "Daily agency health.",
-          body: [
-            "Retainers, utilisation, invoices, project load — all stitched in one Business Workspace.",
-            "Twin flags slipping retainers and overdue invoices, with evidence from email and WhatsApp.",
-            "Org Memory keeps every client decision connected to people, projects, and money.",
-          ],
-        },
-        {
-          id: "industry-retail",
-          group: "Industry",
-          title: "Daily retail health.",
-          body: [
-            "Sales, inventory alerts, credit, staff shifts — in one Workspace tab, every morning.",
-            "Twin proposes restocks, shift changes, and credit reminders before they become problems.",
-            "All actions go through your Approval Gate before anything moves.",
-          ],
-        },
-        {
-          id: "industry-services",
-          group: "Industry",
-          title: "Daily services health.",
-          body: [
-            "Projects, collections, open tickets, and team load stitched together for service businesses.",
-            "Twin surfaces slipping projects and overdue collections from Org Memory.",
-            "You decide which actions Twin runs — nothing escapes the Approval Gate.",
-          ],
-        },
-      ]}
-      closeHeading="Walk into Monday with one screen, not five spreadsheets."
-      closingPrimary={{ label: "Book a demo", kind: "demo" }}
-    />
+    <>
+      <StickySubNav items={SUBNAV_ITEMS} />
+
+      {/* 1. Hero — #overview */}
+      <Section orbs id="overview" className="!pt-20 lg:!pt-28">
+        <Container>
+          <div className="mx-auto max-w-3xl text-center">
+            <Badge variant="muted">Solutions · Business Ops</Badge>
+            <h1 className="heading-h1 mt-5">
+              Run the day{" "}
+              <span className="text-gradient-hero">from one screen.</span>
+            </h1>
+            <p className="mx-auto mt-5 text-[17px] leading-relaxed text-text-secondary">
+              For founders and operators who live in dashboards, sheets and chat, but still have
+              to ask "what's really going on?" IntegrateWise gives you a Business Workspace on top
+              of Org Memory, plus a Twin that prepares morning briefs and actions you approve.
+            </p>
+            <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
+              <button onClick={() => open("Business Ops hero")} className="btn-primary-iw">
+                Book a Business Ops demo <ArrowRight size={16} />
+              </button>
+              <a href="#brief" className="btn-secondary-iw">
+                Show me a morning brief
+              </a>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* 2. Overview narrative */}
+      <Section alt>
+        <Container>
+          <Reveal className="mx-auto max-w-3xl">
+            <h2 className="heading-h2 text-center">
+              From many dashboards to one operating view.
+            </h2>
+            <div className="mx-auto mt-6 max-w-3xl space-y-4 text-[15.5px] leading-relaxed text-text-secondary">
+              <p>
+                Today, you have a dashboard for revenue, separate reports for collections,
+                tickets, and projects. Decisions still require manual stitching across tabs,
+                screenshots and shared sheets.
+              </p>
+              <p>
+                With IntegrateWise, Spine + Digital Memory build Org Memory across your tools.
+                The Business Workspace shows lines of business, cohorts, risk and workload in one
+                view — without the weekly dashboard rebuild.
+              </p>
+            </div>
+          </Reveal>
+        </Container>
+      </Section>
+
+      {/* 3. Workspace — #workspace */}
+      <Section id="workspace">
+        <Container>
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <Badge variant="muted">Workspace</Badge>
+            <h2 className="heading-h2 mt-4">Your Business Workspace.</h2>
+          </Reveal>
+
+          <Reveal delay={120} className="mx-auto mt-10 max-w-6xl">
+            <div className="card-iw overflow-hidden" style={{ background: "var(--bg-surface)" }}>
+              <div className="flex items-center justify-between border-b border-border px-4 py-2.5">
+                <span className="badge-iw badge-iw-muted !text-[11px]">Lines of business</span>
+                <span className="text-[12px] text-text-secondary">4 lines · 2 at-risk</span>
+              </div>
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-[13px]">
+                  <thead className="bg-elevated/40 text-[11px] uppercase tracking-wider text-text-secondary">
+                    <tr>
+                      <th className="px-4 py-2 font-semibold">Line of business</th>
+                      <th className="px-2 py-2 font-semibold">MRR</th>
+                      <th className="hidden px-2 py-2 font-semibold sm:table-cell">
+                        Collections %
+                      </th>
+                      <th className="hidden px-2 py-2 font-semibold md:table-cell">
+                        At-risk revenue
+                      </th>
+                      <th className="hidden px-2 py-2 font-semibold md:table-cell">
+                        Open tickets
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {LOB_ROWS.map((r) => (
+                      <tr key={r.name} className="border-t border-border/70">
+                        <td className="px-4 py-2.5 font-medium text-foreground">
+                          <div className="flex items-center gap-2">
+                            <span
+                              className="h-2 w-2 rounded-full"
+                              style={{
+                                background:
+                                  r.tone === "warning"
+                                    ? "var(--state-warning)"
+                                    : "var(--state-success)",
+                              }}
+                            />
+                            {r.name}
+                          </div>
+                        </td>
+                        <td className="px-2 py-2.5 text-foreground/90">{r.mrr}</td>
+                        <td className="hidden px-2 py-2.5 text-foreground/85 sm:table-cell">
+                          {r.collections}
+                        </td>
+                        <td className="hidden px-2 py-2.5 text-foreground/85 md:table-cell">
+                          {r.atRisk}
+                        </td>
+                        <td className="hidden px-2 py-2.5 text-foreground/85 md:table-cell">
+                          {r.tickets}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={200} className="mx-auto mt-8 max-w-3xl">
+            <ul className="space-y-2.5 text-[14px] leading-relaxed text-foreground/90">
+              <li>• See revenue, collections and risk by segment or line of business.</li>
+              <li>• Drill into accounts or projects when something moves.</li>
+              <li>• Spot where money is stuck or work is blocked.</li>
+            </ul>
+          </Reveal>
+        </Container>
+      </Section>
+
+      {/* 4. Morning brief — #brief */}
+      <Section alt id="brief">
+        <Container>
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <Badge variant="muted">Twin</Badge>
+            <h2 className="heading-h2 mt-4">Your day starts with a brief, not a spreadsheet.</h2>
+            <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
+              Twin reads Digital Memory overnight and produces a short morning brief inside your
+              Workspace. Each line links to evidence and a suggested action, all waiting behind
+              Approval.
+            </p>
+          </Reveal>
+
+          <Reveal delay={120} className="mx-auto mt-10 max-w-3xl">
+            <div className="card-iw overflow-hidden">
+              <div className="flex items-center justify-between border-b border-border px-5 py-3.5">
+                <div className="flex items-center gap-2 text-brand-accent">
+                  <Sparkles size={16} />
+                  <p className="text-[12px] font-semibold uppercase tracking-wider">
+                    Twin · Morning brief
+                  </p>
+                </div>
+                <Badge variant="muted">4 to review</Badge>
+              </div>
+              <ul className="divide-y divide-border">
+                {BRIEF_ITEMS.map((b, i) => {
+                  const Icon = b.icon;
+                  return (
+                    <li
+                      key={i}
+                      className="flex items-center justify-between gap-4 px-5 py-3.5"
+                    >
+                      <div className="flex min-w-0 items-center gap-3">
+                        <Icon size={15} className="shrink-0 text-brand-accent" />
+                        <span className="text-[14px] text-foreground/90">{b.body}</span>
+                      </div>
+                      <span className="inline-flex items-center gap-1 text-[11.5px] text-text-secondary">
+                        <ShieldCheck size={11} className="text-brand-accent" /> Approval
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </Reveal>
+        </Container>
+      </Section>
+
+      {/* 5. Examples — #examples */}
+      <Section id="examples">
+        <Container>
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <Badge variant="muted">Examples</Badge>
+            <h2 className="heading-h2 mt-4">Loops operators actually use.</h2>
+          </Reveal>
+
+          <div className="mx-auto mt-10 grid max-w-6xl gap-5 lg:grid-cols-3">
+            {EXAMPLES.map((e, i) => {
+              const Icon = e.icon;
+              return (
+                <Reveal key={e.title} delay={i * 80}>
+                  <div className="card-iw h-full p-6">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-elevated text-brand-accent">
+                      <Icon size={18} />
+                    </div>
+                    <h3 className="mt-4 text-[18px] font-semibold text-foreground">{e.title}</h3>
+                    <p className="mt-2 text-[14px] leading-relaxed text-foreground/85">{e.body}</p>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
+        </Container>
+      </Section>
+
+      {/* 6. Getting started — #getting-started */}
+      <Section alt id="getting-started">
+        <Container>
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <Badge variant="muted">Getting started</Badge>
+            <h2 className="heading-h2 mt-4">Start with one leadership pod.</h2>
+          </Reveal>
+
+          <div className="mx-auto mt-10 grid max-w-6xl gap-4 lg:grid-cols-4">
+            {STEPS.map((s, i) => {
+              const Icon = s.icon;
+              return (
+                <Reveal key={s.n} delay={i * 80}>
+                  <div className="card-iw h-full p-5">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] font-semibold uppercase tracking-wider text-text-secondary">
+                        {s.n}
+                      </span>
+                      <Icon size={16} className="text-brand-accent" />
+                    </div>
+                    <p className="mt-3 text-[15px] font-semibold text-foreground">{s.title}</p>
+                    <p className="mt-2 text-[13.5px] leading-relaxed text-text-secondary">
+                      {s.body}
+                    </p>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
+
+          <Reveal delay={400} className="mx-auto mt-10 max-w-3xl text-center">
+            <button
+              onClick={() => open("Business Ops getting started")}
+              className="btn-primary-iw"
+            >
+              Book a Business Ops demo <ArrowRight size={16} />
+            </button>
+          </Reveal>
+        </Container>
+      </Section>
+    </>
   );
 }
