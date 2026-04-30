@@ -356,6 +356,7 @@ function PlatformPage() {
           </Reveal>
 
           {/* Three lines sub-section */}
+          <div id="digital-memory" className="scroll-mt-24" />
           <Reveal className="mx-auto mt-20 max-w-3xl text-center">
             <h3 className="text-[28px] md:text-[32px] font-semibold text-foreground">
               Digital Memory: three lines that meet but don't mix.
