@@ -74,8 +74,8 @@ function HomePage() {
 
         <Container>
           <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-12">
-            {/* LEFT — headline */}
-            <Reveal>
+            {/* LEFT — headline (no Reveal wrapper above the fold for instant paint) */}
+            <div>
               <span className="badge-iw badge-iw-muted">Stop the daily reset</span>
               <h1 className="heading-display mt-5">
                 Your work{" "}
