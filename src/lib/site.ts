@@ -182,6 +182,7 @@ export const PRIMARY_NAV: ReadonlyArray<NavGroup> = [
     label: "Product",
     groups: [{ heading: "Product", items: PRODUCT_LINKS }],
   },
+  { kind: "link", label: "Twin", to: "/twin" },
   {
     kind: "menu",
     label: "Solutions",
@@ -222,12 +223,8 @@ export const PRIMARY_NAV: ReadonlyArray<NavGroup> = [
       chips: SOLUTIONS_INDUSTRIES,
     },
   },
-  {
-    kind: "menu",
-    label: "Resources",
-    groups: [{ heading: "Resources", items: RESOURCES_LINKS }],
-  },
   { kind: "link", label: "Pricing", to: "/pricing" },
+  { kind: "link", label: "Company", to: "/company" },
 ];
 
 /* Industry icon map (used by /solutions hub display) */
