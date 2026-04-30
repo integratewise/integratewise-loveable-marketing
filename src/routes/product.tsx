@@ -584,7 +584,7 @@ function ProductPage() {
       </Section>
 
       {/* 8. CTA */}
-      <Section id="demo" alt>
+      <Section id="demo">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <h2 className="heading-h2">See your Workspace built on your own data.</h2>
