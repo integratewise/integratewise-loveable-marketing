@@ -2,11 +2,14 @@
 import type { ComponentType } from "react";
 import {
   Activity,
+  BarChart3,
   Boxes,
   Briefcase,
   Building2,
+  CircleDollarSign,
   CircuitBoard,
   Cpu,
+  DollarSign,
   FileText,
   Handshake,
   HeartPulse,
@@ -17,11 +20,19 @@ import {
   Rocket,
   ShieldCheck,
   ShoppingBag,
+  ShoppingCart,
+  SlidersHorizontal,
   Sparkles,
   Star,
   Stethoscope,
   Target,
+  Telescope,
+  Truck,
+  TrendingUp,
   User,
+  UserCircle,
+  Users,
+  Wrench,
   Workflow,
 } from "lucide-react";
 
@@ -62,28 +73,110 @@ export const SOLUTIONS_OVERVIEW = {
   icon: LayoutDashboard,
 } as const;
 
-export const SOLUTIONS_BY_OUTCOME: SolutionItem[] = [
+export const SOLUTIONS_BY_FUNCTION: SolutionItem[] = [
   {
     to: "/solutions/account-success",
     label: "Account Success",
-    blurb: "Walk into every customer conversation already knowing what changed.",
-    icon: Handshake,
+    blurb: "Entity matching and dedup",
+    icon: Users,
   },
   {
     to: "/solutions/business-ops",
     label: "Business Ops",
-    blurb: "One screen. Everything that changed since Friday.",
-    icon: Activity,
+    blurb: "The live operating picture",
+    icon: BarChart3,
   },
   {
     to: "/solutions/personal-space",
     label: "Personal Space",
-    blurb: "Your day, finally assembled.",
-    icon: User,
+    blurb: "Your workspace, your context",
+    icon: Sparkles,
     waitlist: true,
   },
 ];
 
+// Kept for backwards compatibility with existing imports.
+export const SOLUTIONS_BY_OUTCOME = SOLUTIONS_BY_FUNCTION;
+
+export const SOLUTIONS_BY_INDUSTRY: SolutionItem[] = [
+  {
+    to: "/solutions/by-industry/saas",
+    label: "SaaS",
+    blurb: "Renewals, expansion, adoption",
+    icon: LineChart,
+  },
+  {
+    to: "/solutions/by-industry/professional-services",
+    label: "Services & Agencies",
+    blurb: "Projects, utilisation, billing",
+    icon: Wrench,
+  },
+  {
+    to: "/solutions/by-industry/manufacturing",
+    label: "Manufacturing & Trade",
+    blurb: "Orders, shipments, exceptions",
+    icon: Package,
+  },
+  {
+    to: "/solutions/by-industry/ecommerce",
+    label: "Retail & Ecommerce",
+    blurb: "Stock, orders, returns, support",
+    icon: ShoppingCart,
+  },
+  {
+    to: "/solutions/by-industry/professional-services",
+    label: "Professional Services",
+    blurb: "Engagements, billing, relationships",
+    icon: Briefcase,
+  },
+  {
+    to: "/solutions/by-industry/fintech",
+    label: "Finance",
+    blurb: "Revenue, risk, collections, cash",
+    icon: TrendingUp,
+  },
+];
+
+export const SOLUTIONS_BY_ROLE: SolutionItem[] = [
+  {
+    to: "/solutions/account-success",
+    label: "Customer Success & TAMs",
+    blurb: "Save accounts, accelerate renewals",
+    icon: UserCircle,
+  },
+  {
+    to: "/solutions/by-role",
+    label: "Founders & CXOs",
+    blurb: "Monday brief, board pack, full view",
+    icon: Telescope,
+  },
+  {
+    to: "/solutions/business-ops",
+    label: "Rev / Business Ops",
+    blurb: "Pipeline, headcount, risk — connected",
+    icon: SlidersHorizontal,
+  },
+  {
+    to: "/solutions/business-ops",
+    label: "Operations & Delivery",
+    blurb: "Projects, utilisation, exceptions",
+    icon: Truck,
+  },
+  {
+    to: "/solutions/business-ops",
+    label: "Finance Leaders",
+    blurb: "Cash, collections, runway",
+    icon: CircleDollarSign,
+  },
+  {
+    to: "/solutions/personal-space",
+    label: "Individual Professionals",
+    blurb: "Morning brief, session memory",
+    icon: User,
+  },
+];
+
+// Backwards-compatible single-link references used elsewhere.
 export const SOLUTIONS_BY_ROLE_INDEX = {
   to: "/solutions/by-role",
   label: "By Role",
@@ -182,46 +275,14 @@ export const PRIMARY_NAV: ReadonlyArray<NavGroup> = [
     label: "Product",
     groups: [{ heading: "Product", items: PRODUCT_LINKS }],
   },
-  { kind: "link", label: "Twin", to: "/twin" },
   {
     kind: "menu",
     label: "Solutions",
     groups: [
-      {
-        heading: "Overview",
-        items: [
-          {
-            to: SOLUTIONS_OVERVIEW.to,
-            label: SOLUTIONS_OVERVIEW.label,
-            blurb: SOLUTIONS_OVERVIEW.blurb,
-            icon: SOLUTIONS_OVERVIEW.icon,
-          },
-        ],
-      },
-      { heading: "By outcome", items: SOLUTIONS_BY_OUTCOME },
-      {
-        heading: "Filters",
-        items: [
-          {
-            to: SOLUTIONS_BY_INDUSTRY_INDEX.to,
-            label: SOLUTIONS_BY_INDUSTRY_INDEX.label,
-            blurb: SOLUTIONS_BY_INDUSTRY_INDEX.blurb,
-            icon: SOLUTIONS_BY_INDUSTRY_INDEX.icon,
-          },
-          {
-            to: SOLUTIONS_BY_ROLE_INDEX.to,
-            label: SOLUTIONS_BY_ROLE_INDEX.label,
-            blurb: SOLUTIONS_BY_ROLE_INDEX.blurb,
-            icon: SOLUTIONS_BY_ROLE_INDEX.icon,
-          },
-        ],
-      },
+      { heading: "By Function", items: SOLUTIONS_BY_FUNCTION },
+      { heading: "By Industry", items: SOLUTIONS_BY_INDUSTRY },
+      { heading: "By Role", items: SOLUTIONS_BY_ROLE },
     ],
-    footer: {
-      label: "Browse all 6 industries",
-      to: SOLUTIONS_BY_INDUSTRY_INDEX.to,
-      chips: SOLUTIONS_INDUSTRIES,
-    },
   },
   { kind: "link", label: "Pricing", to: "/pricing" },
   { kind: "link", label: "Company", to: "/company" },
