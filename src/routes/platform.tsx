@@ -28,6 +28,16 @@ import { Badge } from "@/components/site/Badge";
 import { Reveal } from "@/components/site/Reveal";
 import { useDemoModal } from "@/components/site/demo-modal-context";
 import { CONNECTOR_LOGOS } from "@/components/site/ConnectorMarquee";
+import { StickySubNav } from "@/components/site/StickySubNav";
+
+const SUBNAV_ITEMS = [
+  { id: "spine", label: "Spine" },
+  { id: "how-it-works", label: "How it works" },
+  { id: "digital-memory", label: "Digital Memory" },
+  { id: "connectors", label: "Connectors" },
+  { id: "security", label: "Security" },
+  { id: "integrations", label: "Integrations" },
+];
 
 export const Route = createFileRoute("/platform")({
   head: () => ({
