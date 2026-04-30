@@ -10,7 +10,6 @@ import {
   MessageSquare,
   AlertTriangle,
   FileText,
-  Eye,
   Send,
   RefreshCcw,
   Sun,
