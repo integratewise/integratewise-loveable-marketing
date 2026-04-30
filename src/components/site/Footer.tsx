@@ -17,8 +17,9 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-text-secondary">
-              Your work resets every day. IntegrateWise stops that. Your data becomes Memory.
-              Your Twin connects, explains, and prepares — you approve every move.
+              Your work resets every day. IntegrateWise stops that. Your data becomes Digital
+              Memory. Your Twin connects what changed, explains why it matters, and prepares
+              what to do next — you approve every move.
             </p>
             <p className="mt-6 text-[13px] text-text-secondary">
               SOC 2 Type II · GDPR Ready · Tenant Isolation · Approval-gated
