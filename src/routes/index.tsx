@@ -302,8 +302,8 @@ function HomePage() {
           </ul>
 
           <p className="mx-auto mt-8 max-w-2xl text-center text-[14px] leading-relaxed text-text-secondary">
-            Approved actions execute in your apps. Results return as new Truth. Your Twin learns
-            from every decision.
+            After approval, approved actions run in your apps, the results flow back as new
+            Truth in Digital Memory, and your Twin learns from every decision.
           </p>
         </Container>
       </Section>
