@@ -59,8 +59,8 @@ function HomePage() {
           <div className="fade-up mx-auto max-w-4xl text-center">
             <span className="badge-iw badge-iw-muted">Still juggling your work?</span>
             <h1 className="heading-display mt-6">
-              <span className="block">Stop being the</span>
-              <span className="block text-gradient-hero">human API between your tools.</span>
+              Stop being the{" "}
+              <span className="text-gradient-hero">human API between your tools.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-[18px] leading-relaxed text-text-secondary">
               One workspace. Full context. Every action under your control.
