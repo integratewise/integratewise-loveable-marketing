@@ -198,7 +198,7 @@ function SchemaChips() {
 function TriadConvergence() {
   return (
     <div className="mt-6 rounded-xl border border-border bg-white/[0.02] p-5">
-      <div className="grid items-center gap-4 md:grid-cols-[1fr_auto_1fr]">
+      <div className="grid items-center gap-6 md:grid-cols-[1fr_auto_1fr]">
         {/* Left labels */}
         <div className="grid gap-2">
           <Strand icon={Database} label="Truth" sub="What's actually happening" tone="peach" />
@@ -207,7 +207,7 @@ function TriadConvergence() {
         </div>
 
         {/* Venn intersection */}
-        <div className="relative mx-auto h-32 w-32">
+        <div className="relative mx-auto h-32 w-32 shrink-0">
           <motion.span
             className="absolute left-2 top-2 size-20 rounded-full"
             style={{ background: "rgba(255,225,204,0.22)" }}
@@ -247,14 +247,14 @@ function TriadConvergence() {
 
         {/* Right: raw AI chat dimmed outside */}
         <motion.div
-          className="flex items-center gap-2 rounded-lg border border-border/60 bg-white/[0.02] p-3 opacity-50"
+          className="flex items-center gap-2 self-center rounded-lg border border-border/60 bg-white/[0.02] p-3 opacity-60"
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.5 }}
+          whileInView={{ opacity: 0.6 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.4, delay: 0.8 }}
         >
-          <MessageSquareOff size={16} className="text-text-secondary" />
-          <div>
+          <MessageSquareOff size={16} className="shrink-0 text-text-secondary" />
+          <div className="min-w-0">
             <div className="text-[12.5px] font-semibold text-foreground/80">Raw AI chat</div>
             <div className="text-[11px] text-text-secondary">Never writes into Memory</div>
           </div>
