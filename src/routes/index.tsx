@@ -219,7 +219,7 @@ function HomePage() {
           <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:items-start">
             <div>
               <span className="badge-iw badge-iw-muted">Workspace · Intelligence</span>
-              <h2 className="heading-h2 mt-4">One nervous system.</h2>
+              <h2 className="heading-h2 mt-4">One workspace. One Memory.</h2>
               <p className="mt-4 text-[16px] text-text-secondary">
                 Every tool connected. Every action approved.
               </p>
