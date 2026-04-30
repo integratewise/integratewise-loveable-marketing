@@ -6,6 +6,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { AnnouncementBar } from "@/components/site/AnnouncementBar";
 import { ClosingCtaBand } from "@/components/site/ClosingCtaBand";
 import { ProductVideo } from "@/components/site/ProductVideo";
+import { AfterApprovalLoop } from "@/components/site/AfterApprovalLoop";
 import { useDemoModal } from "@/components/site/demo-modal-context";
 import { CONNECTOR_LOGOS } from "@/components/site/ConnectorMarquee";
 import { SpineFlow } from "@/components/site/motion/SpineFlow";
@@ -299,8 +300,16 @@ function HomePage() {
               </li>
             ))}
           </ul>
+
+          <p className="mx-auto mt-8 max-w-2xl text-center text-[14px] leading-relaxed text-text-secondary">
+            Approved actions execute in your apps. Results return as new Truth. Your Twin learns
+            from every decision.
+          </p>
         </Container>
       </Section>
+
+      {/* ========================= 6b. AFTER APPROVAL — THE LOOP ========================= */}
+      <AfterApprovalLoop />
 
       {/* ========================= 7. INTEGRATION ARCHITECTURE ========================= */}
       <Section>
