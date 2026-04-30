@@ -30,6 +30,14 @@ import { Badge } from "@/components/site/Badge";
 import { Reveal } from "@/components/site/Reveal";
 import { ProductVideo } from "@/components/site/ProductVideo";
 import { useDemoModal } from "@/components/site/demo-modal-context";
+import { StickySubNav } from "@/components/site/StickySubNav";
+
+const SUBNAV_ITEMS = [
+  { id: "workspace", label: "Workspace" },
+  { id: "how-it-works", label: "How it works" },
+  { id: "digital-memory", label: "Digital Memory" },
+  { id: "security", label: "Security" },
+];
 
 export const Route = createFileRoute("/product")({
   head: () => ({
