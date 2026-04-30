@@ -173,6 +173,8 @@ function PlatformPage() {
 
   return (
     <>
+      <StickySubNav items={SUBNAV_ITEMS} />
+
       {/* 1. Hero — #spine */}
       <Section orbs id="spine" className="!pt-20 lg:!pt-28">
         <Container>
