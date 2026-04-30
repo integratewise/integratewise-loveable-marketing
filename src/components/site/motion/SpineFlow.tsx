@@ -103,12 +103,17 @@ function ConnectorLines() {
         </linearGradient>
       </defs>
       {[
-        { d: "M 12 18 Q 35 18, 50 50" },
-        { d: "M 12 50 Q 35 50, 50 50" },
-        { d: "M 12 82 Q 35 82, 50 50" },
-        { d: "M 88 18 Q 65 18, 50 50" },
-        { d: "M 88 50 Q 65 50, 50 50" },
-        { d: "M 88 82 Q 65 82, 50 50" },
+        // Chip Y centers: 3 chips with gap-3 in a flex column. With
+        // preserveAspectRatio="none" the viewBox stretches to container.
+        // Chip rows land at roughly 17%, 50%, 83% of the column height,
+        // and chip right-edges sit ~22% from container edge once gap-6
+        // is accounted for.
+        { d: "M 22 17 C 38 17, 44 50, 50 50" },
+        { d: "M 22 50 L 50 50" },
+        { d: "M 22 83 C 38 83, 44 50, 50 50" },
+        { d: "M 78 17 C 62 17, 56 50, 50 50" },
+        { d: "M 78 50 L 50 50" },
+        { d: "M 78 83 C 62 83, 56 50, 50 50" },
       ].map((p, i) => (
         <motion.path
           key={i}
