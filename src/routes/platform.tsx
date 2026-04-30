@@ -317,8 +317,8 @@ function PlatformPage() {
         </Container>
       </Section>
 
-      {/* 3. Flow into Digital Memory — #digital-memory */}
-      <Section id="digital-memory">
+      {/* 3. Flow into Digital Memory — #how-it-works steps + #digital-memory three lines */}
+      <Section id="how-it-works">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">How it works</Badge>
