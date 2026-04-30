@@ -307,15 +307,19 @@ export const PRIMARY_NAV: ReadonlyArray<NavGroup> = [
   },
   {
     kind: "menu",
-    label: "Solutions",
-    groups: [
-      { heading: "By Function", items: SOLUTIONS_BY_FUNCTION },
-      { heading: "By Industry", items: SOLUTIONS_BY_INDUSTRY },
-      { heading: "By Role", items: SOLUTIONS_BY_ROLE },
-    ],
+    label: "Intelligence",
+    groups: [{ heading: "Intelligence", items: INTELLIGENCE_LINKS }],
   },
-  { kind: "link", label: "Pricing", to: "/pricing" },
-  { kind: "link", label: "Company", to: "/company" },
+  {
+    kind: "menu",
+    label: "Solutions",
+    groups: [{ heading: "Solutions", items: SOLUTIONS_LINKS }],
+  },
+  {
+    kind: "menu",
+    label: "Company",
+    groups: [{ heading: "Company", items: COMPANY_LINKS }],
+  },
 ];
 
 /* Industry icon map (used by /solutions hub display) */
