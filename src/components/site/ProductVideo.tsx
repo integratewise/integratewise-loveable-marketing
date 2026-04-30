@@ -137,14 +137,20 @@ export function ProductVideo({
     const onTime = () => {
       if (!video.duration) return;
       setProgress((video.currentTime / video.duration) * 100);
+      setCurrentTime(video.currentTime);
     };
+    const onMeta = () => setDuration(video.duration || 0);
     video.addEventListener("play", onPlay);
     video.addEventListener("pause", onPause);
     video.addEventListener("timeupdate", onTime);
+    video.addEventListener("loadedmetadata", onMeta);
+    video.addEventListener("durationchange", onMeta);
     return () => {
       video.removeEventListener("play", onPlay);
       video.removeEventListener("pause", onPause);
       video.removeEventListener("timeupdate", onTime);
+      video.removeEventListener("loadedmetadata", onMeta);
+      video.removeEventListener("durationchange", onMeta);
     };
   }, []);
 
