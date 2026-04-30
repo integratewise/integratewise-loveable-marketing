@@ -13,7 +13,13 @@ export interface StubProps {
   showWaitlist?: boolean;
 }
 
-export function StubPage({ title, description, badge = "Coming next", intro, showWaitlist = false }: StubProps) {
+export function StubPage({
+  title,
+  description,
+  badge = "Coming next",
+  intro,
+  showWaitlist = false,
+}: StubProps) {
   const { open, openWaitlist } = useDemoModal();
   return (
     <Section orbs>
@@ -24,8 +30,8 @@ export function StubPage({ title, description, badge = "Coming next", intro, sho
           <div className="mx-auto mt-5 max-w-xl text-[17px] leading-relaxed text-text-secondary">
             {intro ?? (
               <p>
-                We're shipping this section next. The Foundation + Home page is live so you can review the design
-                system and Home narrative first.
+                We're shipping this section next. The Foundation + Home page is live so you can
+                review the design system and Home narrative first.
               </p>
             )}
           </div>
@@ -35,7 +41,11 @@ export function StubPage({ title, description, badge = "Coming next", intro, sho
               Book a Demo
             </button>
             {showWaitlist && (
-              <button type="button" onClick={() => openWaitlist(title)} className="btn-secondary-iw">
+              <button
+                type="button"
+                onClick={() => openWaitlist(title)}
+                className="btn-secondary-iw"
+              >
                 Join the Waitlist
               </button>
             )}

@@ -15,7 +15,9 @@ function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <p className="text-[13px] font-semibold uppercase tracking-wider text-text-secondary">404</p>
+        <p className="text-[13px] font-semibold uppercase tracking-wider text-text-secondary">
+          404
+        </p>
         <h1 className="heading-h1 mt-3">This page hasn't been built yet.</h1>
         <p className="mt-3 text-[15px] text-text-secondary">
           The link may be old, or we haven't shipped this section. Head back home and we'll get you
@@ -46,11 +48,31 @@ export const Route = createRootRoute({
       { title: "IntegrateWise - Knowledge Workspace" },
       { property: "og:title", content: "IntegrateWise - Knowledge Workspace" },
       { name: "twitter:title", content: "IntegrateWise - Knowledge Workspace" },
-      { name: "description", content: "IntegrateWise is a knowledge workspace that unifies scattered data into Digital Memory for AI-powered insights and actions." },
-      { property: "og:description", content: "IntegrateWise is a knowledge workspace that unifies scattered data into Digital Memory for AI-powered insights and actions." },
-      { name: "twitter:description", content: "IntegrateWise is a knowledge workspace that unifies scattered data into Digital Memory for AI-powered insights and actions." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/dd17b894-d1f7-41da-885b-2257b58f4ffd" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/dd17b894-d1f7-41da-885b-2257b58f4ffd" },
+      {
+        name: "description",
+        content:
+          "IntegrateWise is a knowledge workspace that unifies scattered data into Digital Memory for AI-powered insights and actions.",
+      },
+      {
+        property: "og:description",
+        content:
+          "IntegrateWise is a knowledge workspace that unifies scattered data into Digital Memory for AI-powered insights and actions.",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "IntegrateWise is a knowledge workspace that unifies scattered data into Digital Memory for AI-powered insights and actions.",
+      },
+      {
+        property: "og:image",
+        content:
+          "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/dd17b894-d1f7-41da-885b-2257b58f4ffd",
+      },
+      {
+        name: "twitter:image",
+        content:
+          "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/dd17b894-d1f7-41da-885b-2257b58f4ffd",
+      },
     ],
     links: [{ rel: "stylesheet", href: appCss }],
   }),

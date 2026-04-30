@@ -12,7 +12,11 @@ export const productAttention: AttentionScenario = {
   label: "3 things need your attention right now",
   signals: [
     { entity: "Acme Corp", change: "Usage dropped — renewal in 21 days", severity: "high" },
-    { entity: "Invoice INV-2048", change: "Overdue 14 days · support issue linked", severity: "high" },
+    {
+      entity: "Invoice INV-2048",
+      change: "Overdue 14 days · support issue linked",
+      severity: "high",
+    },
     { entity: "Deal: Northwind", change: "Stalled · decision-maker silent", severity: "medium" },
   ],
   note: "Twin has prepared a response for each.",
@@ -20,7 +24,11 @@ export const productAttention: AttentionScenario = {
 
 export const twinAttention: AttentionScenario = {
   signals: [
-    { entity: "Acme Corp", change: "Usage drop + 2 tickets + renewal — three signals are connected", severity: "high" },
+    {
+      entity: "Acme Corp",
+      change: "Usage drop + 2 tickets + renewal — three signals are connected",
+      severity: "high",
+    },
     { entity: "Q1 brief", change: "5 inputs changed since Friday", severity: "medium" },
     { entity: "Sarah (Champion)", change: "Last seen in app 12 days ago", severity: "medium" },
   ],
@@ -28,7 +36,11 @@ export const twinAttention: AttentionScenario = {
 
 export const accountSuccessAttention: AttentionScenario = {
   signals: [
-    { entity: "Acme Corp", change: "Usage down 18% · 2 tickets open · Renewal in 30 days", severity: "high" },
+    {
+      entity: "Acme Corp",
+      change: "Usage down 18% · 2 tickets open · Renewal in 30 days",
+      severity: "high",
+    },
     { entity: "RetailNest", change: "Champion changed roles last week", severity: "medium" },
     { entity: "DataVault AU", change: "QBR 47 days overdue", severity: "medium" },
   ],
@@ -52,8 +64,16 @@ export const personalAttention: AttentionScenario = {
 
 export const salesOpsAttention: AttentionScenario = {
   signals: [
-    { entity: "Northwind", change: "No reply in 9 days · demo done · decision next week", severity: "high" },
-    { entity: "Pipeline", change: "$320K at risk in 'Verbal Yes' stage > 21 days", severity: "medium" },
+    {
+      entity: "Northwind",
+      change: "No reply in 9 days · demo done · decision next week",
+      severity: "high",
+    },
+    {
+      entity: "Pipeline",
+      change: "$320K at risk in 'Verbal Yes' stage > 21 days",
+      severity: "medium",
+    },
     { entity: "Forecast", change: "Down 6% vs Friday — three deals slipped", severity: "medium" },
   ],
 };
@@ -61,7 +81,11 @@ export const salesOpsAttention: AttentionScenario = {
 export const financeOpsAttention: AttentionScenario = {
   signals: [
     { entity: "INV-2048", change: "Overdue 14 days · support issue linked", severity: "high" },
-    { entity: "Vendor Northwind", change: "Variance +$240 on PO-1142 · auto-flagged", severity: "medium" },
+    {
+      entity: "Vendor Northwind",
+      change: "Variance +$240 on PO-1142 · auto-flagged",
+      severity: "medium",
+    },
     { entity: "Reconciliation", change: "3 entries unmatched since Tuesday", severity: "medium" },
   ],
 };

@@ -7,8 +7,12 @@ export function UnfairAdvantage() {
     <Reveal className="card-iw overflow-hidden">
       <div className="grid grid-cols-[1.1fr_1fr_1fr] border-b border-border bg-elevated/40 px-4 py-3 text-[12px] font-semibold uppercase tracking-[0.14em] text-text-secondary sm:px-6">
         <div>Dimension</div>
-        <div className="flex items-center gap-1.5"><X size={13} className="text-state-error" /> Other AI</div>
-        <div className="flex items-center gap-1.5"><Check size={13} className="text-success" /> IntegrateWise</div>
+        <div className="flex items-center gap-1.5">
+          <X size={13} className="text-state-error" /> Other AI
+        </div>
+        <div className="flex items-center gap-1.5">
+          <Check size={13} className="text-success" /> IntegrateWise
+        </div>
       </div>
       <ul>
         {COMPARE_ROWS.map((r, i) => (

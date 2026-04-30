@@ -30,8 +30,7 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: "About IntegrateWise" },
       {
         property: "og:description",
-        content:
-          "From observing fragmented workflows to building the future of work continuity.",
+        content: "From observing fragmented workflows to building the future of work continuity.",
       },
     ],
   }),
@@ -53,8 +52,7 @@ const TIMELINE: TimelineEntry[] = [
     era: "2023 — The Problem",
     title: "Work Was Breaking",
     body: "Teams were losing critical context switching between 10+ tools daily. Knowledge was trapped in silos, and every handoff meant starting from scratch.",
-    quote:
-      "We watched teams rebuild the same insights repeatedly — wasting time and talent.",
+    quote: "We watched teams rebuild the same insights repeatedly — wasting time and talent.",
     icon: AlertTriangle,
     stat: "21%",
     statLabel: "Time lost to context switching",
@@ -63,8 +61,7 @@ const TIMELINE: TimelineEntry[] = [
     era: "Early 2024 — Discovery",
     title: "Listening & Learning",
     body: "We spoke with customer success teams, finance ops, and founders. The pattern was clear: people needed their tools to understand each other.",
-    quote:
-      "Everyone wanted the same thing — memory that spans their entire workflow.",
+    quote: "Everyone wanted the same thing — memory that spans their entire workflow.",
     icon: Users,
     stat: "100+",
     statLabel: "Teams interviewed",
@@ -91,8 +88,7 @@ const TIMELINE: TimelineEntry[] = [
     era: "2025 — Today",
     title: "Building the Future",
     body: "Early partners are seeing 40% faster decisions and 60% less context switching. We're just getting started.",
-    quote:
-      "The future of work is human intelligence amplified by unified memory.",
+    quote: "The future of work is human intelligence amplified by unified memory.",
     icon: Rocket,
     stat: "40%",
     statLabel: "Faster decisions",
@@ -189,8 +185,8 @@ function AboutPage() {
             <span className="text-foreground">Through Unified Memory</span>
           </h1>
           <p className="mx-auto mb-10 max-w-3xl text-lg leading-relaxed text-text-secondary md:text-xl">
-            We're building AI that amplifies human intelligence — creating
-            digital memory that works the way you do.
+            We're building AI that amplifies human intelligence — creating digital memory that works
+            the way you do.
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <button
@@ -222,8 +218,7 @@ function AboutPage() {
               <span className="text-gradient-hero">How We Got Here</span>
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-text-secondary">
-              From observing fragmented workflows to building the future of work
-              continuity.
+              From observing fragmented workflows to building the future of work continuity.
             </p>
           </div>
 
@@ -270,8 +265,7 @@ function AboutPage() {
               <span className="text-gradient-hero">What Guides Us</span>
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-text-secondary">
-              These principles shape every product decision and customer
-              interaction.
+              These principles shape every product decision and customer interaction.
             </p>
           </div>
 
@@ -279,22 +273,13 @@ function AboutPage() {
             {PRINCIPLES.map((p) => {
               const Icon = p.icon;
               return (
-                <div
-                  key={p.title}
-                  className="principle-card about-card rounded-2xl p-8"
-                >
+                <div key={p.title} className="principle-card about-card rounded-2xl p-8">
                   <div className="about-icon-tile mb-6 flex h-16 w-16 items-center justify-center rounded-xl">
                     <Icon size={26} className="text-brand-accent" />
                   </div>
-                  <h3 className="mb-4 text-xl font-bold text-foreground">
-                    {p.title}
-                  </h3>
-                  <p className="mb-4 leading-relaxed text-text-secondary">
-                    {p.body}
-                  </p>
-                  <div className="text-sm font-medium text-brand-accent">
-                    {p.tag}
-                  </div>
+                  <h3 className="mb-4 text-xl font-bold text-foreground">{p.title}</h3>
+                  <p className="mb-4 leading-relaxed text-text-secondary">{p.body}</p>
+                  <div className="text-sm font-medium text-brand-accent">{p.tag}</div>
                 </div>
               );
             })}
@@ -313,17 +298,15 @@ function AboutPage() {
           </h2>
           <div className="about-card mb-12 rounded-3xl p-12">
             <p className="mb-8 text-xl leading-relaxed text-foreground/90">
-              "We're building a world where every knowledge worker has an AI
-              partner that truly understands their work — where context flows
-              seamlessly across tools, and human intelligence is amplified, not
-              replaced."
+              "We're building a world where every knowledge worker has an AI partner that truly
+              understands their work — where context flows seamlessly across tools, and human
+              intelligence is amplified, not replaced."
             </p>
             <div className="flex items-center justify-center gap-4">
               <div
                 className="flex h-16 w-16 items-center justify-center rounded-full text-xl font-bold text-[#111111]"
                 style={{
-                  background:
-                    "linear-gradient(135deg, #FFE1CC, #ffffff)",
+                  background: "linear-gradient(135deg, #FFE1CC, #ffffff)",
                   border: "2px solid rgba(255,255,255,0.20)",
                 }}
                 aria-hidden
@@ -331,9 +314,7 @@ function AboutPage() {
                 SC
               </div>
               <div className="text-left">
-                <div className="text-lg font-semibold text-foreground">
-                  Sarah Chen
-                </div>
+                <div className="text-lg font-semibold text-foreground">Sarah Chen</div>
                 <div className="text-sm text-text-secondary">Founder & CEO</div>
               </div>
             </div>
@@ -346,9 +327,7 @@ function AboutPage() {
               ["100%", "Human-centered"],
             ].map(([n, l]) => (
               <div key={l} className="text-center">
-                <div className="mb-2 text-3xl font-bold text-brand-accent">
-                  {n}
-                </div>
+                <div className="mb-2 text-3xl font-bold text-brand-accent">{n}</div>
                 <div className="text-text-secondary">{l}</div>
               </div>
             ))}

@@ -56,7 +56,7 @@ export const FEATURE_CARDS: FeatureCard[] = [
     icon: Eye,
   },
   {
-    title: "Workbench",
+    title: "Workspace",
     body: "Your unified work surface. Memory left, Twin right, action in the middle.",
     icon: LayoutDashboard,
   },
@@ -80,8 +80,16 @@ export interface SpeedItem {
 
 export const SPEED_ITEMS: SpeedItem[] = [
   { title: "Auto-context", body: "Open any record — the story is already assembled.", icon: Wand2 },
-  { title: "Drag-approve", body: "Approve, edit, or reject each move in one motion.", icon: MousePointerClick },
-  { title: "Keyboard-first", body: "Built for operators who don't want to use a mouse.", icon: Keyboard },
+  {
+    title: "Drag-approve",
+    body: "Approve, edit, or reject each move in one motion.",
+    icon: MousePointerClick,
+  },
+  {
+    title: "Keyboard-first",
+    body: "Built for operators who don't want to use a mouse.",
+    icon: Keyboard,
+  },
 ];
 
 export interface Step {
@@ -104,11 +112,31 @@ export interface CompareRow {
 }
 
 export const COMPARE_ROWS: CompareRow[] = [
-  { dimension: "Where memory lives", others: "Inside the model — opaque, rented", iw: "Inside your Reference Layer — yours, inspectable" },
-  { dimension: "What it does with changes", others: "Waits for a prompt", iw: "Surfaces what needs you, with evidence" },
-  { dimension: "Who decides the move", others: "The model, mid-stream", iw: "You — every move passes the Approval gate" },
-  { dimension: "Audit trail", others: "Best-effort logs", iw: "Every approval, every edit, every reject — recorded" },
-  { dimension: "Scope of memory", others: "Conversation-bound", iw: "User · Work · Org — separated by architecture" },
+  {
+    dimension: "Where memory lives",
+    others: "Inside the model — opaque, rented",
+    iw: "Inside your Reference Layer — yours, inspectable",
+  },
+  {
+    dimension: "What it does with changes",
+    others: "Waits for a prompt",
+    iw: "Surfaces what needs you, with evidence",
+  },
+  {
+    dimension: "Who decides the move",
+    others: "The model, mid-stream",
+    iw: "You — every move passes the Approval gate",
+  },
+  {
+    dimension: "Audit trail",
+    others: "Best-effort logs",
+    iw: "Every approval, every edit, every reject — recorded",
+  },
+  {
+    dimension: "Scope of memory",
+    others: "Conversation-bound",
+    iw: "User · Work · Org — separated by architecture",
+  },
 ];
 
 export interface Testimonial {
@@ -126,7 +154,7 @@ export const TESTIMONIALS: Testimonial[] = [
     initials: "PM",
   },
   {
-    quote: "We replaced four standing meetings with one Workbench view.",
+    quote: "We replaced four standing meetings with one Workspace view.",
     who: "Karan S.",
     role: "Head of Ops",
     initials: "KS",
@@ -161,7 +189,7 @@ export const FAQS: FaqItem[] = [
   },
   {
     q: "How long does onboarding take?",
-    a: "Most teams see their first Workbench view within a week. Full Memory coverage typically lands in 2–4 weeks.",
+    a: "Most teams see their first Workspace view within a week. Full Memory coverage typically lands in 2–4 weeks.",
   },
   {
     q: "Do my private notes ever cross into shared spaces?",

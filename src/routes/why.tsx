@@ -18,8 +18,7 @@ export const Route = createFileRoute("/why")({
       { property: "og:title", content: "Why IntegrateWise" },
       {
         property: "og:description",
-        content:
-          "Memory that never resets. AI that stays within bounds. Humans in control.",
+        content: "Memory that never resets. AI that stays within bounds. Humans in control.",
       },
     ],
   }),
@@ -39,7 +38,9 @@ function WhyPage() {
               <span className="text-gradient-hero">IntegrateWise starts with your reality.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-[18px] leading-relaxed text-text-secondary">
-              Your work resets every day. Without Memory, you rebuild context from scratch. Most AI tools see a slice — they cannot connect what changed across your full stack. We built the opposite.
+              Your work resets every day. Without Memory, you rebuild context from scratch. Most AI
+              tools see a slice — they cannot connect what changed across your full stack. We built
+              the opposite.
             </p>
           </div>
 

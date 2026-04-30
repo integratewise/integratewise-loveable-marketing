@@ -91,9 +91,7 @@ export function SolutionPage({
       <Section>
         <Container>
           <Reveal className="card-iw mx-auto max-w-3xl p-8 text-center sm:p-10">
-            {trust && (
-              <p className="text-[13.5px] text-text-secondary">{trust}</p>
-            )}
+            {trust && <p className="text-[13.5px] text-text-secondary">{trust}</p>}
             <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
               <button type="button" onClick={fire} className="btn-primary-iw">
                 {primaryCta.label} <ArrowRight size={16} />

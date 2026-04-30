@@ -28,7 +28,13 @@ const severityColor = {
   high: "var(--state-error)",
 } as const;
 
-export function Workbench({ scenario, compact = false }: { scenario: WorkbenchScenario; compact?: boolean }) {
+export function Workbench({
+  scenario,
+  compact = false,
+}: {
+  scenario: WorkbenchScenario;
+  compact?: boolean;
+}) {
   const { entityType, entityName, entityMeta, memoryCards, suggestion } = scenario;
 
   return (

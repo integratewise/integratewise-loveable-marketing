@@ -72,13 +72,7 @@ const itemVariants = (y: number, x: number) => ({
   },
 });
 
-export function StaggerItem({
-  children,
-  className,
-  y = 12,
-  x = 0,
-  as = "div",
-}: StaggerItemProps) {
+export function StaggerItem({ children, className, y = 12, x = 0, as = "div" }: StaggerItemProps) {
   const MotionTag = motion[as] as typeof motion.div;
   return (
     <MotionTag className={className} variants={itemVariants(y, x)}>
@@ -108,9 +102,7 @@ export function Parallax({ children, y = -40, className }: ParallaxProps) {
   const translateY = useTransform(scrollYProgress, [0, 1], [0, y]);
   return (
     <div ref={ref} className={className}>
-      <motion.div style={{ y: translateY, willChange: "transform" }}>
-        {children}
-      </motion.div>
+      <motion.div style={{ y: translateY, willChange: "transform" }}>{children}</motion.div>
     </div>
   );
 }

@@ -37,30 +37,32 @@ function ManifestoPage() {
             </h1>
             <div className="mt-10 space-y-6 text-[17px] leading-relaxed text-foreground/85">
               <p>
-                For the last decade we kept adding apps. WhatsApp, Tally, Razorpay, the CRM, Slack, email,
-                a sheet. Every one of them solved a real problem. Together they created a new one:{" "}
+                For the last decade we kept adding apps. WhatsApp, Tally, Razorpay, the CRM, Slack,
+                email, a sheet. Every one of them solved a real problem. Together they created a new
+                one:{" "}
                 <span className="text-foreground">a person had to be the API between them.</span>
               </p>
               <p>
-                That person rebuilds context every morning. They lose 23% of their day to tab-switching.
-                They forget what was promised, who is at risk, which invoice doesn't match, what last
-                week's reflection said. The work that actually matters waits.
+                That person rebuilds context every morning. They lose 23% of their day to
+                tab-switching. They forget what was promised, who is at risk, which invoice doesn't
+                match, what last week's reflection said. The work that actually matters waits.
               </p>
               <p className="text-foreground">
-                We don't think the answer is one more app. We don't think the answer is an autonomous agent
-                that runs your business while you sleep, either.
+                We don't think the answer is one more app. We don't think the answer is an
+                autonomous agent that runs your business while you sleep, either.
               </p>
               <p>
-                The answer is{" "}
-                <span className="text-foreground">Memory</span> — a single source of truth your tools share —
-                and a <span className="text-foreground">Twin</span> that watches it for you and{" "}
-                <span className="text-foreground">proposes</span> the next move.
+                The answer is <span className="text-foreground">Memory</span> — a single source of
+                truth your tools share — and a <span className="text-foreground">Twin</span> that
+                watches it for you and <span className="text-foreground">proposes</span> the next
+                move.
               </p>
               <p className="text-foreground">
                 Not acts. Proposes. You approve every action. Always.
               </p>
               <p>
-                Memory grows. The Twin gets sharper. You stay in the chair. The work that matters stops waiting.
+                Memory grows. The Twin gets sharper. You stay in the chair. The work that matters
+                stops waiting.
               </p>
               <p className="text-foreground">
                 That is what we are building. Built by an operator. Customer Zero is the founder.

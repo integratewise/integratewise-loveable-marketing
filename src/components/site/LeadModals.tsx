@@ -88,7 +88,12 @@ function DemoForm({ source, onDone }: { source: string; onDone: () => void }) {
   }
 
   if (done) {
-    return <Done title="Request received." body="We'll be in touch within one business day to schedule your demo." />;
+    return (
+      <Done
+        title="Request received."
+        body="We'll be in touch within one business day to schedule your demo."
+      />
+    );
   }
 
   return (
@@ -183,7 +188,10 @@ function WaitlistForm({ source, onDone }: { source: string; onDone: () => void }
     setTimeout(onDone, 2000);
   }
 
-  if (done) return <Done title="You're on the waitlist." body="Personal Space rolls out cohort by cohort." />;
+  if (done)
+    return (
+      <Done title="You're on the waitlist." body="Personal Space rolls out cohort by cohort." />
+    );
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
