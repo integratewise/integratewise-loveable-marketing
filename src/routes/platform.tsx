@@ -24,17 +24,7 @@ import { Container } from "@/components/site/Container";
 import { Section } from "@/components/site/Section";
 import { Badge } from "@/components/site/Badge";
 import { Reveal } from "@/components/site/Reveal";
-import { InPageNav } from "@/components/site/InPageNav";
 import { useDemoModal } from "@/components/site/demo-modal-context";
-
-const PLATFORM_NAV = [
-  { id: "spine", label: "Spine" },
-  { id: "how-it-works", label: "How it works" },
-  { id: "digital-memory", label: "Digital Memory" },
-  { id: "connectors", label: "Connectors" },
-  { id: "security", label: "Security" },
-  { id: "integrations", label: "Integrations" },
-];
 
 export const Route = createFileRoute("/platform")({
   head: () => ({
@@ -137,7 +127,7 @@ function PlatformPage() {
   return (
     <>
       {/* 1. Hero */}
-      <Section id="spine" orbs className="!pt-20 lg:!pt-28">
+      <Section orbs className="!pt-20 lg:!pt-28">
         <Container>
           <div className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Still juggling your work?</Badge>
@@ -154,7 +144,7 @@ function PlatformPage() {
               <button onClick={() => open()} className="btn-primary-iw">
                 Book a demo <ArrowRight size={16} />
               </button>
-              <a href="#how-it-works" className="btn-secondary-iw">
+              <a href="#how" className="btn-secondary-iw">
                 See how it works
               </a>
             </div>
@@ -206,15 +196,11 @@ function PlatformPage() {
               </div>
             </div>
           </Reveal>
-
-          <Reveal delay={120} className="mt-12">
-            <InPageNav items={PLATFORM_NAV} />
-          </Reveal>
         </Container>
       </Section>
 
       {/* 2. From scattered apps to Digital Memory */}
-      <Section id="digital-memory" alt>
+      <Section alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">The end of the Human API</Badge>
@@ -316,7 +302,7 @@ function PlatformPage() {
       </Section>
 
       {/* 4. Adaptive Spine — growing schema, selective ingest */}
-      <Section alt id="connectors">
+      <Section alt id="how">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Adaptive Spine</Badge>
@@ -379,7 +365,7 @@ function PlatformPage() {
       </Section>
 
       {/* 5. AI library */}
-      <Section id="integrations">
+      <Section>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">AI library</Badge>
@@ -426,7 +412,7 @@ function PlatformPage() {
       </Section>
 
       {/* 6. From apps to Memory in three steps */}
-      <Section alt id="how-it-works">
+      <Section alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">How it works</Badge>
@@ -463,7 +449,7 @@ function PlatformPage() {
       </Section>
 
       {/* 7. Memory scopes */}
-      <Section id="security">
+      <Section>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Memory scopes</Badge>

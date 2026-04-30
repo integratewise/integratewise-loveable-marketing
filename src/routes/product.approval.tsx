@@ -1,7 +1,7 @@
-import { createFileRoute, redirect } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { StubPage, stubMeta } from "@/components/site/StubPage";
 
 export const Route = createFileRoute("/product/approval")({
-  beforeLoad: () => {
-    throw redirect({ to: "/product", hash: "approval-gate" });
-  },
+  head: () => stubMeta("Approval Gate", "Every action waits for a human to say yes."),
+  component: () => <StubPage title="The Approval Gate" description="Every action waits for a human to say yes." />,
 });

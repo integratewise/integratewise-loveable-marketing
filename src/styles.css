@@ -475,7 +475,3 @@
 .about-icon-tile {
   background: linear-gradient(90deg, rgba(255, 225, 204, 0.20), rgba(255, 255, 255, 0.20));
 }
-
-/* Hash-anchor offset for the fixed header + sticky in-page nav. */
-html { scroll-behavior: smooth; }
-section[id], div[id] { scroll-margin-top: 140px; }

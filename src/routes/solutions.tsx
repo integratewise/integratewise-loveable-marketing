@@ -76,7 +76,7 @@ function SolutionsPage() {
   return (
     <>
       {/* 1. Hero */}
-      <Section id="by-use-case" orbs className="!pt-20 lg:!pt-28">
+      <Section orbs className="!pt-20 lg:!pt-28">
         <Container>
           <div className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Still juggling your work?</Badge>
@@ -135,8 +135,6 @@ function SolutionsPage() {
       {/* 2. Intro */}
       <Section alt>
         <Container>
-          <div id="by-role" />
-          <div id="by-industry" />
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Spans roles. Spans industries.</Badge>
             <h2 className="heading-h2 mt-4">Same pattern, different slice of your day.</h2>

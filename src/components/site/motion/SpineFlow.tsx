@@ -103,17 +103,12 @@ function ConnectorLines() {
         </linearGradient>
       </defs>
       {[
-        // Chip Y centers: 3 chips with gap-3 in a flex column. With
-        // preserveAspectRatio="none" the viewBox stretches to container.
-        // Chip rows land at roughly 17%, 50%, 83% of the column height,
-        // and chip right-edges sit ~22% from container edge once gap-6
-        // is accounted for.
-        { d: "M 22 17 C 38 17, 44 50, 50 50" },
-        { d: "M 22 50 L 50 50" },
-        { d: "M 22 83 C 38 83, 44 50, 50 50" },
-        { d: "M 78 17 C 62 17, 56 50, 50 50" },
-        { d: "M 78 50 L 50 50" },
-        { d: "M 78 83 C 62 83, 56 50, 50 50" },
+        { d: "M 12 18 Q 35 18, 50 50" },
+        { d: "M 12 50 Q 35 50, 50 50" },
+        { d: "M 12 82 Q 35 82, 50 50" },
+        { d: "M 88 18 Q 65 18, 50 50" },
+        { d: "M 88 50 Q 65 50, 50 50" },
+        { d: "M 88 82 Q 65 82, 50 50" },
       ].map((p, i) => (
         <motion.path
           key={i}
@@ -198,7 +193,7 @@ function SchemaChips() {
 function TriadConvergence() {
   return (
     <div className="mt-6 rounded-xl border border-border bg-white/[0.02] p-5">
-      <div className="grid items-center gap-6 md:grid-cols-[1fr_auto_1fr]">
+      <div className="grid items-center gap-4 md:grid-cols-[1fr_auto_1fr]">
         {/* Left labels */}
         <div className="grid gap-2">
           <Strand icon={Database} label="Truth" sub="What's actually happening" tone="peach" />
@@ -207,7 +202,7 @@ function TriadConvergence() {
         </div>
 
         {/* Venn intersection */}
-        <div className="relative mx-auto h-32 w-32 shrink-0">
+        <div className="relative mx-auto h-32 w-32">
           <motion.span
             className="absolute left-2 top-2 size-20 rounded-full"
             style={{ background: "rgba(255,225,204,0.22)" }}
@@ -247,14 +242,14 @@ function TriadConvergence() {
 
         {/* Right: raw AI chat dimmed outside */}
         <motion.div
-          className="flex items-center gap-2 self-center rounded-lg border border-border/60 bg-white/[0.02] p-3 opacity-60"
+          className="flex items-center gap-2 rounded-lg border border-border/60 bg-white/[0.02] p-3 opacity-50"
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.6 }}
+          whileInView={{ opacity: 0.5 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.4, delay: 0.8 }}
         >
-          <MessageSquareOff size={16} className="shrink-0 text-text-secondary" />
-          <div className="min-w-0">
+          <MessageSquareOff size={16} className="text-text-secondary" />
+          <div>
             <div className="text-[12.5px] font-semibold text-foreground/80">Raw AI chat</div>
             <div className="text-[11px] text-text-secondary">Never writes into Memory</div>
           </div>
