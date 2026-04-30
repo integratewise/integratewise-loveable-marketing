@@ -152,34 +152,41 @@ const SCHEMA_CHIPS = [
 ];
 
 function SchemaChips() {
+  // "Spine grows along with you" — day 1 → day 30 → day 90 progression.
+  // Replaces the old raw schema-row visualization, which exposed internal
+  // vocabulary and engineer-facing detail.
+  const stages = [
+    { label: "Day 1", sub: "Accounts, tasks, upcoming work", width: 35 },
+    { label: "Day 30", sub: "Patterns, owners, relationships", width: 65 },
+    { label: "Day 90", sub: "Living memory of how you operate", width: 100 },
+  ];
   return (
-    <div className="mt-6 rounded-xl border border-border bg-white/[0.02] p-4">
+    <div className="mt-6 rounded-xl border border-border bg-white/[0.02] p-5">
       <div className="text-[11px] font-semibold uppercase tracking-wider text-text-secondary">
-        Schema, learned as you grow
+        Spine grows along with you
       </div>
-      <div className="mt-3 flex flex-wrap gap-2">
-        {SCHEMA_CHIPS.map((c, i) => (
-          <motion.span
-            key={c.label}
-            initial={{ opacity: 0, y: 8, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{
-              duration: 0.35,
-              delay: c.base ? i * 0.06 : 0.5 + i * 0.08,
-              ease: "easeOut",
-            }}
-            className={
-              "rounded-full border px-2.5 py-1 text-[12px] " +
-              (c.base
-                ? "border-border bg-white/[0.04] text-foreground/90"
-                : "border-brand-highlight/30 bg-brand-highlight/10 text-brand-highlight")
-            }
-          >
-            {c.label}
-          </motion.span>
+      <div className="mt-4 space-y-3">
+        {stages.map((s, i) => (
+          <div key={s.label} className="flex items-center gap-3">
+            <div className="w-16 shrink-0 text-[12px] font-semibold text-foreground">{s.label}</div>
+            <div className="relative h-2 flex-1 overflow-hidden rounded-full bg-white/[0.04]">
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: `${s.width}%` }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.7, delay: 0.15 + i * 0.18, ease: "easeOut" }}
+                className="h-full rounded-full bg-gradient-to-r from-brand-accent/70 to-brand-highlight/70"
+              />
+            </div>
+            <div className="hidden w-56 shrink-0 text-[11.5px] text-text-secondary sm:block">
+              {s.sub}
+            </div>
+          </div>
         ))}
       </div>
+      <p className="mt-4 text-[12.5px] text-text-secondary">
+        Not an ETL dump. A living memory that earns its depth.
+      </p>
     </div>
   );
 }

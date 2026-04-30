@@ -6,6 +6,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { AnnouncementBar } from "@/components/site/AnnouncementBar";
 import { ClosingCtaBand } from "@/components/site/ClosingCtaBand";
 import { ProductVideo } from "@/components/site/ProductVideo";
+import { AfterApprovalLoop } from "@/components/site/AfterApprovalLoop";
 import { useDemoModal } from "@/components/site/demo-modal-context";
 import { CONNECTOR_LOGOS } from "@/components/site/ConnectorMarquee";
 import { SpineFlow } from "@/components/site/motion/SpineFlow";
@@ -159,7 +160,7 @@ function HomePage() {
                 <div className="h-8 w-px bg-gradient-to-b from-brand-accent/60 to-transparent" />
               </div>
               <div className="grid grid-cols-3 gap-3">
-                {["Account Success", "Business Ops", "Personal Ops"].map((w) => (
+                {["Account Success", "Business Ops", "Personal Space"].map((w) => (
                   <div key={w} className="rounded-xl border border-border bg-bg-elevated p-3 text-center">
                     <span className="text-[13px] font-semibold text-foreground">{w}</span>
                   </div>
@@ -299,8 +300,16 @@ function HomePage() {
               </li>
             ))}
           </ul>
+
+          <p className="mx-auto mt-8 max-w-2xl text-center text-[14px] leading-relaxed text-text-secondary">
+            Approved actions execute in your apps. Results return as new Truth. Your Twin learns
+            from every decision.
+          </p>
         </Container>
       </Section>
+
+      {/* ========================= 6b. AFTER APPROVAL — THE LOOP ========================= */}
+      <AfterApprovalLoop />
 
       {/* ========================= 7. INTEGRATION ARCHITECTURE ========================= */}
       <Section>
