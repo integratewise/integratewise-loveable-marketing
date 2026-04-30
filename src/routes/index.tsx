@@ -10,6 +10,7 @@ import { CONNECTOR_LOGOS } from "@/components/site/ConnectorMarquee";
 import { SpineFlow } from "@/components/site/motion/SpineFlow";
 import { WorkbenchMorph } from "@/components/site/motion/WorkbenchMorph";
 import { TwinSignals, ApprovalGate } from "@/components/site/motion/TwinSignals";
+import { StaggerGroup, StaggerItem, Parallax } from "@/components/site/motion/Stagger";
 import airtable from "@/assets/logos/airtable.svg";
 import asana from "@/assets/logos/asana.svg";
 import gdrive from "@/assets/logos/google-drive.svg";
@@ -72,8 +73,8 @@ function HomePage() {
             </div>
           </div>
 
-          {/* Logo strip */}
-          <div className="mt-16">
+          {/* Logo strip — parallaxed for subtle depth between hero copy and connectors */}
+          <Parallax y={-24} className="mt-16">
             <p className="text-center text-[12.5px] font-semibold uppercase tracking-[0.18em] text-text-secondary">
               Connect the apps you already use
             </p>
@@ -87,7 +88,7 @@ function HomePage() {
                 ))}
               </div>
             </div>
-          </div>
+          </Parallax>
         </Container>
       </section>
 
@@ -99,7 +100,7 @@ function HomePage() {
             <h2 className="heading-h2 mt-4">The Core Problem of 2025</h2>
             <p className="mt-4 text-[17px] text-text-secondary">You are the bridge. And it's exhausting.</p>
           </Reveal>
-          <div className="mx-auto mt-12 grid max-w-5xl gap-5 md:grid-cols-3">
+          <StaggerGroup className="mx-auto mt-12 grid max-w-5xl gap-5 md:grid-cols-3" stagger={0.09}>
             {[
               {
                 title: "Data scattered.",
@@ -113,13 +114,13 @@ function HomePage() {
                 title: "Automation rogue.",
                 body: "Things fire without you, so trust quietly erodes.",
               },
-            ].map((p, i) => (
-              <Reveal key={p.title} delay={i * 80} className="card-iw p-7">
+            ].map((p) => (
+              <StaggerItem key={p.title} className="card-iw p-7">
                 <h3 className="text-[18px] font-semibold text-foreground">{p.title}</h3>
                 <p className="mt-2 text-[15px] leading-relaxed text-text-secondary">{p.body}</p>
-              </Reveal>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGroup>
         </Container>
       </Section>
 
@@ -536,10 +537,12 @@ function ProductFrame() {
               <div>Health</div>
               <div className="text-right">Renewal</div>
             </div>
-            <ul className="divide-y divide-border">
+            <StaggerGroup as="ul" className="divide-y divide-border" stagger={0.05} amount={0.15}>
               {ACCOUNTS.map((a) => (
-                <li
+                <StaggerItem
+                  as="li"
                   key={a.name}
+                  y={8}
                   className="grid grid-cols-2 gap-2 px-4 py-3 text-[13px] hover:bg-white/[0.02] md:grid-cols-[1.5fr_0.8fr_0.6fr_0.9fr_0.7fr] md:items-center md:gap-3"
                 >
                   <div>
@@ -555,9 +558,9 @@ function ProductFrame() {
                     </span>
                   </div>
                   <div className="text-text-secondary md:text-right">in {a.renewal}</div>
-                </li>
+                </StaggerItem>
               ))}
-            </ul>
+            </StaggerGroup>
           </div>
 
           {/* Inline signal banner */}
@@ -607,9 +610,14 @@ function ProductFrame() {
             <div className="text-[12px] text-text-secondary">4 actions pending your approval</div>
           </div>
 
-          <ul className="mt-4 space-y-3">
+          <StaggerGroup as="ul" className="mt-4 space-y-3" stagger={0.09} delay={0.1} amount={0.15}>
             {ACTIONS.map((a) => (
-              <li key={a.app} className="rounded-lg border border-border bg-white/[0.02] p-3">
+              <StaggerItem
+                as="li"
+                key={a.app}
+                x={20}
+                className="rounded-lg border border-border bg-white/[0.02] p-3"
+              >
                 <div className="flex items-center justify-between">
                   <span
                     className="rounded-md px-2 py-0.5 text-[11px] font-semibold text-white"
@@ -624,9 +632,9 @@ function ProductFrame() {
                   <button type="button" className="btn-secondary-iw !px-2.5 !py-1 text-[11.5px]">Deny</button>
                   <button type="button" className="btn-primary-iw !px-2.5 !py-1 text-[11.5px]">Approve &amp; Execute</button>
                 </div>
-              </li>
+              </StaggerItem>
             ))}
-          </ul>
+          </StaggerGroup>
         </aside>
       </div>
     </div>

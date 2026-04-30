@@ -1,10 +1,12 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { MotionConfig } from "framer-motion";
 
 import appCss from "../styles.css?url";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { DemoModalProvider } from "@/components/site/demo-modal-context";
 import { LeadModals } from "@/components/site/LeadModals";
+import { RouteTransition } from "@/components/site/RouteTransition";
 import { SITE_NAME, SITE_DESCRIPTION } from "@/lib/site";
 
 function NotFoundComponent() {
@@ -71,15 +73,19 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   return (
-    <DemoModalProvider>
-      <div className="flex min-h-screen flex-col bg-background text-foreground">
-        <Header />
-        <main className="flex-1 pt-[88px]">
-          <Outlet />
-        </main>
-        <Footer />
-        <LeadModals />
-      </div>
-    </DemoModalProvider>
+    <MotionConfig reducedMotion="user">
+      <DemoModalProvider>
+        <div className="flex min-h-screen flex-col bg-background text-foreground">
+          <Header />
+          <main className="flex-1 pt-[88px]">
+            <RouteTransition>
+              <Outlet />
+            </RouteTransition>
+          </main>
+          <Footer />
+          <LeadModals />
+        </div>
+      </DemoModalProvider>
+    </MotionConfig>
   );
 }
