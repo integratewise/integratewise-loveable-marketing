@@ -154,7 +154,7 @@ function PlatformPage() {
               <button onClick={() => open()} className="btn-primary-iw">
                 Book a demo <ArrowRight size={16} />
               </button>
-              <a href="#how" className="btn-secondary-iw">
+              <a href="#how-it-works" className="btn-secondary-iw">
                 See how it works
               </a>
             </div>
