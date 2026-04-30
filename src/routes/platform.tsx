@@ -137,7 +137,7 @@ function PlatformPage() {
   return (
     <>
       {/* 1. Hero */}
-      <Section orbs className="!pt-20 lg:!pt-28">
+      <Section id="spine" orbs className="!pt-20 lg:!pt-28">
         <Container>
           <div className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Still juggling your work?</Badge>
