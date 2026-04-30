@@ -317,7 +317,18 @@ export function ProductVideo({
                 </button>
               )}
 
-              {/* Custom controls (desktop + post-tap mobile) */}
+              {/* Active-chapter pill — keeps the architecture beat visible
+                  even while the viewer is mid-scrub. */}
+              {showVideoElement && activeChapter ? (
+                <div className="pointer-events-none absolute left-4 top-4 z-10 flex items-center gap-2 rounded-full bg-black/60 px-3 py-1.5 text-[11px] font-mono uppercase tracking-wider text-white shadow-lg backdrop-blur-sm">
+                  <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-brand-accent text-[9px] font-semibold text-background">
+                    {activeChapterIndex + 1}
+                  </span>
+                  <span className="text-text-secondary">Step</span>
+                  <span className="text-white">{activeChapter.label}</span>
+                </div>
+              ) : null}
+
               {showVideoElement ? (
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-4">
                   <button
