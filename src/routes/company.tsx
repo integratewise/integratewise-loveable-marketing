@@ -1,496 +1,371 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
   ArrowRight,
-  ShieldCheck,
   Database,
-  Lock,
   Layers,
+  ShieldCheck,
+  Lock,
   Workflow,
-  Sparkles,
   UserCheck,
-  Eye,
-  Telescope,
-  CircuitBoard,
-  CheckCircle2,
+  Calendar,
+  Handshake,
+  Sparkles,
 } from "lucide-react";
 import { Container } from "@/components/site/Container";
 import { Section } from "@/components/site/Section";
 import { Badge } from "@/components/site/Badge";
 import { Reveal } from "@/components/site/Reveal";
 import { useDemoModal } from "@/components/site/demo-modal-context";
+import { StickySubNav } from "@/components/site/StickySubNav";
 
 export const Route = createFileRoute("/company")({
   head: () => ({
     meta: [
-      { title: "Company — Built because work lost its memory | IntegrateWise" },
+      { title: "Company — Truth you own. AI you rent. | IntegrateWise" },
       {
         name: "description",
         content:
-          "IntegrateWise was built by a solo founder — a former CSM and Business Ops operator — to end the Human API role. Memory before intelligence. Approval before action.",
+          "IntegrateWise builds a governed foundation for ops-heavy teams: Spine, Digital Memory, Workspace and Twin — with humans in control behind every Approval.",
       },
-      { property: "og:title", content: "IntegrateWise — Company" },
+      { property: "og:title", content: "Company — IntegrateWise" },
       {
         property: "og:description",
         content:
-          "From being the Human API to building the Spine. Truth you own. AI you rent. Approval in between.",
+          "Who we are, what we believe, the Human API problem, and how to talk to the people building the product.",
       },
     ],
   }),
   component: CompanyPage,
 });
 
-const PRINCIPLES = [
-  {
-    icon: UserCheck,
-    title: "You stay in control.",
-    body:
-      "Nothing acts without your approval. Twin can think, draft, and suggest, but the Approval Gate is mandatory. AI proposes. You decide.",
-  },
+const SUBNAV_ITEMS = [
+  { id: "about", label: "About" },
+  { id: "manifesto", label: "Manifesto" },
+  { id: "customer-zero", label: "Customer Zero" },
+  { id: "why", label: "Why" },
+  { id: "pricing", label: "Pricing" },
+  { id: "contact", label: "Contact" },
+];
+
+const BELIEFS = [
   {
     icon: Database,
-    title: "Truth you own. AI you rent.",
+    h: "Truth in systems, not in slides.",
     body:
-      "Your data becomes governed Digital Memory in the Adaptive Spine. Models can change; your Memory stays.",
-  },
-  {
-    icon: Lock,
-    title: "Private by architecture. Shared by choice.",
-    body:
-      "User Memory, Work Memory, and Org Memory are separate by design. Sharing happens only when you create it on purpose.",
+      "The real state of your business lives in ledgers, tickets, usage and conversations — not in the last deck someone made. Tools should read that truth and expose it, not reinvent it from scratch.",
   },
   {
     icon: Layers,
-    title: "Memory before intelligence.",
+    h: "Memory should compound.",
     body:
-      "We fix the memory problem first — Truth and Context in one place — then add governed intelligence on top. Not the other way round.",
+      "Every decision, summary and learning should make the next one easier. Your Memory should grow across years and tools, not reset every time you change software, models or vendors.",
+  },
+  {
+    icon: ShieldCheck,
+    h: "AI must be approval-gated.",
+    body:
+      "AI should watch, suggest, prepare and explain — then wait. No system should send money, change records or talk to your customers without a human in the middle and a visible line of Approval.",
+  },
+  {
+    icon: Lock,
+    h: "Private by architecture. Shared by choice.",
+    body:
+      "Memory must have clear scopes — User, Work and Org — with sharing that is explicit, reversible and logged. Privacy is not a toggle; it is how the system is built.",
   },
   {
     icon: Workflow,
-    title: "Work, not vanity dashboards.",
+    h: "Tools should fit into your stack, not replace it.",
     body:
-      "The Adaptive Workspace is built to run your day, not to show pretty charts. It is shaped by a former CSM and a current Business Ops operator.",
-  },
-  {
-    icon: Sparkles,
-    title: "Grounded AI, no magic.",
-    body:
-      "Twin must always ground its answers in your Digital Memory and show its evidence. No black-box magic, no hallucinated guesses from the open web.",
+      "Your ledgers, CRMs, support tools and chats are not going away. New platforms should connect into them with clear boundaries instead of promising 'the one app for everything'.",
   },
 ];
 
-const CONTROL_POINTS = [
-  "No AI action without explicit human approval.",
-  "Clear history of what data Twin accessed, what it suggested, why it suggested it, and who approved.",
-  "Strong separation between User, Work, and Org Memory.",
-  "Your Memory is not used to train someone else's AI.",
+const PRICING_BLOCKS = [
+  {
+    h: "Memory scopes",
+    body:
+      "User, Work and Org Memory. Start with a narrow slice — one person, one team, one book of work — and expand as more of your business shifts onto Digital Memory.",
+  },
+  {
+    h: "Workspace seats",
+    body:
+      "Seats for the people who live in the Workspace every day — CAs, CSMs, founders, operators. View-only access can stay lighter-weight.",
+  },
+  {
+    h: "Twin usage",
+    body:
+      "Governed intelligence on top: briefs, nudges and prepared actions behind Approval. You can run Workspace without Twin, or turn Twin on gradually for selected scopes.",
+  },
 ];
 
 function CompanyPage() {
-  const { open } = useDemoModal();
+  const { open, openEarlyAccess } = useDemoModal();
 
   return (
-    <>
-      {/* 1. Hero */}
-      <Section orbs className="!pt-20 lg:!pt-28">
-        <Container>
-          <div className="mx-auto max-w-3xl text-center">
-            <Reveal>
-              <Badge variant="muted">Still juggling your work?</Badge>
-              <h1 className="heading-h1 mt-5">
-                Built because{" "}
-                <span className="text-gradient-hero">work lost its memory.</span>
-              </h1>
-              <p className="mt-6 text-[17px] leading-relaxed text-text-secondary">
-                Work moved into apps. Memory did not. Every day, people rebuild the same story
-                across WhatsApp, Tally, Razorpay, email, and sheets. IntegrateWise exists so your
-                work can finally have a Digital Memory — and you never have to be the Human API
-                again.
-              </p>
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-                <button onClick={() => open()} className="btn-primary-iw">
-                  Book a demo <ArrowRight size={16} />
-                </button>
-                <a href="#story" className="btn-secondary-iw">
-                  Read the story
-                </a>
-              </div>
-            </Reveal>
+    <div className="bg-background text-foreground">
+      <StickySubNav items={SUBNAV_ITEMS} />
 
-            <Reveal delay={150}>
-              <div className="mt-12 grid grid-cols-3 gap-3 text-center">
-                {[
-                  { k: "Spine", v: "Adaptive" },
-                  { k: "Memory", v: "Yours" },
-                  { k: "Approval", v: "Always" },
-                ].map((s) => (
-                  <div key={s.k} className="card-iw px-4 py-5">
-                    <p className="text-[11px] font-semibold uppercase tracking-wider text-text-secondary">
-                      {s.k}
-                    </p>
-                    <p className="mt-2 text-[15px] font-semibold text-foreground">{s.v}</p>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
-          </div>
+      {/* HERO / ABOUT */}
+      <Section id="about" className="pt-16 md:pt-24">
+        <Container>
+          <Reveal>
+            <Badge>COMPANY</Badge>
+            <h1 className="mt-4 font-serif text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
+              Truth you own. <span className="text-brand-accent">AI you rent.</span> Approval in between.
+            </h1>
+            <p className="mt-6 max-w-3xl text-lg text-text-secondary md:text-xl">
+              IntegrateWise is building a new way for ops-heavy teams to work: one where your tools stay,
+              your Memory compounds, AI is governed and humans stay in control. We build for CAs, CSMs,
+              founders and operators who are tired of being the Human API between their own tools.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <div className="mt-10 max-w-3xl rounded-2xl border border-border/60 bg-surface-1/40 p-6 md:p-8">
+              <p className="text-base text-text-secondary md:text-[17px]">
+                We are former customer success managers, BizOps operators and founders based in India,
+                designing for the way work actually happens here: WhatsApp plus ledgers plus emails plus
+                calls, all at once.
+              </p>
+            </div>
+          </Reveal>
         </Container>
       </Section>
 
-      {/* 2. Founder story */}
-      <Section id="story" alt>
+      {/* MANIFESTO */}
+      <Section id="manifesto" className="border-t border-border/40">
         <Container>
-          <Reveal className="mx-auto max-w-3xl">
-            <Badge variant="muted">Origin</Badge>
-            <h2 className="heading-h2 mt-4">
-              From being the Human API to{" "}
-              <span className="text-brand-accent">building the Spine.</span>
+          <Reveal>
+            <Badge>MANIFESTO</Badge>
+            <h2 className="mt-4 font-serif text-3xl font-semibold tracking-tight md:text-5xl">
+              What we believe.
             </h2>
           </Reveal>
 
-          <div className="mx-auto mt-10 max-w-3xl space-y-6 text-[16px] leading-relaxed text-text-secondary">
+          <div className="mt-12 grid gap-5 md:grid-cols-2">
+            {BELIEFS.map((b, i) => (
+              <Reveal key={b.h} delay={i * 0.05}>
+                <article className="h-full rounded-2xl border border-border/60 bg-surface-1/40 p-6 transition-colors hover:border-brand-accent/40 md:p-8">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-accent/10 text-brand-accent">
+                    <b.icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="mt-5 font-serif text-2xl font-semibold tracking-tight">{b.h}</h3>
+                  <p className="mt-3 text-[15.5px] leading-relaxed text-text-secondary">{b.body}</p>
+                </article>
+              </Reveal>
+            ))}
+            <Reveal delay={BELIEFS.length * 0.05}>
+              <article className="hidden h-full items-center justify-center rounded-2xl border border-dashed border-border/50 p-8 text-center md:flex">
+                <p className="font-serif text-xl italic text-text-secondary">
+                  "Truth you own.<br />AI you rent.<br />Approval in between."
+                </p>
+              </article>
+            </Reveal>
+          </div>
+        </Container>
+      </Section>
+
+      {/* CUSTOMER ZERO */}
+      <Section id="customer-zero" className="border-t border-border/40">
+        <Container>
+          <Reveal>
+            <Badge>CUSTOMER ZERO</Badge>
+            <h2 className="mt-4 font-serif text-3xl font-semibold tracking-tight md:text-5xl">
+              We ran IntegrateWise on ourselves first.
+            </h2>
+          </Reveal>
+
+          <div className="mt-12 grid gap-10 md:grid-cols-[280px_1fr] md:gap-14">
             <Reveal>
-              <p>
-                IntegrateWise did not start inside a big team or a strategy deck. It started with
-                one solo founder who was living the exact pain the product now fixes.
-              </p>
-              <p className="mt-4">
-                He spent years as a Customer Success Manager and then as a Business Ops operator.
-                Every day looked the same: open CRM, billing, support, WhatsApp, email, Google
-                Sheets, Notion. Rebuild what happened yesterday. Hope nothing important was missed.
-              </p>
-            </Reveal>
-
-            <Reveal delay={100}>
-              <p>
-                Renewals meant hunting across tabs. Monday meetings meant reconciling three
-                different versions of "the truth" in spreadsheets. AI tools did not help — they
-                guessed without the full picture and forgot everything once the chat closed.
-              </p>
-              <p className="mt-4 text-foreground">
-                He was, in his own words, the Human API between the apps.
-              </p>
-            </Reveal>
-
-            <Reveal delay={150}>
-              <p>
-                A near-miss on a key account made the problem impossible to ignore: the work was
-                fine, the people were fine — it was the memory that was broken. The tools forgot
-                context the second you closed them. Nothing held truth and context together over
-                time.
-              </p>
-            </Reveal>
-
-            <Reveal delay={200}>
-              <p>The invention moment was simple:</p>
-              <p className="mt-3 rounded-xl border border-border-subtle bg-surface-2/40 px-5 py-4 text-foreground">
-                Not another dashboard. <span className="text-brand-accent">A Spine.</span>
-              </p>
-              <p className="mt-4">
-                A layer that could remember Truth and Context across tools and time. A Workspace
-                that sat on this Spine and actually matched the day. An AI Twin that read this
-                Memory, prepared actions, and still waited for human approval.
-              </p>
-              <p className="mt-4">
-                That sketch became the Adaptive Spine (Platform), Digital Memory, the Adaptive
-                Workspace (Product), and the Twin with an Approval Gate (Intelligence Layer).
-              </p>
-            </Reveal>
-
-            <Reveal delay={250}>
-              <div className="mt-6 rounded-xl border border-brand-accent/30 bg-brand-accent/5 px-5 py-4">
-                <p className="text-[14px] text-foreground/90">
-                  IntegrateWise is still founder-led. One solo founder runs the company and uses
-                  IntegrateWise to run his own work:{" "}
-                  <span className="text-brand-accent">"I run IntegrateWise on IntegrateWise."</span>
-                </p>
-              </div>
-            </Reveal>
-          </div>
-        </Container>
-      </Section>
-
-      {/* 3. Principles */}
-      <Section>
-        <Container>
-          <Reveal className="mx-auto max-w-3xl text-center">
-            <Badge variant="muted">Principles</Badge>
-            <h2 className="heading-h2 mt-4">Principles we don't bend.</h2>
-          </Reveal>
-
-          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {PRINCIPLES.map((p, i) => {
-              const Icon = p.icon;
-              return (
-                <Reveal key={p.title} delay={i * 70}>
-                  <div className="card-iw h-full p-6">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-accent/10 text-brand-accent">
-                      <Icon size={18} />
-                    </div>
-                    <h3 className="mt-4 text-[17px] font-semibold text-foreground">{p.title}</h3>
-                    <p className="mt-2 text-[14px] leading-relaxed text-text-secondary">{p.body}</p>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
-        </Container>
-      </Section>
-
-      {/* 4. Architecture */}
-      <Section alt>
-        <Container>
-          <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
-            <Reveal>
-              <Badge variant="muted">Architecture</Badge>
-              <h2 className="heading-h2 mt-4">The architecture is part of the promise.</h2>
-              <div className="mt-6 space-y-4 text-[16px] leading-relaxed text-text-secondary">
-                <p>
-                  At the bottom, the Adaptive Spine connects your tools and turns only what
-                  matters into Digital Memory. It starts with a clean schema and grows with you,
-                  instead of copying everything blindly.
-                </p>
-                <p>
-                  Digital Memory is where three lines intersect: Truth (what happened), Context
-                  (why it happened), and approved Session Summaries (governed AI knowledge). They
-                  meet in one place so the system can see them together, but they never lose their
-                  identity. Raw AI chat never writes directly into Memory.
-                </p>
-                <p>
-                  On top of that, the Adaptive Workspace consumes Memory and becomes your main
-                  working screen. The Twin reads from Memory, connects signals, and proposes
-                  actions — always behind the Approval Gate.
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal delay={150}>
-              <ArchitectureStack />
-            </Reveal>
-          </div>
-
-          <Reveal delay={250} className="mx-auto mt-10 max-w-2xl text-center">
-            <p className="text-[14px] italic text-text-secondary">
-              We treat these architecture decisions — separation of Memory and AI, Approval Gates,
-              Memory scopes — as user-visible features, not hidden implementation details.
-            </p>
-          </Reveal>
-        </Container>
-      </Section>
-
-      {/* 5. Control matters */}
-      <Section>
-        <Container>
-          <div className="mx-auto max-w-4xl">
-            <Reveal className="text-center">
-              <Badge variant="muted">Control</Badge>
-              <h2 className="heading-h2 mt-4">Control is not only for large enterprises.</h2>
-              <p className="mt-5 text-[16px] leading-relaxed text-text-secondary">
-                Even a 3-person CA firm, a small agency, or a SaaS startup cannot afford surprise
-                emails, wrong filings, or silent automations. If AI can act alone, it can also make
-                the wrong move alone.
-              </p>
-              <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
-                That is why, from day one, IntegrateWise is built around:
-              </p>
-            </Reveal>
-
-            <div className="mt-8 grid gap-4 md:grid-cols-2">
-              {CONTROL_POINTS.map((point, i) => (
-                <Reveal key={point} delay={i * 80}>
-                  <div className="card-iw flex items-start gap-3 p-5">
-                    <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-brand-accent" />
-                    <p className="text-[14px] text-foreground/90">{point}</p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      {/* 6. Vision */}
-      <Section alt>
-        <Container>
-          <Reveal className="mx-auto max-w-3xl text-center">
-            <Badge variant="muted">Vision</Badge>
-            <h2 className="heading-h2 mt-4">Where we want this to go.</h2>
-          </Reveal>
-
-          <div className="mx-auto mt-10 grid max-w-5xl gap-5 md:grid-cols-3">
-            {[
-              {
-                icon: Database,
-                line:
-                  "We believe every person should have a Digital Memory — a place where their work, decisions, and context stay useful over time.",
-              },
-              {
-                icon: ShieldCheck,
-                line:
-                  "We believe every business should be able to grow knowledge without losing control to tools or models.",
-              },
-              {
-                icon: Telescope,
-                line:
-                  "We believe AI should sit between your Memory and your tools as a rented, governed layer — never as the new owner of your data.",
-              },
-            ].map((v, i) => {
-              const Icon = v.icon;
-              return (
-                <Reveal key={i} delay={i * 100}>
-                  <div className="card-iw h-full p-6">
-                    <Icon size={20} className="text-brand-accent" />
-                    <p className="mt-4 text-[15px] leading-relaxed text-foreground/90">{v.line}</p>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
-
-          <Reveal delay={300} className="mx-auto mt-10 max-w-3xl text-center">
-            <p className="text-[18px] leading-relaxed text-foreground">
-              End the Human API role. Give people a Memory and a Workspace that grow with them,
-              plus a Twin that helps — but never takes over.
-            </p>
-          </Reveal>
-        </Container>
-      </Section>
-
-      {/* 7. Operator highlight */}
-      <Section>
-        <Container>
-          <div className="mx-auto max-w-3xl">
-            <Reveal className="text-center">
-              <Badge variant="muted">Founder</Badge>
-              <h2 className="heading-h2 mt-4">Built by an operator, for operators.</h2>
-            </Reveal>
-
-            <Reveal delay={120}>
-              <div className="card-iw mt-10 p-8">
-                <div className="flex items-start gap-5">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-accent/10 text-brand-accent">
-                    <Eye size={20} />
-                  </div>
-                  <div className="space-y-4 text-[16px] leading-relaxed text-text-secondary">
-                    <p>
-                      IntegrateWise is built by a solo founder — a former Customer Success Manager
-                      and current Business Ops operator — who has actually lived in CRMs, billing
-                      tools, support queues, and spreadsheets, not just in slide decks.
-                    </p>
-                    <p>
-                      The Adaptive Spine, Workspace, and Twin are shaped from that operator's
-                      point of view, and are used every day to run this company.
-                    </p>
+              <div className="sticky top-32">
+                <div className="aspect-[4/5] w-full overflow-hidden rounded-2xl border border-border/60 bg-gradient-to-br from-brand-accent/15 via-surface-1 to-surface-2">
+                  <div className="flex h-full w-full items-center justify-center">
+                    <UserCheck className="h-20 w-20 text-brand-accent/50" />
                   </div>
                 </div>
+                <p className="mt-4 text-sm text-text-secondary">Founder, IntegrateWise</p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <div className="space-y-5 text-[16.5px] leading-relaxed text-text-secondary md:text-[17px]">
+                <p>
+                  Before IntegrateWise had a name, it was just our internal fix. As a former CSM turned
+                  BizOps operator, I was the Human API between Salesforce, Stripe, support tools, sheets
+                  and endless WhatsApp threads. Every board deck, every renewal and every "what's going
+                  on with this client?" started with me rebuilding the story by hand.
+                </p>
+                <p>
+                  We built a Spine that remembered what mattered, a single Workspace instead of ten tabs,
+                  and a Twin that never sent a thing without explicit Approval.
+                </p>
+                <p>
+                  We still run on that same stack today. Our own accounts, tickets and ledgers feed into
+                  the Spine. We work from the same Workspace we ship. Our Twin prepares briefs and actions
+                  that still pass through the same line of Approval.
+                </p>
+                <p className="border-l-2 border-brand-accent/60 pl-5 font-serif text-xl italic text-foreground">
+                  We are Customer Zero so rough edges show up in our day before they reach yours.
+                </p>
               </div>
             </Reveal>
           </div>
         </Container>
       </Section>
 
-      {/* 8. Final CTA */}
-      <Section alt>
+      {/* WHY */}
+      <Section id="why" className="border-t border-border/40">
         <Container>
-          <Reveal className="mx-auto max-w-3xl text-center">
-            <Badge variant="muted">Get started</Badge>
-            <h2 className="heading-h2 mt-4">See what work feels like with a Memory.</h2>
-            <p className="mt-5 text-[16px] leading-relaxed text-text-secondary">
-              In one session, we connect your tools, show how the Adaptive Spine builds Digital
-              Memory, how the Workspace replaces your daily tab-switching, and how the Twin
-              proposes actions without taking control.
+          <Reveal>
+            <Badge>WHY</Badge>
+            <h2 className="mt-4 font-serif text-3xl font-semibold tracking-tight md:text-5xl">
+              The Human API problem.
+            </h2>
+          </Reveal>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
+            {[
+              "Modern teams run on many tools, but decisions still depend on one person sitting in front of a laptop — copying numbers from Tally and Razorpay into Sheets, reading WhatsApp and email to understand client mood, updating CRMs by hand after every call, and writing summary mails to keep everyone aligned.",
+              "That person is the Human API. When they are tired, overloaded or leave, the memory of how the system really works leaves with them. Work resets every day.",
+              "At the same time, most AI tools offer quick answers but do not carry responsibility. They scrape the open internet, guess from partial data, and rarely show their working. You cannot hand them clients, books or compliance.",
+              "IntegrateWise exists to give your work a proper Spine and a durable Digital Memory, with a Twin that reads only your own Truth, Context and approved Session Summaries — and always sits behind your Approval.",
+            ].map((p, i) => (
+              <Reveal key={i} delay={i * 0.05}>
+                <div className="h-full rounded-2xl border border-border/60 bg-surface-1/40 p-6 md:p-7">
+                  <div className="font-serif text-xs uppercase tracking-[0.2em] text-brand-accent">
+                    0{i + 1}
+                  </div>
+                  <p className="mt-3 text-[15.5px] leading-relaxed text-text-secondary">{p}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* PRICING PHILOSOPHY */}
+      <Section id="pricing" className="border-t border-border/40">
+        <Container>
+          <Reveal>
+            <Badge>PRICING</Badge>
+            <h2 className="mt-4 font-serif text-3xl font-semibold tracking-tight md:text-5xl">
+              Pricing that tracks how your Memory grows.
+            </h2>
+            <p className="mt-5 max-w-3xl text-lg text-text-secondary">
+              We don't sell another seat that nobody uses. We price around how your Memory and surface
+              area grow over time.
             </p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <button onClick={() => open()} className="btn-primary-iw">
-                Book a demo <ArrowRight size={16} />
-              </button>
-              <a href="/contact" className="btn-secondary-iw">
-                Talk to us
-              </a>
-            </div>
+          </Reveal>
+
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {PRICING_BLOCKS.map((b, i) => (
+              <Reveal key={b.h} delay={i * 0.05}>
+                <article className="h-full rounded-2xl border border-border/60 bg-surface-1/40 p-6 md:p-7">
+                  <h3 className="font-serif text-xl font-semibold tracking-tight">{b.h}</h3>
+                  <p className="mt-3 text-[15px] leading-relaxed text-text-secondary">{b.body}</p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={0.2}>
+            <a
+              href="/pricing"
+              className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-brand-accent hover:underline"
+            >
+              See current plans and details
+              <ArrowRight className="h-4 w-4" />
+            </a>
           </Reveal>
         </Container>
       </Section>
-    </>
-  );
-}
 
-/* -------------------------------------------------------------------------
- * Architecture stack visual — layered diagram
- * ----------------------------------------------------------------------- */
+      {/* CONTACT */}
+      <Section id="contact" className="border-t border-border/40">
+        <Container>
+          <Reveal>
+            <Badge>CONTACT</Badge>
+            <h2 className="mt-4 font-serif text-3xl font-semibold tracking-tight md:text-5xl">
+              Talk to the people building the product.
+            </h2>
+            <p className="mt-5 max-w-3xl text-lg text-text-secondary">
+              If you recognise yourself in the Human API story, we should talk. Every IntegrateWise
+              deployment starts with a conversation about your stack, your clients and your constraints.
+            </p>
+          </Reveal>
 
-function ArchitectureStack() {
-  const layers = [
-    {
-      label: "Adaptive Workspace",
-      sub: "Where you work",
-      icon: Workflow,
-    },
-    {
-      label: "Digital Memory",
-      sub: "Truth · Context · Approved Summaries",
-      icon: Database,
-      accent: true,
-    },
-    {
-      label: "Adaptive Spine (Platform)",
-      sub: "Connects your tools, writes Memory",
-      icon: CircuitBoard,
-    },
-  ];
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            <Reveal delay={0}>
+              <article className="flex h-full flex-col rounded-2xl border border-border/60 bg-surface-1/40 p-6 md:p-7">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-accent/10 text-brand-accent">
+                  <Calendar className="h-5 w-5" />
+                </div>
+                <h3 className="mt-5 font-serif text-xl font-semibold tracking-tight">Book a demo</h3>
+                <p className="mt-3 flex-1 text-[15px] leading-relaxed text-text-secondary">
+                  Walk through your tools and see how Spine, Digital Memory, Workspace and Twin would
+                  sit on top.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => open("company-contact-demo")}
+                  className="mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-brand-accent px-4 py-2 text-sm font-semibold text-background transition-opacity hover:opacity-90"
+                >
+                  Book a demo
+                  <ArrowRight className="h-4 w-4" />
+                </button>
+              </article>
+            </Reveal>
 
-  return (
-    <div className="card-iw relative overflow-hidden p-6">
-      <div className="space-y-3">
-        {layers.map((l) => {
-          const Icon = l.icon;
-          return (
-            <div
-              key={l.label}
-              className={`flex items-center gap-4 rounded-xl border px-4 py-4 ${
-                l.accent
-                  ? "border-brand-accent/40 bg-brand-accent/5"
-                  : "border-border-subtle bg-surface-2/40"
-              }`}
-            >
-              <div
-                className={`flex h-10 w-10 items-center justify-center rounded-lg ${
-                  l.accent
-                    ? "bg-brand-accent/15 text-brand-accent"
-                    : "bg-surface-2 text-text-secondary"
-                }`}
-              >
-                <Icon size={18} />
-              </div>
-              <div className="flex-1">
-                <p className="text-[14px] font-semibold text-foreground">{l.label}</p>
-                <p className="text-[12px] text-text-secondary">{l.sub}</p>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+            <Reveal delay={0.05}>
+              <article className="flex h-full flex-col rounded-2xl border border-border/60 bg-surface-1/40 p-6 md:p-7">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-accent/10 text-brand-accent">
+                  <Handshake className="h-5 w-5" />
+                </div>
+                <h3 className="mt-5 font-serif text-xl font-semibold tracking-tight">Partnerships</h3>
+                <p className="mt-3 flex-1 text-[15px] leading-relaxed text-text-secondary">
+                  If you are a CA firm, agency or consulting practice that wants to build on this
+                  foundation with your own playbooks, let's collaborate.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => open("company-contact-partnerships")}
+                  className="mt-6 inline-flex items-center justify-center gap-2 rounded-full border border-border/70 bg-surface-2/40 px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:border-brand-accent/60"
+                >
+                  Talk partnerships
+                  <ArrowRight className="h-4 w-4" />
+                </button>
+              </article>
+            </Reveal>
 
-      {/* Twin side-rail */}
-      <div className="mt-5 grid gap-3 md:grid-cols-2">
-        <div className="rounded-xl border border-border-subtle bg-surface-2/40 px-4 py-4">
-          <div className="flex items-center gap-2 text-brand-accent">
-            <Sparkles size={16} />
-            <p className="text-[13px] font-semibold">Twin</p>
+            <Reveal delay={0.1}>
+              <article className="flex h-full flex-col rounded-2xl border border-border/60 bg-surface-1/40 p-6 md:p-7">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-accent/10 text-brand-accent">
+                  <Sparkles className="h-5 w-5" />
+                </div>
+                <h3 className="mt-5 font-serif text-xl font-semibold tracking-tight">Early access</h3>
+                <p className="mt-3 flex-1 text-[15px] leading-relaxed text-text-secondary">
+                  Join the waitlist for Personal Space and new features. Help shape how governed Memory
+                  and Twin feel in day-to-day work.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => openEarlyAccess("company-contact-early-access")}
+                  className="mt-6 inline-flex items-center justify-center gap-2 rounded-full border border-border/70 bg-surface-2/40 px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:border-brand-accent/60"
+                >
+                  Join early access
+                  <ArrowRight className="h-4 w-4" />
+                </button>
+              </article>
+            </Reveal>
           </div>
-          <p className="mt-2 text-[12px] text-text-secondary">
-            Reads Memory, proposes actions.
-          </p>
-        </div>
-        <div className="rounded-xl border border-border-subtle bg-surface-2/40 px-4 py-4">
-          <div className="flex items-center gap-2 text-brand-accent">
-            <ShieldCheck size={16} />
-            <p className="text-[13px] font-semibold">Approval Gate</p>
-          </div>
-          <p className="mt-2 text-[12px] text-text-secondary">
-            Sits between Twin and your tools.
-          </p>
-        </div>
-      </div>
+
+          <Reveal delay={0.2}>
+            <p className="mt-16 text-center font-serif text-2xl italic text-text-secondary md:text-3xl">
+              Truth you own. AI you rent. Approval in between.
+            </p>
+          </Reveal>
+        </Container>
+      </Section>
     </div>
   );
 }
