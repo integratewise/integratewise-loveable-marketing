@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Brain, Lightbulb, UserCheck, Zap, Search, Plus, Download, Bell, ShieldCheck, Activity, FileText, Cpu, Database, Workflow, Layers, Network } from "lucide-react";
+import { ArrowRight, Brain, Lightbulb, UserCheck, Zap, Search, Plus, Download, Bell, ShieldCheck, Activity, FileText, Cpu, Database, Workflow, Network } from "lucide-react";
 import { Container } from "@/components/site/Container";
 import { Section } from "@/components/site/Section";
 import { Reveal } from "@/components/site/Reveal";
