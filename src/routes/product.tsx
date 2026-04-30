@@ -146,8 +146,10 @@ function ProductPage() {
 
   return (
     <>
-      {/* 1. Hero */}
-      <Section id="overview" orbs className="!pt-20 lg:!pt-28">
+      <StickySubNav items={SUBNAV_ITEMS} />
+
+      {/* 1. Hero — #workspace */}
+      <Section id="workspace" orbs className="!pt-20 lg:!pt-28">
         <Container>
           <div className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Still juggling your work?</Badge>
