@@ -19,21 +19,33 @@ const sevColor: Record<NonNullable<AttentionSignal["severity"]>, string> = {
   high: "var(--state-error)",
 };
 
-export function AttentionLayer({ scenario, className }: { scenario: AttentionScenario; className?: string }) {
-  const { label = "Right now", signals, note = "Twin has prepared responses. Review when ready." } = scenario;
+export function AttentionLayer({
+  scenario,
+  className,
+}: {
+  scenario: AttentionScenario;
+  className?: string;
+}) {
+  const {
+    label = "Right now",
+    signals,
+    note = "Twin has prepared responses. Review when ready.",
+  } = scenario;
 
   return (
     <div
-      className={cn(
-        "card-iw relative p-5 sm:p-6",
-        className,
-      )}
-      style={{ background: "linear-gradient(180deg, rgba(251,191,36,0.05), rgba(255,225,204,0.02))" }}
+      className={cn("card-iw relative p-5 sm:p-6", className)}
+      style={{
+        background: "linear-gradient(180deg, rgba(251,191,36,0.05), rgba(255,225,204,0.02))",
+      }}
       aria-label="Attention Layer"
     >
       <div className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-2.5">
-          <span className="twin-pulse inline-flex size-2.5 rounded-full" style={{ background: "var(--state-warning)" }} />
+          <span
+            className="twin-pulse inline-flex size-2.5 rounded-full"
+            style={{ background: "var(--state-warning)" }}
+          />
           <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-text-secondary">
             {label}
           </span>

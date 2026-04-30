@@ -17,7 +17,10 @@ export const Route = createFileRoute("/pricing")({
           "Pricing based on the kind of workspace you need. Starter, Growth, Command — sync intervals, connector counts, and TruthLayer access scale together.",
       },
       { property: "og:title", content: "IntegrateWise Pricing" },
-      { property: "og:description", content: "You're paying for the kind of Memory, coordination, and control your work needs." },
+      {
+        property: "og:description",
+        content: "You're paying for the kind of Memory, coordination, and control your work needs.",
+      },
     ],
   }),
   component: PricingPage,
@@ -66,16 +69,22 @@ function PricingPage() {
           <div className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Pricing</Badge>
             <h1 className="heading-h1 mt-5">
-              Pricing based on the kind of <span className="text-gradient-hero">workspace you need.</span>
+              Pricing based on the kind of{" "}
+              <span className="text-gradient-hero">workspace you need.</span>
             </h1>
             <p className="mx-auto mt-5 text-[17px] leading-relaxed text-text-secondary">
-              You are not just paying for features. You are paying for the kind of Memory, coordination, and control your work needs.
+              You are not just paying for features. You are paying for the kind of Memory,
+              coordination, and control your work needs.
             </p>
           </div>
 
           <div className="mx-auto mt-12 grid max-w-5xl gap-5 md:grid-cols-3">
             {PLANS.map((p, i) => (
-              <Reveal key={p.name} delay={i * 60} className={`card-iw flex h-full flex-col p-6 ${p.popular ? "border-brand-accent/40" : ""}`}>
+              <Reveal
+                key={p.name}
+                delay={i * 60}
+                className={`card-iw flex h-full flex-col p-6 ${p.popular ? "border-brand-accent/40" : ""}`}
+              >
                 <div className="flex items-center justify-between">
                   <h2 className="heading-h3">{p.name}</h2>
                   {p.popular && <Badge>Most Popular</Badge>}
@@ -121,14 +130,20 @@ function PricingPage() {
         <Container>
           <div
             className="card-iw p-8 sm:p-12 text-center"
-            style={{ background: "linear-gradient(180deg, rgba(255,225,204,0.06), rgba(255,225,204,0))" }}
+            style={{
+              background: "linear-gradient(180deg, rgba(255,225,204,0.06), rgba(255,225,204,0))",
+            }}
           >
             <h2 className="heading-h2">Talk through your stack with the founder.</h2>
             <p className="mx-auto mt-4 max-w-xl text-[16px] text-text-secondary">
-              30 minutes. Real conversation. Live Workbench scoped to your scenario.
+              30 minutes. Real conversation. Live Workspace scoped to your scenario.
             </p>
             <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
-              <button type="button" onClick={() => open("Pricing footer")} className="btn-primary-iw">
+              <button
+                type="button"
+                onClick={() => open("Pricing footer")}
+                className="btn-primary-iw"
+              >
                 Book a Demo <ArrowRight size={16} />
               </button>
               <button
@@ -200,7 +215,8 @@ function RoiCalculator() {
       </div>
 
       <p className="mt-5 text-center text-[13px] text-text-secondary">
-        Estimated ROI multiple: <span className="text-brand-accent font-semibold">{multiple}×</span> in year one.
+        Estimated ROI multiple: <span className="text-brand-accent font-semibold">{multiple}×</span>{" "}
+        in year one.
       </p>
     </div>
   );
@@ -244,10 +260,20 @@ function Field({
   );
 }
 
-function Stat({ label, value, accent = false }: { label: string; value: string; accent?: boolean }) {
+function Stat({
+  label,
+  value,
+  accent = false,
+}: {
+  label: string;
+  value: string;
+  accent?: boolean;
+}) {
   return (
     <div className="rounded-xl border border-border bg-elevated/40 px-4 py-4">
-      <p className="text-[11px] font-semibold uppercase tracking-wider text-text-secondary">{label}</p>
+      <p className="text-[11px] font-semibold uppercase tracking-wider text-text-secondary">
+        {label}
+      </p>
       <p
         className={`mt-1 text-[22px] font-bold ${accent ? "text-gradient-hero" : "text-foreground"}`}
       >

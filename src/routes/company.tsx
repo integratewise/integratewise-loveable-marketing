@@ -43,38 +43,32 @@ const PRINCIPLES = [
   {
     icon: UserCheck,
     title: "You stay in control.",
-    body:
-      "Nothing acts without your approval. Twin can think, draft, and suggest, but the Approval Gate is mandatory. AI proposes. You decide.",
+    body: "Nothing acts without your approval. Twin can think, draft, and suggest, but the Approval Gate is mandatory. AI proposes. You decide.",
   },
   {
     icon: Database,
     title: "Truth you own. AI you rent.",
-    body:
-      "Your data becomes governed Digital Memory in the Adaptive Spine. Models can change; your Memory stays.",
+    body: "Your data becomes governed Digital Memory in the Spine. Models can change; your Memory stays.",
   },
   {
     icon: Lock,
     title: "Private by architecture. Shared by choice.",
-    body:
-      "User Memory, Work Memory, and Org Memory are separate by design. Sharing happens only when you create it on purpose.",
+    body: "User Memory, Work Memory, and Org Memory are separate by design. Sharing happens only when you create it on purpose.",
   },
   {
     icon: Layers,
     title: "Memory before intelligence.",
-    body:
-      "We fix the memory problem first — Truth and Context in one place — then add governed intelligence on top. Not the other way round.",
+    body: "We fix the memory problem first — Truth and Context in one place — then add governed intelligence on top. Not the other way round.",
   },
   {
     icon: Workflow,
     title: "Work, not vanity dashboards.",
-    body:
-      "The Adaptive Workbench is built to run your day, not to show pretty charts. It is shaped by a former CSM and a current Business Ops operator.",
+    body: "The Workspace is built to run your day, not to show pretty charts. It is shaped by a former CSM and a current Business Ops operator.",
   },
   {
     icon: Sparkles,
     title: "Grounded AI, no magic.",
-    body:
-      "Twin must always ground its answers in your Digital Memory and show its evidence. No black-box magic, no hallucinated guesses from the open web.",
+    body: "Twin must always ground its answers in your Digital Memory and show its evidence. No black-box magic, no hallucinated guesses from the open web.",
   },
 ];
 
@@ -97,8 +91,7 @@ function CompanyPage() {
             <Reveal>
               <Badge variant="muted">Company</Badge>
               <h1 className="heading-h1 mt-5">
-                Built because{" "}
-                <span className="text-gradient-hero">work lost its memory.</span>
+                Built because <span className="text-gradient-hero">work lost its memory.</span>
               </h1>
               <p className="mt-6 text-[17px] leading-relaxed text-text-secondary">
                 Work moved into apps. Memory did not. Every day, people rebuild the same story
@@ -186,13 +179,13 @@ function CompanyPage() {
                 Not another dashboard. <span className="text-brand-accent">A Spine.</span>
               </p>
               <p className="mt-4">
-                A layer that could remember Truth and Context across tools and time. A Workbench
+                A layer that could remember Truth and Context across tools and time. A Workspace
                 that sat on this Spine and actually matched the day. An AI Twin that read this
                 Memory, prepared actions, and still waited for human approval.
               </p>
               <p className="mt-4">
-                That sketch became the Adaptive Spine (Platform), Digital Memory, the Adaptive
-                Workbench (Product), and the Twin with an Approval Gate (Intelligence Layer).
+                That sketch became the Spine (Platform), Digital Memory, the Adaptive Workspace
+                (Product), and the Twin with an Approval Gate (Intelligence Layer).
               </p>
             </Reveal>
 
@@ -245,20 +238,20 @@ function CompanyPage() {
               <h2 className="heading-h2 mt-4">The architecture is part of the promise.</h2>
               <div className="mt-6 space-y-4 text-[16px] leading-relaxed text-text-secondary">
                 <p>
-                  At the bottom, the Adaptive Spine connects your tools and turns only what
-                  matters into Digital Memory. It starts with a clean schema and grows with you,
-                  instead of copying everything blindly.
+                  At the bottom, the Spine connects your tools and turns only what matters into
+                  Digital Memory. It starts with a clean schema and grows with you, instead of
+                  copying everything blindly.
                 </p>
                 <p>
-                  Digital Memory is where three lines intersect: Truth (what happened), Context
-                  (why it happened), and approved Session Summaries (governed AI knowledge). They
-                  meet in one place so the system can see them together, but they never lose their
-                  identity. Raw AI chat never writes directly into Memory.
+                  Digital Memory is where three lines intersect: Truth (what happened), Context (why
+                  it happened), and approved Session Summaries (governed AI knowledge). They meet in
+                  one place so the system can see them together, but they never lose their identity.
+                  Raw AI chat never writes directly into Memory.
                 </p>
                 <p>
-                  On top of that, the Adaptive Workbench consumes Memory and becomes your main
-                  working screen. The Twin reads from Memory, connects signals, and proposes
-                  actions — always behind the Approval Gate.
+                  On top of that, the Workspace consumes Memory and becomes your main working
+                  screen. The Twin reads from Memory, connects signals, and proposes actions —
+                  always behind the Approval Gate.
                 </p>
               </div>
             </Reveal>
@@ -320,18 +313,15 @@ function CompanyPage() {
             {[
               {
                 icon: Database,
-                line:
-                  "We believe every person should have a Digital Memory — a place where their work, decisions, and context stay useful over time.",
+                line: "We believe every person should have a Digital Memory — a place where their work, decisions, and context stay useful over time.",
               },
               {
                 icon: ShieldCheck,
-                line:
-                  "We believe every business should be able to grow knowledge without losing control to tools or models.",
+                line: "We believe every business should be able to grow knowledge without losing control to tools or models.",
               },
               {
                 icon: Telescope,
-                line:
-                  "We believe AI should sit between your Memory and your tools as a rented, governed layer — never as the new owner of your data.",
+                line: "We believe AI should sit between your Memory and your tools as a rented, governed layer — never as the new owner of your data.",
               },
             ].map((v, i) => {
               const Icon = v.icon;
@@ -348,8 +338,8 @@ function CompanyPage() {
 
           <Reveal delay={300} className="mx-auto mt-10 max-w-3xl text-center">
             <p className="text-[18px] leading-relaxed text-foreground">
-              End the Human API role. Give people a Memory and a Workbench that grow with them,
-              plus a Twin that helps — but never takes over.
+              End the Human API role. Give people a Memory and a Workspace that grow with them, plus
+              a Twin that helps — but never takes over.
             </p>
           </Reveal>
         </Container>
@@ -377,8 +367,8 @@ function CompanyPage() {
                       tools, support queues, and spreadsheets, not just in slide decks.
                     </p>
                     <p>
-                      The Adaptive Spine, Workbench, and Twin are shaped from that operator's
-                      point of view, and are used every day to run this company.
+                      The Spine, Workspace, and Twin are shaped from that operator's point of view,
+                      and are used every day to run this company.
                     </p>
                   </div>
                 </div>
@@ -395,9 +385,9 @@ function CompanyPage() {
             <Badge variant="muted">Get started</Badge>
             <h2 className="heading-h2 mt-4">See what work feels like with a Memory.</h2>
             <p className="mt-5 text-[16px] leading-relaxed text-text-secondary">
-              In one session, we connect your tools, show how the Adaptive Spine builds Digital
-              Memory, how the Workbench replaces your daily tab-switching, and how the Twin
-              proposes actions without taking control.
+              In one session, we connect your tools, show how the Spine builds Digital Memory, how
+              the Workspace replaces your daily tab-switching, and how the Twin proposes actions
+              without taking control.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <button onClick={() => open()} className="btn-primary-iw">
@@ -421,7 +411,7 @@ function CompanyPage() {
 function ArchitectureStack() {
   const layers = [
     {
-      label: "Adaptive Workbench",
+      label: "Workspace",
       sub: "Where you work",
       icon: Workflow,
     },
@@ -432,7 +422,7 @@ function ArchitectureStack() {
       accent: true,
     },
     {
-      label: "Adaptive Spine (Platform)",
+      label: "Spine (Platform)",
       sub: "Connects your tools, writes Memory",
       icon: CircuitBoard,
     },
@@ -477,18 +467,14 @@ function ArchitectureStack() {
             <Sparkles size={16} />
             <p className="text-[13px] font-semibold">Twin</p>
           </div>
-          <p className="mt-2 text-[12px] text-text-secondary">
-            Reads Memory, proposes actions.
-          </p>
+          <p className="mt-2 text-[12px] text-text-secondary">Reads Memory, proposes actions.</p>
         </div>
         <div className="rounded-xl border border-border-subtle bg-surface-2/40 px-4 py-4">
           <div className="flex items-center gap-2 text-brand-accent">
             <ShieldCheck size={16} />
             <p className="text-[13px] font-semibold">Approval Gate</p>
           </div>
-          <p className="mt-2 text-[12px] text-text-secondary">
-            Sits between Twin and your tools.
-          </p>
+          <p className="mt-2 text-[12px] text-text-secondary">Sits between Twin and your tools.</p>
         </div>
       </div>
     </div>

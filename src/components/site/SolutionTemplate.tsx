@@ -90,8 +90,7 @@ export function SolutionPage(props: SolutionPageProps) {
           <div className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">{props.preLabel}</Badge>
             <h1 className="heading-h1 mt-5">
-              {props.h1Lead}{" "}
-              <span className="text-gradient-hero">{props.h1Accent}</span>
+              {props.h1Lead} <span className="text-gradient-hero">{props.h1Accent}</span>
             </h1>
             <p className="mx-auto mt-5 text-[17px] leading-relaxed text-text-secondary">
               {props.subcopy}
@@ -104,10 +103,7 @@ export function SolutionPage(props: SolutionPageProps) {
                 {props.primaryCta.label} <ArrowRight size={16} />
               </button>
               {props.secondaryCtaLabel && (
-                <a
-                  href={props.secondaryCtaHref || "#mapper"}
-                  className="btn-secondary-iw"
-                >
+                <a href={props.secondaryCtaHref || "#mapper"} className="btn-secondary-iw">
                   {props.secondaryCtaLabel}
                 </a>
               )}
@@ -257,24 +253,19 @@ export function SolutionPage(props: SolutionPageProps) {
           <Reveal className="mx-auto max-w-3xl text-center">
             <h2 className="heading-h2">Same foundation. Different ways of working.</h2>
             <ul className="mx-auto mt-6 max-w-2xl space-y-2 text-[15px] leading-relaxed text-text-secondary">
-              <li>Adaptive Spine builds your Digital Memory.</li>
-              <li>Adaptive Workbench shows it in the shape of your day.</li>
+              <li>Spine builds your Digital Memory.</li>
+              <li>Workspace shows it in the shape of your day.</li>
               <li>Twin reads, connects, and proposes — always behind the Approval Gate.</li>
             </ul>
             <p className="mt-6 text-[16px] font-medium text-foreground">{props.closeHeading}</p>
             <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
               <button
-                onClick={() =>
-                  triggerCta(props.closingPrimary.kind, `${props.preLabel} · close`)
-                }
+                onClick={() => triggerCta(props.closingPrimary.kind, `${props.preLabel} · close`)}
                 className="btn-primary-iw"
               >
                 {props.closingPrimary.label} <ArrowRight size={16} />
               </button>
-              <button
-                onClick={() => open(`${props.preLabel} · talk`)}
-                className="btn-secondary-iw"
-              >
+              <button onClick={() => open(`${props.preLabel} · talk`)} className="btn-secondary-iw">
                 Talk to us
               </button>
             </div>

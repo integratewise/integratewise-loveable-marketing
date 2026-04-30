@@ -1,9 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { StubPage, stubMeta } from "@/components/site/StubPage";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/platform/how-it-works")({
-  head: () => stubMeta("How the Platform works", "Five steps from raw app data to a single source of truth."),
-  component: () => (
-    <StubPage title="How the Platform works" description="Five steps from raw app data to a single source of truth." />
-  ),
+  beforeLoad: () => {
+    throw redirect({ to: "/platform", hash: "how-it-works", replace: true });
+  },
 });

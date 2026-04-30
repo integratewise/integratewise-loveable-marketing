@@ -11,11 +11,7 @@ interface SectionProps extends HTMLAttributes<HTMLElement> {
 export function Section({ children, className, alt = false, orbs = false, ...rest }: SectionProps) {
   return (
     <section
-      className={cn(
-        "section-py relative overflow-hidden",
-        alt && "bg-section-alt",
-        className,
-      )}
+      className={cn("section-py relative overflow-hidden", alt && "bg-section-alt", className)}
       {...rest}
     >
       {orbs && (

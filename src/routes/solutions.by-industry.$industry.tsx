@@ -21,7 +21,11 @@ const DETAILS: Record<string, IndustryDetail> = {
     tools: "Salesforce, HubSpot, Stripe, Zendesk, Slack",
     attention: {
       signals: [
-        { entity: "Acme Corp (Enterprise)", change: "Usage down 32% · 2 tickets · Renewal in 21 days", severity: "high" },
+        {
+          entity: "Acme Corp (Enterprise)",
+          change: "Usage down 32% · 2 tickets · Renewal in 21 days",
+          severity: "high",
+        },
         { entity: "DataVault", change: "Champion left last week", severity: "medium" },
         { entity: "RetailNest", change: "QBR overdue 47 days", severity: "medium" },
       ],
@@ -33,7 +37,11 @@ const DETAILS: Record<string, IndustryDetail> = {
     tools: "Shopify, Stripe, Klaviyo, Zendesk, Gorgias",
     attention: {
       signals: [
-        { entity: "SKU-2104 (best-seller)", change: "Stock at 6 days · supplier lead time 9 days", severity: "high" },
+        {
+          entity: "SKU-2104 (best-seller)",
+          change: "Stock at 6 days · supplier lead time 9 days",
+          severity: "high",
+        },
         { entity: "Cart abandons", change: "Up 18% week-over-week", severity: "medium" },
         { entity: "Order #88241", change: "Refund requested · VIP customer", severity: "medium" },
       ],
@@ -45,7 +53,11 @@ const DETAILS: Record<string, IndustryDetail> = {
     tools: "EHR, scheduling, billing, patient comms",
     attention: {
       signals: [
-        { entity: "Dr. Patel · Tue clinic", change: "3 patients overdue for follow-up", severity: "high" },
+        {
+          entity: "Dr. Patel · Tue clinic",
+          change: "3 patients overdue for follow-up",
+          severity: "high",
+        },
         { entity: "Compliance audit", change: "2 records missing consent forms", severity: "high" },
         { entity: "Insurance claim #4421", change: "Pending 9 days", severity: "medium" },
       ],
@@ -57,7 +69,11 @@ const DETAILS: Record<string, IndustryDetail> = {
     tools: "Core ledger, payment rails, KYC vendor, support",
     attention: {
       signals: [
-        { entity: "Txn cluster · Merchant 7821", change: "Velocity spike — 4× normal in 2 hours", severity: "high" },
+        {
+          entity: "Txn cluster · Merchant 7821",
+          change: "Velocity spike — 4× normal in 2 hours",
+          severity: "high",
+        },
         { entity: "KYC review", change: "11 cases > 48h SLA", severity: "medium" },
         { entity: "Reconciliation", change: "$1,240 drift on EOD batch", severity: "medium" },
       ],
@@ -69,8 +85,16 @@ const DETAILS: Record<string, IndustryDetail> = {
     tools: "ERP, MES, supplier portal, maintenance",
     attention: {
       signals: [
-        { entity: "Line 3 · CNC #14", change: "Vibration trend exceeds threshold — failure window 5–9 days", severity: "high" },
-        { entity: "PO-7711", change: "Supplier delayed 4 days · affects 2 customer orders", severity: "high" },
+        {
+          entity: "Line 3 · CNC #14",
+          change: "Vibration trend exceeds threshold — failure window 5–9 days",
+          severity: "high",
+        },
+        {
+          entity: "PO-7711",
+          change: "Supplier delayed 4 days · affects 2 customer orders",
+          severity: "high",
+        },
         { entity: "Inventory raw stock", change: "Resin below reorder point", severity: "medium" },
       ],
     },
@@ -81,9 +105,17 @@ const DETAILS: Record<string, IndustryDetail> = {
     tools: "Project tracker, time-billing, CRM, docs",
     attention: {
       signals: [
-        { entity: "Project: Halberd Co", change: "12% over budget · milestone slipping by 6 days", severity: "high" },
+        {
+          entity: "Project: Halberd Co",
+          change: "12% over budget · milestone slipping by 6 days",
+          severity: "high",
+        },
         { entity: "Utilisation", change: "Team A at 93% next 2 weeks", severity: "medium" },
-        { entity: "Invoice draft", change: "$48K unbilled hours from last sprint", severity: "medium" },
+        {
+          entity: "Invoice draft",
+          change: "$48K unbilled hours from last sprint",
+          severity: "medium",
+        },
       ],
     },
     preparedAction: "Open client status note + flag bench plan + queue invoice.",
@@ -120,7 +152,7 @@ export const Route = createFileRoute("/solutions/by-industry/$industry")({
         <div className="mx-auto max-w-md text-center">
           <h1 className="heading-h1">Industry not found</h1>
           <p className="mt-4 text-text-secondary">We haven't built this industry profile yet.</p>
-          <Link to="/solutions/by-industry" className="btn-primary-iw mt-6 inline-flex">
+          <Link to="/solutions/industry" className="btn-primary-iw mt-6 inline-flex">
             Browse industries
           </Link>
         </div>
@@ -154,7 +186,9 @@ function IndustryDetailPage() {
               <span className="text-gradient-hero">powered by Memory that never resets.</span>
             </h1>
             <p className="mx-auto mt-5 text-[17px] leading-relaxed text-text-secondary">
-              {detail.name} teams rebuild context daily across {detail.tools}. Within seconds of opening the Workbench, you see what changed. Twin connects, explains, and prepares the next action.
+              {detail.name} teams rebuild context daily across {detail.tools}. Within seconds of
+              opening the Workspace, you see what changed. Twin connects, explains, and prepares the
+              next action.
             </p>
           </div>
 
@@ -168,14 +202,24 @@ function IndustryDetailPage() {
             </p>
             <p className="mt-2 text-[15px] text-foreground">{detail.preparedAction}</p>
             <div className="mt-4 flex flex-wrap gap-2">
-              <button type="button" className="btn-primary-iw !px-4 !py-2.5 text-[14px]">Approve</button>
-              <button type="button" className="btn-secondary-iw !px-4 !py-2.5 text-[14px]">Edit</button>
-              <button type="button" className="btn-secondary-iw !px-4 !py-2.5 text-[14px]">Reject</button>
+              <button type="button" className="btn-primary-iw !px-4 !py-2.5 text-[14px]">
+                Approve
+              </button>
+              <button type="button" className="btn-secondary-iw !px-4 !py-2.5 text-[14px]">
+                Edit
+              </button>
+              <button type="button" className="btn-secondary-iw !px-4 !py-2.5 text-[14px]">
+                Reject
+              </button>
             </div>
           </Reveal>
 
           <Reveal className="mt-10 text-center">
-            <button type="button" onClick={() => open(`Industry · ${detail.name}`)} className="btn-primary-iw">
+            <button
+              type="button"
+              onClick={() => open(`Industry · ${detail.name}`)}
+              className="btn-primary-iw"
+            >
               Book a demo for {detail.name} <ArrowRight size={16} />
             </button>
           </Reveal>

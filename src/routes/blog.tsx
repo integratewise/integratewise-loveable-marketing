@@ -12,13 +12,13 @@ export const Route = createFileRoute("/blog")({
       {
         name: "description",
         content:
-          "Stories about ending the Human API role: how scattered apps become Digital Memory, how Workbench replaces tab-switching, and how Twin proposes inside the Approval Gate.",
+          "Stories about ending the Human API role: how scattered apps become Digital Memory, how Workspace replaces tab-switching, and how Twin proposes inside the Approval Gate.",
       },
       { property: "og:title", content: "Blog — IntegrateWise" },
       {
         property: "og:description",
         content:
-          "Real-world stories about Digital Memory, Adaptive Spine, Workbench, Twin, and Approval — written for operators, not generic AI thought-leadership.",
+          "Real-world stories about Digital Memory, Spine, Workspace, Twin, and Approval — written for operators, not generic AI thought-leadership.",
       },
     ],
   }),
@@ -28,19 +28,23 @@ export const Route = createFileRoute("/blog")({
 const CATEGORIES = [
   {
     tag: "End of the Human API",
-    blurb: "How people rebuild context across apps today, and what a day looks like once that stops.",
+    blurb:
+      "How people rebuild context across apps today, and what a day looks like once that stops.",
   },
   {
-    tag: "Digital Memory & Adaptive Spine",
-    blurb: "Why Memory comes before intelligence. How Truth, Context, and Session Summaries stay separate.",
+    tag: "Digital Memory & Spine",
+    blurb:
+      "Why Memory comes before intelligence. How Truth, Context, and Session Summaries stay separate.",
   },
   {
-    tag: "Adaptive Workbench in the real world",
-    blurb: "Operator stories: a Monday in Business Ops, a CA firm running GST work from one screen.",
+    tag: "Workspace in the real world",
+    blurb:
+      "Operator stories: a Monday in Business Ops, a CA firm running GST work from one screen.",
   },
   {
     tag: "Twin & Governed AI",
-    blurb: "Approval Gate, org AI library, and keeping AI in its lane — Truth you own, AI you rent.",
+    blurb:
+      "Approval Gate, org AI library, and keeping AI in its lane — Truth you own, AI you rent.",
   },
 ];
 
@@ -53,21 +57,21 @@ const POSTS = [
     audience: "For CSMs and Account Success leads",
   },
   {
-    category: "Digital Memory & Adaptive Spine",
+    category: "Digital Memory & Spine",
     title: "Why we built Memory before we built the AI",
     summary:
-      "Most AI products bolt a model onto chaos. We built the Adaptive Spine first so Truth, Context, and Session Summaries can converge into one Digital Memory.",
+      "Most AI products bolt a model onto chaos. We built the Spine first so Truth, Context, and Session Summaries can converge into one Digital Memory.",
     audience: "For founders and ops leads",
   },
   {
-    category: "Adaptive Workbench in the real world",
+    category: "Workspace in the real world",
     title: "A Monday in Business Ops with IntegrateWise",
     summary:
-      "Twelve apps on Friday. One Workbench on Monday. Walk through how revenue, support tickets, and renewal risks land on a single screen.",
+      "Twelve apps on Friday. One Workspace on Monday. Walk through how revenue, support tickets, and renewal risks land on a single screen.",
     audience: "For BizOps and RevOps",
   },
   {
-    category: "Adaptive Workbench in the real world",
+    category: "Workspace in the real world",
     title: "How a CA firm runs GST work from one screen",
     summary:
       "Tally, Sheets, WhatsApp, and email — stitched into a single client view. Filings, invoices, and chase-ups stop being a tab-hunt.",
@@ -84,7 +88,7 @@ const POSTS = [
     category: "Twin & Governed AI",
     title: "Confidence scores, evidence chains, and the Approval Gate",
     summary:
-      "What a Twin proposal actually looks like in the Workbench: severity, sources, confidence, and the gate that keeps execution in your hands.",
+      "What a Twin proposal actually looks like in the Workspace: severity, sources, confidence, and the gate that keeps execution in your hands.",
     audience: "For ops leads and admins",
   },
 ];
@@ -94,7 +98,11 @@ function BlogPage() {
     <>
       {/* Hero */}
       <section className="relative overflow-hidden pt-32 pb-16 lg:pt-40 lg:pb-20">
-        <span aria-hidden className="orb orb-peach" style={{ width: 540, height: 540, top: -160, left: "60%" }} />
+        <span
+          aria-hidden
+          className="orb orb-peach"
+          style={{ width: 540, height: 540, top: -160, left: "60%" }}
+        />
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-iw badge-iw-muted">Blog</span>
@@ -104,7 +112,8 @@ function BlogPage() {
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-[17px] leading-relaxed text-text-secondary">
               How real teams stop being the bridge between WhatsApp, Tally, Razorpay, Gmail, Sheets,
-              and a CRM — and how Digital Memory, Workbench, Twin, and Approval show up in their day.
+              and a CRM — and how Digital Memory, Workspace, Twin, and Approval show up in their
+              day.
             </p>
           </Reveal>
         </Container>
@@ -116,8 +125,8 @@ function BlogPage() {
           <Reveal className="mx-auto max-w-3xl text-center">
             <h2 className="heading-h2">Four threads we keep pulling.</h2>
             <p className="mt-4 text-[16px] text-text-secondary">
-              Every post connects back to one flow: scattered apps → Adaptive Spine → Digital Memory →
-              Workbench → Twin → Approval.
+              Every post connects back to one flow: scattered apps → Spine → Digital Memory →
+              Workspace → Twin → Approval.
             </p>
           </Reveal>
           <div className="mx-auto mt-12 grid max-w-5xl gap-5 md:grid-cols-2">
@@ -145,7 +154,9 @@ function BlogPage() {
               <Reveal key={p.title} delay={i * 60} className="card-iw flex h-full flex-col p-7">
                 <span className="badge-iw badge-iw-muted">{p.category}</span>
                 <h3 className="mt-4 text-[19px] font-semibold text-foreground">{p.title}</h3>
-                <p className="mt-2 text-[14.5px] leading-relaxed text-text-secondary">{p.summary}</p>
+                <p className="mt-2 text-[14.5px] leading-relaxed text-text-secondary">
+                  {p.summary}
+                </p>
                 <div className="mt-4 text-[12.5px] font-semibold uppercase tracking-wider text-brand-accent">
                   {p.audience}
                 </div>
@@ -165,9 +176,14 @@ function BlogPage() {
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-[14px] text-text-secondary">
               Looking for product docs or release notes? Visit{" "}
-              <Link to="/docs" className="text-brand-accent hover:underline">Docs</Link>
+              <Link to="/docs" className="text-brand-accent hover:underline">
+                Docs
+              </Link>
               {" or "}
-              <Link to="/changelog" className="text-brand-accent hover:underline">Changelog</Link>.
+              <Link to="/changelog" className="text-brand-accent hover:underline">
+                Changelog
+              </Link>
+              .
             </p>
           </div>
         </Container>

@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import { SpineLogo } from "./SpineLogo";
 import { Container } from "./Container";
 
@@ -8,8 +7,8 @@ export function Footer() {
   return (
     <footer className="border-t border-border bg-section-alt">
       <Container className="py-16">
-        <div className="grid gap-10 md:grid-cols-6">
-          <div className="md:col-span-2">
+        <div className="grid gap-10 md:grid-cols-3 lg:grid-cols-7">
+          <div className="md:col-span-3 lg:col-span-2">
             <div className="flex items-center gap-2.5">
               <SpineLogo className="h-[28px] w-auto text-foreground" />
               <span className="text-[17px] font-semibold tracking-tight text-foreground">
@@ -18,8 +17,8 @@ export function Footer() {
             </div>
             <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-text-secondary">
               Your work resets every day. IntegrateWise stops that. Your data becomes Digital
-              Memory. Your Twin connects what changed, explains why it matters, and prepares
-              what to do next — you approve every move.
+              Memory. Your Twin connects what changed, explains why it matters, and prepares what to
+              do next — you approve every move.
             </p>
             <p className="mt-6 text-[13px] text-text-secondary">
               SOC 2 Type II · GDPR Ready · Tenant Isolation · Approval-gated
@@ -29,21 +28,31 @@ export function Footer() {
           <FooterCol
             title="Platform"
             links={[
-              { to: "/platform", label: "Spine" },
-              { to: "/platform/memory", label: "Memory" },
-              { to: "/platform/integrations", label: "Integrations" },
-              { to: "/platform/security", label: "Security" },
-              { to: "/platform/how-it-works", label: "How it works" },
-              { to: "/platform/infrastructure", label: "Infrastructure" },
+              { to: "/platform#spine", label: "Spine" },
+              { to: "/platform#how-it-works", label: "How it works" },
+              { to: "/platform#digital-memory", label: "Digital Memory" },
+              { to: "/platform#connectors", label: "Connectors" },
+              { to: "/platform#security", label: "Security" },
+              { to: "/platform#integrations", label: "Integrations" },
             ]}
           />
           <FooterCol
             title="Product"
             links={[
-              { to: "/product", label: "Workbench" },
-              { to: "/product/the-twin", label: "The Twin" },
-              { to: "/product/approval", label: "Approval" },
-              { to: "/product/reference-layer", label: "Reference Layer" },
+              { to: "/product#workspace", label: "Workspace" },
+              { to: "/product#how-it-works", label: "How it works" },
+              { to: "/product#digital-memory", label: "Digital Memory" },
+              { to: "/product#security", label: "Security" },
+            ]}
+          />
+          <FooterCol
+            title="Intelligence"
+            links={[
+              { to: "/twin#twin", label: "Twin" },
+              { to: "/twin#how-it-works", label: "How it works" },
+              { to: "/twin#digital-memory-reference", label: "Digital Memory Reference" },
+              { to: "/twin#twin-execution", label: "Twin Execution" },
+              { to: "/twin#security", label: "Security" },
             ]}
           />
           <FooterCol
@@ -52,21 +61,16 @@ export function Footer() {
               { to: "/solutions/account-success", label: "Account Success" },
               { to: "/solutions/business-ops", label: "Business Ops" },
               { to: "/solutions/personal-space", label: "Personal Space" },
-              { to: "/solutions/by-industry", label: "By Industry" },
-              { to: "/solutions/by-role", label: "By Role" },
+              { to: "/solutions", label: "All solutions" },
             ]}
           />
           <FooterCol
             title="Company"
             links={[
               { to: "/about", label: "About" },
-              { to: "/customer-zero", label: "Customer Zero" },
               { to: "/manifesto", label: "Manifesto" },
+              { to: "/customer-zero", label: "Customer Zero" },
               { to: "/why", label: "Why" },
-              { to: "/blog", label: "Blog" },
-              { to: "/docs", label: "Docs" },
-              { to: "/changelog", label: "Changelog" },
-              { to: "/pricing", label: "Pricing" },
               { to: "/contact", label: "Contact" },
             ]}
           />
@@ -96,12 +100,12 @@ function FooterCol({
       <ul className="mt-4 space-y-2.5">
         {links.map((l) => (
           <li key={l.to}>
-            <Link
-              to={l.to}
+            <a
+              href={l.to}
               className="text-[14px] text-foreground/80 transition-colors hover:text-foreground"
             >
               {l.label}
-            </Link>
+            </a>
           </li>
         ))}
       </ul>

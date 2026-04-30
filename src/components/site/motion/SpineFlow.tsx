@@ -1,5 +1,5 @@
 /**
- * SpineFlow — animated connector cluster → Adaptive Spine → Digital Memory.
+ * SpineFlow — animated connector cluster → Spine → Digital Memory.
  * Replaces the static Spine card on the homepage with a calm, in-view
  * animation: app chips pulse glowing lines toward the Spine node, then
  * Truth / Context / Session Summaries strands converge into a Venn
@@ -138,48 +138,24 @@ function ConnectorLines() {
 }
 
 /**
- * Schema chips growing as data flows in.
- * Visual encoding of "the Spine learns the schema as you grow".
+ * Plain-language replacement for the engineer-facing schema chip row.
+ * Keeps the "Schema, learned as you grow" frame but speaks to the operator.
  */
-const SCHEMA_CHIPS = [
-  { label: "account_id", base: true },
-  { label: "name", base: true },
-  { label: "owner", base: true },
-  { label: "arr", base: false },
-  { label: "renewal_date", base: false },
-  { label: "health_score", base: false },
-  { label: "champion", base: false },
-];
-
 function SchemaChips() {
   return (
     <div className="mt-6 rounded-xl border border-border bg-white/[0.02] p-4">
       <div className="text-[11px] font-semibold uppercase tracking-wider text-text-secondary">
         Schema, learned as you grow
       </div>
-      <div className="mt-3 flex flex-wrap gap-2">
-        {SCHEMA_CHIPS.map((c, i) => (
-          <motion.span
-            key={c.label}
-            initial={{ opacity: 0, y: 8, scale: 0.95 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{
-              duration: 0.35,
-              delay: c.base ? i * 0.06 : 0.5 + i * 0.08,
-              ease: "easeOut",
-            }}
-            className={
-              "rounded-full border px-2.5 py-1 text-[12px] " +
-              (c.base
-                ? "border-border bg-white/[0.04] text-foreground/90"
-                : "border-brand-highlight/30 bg-brand-highlight/10 text-brand-highlight")
-            }
-          >
-            {c.label}
-          </motion.span>
-        ))}
-      </div>
+      <motion.p
+        initial={{ opacity: 0, y: 6 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+        className="mt-2 text-[14px] leading-relaxed text-foreground/90"
+      >
+        Spine grows along with you.
+      </motion.p>
     </div>
   );
 }
@@ -277,7 +253,9 @@ function Strand({
         ? "border-purple-300/40 text-purple-200"
         : "border-brand-highlight/40 text-brand-highlight";
   return (
-    <div className={`flex items-center gap-2.5 rounded-lg border ${ring} bg-white/[0.02] px-3 py-2`}>
+    <div
+      className={`flex items-center gap-2.5 rounded-lg border ${ring} bg-white/[0.02] px-3 py-2`}
+    >
       <Icon size={16} />
       <div className="min-w-0">
         <div className="text-[13px] font-semibold text-foreground">{label}</div>

@@ -7,7 +7,7 @@ const TIERS = [
     name: "Starter",
     price: "$99",
     cadence: "/seat / mo",
-    blurb: "For teams trying their first Workbench.",
+    blurb: "For teams trying their first Workspace.",
     features: ["Sync every 4h", "5 connectors", "Read-only Reference Layer", "90 days history"],
     highlight: false,
   },
@@ -16,7 +16,12 @@ const TIERS = [
     price: "$499",
     cadence: "/seat / mo",
     blurb: "For ops teams who run on Memory daily.",
-    features: ["Sync every 1h", "20 connectors", "Limited write Reference Layer", "365 days history"],
+    features: [
+      "Sync every 1h",
+      "20 connectors",
+      "Limited write Reference Layer",
+      "365 days history",
+    ],
     highlight: true,
   },
   {
@@ -24,7 +29,12 @@ const TIERS = [
     price: "Custom",
     cadence: "",
     blurb: "For orgs with strict approval workflows.",
-    features: ["Sync every 15min", "Unlimited connectors", "Full Reference Layer", "Unlimited history"],
+    features: [
+      "Sync every 15min",
+      "Unlimited connectors",
+      "Full Reference Layer",
+      "Unlimited history",
+    ],
     highlight: false,
   },
 ];

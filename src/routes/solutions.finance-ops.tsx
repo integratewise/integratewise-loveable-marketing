@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SolutionPage } from "@/components/site/SolutionPage";
 import { financeOpsAttention } from "@/content/attention-scenarios";
-import type { WorkbenchScenario } from "@/components/site/Workbench";
+import type { WorkbenchScenario } from "@/components/site/Workspace";
 
 const financeScenario: WorkbenchScenario = {
   entityType: "Receivable",

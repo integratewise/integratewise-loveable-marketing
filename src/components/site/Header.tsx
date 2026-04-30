@@ -89,7 +89,10 @@ export function Header() {
                     aria-haspopup="menu"
                   >
                     {item.label}
-                    <ChevronDown size={14} className={cn("transition-transform", isOpen && "rotate-180")} />
+                    <ChevronDown
+                      size={14}
+                      className={cn("transition-transform", isOpen && "rotate-180")}
+                    />
                   </button>
                   {isOpen && <MegaMenu item={item} />}
                 </div>
@@ -136,16 +139,18 @@ export function Header() {
                     <p className="px-3 pt-1 pb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-text-secondary">
                       {item.label}
                     </p>
-                    {item.groups.flatMap((g) => g.items).map((leaf) => (
-                      <Link
-                        key={leaf.to}
-                        to={leaf.to}
-                        className="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-white/5"
-                      >
-                        <leaf.icon size={16} className="mt-0.5 text-brand-accent" />
-                        <span className="text-[14.5px] text-foreground">{leaf.label}</span>
-                      </Link>
-                    ))}
+                    {item.groups
+                      .flatMap((g) => g.items)
+                      .map((leaf) => (
+                        <Link
+                          key={leaf.to}
+                          to={leaf.to}
+                          className="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-white/5"
+                        >
+                          <leaf.icon size={16} className="mt-0.5 text-brand-accent" />
+                          <span className="text-[14.5px] text-foreground">{leaf.label}</span>
+                        </Link>
+                      ))}
                     {item.footer && (
                       <Link
                         to={item.footer.to}
@@ -173,20 +178,26 @@ export function Header() {
 }
 
 function MegaMenu({ item }: { item: Extract<NavGroup, { kind: "menu" }> }) {
-  // Wider for Solutions (3 cols + footer), narrower otherwise
-  const wide = item.groups.length >= 2;
+  // Solutions (3 groups) needs the most horizontal room; smaller menus stay narrow.
+  const cols = item.groups.length;
+  const width =
+    cols >= 3
+      ? "w-[920px] max-w-[calc(100vw-2rem)]"
+      : cols === 2
+        ? "w-[760px] max-w-[calc(100vw-2rem)]"
+        : "w-[340px]";
   return (
     <div
       role="menu"
       className={cn(
         "absolute left-1/2 top-full z-50 mt-2 -translate-x-1/2 nav-glass p-4 shadow-card",
-        wide ? "w-[760px]" : "w-[340px]",
+        width,
       )}
     >
       <div
         className={cn(
           "grid gap-3",
-          item.groups.length === 3 ? "grid-cols-3" : item.groups.length === 2 ? "grid-cols-2" : "grid-cols-1",
+          cols === 3 ? "grid-cols-3" : cols === 2 ? "grid-cols-2" : "grid-cols-1",
         )}
       >
         {item.groups.map((g) => (
@@ -196,7 +207,8 @@ function MegaMenu({ item }: { item: Extract<NavGroup, { kind: "menu" }> }) {
             </p>
             <ul className="flex flex-col gap-0.5">
               {g.items.map((leaf) => {
-                const showWaitlist = "waitlist" in leaf && (leaf as { waitlist?: boolean }).waitlist;
+                const showWaitlist =
+                  "waitlist" in leaf && (leaf as { waitlist?: boolean }).waitlist;
                 return (
                   <li key={leaf.to}>
                     <Link
@@ -206,14 +218,18 @@ function MegaMenu({ item }: { item: Extract<NavGroup, { kind: "menu" }> }) {
                       <leaf.icon size={16} className="mt-0.5 shrink-0 text-brand-accent" />
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-2">
-                          <span className="text-[14px] font-semibold text-foreground">{leaf.label}</span>
+                          <span className="text-[14px] font-semibold text-foreground">
+                            {leaf.label}
+                          </span>
                           {showWaitlist && (
                             <span className="rounded-full border border-brand-highlight/30 bg-brand-highlight/10 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-brand-highlight">
                               Waitlist
                             </span>
                           )}
                         </div>
-                        <p className="mt-0.5 text-[12.5px] leading-snug text-text-secondary">{leaf.blurb}</p>
+                        <p className="mt-0.5 text-[12.5px] leading-snug text-text-secondary">
+                          {leaf.blurb}
+                        </p>
                       </div>
                     </Link>
                   </li>

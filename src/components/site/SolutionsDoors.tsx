@@ -26,7 +26,9 @@ export function SolutionsDoors() {
               )}
             </div>
             <h3 className="mt-3 text-[16px] font-semibold text-foreground">{s.label}</h3>
-            <p className="mt-1.5 flex-1 text-[13px] leading-relaxed text-text-secondary">{s.blurb}</p>
+            <p className="mt-1.5 flex-1 text-[13px] leading-relaxed text-text-secondary">
+              {s.blurb}
+            </p>
             <div className="mt-4 flex items-center justify-between gap-2">
               <button
                 type="button"
@@ -37,10 +39,7 @@ export function SolutionsDoors() {
               >
                 {s.waitlist ? "Join Waitlist" : "Book a Demo"}
               </button>
-              <Link
-                to={s.to}
-                className="text-[13px] text-text-secondary hover:text-foreground"
-              >
+              <Link to={s.to} className="text-[13px] text-text-secondary hover:text-foreground">
                 Learn →
               </Link>
             </div>

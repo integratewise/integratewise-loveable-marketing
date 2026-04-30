@@ -32,7 +32,10 @@ export function ConnectorMarquee() {
     <div className="marquee-mask relative overflow-hidden py-6">
       <div className="marquee-track flex w-max items-center gap-12">
         {items.map((logo, i) => (
-          <div key={`${logo.name}-${i}`} className="flex items-center gap-3 opacity-70 hover:opacity-100 transition-opacity">
+          <div
+            key={`${logo.name}-${i}`}
+            className="flex items-center gap-3 opacity-70 hover:opacity-100 transition-opacity"
+          >
             <img src={logo.src} alt="" aria-hidden className="h-7 w-auto" />
             <span className="text-[14px] font-medium text-text-secondary">{logo.name}</span>
           </div>
