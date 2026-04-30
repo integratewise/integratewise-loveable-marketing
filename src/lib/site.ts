@@ -77,7 +77,7 @@ export const SOLUTIONS_BY_OUTCOME: SolutionItem[] = [
   },
   {
     to: "/solutions/personal-space",
-    label: "Personal Ops",
+    label: "Personal Space",
     blurb: "Your day, finally assembled.",
     icon: User,
     waitlist: true,
