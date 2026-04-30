@@ -142,7 +142,7 @@ function ProductPage() {
       <Section orbs className="!pt-20 lg:!pt-28">
         <Container>
           <div className="mx-auto max-w-3xl text-center">
-            <Badge variant="muted">Product</Badge>
+            <Badge variant="muted">Still juggling your work?</Badge>
             <h1 className="heading-h1 mt-5">
               Your Workbench{" "}
               <span className="text-gradient-hero">adapts to how you work.</span>
