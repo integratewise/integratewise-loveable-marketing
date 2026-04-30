@@ -40,8 +40,8 @@ export function Footer() {
           <FooterCol
             title="Product"
             links={[
-              { to: "/product", label: "Workbench" },
-              { to: "/product/the-twin", label: "The Twin" },
+              { to: "/product", label: "Workspace" },
+              { to: "/twin", label: "The Twin" },
               { to: "/product/approval", label: "Approval" },
               { to: "/product/reference-layer", label: "Reference Layer" },
             ]}
