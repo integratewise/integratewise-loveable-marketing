@@ -139,7 +139,7 @@ function ProductPage() {
   return (
     <>
       {/* 1. Hero */}
-      <Section orbs className="!pt-20 lg:!pt-28">
+      <Section id="overview" orbs className="!pt-20 lg:!pt-28">
         <Container>
           <div className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Still juggling your work?</Badge>
@@ -170,7 +170,7 @@ function ProductPage() {
       </Section>
 
       {/* 2. From empty dashboards to a living workspace */}
-      <Section alt>
+      <Section id="living-workspace" alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Living workspace</Badge>
@@ -220,6 +220,7 @@ function ProductPage() {
       </Section>
 
       {/* 2b. Product walkthrough video */}
+      <div id="workspace-in-action" />
       <ProductVideo
         eyebrow="Workspace in action"
         title="Your Workspace, reading from Digital Memory."
@@ -230,7 +231,7 @@ function ProductPage() {
       />
 
       {/* 3. Workspace frame */}
-      <Section id="layout">
+      <Section id="frame">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">The frame</Badge>
@@ -252,7 +253,7 @@ function ProductPage() {
       </Section>
 
       {/* 4. Where stitching happens */}
-      <Section alt>
+      <Section id="no-more-human-api" alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">No more Human API</Badge>
@@ -305,7 +306,7 @@ function ProductPage() {
       </Section>
 
       {/* 5. Views */}
-      <Section>
+      <Section id="views">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Views</Badge>
@@ -339,7 +340,7 @@ function ProductPage() {
       </Section>
 
       {/* 6. Evidence */}
-      <Section alt>
+      <Section id="evidence" alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Evidence</Badge>
@@ -400,7 +401,7 @@ function ProductPage() {
       </Section>
 
       {/* 7. Approval Gate */}
-      <Section>
+      <Section id="approval-gate">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Approval Gate</Badge>
@@ -474,7 +475,7 @@ function ProductPage() {
       </Section>
 
       {/* 8. CTA */}
-      <Section alt>
+      <Section id="demo" alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <h2 className="heading-h2">See your Workspace built on your own data.</h2>
