@@ -180,7 +180,7 @@ function ProductPage() {
       </Section>
 
       {/* 2. From empty dashboards to a living workspace */}
-      <Section id="living-workspace" alt>
+      <Section id="how-it-works" alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Living workspace</Badge>
