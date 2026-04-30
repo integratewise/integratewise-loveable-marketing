@@ -125,7 +125,7 @@ function PricingPage() {
           >
             <h2 className="heading-h2">Talk through your stack with the founder.</h2>
             <p className="mx-auto mt-4 max-w-xl text-[16px] text-text-secondary">
-              30 minutes. Real conversation. Live Workbench scoped to your scenario.
+              30 minutes. Real conversation. Live Workspace scoped to your scenario.
             </p>
             <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
               <button type="button" onClick={() => open("Pricing footer")} className="btn-primary-iw">

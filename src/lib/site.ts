@@ -77,7 +77,7 @@ export const SOLUTIONS_BY_OUTCOME: SolutionItem[] = [
   },
   {
     to: "/solutions/personal-space",
-    label: "Personal Ops",
+    label: "Personal Space",
     blurb: "Your day, finally assembled.",
     icon: User,
     waitlist: true,
@@ -139,8 +139,8 @@ export const PLATFORM_LINKS: NavLeaf[] = [
 ];
 
 export const PRODUCT_LINKS: NavLeaf[] = [
-  { to: "/product/workbench", label: "Workbench", blurb: "Your unified work surface.", icon: LayoutDashboard },
-  { to: "/product/the-twin", label: "The Twin", blurb: "Connects, explains, prepares.", icon: Sparkles },
+  { to: "/product", label: "Workspace", blurb: "Your unified work surface.", icon: LayoutDashboard },
+  { to: "/twin", label: "The Twin", blurb: "Connects, explains, prepares.", icon: Sparkles },
   { to: "/product/approval", label: "Approval", blurb: "Nothing executes without you.", icon: ShieldCheck },
   { to: "/product/reference-layer", label: "Reference Layer", blurb: "Truth you own.", icon: FileText },
 ];

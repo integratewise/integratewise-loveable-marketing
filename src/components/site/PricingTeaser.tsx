@@ -7,7 +7,7 @@ const TIERS = [
     name: "Starter",
     price: "$99",
     cadence: "/seat / mo",
-    blurb: "For teams trying their first Workbench.",
+    blurb: "For teams trying their first Workspace.",
     features: ["Sync every 4h", "5 connectors", "Read-only Reference Layer", "90 days history"],
     highlight: false,
   },

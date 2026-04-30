@@ -138,18 +138,11 @@ function ConnectorLines() {
 }
 
 /**
- * Schema chips growing as data flows in.
- * Visual encoding of "the Spine learns the schema as you grow".
+ * "Spine grows along with you" — visual progression below uses a Day 1 →
+ * Day 30 → Day 90 metaphor instead of raw schema column names. Internal
+ * field-name lists used to live here; they were removed because they
+ * leaked engineer-facing vocabulary into public copy.
  */
-const SCHEMA_CHIPS = [
-  { label: "account_id", base: true },
-  { label: "name", base: true },
-  { label: "owner", base: true },
-  { label: "arr", base: false },
-  { label: "renewal_date", base: false },
-  { label: "health_score", base: false },
-  { label: "champion", base: false },
-];
 
 function SchemaChips() {
   // "Spine grows along with you" — day 1 → day 30 → day 90 progression.

@@ -488,7 +488,7 @@ function PlatformPage() {
             <Badge variant="muted">The stack</Badge>
             <h2 className="heading-h2 mt-4">One Platform. Many ways to use it.</h2>
             <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
-              The Platform is universal. On top of it, the Adaptive Workbench and Twin shape
+              The Platform is universal. On top of it, the Adaptive Workspace and Twin shape
               themselves around your day.
             </p>
           </Reveal>
@@ -508,12 +508,12 @@ function PlatformPage() {
                     Reads Memory, proposes actions, waits behind the Approval Gate.
                   </p>
                 </div>
-                {/* Workbench */}
+                {/* Workspace */}
                 <div className="rounded-xl border border-border bg-elevated/50 p-5">
                   <div className="flex items-center gap-2 text-foreground">
                     <Layers size={16} />
                     <p className="text-[11px] font-semibold uppercase tracking-wider text-text-secondary">
-                      Adaptive Workbench — Product
+                      Adaptive Workspace — Product
                     </p>
                   </div>
                   <p className="mt-2 text-[14px] text-foreground/90">
@@ -545,7 +545,7 @@ function PlatformPage() {
             <h2 className="heading-h2">See your data as Digital Memory.</h2>
             <p className="mx-auto mt-4 text-[16px] leading-relaxed text-text-secondary">
               In one demo we connect a few tools, show how the Adaptive Spine turns them into
-              Digital Memory, and how the Workbench starts working from day one — no empty
+              Digital Memory, and how the Workspace starts working from day one — no empty
               dashboards, no scripts.
             </p>
             <div className="mt-7 flex flex-wrap items-center justify-center gap-3">

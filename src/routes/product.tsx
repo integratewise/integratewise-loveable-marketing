@@ -34,13 +34,13 @@ import { useDemoModal } from "@/components/site/demo-modal-context";
 export const Route = createFileRoute("/product")({
   head: () => ({
     meta: [
-      { title: "Product — Your Workbench adapts to how you work" },
+      { title: "Product — Your Workspace adapts to how you work" },
       {
         name: "description",
         content:
-          "The Adaptive Workbench reads from your Digital Memory and reshapes itself around your clients, projects, filings, and tasks. One living screen, never an empty dashboard.",
+          "The Adaptive Workspace reads from your Digital Memory and reshapes itself around your clients, projects, filings, and tasks. One living screen, never an empty dashboard.",
       },
-      { property: "og:title", content: "IntegrateWise Product — Adaptive Workbench" },
+      { property: "og:title", content: "IntegrateWise Product — Adaptive Workspace" },
       {
         property: "og:description",
         content:
@@ -144,13 +144,13 @@ function ProductPage() {
           <div className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Still juggling your work?</Badge>
             <h1 className="heading-h1 mt-5">
-              Your Workbench{" "}
+              Your Workspace{" "}
               <span className="text-gradient-hero">adapts to how you work.</span>
             </h1>
             <p className="mx-auto mt-5 text-[17px] leading-relaxed text-text-secondary">
               You don't need another dashboard. You need one living screen that matches your day.
-              The Adaptive Workbench reads from your Digital Memory and reshapes itself around your
-              clients, projects, filings, and tasks. The Workbench is where stitching between apps
+              The Adaptive Workspace reads from your Digital Memory and reshapes itself around your
+              clients, projects, filings, and tasks. The Workspace is where stitching between apps
               happens, so you stop being the Human API.
             </p>
             <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
@@ -177,7 +177,7 @@ function ProductPage() {
             <h2 className="heading-h2 mt-4">Not a static dashboard. A living workspace.</h2>
             <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
               Most tools drop you into an empty dashboard and ask you to build everything.
-              IntegrateWise starts by reading your Digital Memory so your Workbench is alive from
+              IntegrateWise starts by reading your Digital Memory so your Workspace is alive from
               day one.
             </p>
           </Reveal>
@@ -191,7 +191,7 @@ function ProductPage() {
                 <ul className="mt-4 space-y-3 text-[14px] leading-relaxed text-foreground/90">
                   <li>• Connect one or two tools — calendar, tasks, CRM, Notion.</li>
                   <li>
-                    • Your Workbench immediately shows real tasks, upcoming meetings, and a basic
+                    • Your Workspace immediately shows real tasks, upcoming meetings, and a basic
                     list of clients or projects.
                   </li>
                   <li>• You land in a screen that already reflects your work, not blank charts.</li>
@@ -206,11 +206,11 @@ function ProductPage() {
                 <ul className="mt-4 space-y-3 text-[14px] leading-relaxed text-foreground/90">
                   <li>• As more data flows into the Adaptive Spine, your Digital Memory deepens.</li>
                   <li>
-                    • Workbench views evolve: richer client views, project boards, account health,
+                    • Workspace views evolve: richer client views, project boards, account health,
                     filings, and risks.
                   </li>
                   <li>
-                    • You never rebuild dashboards by hand — the Workbench adapts with you.
+                    • You never rebuild dashboards by hand — the Workspace adapts with you.
                   </li>
                 </ul>
               </div>
@@ -221,15 +221,15 @@ function ProductPage() {
 
       {/* 2b. Product walkthrough video */}
       <ProductVideo
-        eyebrow="Workbench in action"
-        title="Your Workbench, reading from Digital Memory."
-        subline="Watch how your Workbench reads from Digital Memory, stitches your tools, and keeps AI proposals inside your workspace with Approval Gate."
+        eyebrow="Workspace in action"
+        title="Your Workspace, reading from Digital Memory."
+        subline="Watch how your Workspace reads from Digital Memory, stitches your tools, and keeps AI proposals inside your workspace with Approval Gate."
         src="/videos/integratewise-walkthrough.mp4"
         webm="/videos/integratewise-walkthrough.webm"
         poster="/videos/integratewise-walkthrough-poster.jpg"
       />
 
-      {/* 3. Workbench frame */}
+      {/* 3. Workspace frame */}
       <Section id="layout">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
@@ -243,7 +243,7 @@ function ProductPage() {
 
           <Reveal delay={200} className="mx-auto mt-8 max-w-3xl text-center">
             <p className="text-[15px] leading-relaxed text-text-secondary">
-              The Workbench sits directly on top of Digital Memory, so every view is stitched from
+              The Workspace sits directly on top of Digital Memory, so every view is stitched from
               Truth, Context, and your approved AI knowledge. You see clients, projects, filings,
               and tasks the way you actually think about them — not tool by tool.
             </p>
@@ -264,7 +264,7 @@ function ProductPage() {
               <div className="card-iw h-full p-6">
                 <ul className="space-y-3 text-[14px] leading-relaxed text-foreground/90">
                   <li>
-                    • Instead of opening five tools to understand one client, the Workbench pulls
+                    • Instead of opening five tools to understand one client, the Workspace pulls
                     everything into one stitched view from Digital Memory.
                   </li>
                   <li>
@@ -297,7 +297,7 @@ function ProductPage() {
 
           <Reveal delay={200} className="mx-auto mt-8 max-w-3xl text-center">
             <p className="text-[16px] font-medium text-foreground/90">
-              The Workbench is where the system does the stitching, so you don't have to be the
+              The Workspace is where the system does the stitching, so you don't have to be the
               Human API anymore.
             </p>
           </Reveal>
@@ -345,7 +345,7 @@ function ProductPage() {
             <Badge variant="muted">Evidence</Badge>
             <h2 className="heading-h2 mt-4">Every insight shows its sources.</h2>
             <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
-              In the Workbench, nothing is a black box. Every number and suggestion can be traced
+              In the Workspace, nothing is a black box. Every number and suggestion can be traced
               back to real records and messages in your Digital Memory.
             </p>
           </Reveal>
@@ -404,9 +404,9 @@ function ProductPage() {
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Approval Gate</Badge>
-            <h2 className="heading-h2 mt-4">Review, edit, approve — inside your Workbench.</h2>
+            <h2 className="heading-h2 mt-4">Review, edit, approve — inside your Workspace.</h2>
             <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
-              AI never acts behind your back. The Workbench shows every proposed action in your own
+              AI never acts behind your back. The Workspace shows every proposed action in your own
               workspace, with full proof, before anything happens.
             </p>
           </Reveal>
@@ -466,7 +466,7 @@ function ProductPage() {
 
           <Reveal delay={250} className="mx-auto mt-8 max-w-3xl text-center">
             <p className="text-[16px] font-medium text-foreground/90">
-              You stay in your Workbench; AI stays in its layer. Actions cross the line only through
+              You stay in your Workspace; AI stays in its layer. Actions cross the line only through
               the Approval Gate.
             </p>
           </Reveal>
@@ -477,10 +477,10 @@ function ProductPage() {
       <Section alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <h2 className="heading-h2">See your Workbench built on your own data.</h2>
+            <h2 className="heading-h2">See your Workspace built on your own data.</h2>
             <p className="mx-auto mt-4 text-[16px] leading-relaxed text-text-secondary">
               In one demo we connect your tools, show the Digital Memory that forms in the Platform,
-              and then walk you through a Workbench that reflects your actual day — not an empty
+              and then walk you through a Workspace that reflects your actual day — not an empty
               template.
             </p>
             <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
@@ -499,14 +499,14 @@ function ProductPage() {
 }
 
 /* ----------------------------------------------------------------------- */
-/*  Workbench frame mock                                                    */
+/*  Workspace frame mock                                                    */
 /* ----------------------------------------------------------------------- */
 function WorkbenchFrame({ compact = false }: { compact?: boolean }) {
   return (
     <div
       className="card-iw overflow-hidden"
       style={{ background: "var(--bg-surface)" }}
-      aria-label="Workbench preview"
+      aria-label="Workspace preview"
     >
       {/* Browser chrome */}
       <div className="flex items-center gap-2 border-b border-border px-4 py-2.5">

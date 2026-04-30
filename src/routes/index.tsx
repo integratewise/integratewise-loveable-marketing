@@ -59,8 +59,8 @@ function HomePage() {
           <div className="fade-up mx-auto max-w-4xl text-center">
             <span className="badge-iw badge-iw-muted">Still juggling your work?</span>
             <h1 className="heading-display mt-6">
-              <span className="block">Stop being the</span>
-              <span className="block text-gradient-hero">human API between your tools.</span>
+              Stop being the{" "}
+              <span className="text-gradient-hero">human API between your tools.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-[18px] leading-relaxed text-text-secondary">
               One workspace. Full context. Every action under your control.
@@ -173,7 +173,7 @@ function HomePage() {
             {[
               { t: "Apps flow in", b: "OAuth connect. No code. No CSV exports." },
               { t: "Truth & context converge into reality", b: "Duplicates merge. Conflicts resolve. One Digital Memory." },
-              { t: "AI can change but Memory Persist", b: "AI can change. Tools can change. Memory remains. The Adaptive Spine keeps your Digital Memory stable underneath." },
+              { t: "AI can change. Memory persists.", b: "AI can change. Tools can change. Memory remains. The Adaptive Spine keeps your Digital Memory stable underneath." },
             ].map((s, i) => (
               <div key={s.t} className="flex gap-3 rounded-xl border border-border bg-white/[0.02] p-5">
                 <span className="text-[13px] font-semibold text-brand-accent">0{i + 1}</span>
@@ -206,8 +206,8 @@ function HomePage() {
 
       {/* ========================= 4b. PRODUCT WALKTHROUGH VIDEO ========================= */}
       <ProductVideo
-        title="See the Spine, Workbench, and Twin in one flow."
-        subline="A quick look at how apps flow into Digital Memory, how your Workbench comes alive, and how Twin proposes the next move — always behind Approval Gate."
+        title="See the Spine, Workspace, and Twin in one flow."
+        subline="A quick look at how apps flow into Digital Memory, how your Workspace comes alive, and how Twin proposes the next move — always behind the Approval Gate."
         src="/videos/integratewise-walkthrough.mp4"
         webm="/videos/integratewise-walkthrough.webm"
         poster="/videos/integratewise-walkthrough-poster.jpg"
@@ -219,7 +219,7 @@ function HomePage() {
           <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:items-start">
             <div>
               <span className="badge-iw badge-iw-muted">Workspace · Intelligence</span>
-              <h2 className="heading-h2 mt-4">One nervous system.</h2>
+              <h2 className="heading-h2 mt-4">One workspace. One Memory.</h2>
               <p className="mt-4 text-[16px] text-text-secondary">
                 Every tool connected. Every action approved.
               </p>
@@ -302,8 +302,8 @@ function HomePage() {
           </ul>
 
           <p className="mx-auto mt-8 max-w-2xl text-center text-[14px] leading-relaxed text-text-secondary">
-            Approved actions execute in your apps. Results return as new Truth. Your Twin learns
-            from every decision.
+            After approval, approved actions run in your apps, the results flow back as new
+            Truth in Digital Memory, and your Twin learns from every decision.
           </p>
         </Container>
       </Section>

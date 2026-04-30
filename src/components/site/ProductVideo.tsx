@@ -305,7 +305,7 @@ export function ProductVideo({
                   {poster ? (
                     <img
                       src={poster}
-                      alt="IntegrateWise Workbench preview"
+                      alt="IntegrateWise Workspace preview"
                       className="absolute inset-0 h-full w-full object-cover"
                     />
                   ) : (

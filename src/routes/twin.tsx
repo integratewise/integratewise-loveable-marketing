@@ -439,18 +439,18 @@ function TwinPage() {
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Optional</Badge>
-            <h2 className="heading-h2 mt-4">Your Workbench still works without AI.</h2>
+            <h2 className="heading-h2 mt-4">Your Workspace still works without AI.</h2>
             <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
-              The Workbench is fully usable even if you turn Twin off. You still get Digital Memory,
+              The Workspace is fully usable even if you turn Twin off. You still get Digital Memory,
               stitched views, and one place to work. Twin is an optional Intelligence Layer that
               enhances your work — it does not replace you.
             </p>
           </Reveal>
 
           <div className="mx-auto mt-8 grid max-w-3xl gap-3 text-[14px] text-foreground/90">
-            <p>• Platform and Workbench are the foundation.</p>
+            <p>• Platform and Workspace are the foundation.</p>
             <p>• Twin is optional and swappable.</p>
-            <p>• You control when and where to use AI.</p>
+            <p>• You choose where to use AI.</p>
           </div>
         </Container>
       </Section>

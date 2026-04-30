@@ -3,7 +3,7 @@ import { Brain, Eye, Workflow, Sparkles, ShieldCheck, Repeat } from "lucide-reac
 const NODES = [
   { icon: Brain, label: "Memory" },
   { icon: Eye, label: "Attention" },
-  { icon: Workflow, label: "Workbench" },
+  { icon: Workflow, label: "Workspace" },
   { icon: Sparkles, label: "Twin" },
   { icon: ShieldCheck, label: "Approval" },
 ];
