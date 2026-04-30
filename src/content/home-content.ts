@@ -9,6 +9,13 @@ import {
   Keyboard,
   MousePointerClick,
   Wand2,
+  Lock,
+  Globe,
+  Users,
+  ScrollText,
+  Plug,
+  Workflow,
+  GitBranch,
 } from "lucide-react";
 
 export interface PainQuote {
