@@ -132,6 +132,37 @@ function HomePage() {
         </Container>
       </Section>
 
+      {/* ========================= 2b. MODEL PRIMER ========================= */}
+      <Section>
+        <Container>
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <span className="badge-iw badge-iw-muted">The model in 5 lines</span>
+            <h2 className="heading-h2 mt-4">Five parts, one loop.</h2>
+            <p className="mt-4 text-[15.5px] text-text-secondary">
+              Each term has one job. They repeat across this page in the same words.
+            </p>
+          </Reveal>
+          <div className="mx-auto mt-10 grid max-w-5xl gap-3 md:grid-cols-5">
+            {[
+              { icon: Network, t: "Spine", b: "Connects and normalises data from your tools." },
+              { icon: Database, t: "Digital Memory", b: "Truth, Context and approved Session Summaries — together." },
+              { icon: Layers, t: "Workspace", b: "The screen where you see accounts, risks and actions." },
+              { icon: Brain, t: "Twin", b: "AI that reads Memory and proposes the next move." },
+              { icon: ShieldCheck, t: "Approval", b: "Nothing executes without you. Full audit trail." },
+            ].map((m) => (
+              <div key={m.t} className="card-iw p-5">
+                <m.icon size={18} className="text-brand-accent" />
+                <div className="mt-3 text-[15px] font-semibold text-foreground">{m.t}</div>
+                <p className="mt-1.5 text-[13px] leading-snug text-text-secondary">{m.b}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mx-auto mt-6 max-w-3xl text-center text-[13.5px] text-text-secondary">
+            Apps → Spine → Digital Memory → Workspace → Twin → Approval → back into Memory. That's the loop.
+          </p>
+        </Container>
+      </Section>
+
       {/* ========================= 3. SPINE OVERVIEW ========================= */}
       <Section>
         <Container>
