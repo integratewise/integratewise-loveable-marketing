@@ -237,10 +237,12 @@ export const PLATFORM_LINKS: NavLeaf[] = [
 ];
 
 export const PRODUCT_LINKS: NavLeaf[] = [
-  { to: "/product", hash: "workspace", label: "Workspace", blurb: "Your Workspace adapts to how you work.", icon: LayoutDashboard },
-  { to: "/product", hash: "how-it-works", label: "How it works", blurb: "From Memory to your daily screen.", icon: Workflow },
-  { to: "/product", hash: "digital-memory", label: "Digital Memory", blurb: "Every view built from Memory.", icon: Database },
-  { to: "/product", hash: "security", label: "Security", blurb: "Scopes, audit trail, evidence.", icon: ShieldCheck },
+  { to: "/product", hash: "overview", label: "Workspace", blurb: "Your Workspace adapts to how you work.", icon: LayoutDashboard },
+  { to: "/product", hash: "living-workspace", label: "Living workspace", blurb: "Day one to day 100, never empty.", icon: Sparkles },
+  { to: "/product", hash: "frame", label: "The frame", blurb: "Clients, projects, filings, tasks.", icon: Workflow },
+  { to: "/product", hash: "views", label: "Views", blurb: "Every view built from Memory.", icon: Database },
+  { to: "/product", hash: "evidence", label: "Evidence", blurb: "Every insight shows its sources.", icon: FileText },
+  { to: "/product", hash: "approval-gate", label: "Approval Gate", blurb: "Review, edit, approve — in your Workspace.", icon: ShieldCheck },
 ];
 
 export const INTELLIGENCE_LINKS: NavLeaf[] = [
