@@ -316,7 +316,7 @@ function PlatformPage() {
       </Section>
 
       {/* 4. Adaptive Spine — growing schema, selective ingest */}
-      <Section alt id="how">
+      <Section alt id="how-it-works">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Adaptive Spine</Badge>
