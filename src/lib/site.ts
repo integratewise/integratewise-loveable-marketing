@@ -264,6 +264,30 @@ export type NavGroup =
       footer?: { label: string; to: string; chips?: IndustryItem[] };
     };
 
+// Product dropdown excludes The Twin (it has its own top-level nav item).
+const PRODUCT_LINKS_NAV: NavLeaf[] = PRODUCT_LINKS.filter((l) => l.to !== "/twin");
+
+// Solutions dropdown per spec: 3 function doors + By Industry + By Role entries.
+const SOLUTIONS_NAV_ITEMS: NavLeaf[] = [
+  { to: "/solutions#account-success", label: "Account Success", blurb: "Save accounts, accelerate renewals.", icon: Users },
+  { to: "/solutions#business-ops", label: "Business Ops", blurb: "The live operating picture.", icon: BarChart3 },
+  { to: "/solutions#personal-space", label: "Personal Space", blurb: "Your workspace, your context.", icon: Sparkles },
+  { to: "/solutions/industry", label: "By Industry", blurb: "One Memory, different industries.", icon: Boxes },
+  { to: "/solutions/role", label: "By Role", blurb: "One foundation, different roles.", icon: Target },
+];
+
+const COMPANY_LINKS: NavLeaf[] = [
+  { to: "/about", label: "About", blurb: "Founder bio + the near-miss story.", icon: User },
+  { to: "/customer-zero", label: "Customer Zero", blurb: "I run it on itself.", icon: Rocket },
+  { to: "/manifesto", label: "Manifesto", blurb: "Principles we build by.", icon: FileText },
+  { to: "/why", label: "Why", blurb: "The category thesis.", icon: Star },
+  { to: "/blog", label: "Blog", blurb: "Stories from the end of the Human API.", icon: FileText },
+  { to: "/docs", label: "Docs", blurb: "Concepts, getting started, reference.", icon: FileText },
+  { to: "/changelog", label: "Changelog", blurb: "How IntegrateWise is learning with you.", icon: Activity },
+  { to: "/pricing", label: "Pricing", blurb: "Plans, ROI, founder demo.", icon: CircleDollarSign },
+  { to: "/contact", label: "Contact", blurb: "Founder-led contact.", icon: Briefcase },
+];
+
 export const PRIMARY_NAV: ReadonlyArray<NavGroup> = [
   {
     kind: "menu",
@@ -273,19 +297,20 @@ export const PRIMARY_NAV: ReadonlyArray<NavGroup> = [
   {
     kind: "menu",
     label: "Product",
-    groups: [{ heading: "Product", items: PRODUCT_LINKS }],
+    groups: [{ heading: "Product", items: PRODUCT_LINKS_NAV }],
   },
+  { kind: "link", label: "Twin", to: "/twin" },
   {
     kind: "menu",
     label: "Solutions",
-    groups: [
-      { heading: "By Function", items: SOLUTIONS_BY_FUNCTION },
-      { heading: "By Industry", items: SOLUTIONS_BY_INDUSTRY },
-      { heading: "By Role", items: SOLUTIONS_BY_ROLE },
-    ],
+    groups: [{ heading: "Solutions", items: SOLUTIONS_NAV_ITEMS }],
   },
   { kind: "link", label: "Pricing", to: "/pricing" },
-  { kind: "link", label: "Company", to: "/company" },
+  {
+    kind: "menu",
+    label: "Company",
+    groups: [{ heading: "Company", items: COMPANY_LINKS }],
+  },
 ];
 
 /* Industry icon map (used by /solutions hub display) */
