@@ -1,30 +1,16 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { useEffect, useRef, useState, type MouseEvent } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { Container } from "./Container";
-import { PRIMARY_NAV, type NavGroup, type NavLeaf } from "@/lib/site";
+import { PRIMARY_NAV, type NavGroup } from "@/lib/site";
 import { useDemoModal } from "./demo-modal-context";
 import { cn } from "@/lib/utils";
 import { SpineLogo } from "./SpineLogo";
 
-/* Visual tokens locked to the brief.
- * Background: #0d0f1a (matches site bg)
- * Border:     #2a2d3a (1px)
- * Accent:     #a78bfa (active left-rail)
- * Radius:     8px
- * Shadow:     depth-12
- */
-const PANEL_STYLE = {
-  background: "#0d0f1a",
-  border: "1px solid #2a2d3a",
-  borderRadius: 8,
-  boxShadow: "0 12px 32px -12px rgba(0, 0, 0, 0.6), 0 4px 12px -4px rgba(0, 0, 0, 0.4)",
-} as const;
-
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
-  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { open: openDemo } = useDemoModal();
   const { location } = useRouterState();
@@ -32,8 +18,14 @@ export function Header() {
   useEffect(() => {
     setOpen(false);
     setOpenMenu(null);
-    setMobileExpanded(null);
-  }, [location.pathname, location.hash]);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 16);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   function handleEnter(label: string) {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -44,22 +36,6 @@ export function Header() {
     closeTimer.current = setTimeout(() => setOpenMenu(null), 120);
   }
 
-  /** Same-page anchor clicks scroll smoothly without a router roundtrip. */
-  function handleAnchorClick(leaf: NavLeaf, e: MouseEvent<HTMLAnchorElement>) {
-    if (!leaf.hash) return;
-    const samePath = location.pathname === leaf.to;
-    if (!samePath) return;
-    e.preventDefault();
-    const el = document.getElementById(leaf.hash);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-      // keep URL in sync
-      window.history.replaceState(null, "", `${leaf.to}#${leaf.hash}`);
-    }
-    setOpenMenu(null);
-    setOpen(false);
-  }
-
   return (
     <header
       className="fixed inset-x-0 top-0 z-50 pt-3 sm:pt-4"
@@ -67,46 +43,33 @@ export function Header() {
     >
       <Container>
         <div
-          className="flex h-[60px] items-center justify-between px-5"
-          style={PANEL_STYLE}
+          className={cn(
+            "nav-glass flex h-[68px] items-center justify-between px-4 sm:px-5 transition-shadow",
+            scrolled && "shadow-card",
+          )}
         >
           <Link to="/" className="flex items-center gap-2.5" aria-label="IntegrateWise home">
-            <SpineLogo className="h-[24px] w-auto text-foreground" />
-            <span
-              className="text-[15px] font-semibold tracking-tight text-foreground"
-              style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }}
-            >
+            <SpineLogo className="h-[26px] w-auto text-foreground" />
+            <span className="text-[17px] font-semibold tracking-tight text-foreground">
               IntegrateWise
             </span>
           </Link>
 
-          <nav
-            className="hidden items-center gap-1 lg:flex"
-            style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }}
-          >
+          <nav className="hidden items-center gap-1 lg:flex">
             {PRIMARY_NAV.map((item) => {
               if (item.kind === "link") {
-                const active = location.pathname === item.to;
                 return (
                   <Link
                     key={item.label}
                     to={item.to}
-                    className={cn(
-                      "relative rounded-md px-3 py-2 text-[14px] font-medium transition-colors",
-                      "text-text-secondary hover:text-foreground",
-                      active && "text-foreground",
-                    )}
-                    style={active ? { boxShadow: "inset 2px 0 0 0 #a78bfa" } : undefined}
+                    className="rounded-lg px-3 py-2 text-[15px] text-text-secondary transition-colors hover:bg-white/5 hover:text-foreground"
+                    activeProps={{ className: "text-foreground bg-white/5" }}
                   >
                     {item.label}
                   </Link>
                 );
               }
-
               const isOpen = openMenu === item.label;
-              const isActive =
-                item.groups[0]?.items.some((leaf) => leaf.to === location.pathname) ?? false;
-
               return (
                 <div
                   key={item.label}
@@ -117,29 +80,18 @@ export function Header() {
                   <button
                     type="button"
                     className={cn(
-                      "inline-flex items-center gap-1 rounded-md px-3 py-2 text-[14px] font-medium transition-colors",
-                      "text-text-secondary hover:text-foreground",
-                      (isOpen || isActive) && "text-foreground",
+                      "inline-flex items-center gap-1 rounded-lg px-3 py-2 text-[15px] text-text-secondary transition-colors hover:bg-white/5 hover:text-foreground",
+                      isOpen && "text-foreground bg-white/5",
                     )}
-                    style={isActive ? { boxShadow: "inset 2px 0 0 0 #a78bfa" } : undefined}
                     onFocus={() => handleEnter(item.label)}
                     onBlur={handleLeave}
                     aria-expanded={isOpen}
                     aria-haspopup="menu"
                   >
                     {item.label}
-                    <ChevronDown
-                      size={13}
-                      className={cn("transition-transform duration-200", isOpen && "rotate-180")}
-                    />
+                    <ChevronDown size={14} className={cn("transition-transform", isOpen && "rotate-180")} />
                   </button>
-                  {isOpen && (
-                    <DropdownPanel
-                      item={item}
-                      currentPath={location.pathname}
-                      onAnchorClick={handleAnchorClick}
-                    />
-                  )}
+                  {isOpen && <MegaMenu item={item} />}
                 </div>
               );
             })}
@@ -149,8 +101,7 @@ export function Header() {
             <button
               type="button"
               onClick={() => openDemo("Header")}
-              className="btn-primary-iw inline-flex !px-4 !py-2 text-[13.5px]"
-              style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }}
+              className="btn-primary-iw inline-flex !px-4 !py-2.5 text-[14px]"
             >
               Book a Demo
             </button>
@@ -158,66 +109,51 @@ export function Header() {
               type="button"
               aria-label={open ? "Close menu" : "Open menu"}
               onClick={() => setOpen((v) => !v)}
-              className="inline-flex size-9 items-center justify-center rounded-md text-foreground hover:bg-white/5 lg:hidden"
+              className="inline-flex size-10 items-center justify-center rounded-lg text-foreground hover:bg-white/5 lg:hidden"
             >
-              {open ? <X size={18} /> : <Menu size={18} />}
+              {open ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
 
         {open && (
-          <div
-            className="mt-2 lg:hidden p-2 max-h-[calc(100vh-120px)] overflow-y-auto"
-            style={PANEL_STYLE}
-          >
-            <nav
-              className="flex flex-col"
-              style={{ fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif" }}
-            >
+          <div className="nav-glass mt-2 lg:hidden p-3 max-h-[calc(100vh-120px)] overflow-y-auto">
+            <nav className="flex flex-col">
               {PRIMARY_NAV.map((item) => {
                 if (item.kind === "link") {
                   return (
                     <Link
                       key={item.label}
                       to={item.to}
-                      className="rounded-md px-3 py-3 text-[14px] font-medium text-foreground hover:bg-white/5"
+                      className="rounded-lg px-3 py-3 text-[15px] font-semibold text-foreground hover:bg-white/5"
                     >
                       {item.label}
                     </Link>
                   );
                 }
-                const expanded = mobileExpanded === item.label;
                 return (
-                  <div key={item.label}>
-                    <button
-                      type="button"
-                      onClick={() => setMobileExpanded(expanded ? null : item.label)}
-                      className="flex w-full items-center justify-between rounded-md px-3 py-3 text-[14px] font-medium text-foreground hover:bg-white/5"
-                      aria-expanded={expanded}
-                    >
+                  <div key={item.label} className="border-b border-border/60 py-2 last:border-0">
+                    <p className="px-3 pt-1 pb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-text-secondary">
                       {item.label}
-                      <ChevronDown
-                        size={14}
-                        className={cn("transition-transform", expanded && "rotate-180")}
-                      />
-                    </button>
-                    {expanded && (
-                      <ul className="ml-2 mb-1 border-l border-[#2a2d3a] pl-2">
-                        {item.groups
-                          .flatMap((g) => g.items)
-                          .map((leaf) => (
-                            <li key={`${leaf.to}#${leaf.hash ?? ""}`}>
-                              <Link
-                                to={leaf.to}
-                                hash={leaf.hash}
-                                onClick={(e) => handleAnchorClick(leaf, e)}
-                                className="block rounded-md px-3 py-2 text-[13.5px] text-text-secondary hover:bg-white/5 hover:text-foreground"
-                              >
-                                {leaf.label}
-                              </Link>
-                            </li>
-                          ))}
-                      </ul>
+                    </p>
+                    {item.groups.flatMap((g) => g.items).map((leaf) => (
+                      <Link
+                        key={`${leaf.to}#${leaf.hash ?? ""}`}
+                        to={leaf.to}
+                        hash={leaf.hash}
+                        className="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-white/5"
+                      >
+                        <leaf.icon size={16} className="mt-0.5 text-brand-accent" />
+                        <span className="text-[14.5px] text-foreground">{leaf.label}</span>
+                      </Link>
+                    ))}
+                    {item.footer && (
+                      <Link
+                        to={item.footer.to}
+                        className="mt-1 flex items-center gap-2 rounded-lg px-3 py-2.5 text-[14px] font-semibold text-brand-accent hover:bg-white/5"
+                      >
+                        {item.footer.label} →
+                      </Link>
                     )}
                   </div>
                 );
@@ -225,7 +161,7 @@ export function Header() {
               <button
                 type="button"
                 onClick={() => openDemo("Header mobile")}
-                className="btn-primary-iw mt-3 w-full text-[14px]"
+                className="btn-primary-iw mt-3 w-full"
               >
                 Book a Demo
               </button>
@@ -237,54 +173,84 @@ export function Header() {
   );
 }
 
-function DropdownPanel({
-  item,
-  currentPath,
-  onAnchorClick,
-}: {
-  item: Extract<NavGroup, { kind: "menu" }>;
-  currentPath: string;
-  onAnchorClick: (leaf: NavLeaf, e: MouseEvent<HTMLAnchorElement>) => void;
-}) {
-  const items = item.groups.flatMap((g) => g.items);
+function MegaMenu({ item }: { item: Extract<NavGroup, { kind: "menu" }> }) {
+  // Wider for Solutions (3 cols + footer), narrower otherwise
+  const wide = item.groups.length >= 2;
   return (
     <div
       role="menu"
-      className="dropdown-fade-in absolute left-0 top-full mt-2 w-[280px] p-1.5"
-      style={{
-        ...PANEL_STYLE,
-        fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif",
-      }}
+      className={cn(
+        "absolute left-1/2 top-full z-50 mt-2 -translate-x-1/2 nav-glass p-4 shadow-card",
+        wide ? "w-[760px]" : "w-[340px]",
+      )}
     >
-      <ul className="flex flex-col">
-        {items.map((leaf) => {
-          const samePath = currentPath === leaf.to;
-          return (
-            <li key={`${leaf.to}#${leaf.hash ?? ""}`} className="relative">
-              <Link
-                to={leaf.to}
-                hash={leaf.hash}
-                onClick={(e) => onAnchorClick(leaf, e)}
-                className={cn(
-                  "group relative block rounded-md px-3 py-2 text-[14px] font-medium transition-colors",
-                  "text-text-secondary hover:bg-white/[0.04] hover:text-foreground",
-                  samePath && "text-foreground",
-                )}
-              >
-                <span
-                  aria-hidden
-                  className={cn(
-                    "absolute left-0 top-1/2 h-4 w-[2px] -translate-y-1/2 rounded-full transition-opacity",
-                    samePath ? "opacity-100" : "opacity-0 group-hover:opacity-60",
-                  )}
-                  style={{ background: "#a78bfa" }}
-                />
-                {leaf.label}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
+      <div
+        className={cn(
+          "grid gap-3",
+          item.groups.length === 3 ? "grid-cols-3" : item.groups.length === 2 ? "grid-cols-2" : "grid-cols-1",
+        )}
+      >
+        {item.groups.map((g) => (
+          <div key={g.heading}>
+            <p className="px-2 pb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-text-secondary">
+              {g.heading}
+            </p>
+            <ul className="flex flex-col gap-0.5">
+              {g.items.map((leaf) => {
+                const showWaitlist = "waitlist" in leaf && (leaf as { waitlist?: boolean }).waitlist;
+                return (
+                  <li key={`${leaf.to}#${leaf.hash ?? ""}`}>
+                    <Link
+                      to={leaf.to}
+                      hash={leaf.hash}
+                      className="group flex items-start gap-3 rounded-lg p-2.5 hover:bg-white/5"
+                    >
+                      <leaf.icon size={16} className="mt-0.5 shrink-0 text-brand-accent" />
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-2">
+                          <span className="text-[14px] font-semibold text-foreground">{leaf.label}</span>
+                          {showWaitlist && (
+                            <span className="rounded-full border border-brand-highlight/30 bg-brand-highlight/10 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-brand-highlight">
+                              Waitlist
+                            </span>
+                          )}
+                        </div>
+                        <p className="mt-0.5 text-[12.5px] leading-snug text-text-secondary">{leaf.blurb}</p>
+                      </div>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      {item.footer && (
+        <div className="mt-3 border-t border-border/60 pt-3">
+          <div className="flex items-center justify-between gap-3 px-2">
+            <Link
+              to={item.footer.to}
+              className="text-[13.5px] font-semibold text-brand-accent hover:underline underline-offset-4"
+            >
+              {item.footer.label} →
+            </Link>
+            {item.footer.chips && (
+              <div className="hidden flex-wrap justify-end gap-1.5 md:flex">
+                {item.footer.chips.map((c) => (
+                  <Link
+                    key={c.slug}
+                    to={c.to}
+                    className="rounded-full border border-border bg-white/[0.02] px-2.5 py-1 text-[12px] text-text-secondary hover:border-brand-highlight/40 hover:text-foreground"
+                  >
+                    {c.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

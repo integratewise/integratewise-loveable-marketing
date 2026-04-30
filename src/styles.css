@@ -479,13 +479,3 @@
 /* Hash-anchor offset for the fixed header + sticky in-page nav. */
 html { scroll-behavior: smooth; }
 section[id], div[id] { scroll-margin-top: 140px; }
-
-/* Header dropdown — subtle fade + 4px slide-down */
-@keyframes dropdown-fade-in-kf {
-  from { opacity: 0; transform: translateY(-4px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.dropdown-fade-in {
-  animation: dropdown-fade-in-kf 160ms ease-out both;
-  transform-origin: top center;
-}

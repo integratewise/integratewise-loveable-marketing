@@ -228,25 +228,26 @@ export interface NavLeaf {
 }
 
 export const PLATFORM_LINKS: NavLeaf[] = [
-  { to: "/platform", hash: "spine", label: "Spine", blurb: "The base layer — one connected Memory.", icon: CircuitBoard },
-  { to: "/platform", hash: "how-it-works", label: "How it works", blurb: "Apps → Spine → Digital Memory loop.", icon: Workflow },
-  { to: "/platform", hash: "digital-memory", label: "Digital Memory", blurb: "Truth, Context, Session Summaries.", icon: Database },
-  { to: "/platform", hash: "connectors", label: "Connectors", blurb: "Tally, Razorpay, WhatsApp, CRMs and more.", icon: Plug },
+  { to: "/platform", hash: "spine", label: "Spine", blurb: "The Adaptive Spine — one layer, one Memory.", icon: CircuitBoard },
+  { to: "/platform", hash: "how-it-works", label: "How it works", blurb: "Apps → Spine → Memory loop.", icon: Workflow },
+  { to: "/platform", hash: "digital-memory", label: "Digital Memory", blurb: "Truth, Context, approved Summaries.", icon: Database },
+  { to: "/platform", hash: "connectors", label: "Connectors", blurb: "Loaders, adapters, schema registry.", icon: Plug },
   { to: "/platform", hash: "security", label: "Security", blurb: "SOC 2, GDPR, tenant isolation.", icon: ShieldCheck },
-  { to: "/platform", hash: "integrations", label: "Integrations", blurb: "How your stack feeds the Spine.", icon: Package },
+  { to: "/platform", hash: "integrations", label: "Integrations", blurb: "Connect the apps you already use.", icon: Package },
 ];
 
 export const PRODUCT_LINKS: NavLeaf[] = [
-  { to: "/product", hash: "workspace", label: "Workspace", blurb: "Your Workspace adapts to how you work.", icon: LayoutDashboard },
-  { to: "/product", hash: "how-it-works", label: "How it works", blurb: "Memory → Workspace → Approval.", icon: Workflow },
-  { to: "/product", hash: "digital-memory", label: "Digital Memory", blurb: "Every view backed by sources.", icon: Database },
-  { to: "/product", hash: "security", label: "Security", blurb: "Approval beside every action.", icon: ShieldCheck },
+  { to: "/product", hash: "overview", label: "Workspace", blurb: "Your Workspace adapts to how you work.", icon: LayoutDashboard },
+  { to: "/product", hash: "living-workspace", label: "Living workspace", blurb: "Day one to day 100, never empty.", icon: Sparkles },
+  { to: "/product", hash: "frame", label: "The frame", blurb: "Clients, projects, filings, tasks.", icon: Workflow },
+  { to: "/product", hash: "views", label: "Views", blurb: "Every view built from Memory.", icon: Database },
+  { to: "/product", hash: "evidence", label: "Evidence", blurb: "Every insight shows its sources.", icon: FileText },
+  { to: "/product", hash: "approval-gate", label: "Approval Gate", blurb: "Review, edit, approve — in your Workspace.", icon: ShieldCheck },
 ];
 
 export const INTELLIGENCE_LINKS: NavLeaf[] = [
-  { to: "/intelligence", hash: "twin", label: "Twin", blurb: "Your Twin reads your Digital Memory.", icon: Sparkles },
+  { to: "/intelligence", hash: "twin", label: "Twin", blurb: "Your Adaptive Twin reads Memory.", icon: Sparkles },
   { to: "/intelligence", hash: "how-it-works", label: "How it works", blurb: "Read → score → propose → wait.", icon: Workflow },
-  { to: "/intelligence", hash: "digital-memory-reference", label: "Digital Memory Reference", blurb: "What the Twin can and cannot see.", icon: Database },
   { to: "/intelligence", hash: "twin-execution", label: "Twin Execution", blurb: "Approve → execute → re-ingest → learn.", icon: Activity },
   { to: "/intelligence", hash: "security", label: "Security", blurb: "No autonomy, full audit trail.", icon: ShieldCheck },
 ];
@@ -255,14 +256,18 @@ export const SOLUTIONS_LINKS: NavLeaf[] = [
   { to: "/solutions", hash: "by-use-case", label: "By Use Case", blurb: "Churn, pipeline, visibility, brief.", icon: Target },
   { to: "/solutions", hash: "by-role", label: "By Role", blurb: "CS, founders, ops, finance, individuals.", icon: Users },
   { to: "/solutions", hash: "by-industry", label: "By Industry", blurb: "SaaS, services, retail, finance and more.", icon: Boxes },
+  { to: "/solutions", hash: "account-success", label: "Account Success", blurb: "One client story across tools.", icon: UserCircle },
+  { to: "/solutions", hash: "business-ops", label: "Business Ops", blurb: "Run the day from one screen.", icon: BarChart3 },
+  { to: "/solutions", hash: "personal-space", label: "Personal Space", blurb: "Your private operating system.", icon: User },
 ];
 
 export const COMPANY_LINKS: NavLeaf[] = [
-  { to: "/company", hash: "about", label: "About", blurb: "Operator-built, person-first.", icon: User },
-  { to: "/company", hash: "manifesto", label: "Manifesto", blurb: "What we believe.", icon: FileText },
-  { to: "/company", hash: "customer-zero", label: "Customer Zero", blurb: "We run IntegrateWise on ourselves.", icon: Rocket },
-  { to: "/company", hash: "why", label: "Why", blurb: "The Human API story.", icon: Star },
-  { to: "/company", hash: "contact", label: "Contact", blurb: "Founder-led conversation.", icon: Briefcase },
+  { to: "/about", label: "About", blurb: "Founder bio + the near-miss story.", icon: User },
+  { to: "/manifesto", label: "Manifesto", blurb: "Principles we build by.", icon: FileText },
+  { to: "/customer-zero", label: "Customer Zero", blurb: "I run IntegrateWise on IntegrateWise.", icon: Rocket },
+  { to: "/why", label: "Why", blurb: "The category thesis.", icon: Star },
+  { to: "/pricing", label: "Pricing", blurb: "Starter, Growth, Command.", icon: DollarSign },
+  { to: "/contact", label: "Contact", blurb: "Founder-led conversation.", icon: Briefcase },
 ];
 
 export const RESOURCES_LINKS: NavLeaf[] = [
@@ -292,12 +297,31 @@ export type NavGroup =
     };
 
 export const PRIMARY_NAV: ReadonlyArray<NavGroup> = [
-  { kind: "menu", label: "Platform", groups: [{ heading: "Platform", items: PLATFORM_LINKS }] },
-  { kind: "menu", label: "Product", groups: [{ heading: "Product", items: PRODUCT_LINKS }] },
-  { kind: "menu", label: "Intelligence", groups: [{ heading: "Intelligence", items: INTELLIGENCE_LINKS }] },
-  { kind: "menu", label: "Solutions", groups: [{ heading: "Solutions", items: SOLUTIONS_LINKS }] },
-  { kind: "link", label: "Pricing", to: "/pricing" },
-  { kind: "menu", label: "Company", groups: [{ heading: "Company", items: COMPANY_LINKS }] },
+  {
+    kind: "menu",
+    label: "Platform",
+    groups: [{ heading: "Platform", items: PLATFORM_LINKS }],
+  },
+  {
+    kind: "menu",
+    label: "Product",
+    groups: [{ heading: "Product", items: PRODUCT_LINKS }],
+  },
+  {
+    kind: "menu",
+    label: "Intelligence",
+    groups: [{ heading: "Intelligence", items: INTELLIGENCE_LINKS }],
+  },
+  {
+    kind: "menu",
+    label: "Solutions",
+    groups: [{ heading: "Solutions", items: SOLUTIONS_LINKS }],
+  },
+  {
+    kind: "menu",
+    label: "Company",
+    groups: [{ heading: "Company", items: COMPANY_LINKS }],
+  },
 ];
 
 /* Industry icon map (used by /solutions hub display) */
