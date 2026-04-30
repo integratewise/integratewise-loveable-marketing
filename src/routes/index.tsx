@@ -9,7 +9,7 @@ import { ProductVideo } from "@/components/site/ProductVideo";
 import { AfterApprovalLoop } from "@/components/site/AfterApprovalLoop";
 import { useDemoModal } from "@/components/site/demo-modal-context";
 import { CONNECTOR_LOGOS } from "@/components/site/ConnectorMarquee";
-import { SpineFlow } from "@/components/site/motion/SpineFlow";
+
 import { WorkbenchMorph } from "@/components/site/motion/WorkbenchMorph";
 import { TwinSignals, ApprovalGate } from "@/components/site/motion/TwinSignals";
 import { StaggerGroup, StaggerItem, Parallax } from "@/components/site/motion/Stagger";
