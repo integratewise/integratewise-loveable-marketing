@@ -223,7 +223,6 @@ export const PRIMARY_NAV: ReadonlyArray<NavGroup> = [
       chips: SOLUTIONS_INDUSTRIES,
     },
   },
-  { kind: "link", label: "Pricing", to: "/pricing" },
   { kind: "link", label: "Company", to: "/company" },
 ];
 
