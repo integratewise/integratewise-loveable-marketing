@@ -28,6 +28,7 @@ import { Container } from "@/components/site/Container";
 import { Section } from "@/components/site/Section";
 import { Badge } from "@/components/site/Badge";
 import { Reveal } from "@/components/site/Reveal";
+import { ProductVideo } from "@/components/site/ProductVideo";
 import { useDemoModal } from "@/components/site/demo-modal-context";
 
 export const Route = createFileRoute("/product")({
@@ -217,6 +218,16 @@ function ProductPage() {
           </div>
         </Container>
       </Section>
+
+      {/* 2b. Product walkthrough video */}
+      <ProductVideo
+        eyebrow="Workbench in action"
+        title="Your Workbench, reading from Digital Memory."
+        subline="Watch how your Workbench reads from Digital Memory, stitches your tools, and keeps AI proposals inside your workspace with Approval Gate."
+        src="/videos/integratewise-walkthrough.mp4"
+        webm="/videos/integratewise-walkthrough.webm"
+        poster="/videos/integratewise-walkthrough-poster.jpg"
+      />
 
       {/* 3. Workbench frame */}
       <Section id="layout">

@@ -5,6 +5,7 @@ import { Section } from "@/components/site/Section";
 import { Reveal } from "@/components/site/Reveal";
 import { AnnouncementBar } from "@/components/site/AnnouncementBar";
 import { ClosingCtaBand } from "@/components/site/ClosingCtaBand";
+import { ProductVideo } from "@/components/site/ProductVideo";
 import { useDemoModal } from "@/components/site/demo-modal-context";
 import { CONNECTOR_LOGOS } from "@/components/site/ConnectorMarquee";
 import { SpineFlow } from "@/components/site/motion/SpineFlow";
@@ -201,6 +202,15 @@ function HomePage() {
           </Reveal>
         </Container>
       </Section>
+
+      {/* ========================= 4b. PRODUCT WALKTHROUGH VIDEO ========================= */}
+      <ProductVideo
+        title="See the Spine, Workbench, and Twin in one flow."
+        subline="A quick look at how apps flow into Digital Memory, how your Workbench comes alive, and how Twin proposes the next move — always behind Approval Gate."
+        src="/videos/integratewise-walkthrough.mp4"
+        webm="/videos/integratewise-walkthrough.webm"
+        poster="/videos/integratewise-walkthrough-poster.jpg"
+      />
 
       {/* ========================= 5. WORKSPACE / INTELLIGENCE VALUE PROPS ========================= */}
       <Section>
