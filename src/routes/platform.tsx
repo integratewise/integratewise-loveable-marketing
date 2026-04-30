@@ -253,8 +253,8 @@ function PlatformPage() {
         </Container>
       </Section>
 
-      {/* 2. Spine vs ETL — #how-it-works (the "Spine behaves" frame) */}
-      <Section alt id="how-it-works">
+      {/* 2. Spine vs ETL — narrative under hero */}
+      <Section alt id="spine-detail">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Spine</Badge>
