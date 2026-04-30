@@ -537,10 +537,12 @@ function ProductFrame() {
               <div>Health</div>
               <div className="text-right">Renewal</div>
             </div>
-            <ul className="divide-y divide-border">
+            <StaggerGroup as="ul" className="divide-y divide-border" stagger={0.05} amount={0.15}>
               {ACCOUNTS.map((a) => (
-                <li
+                <StaggerItem
+                  as="li"
                   key={a.name}
+                  y={8}
                   className="grid grid-cols-2 gap-2 px-4 py-3 text-[13px] hover:bg-white/[0.02] md:grid-cols-[1.5fr_0.8fr_0.6fr_0.9fr_0.7fr] md:items-center md:gap-3"
                 >
                   <div>
@@ -556,9 +558,9 @@ function ProductFrame() {
                     </span>
                   </div>
                   <div className="text-text-secondary md:text-right">in {a.renewal}</div>
-                </li>
+                </StaggerItem>
               ))}
-            </ul>
+            </StaggerGroup>
           </div>
 
           {/* Inline signal banner */}

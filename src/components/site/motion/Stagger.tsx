@@ -23,6 +23,7 @@ interface StaggerGroupProps {
   delay?: number;
   /** Viewport amount required before triggering. 0–1. */
   amount?: number;
+  as?: "div" | "ul" | "ol" | "section";
 }
 
 export function StaggerGroup({
@@ -31,9 +32,11 @@ export function StaggerGroup({
   stagger = 0.08,
   delay = 0,
   amount = 0.2,
+  as = "div",
 }: StaggerGroupProps) {
+  const MotionTag = motion[as] as typeof motion.div;
   return (
-    <motion.div
+    <MotionTag
       className={className}
       initial="hidden"
       whileInView="visible"
@@ -46,7 +49,7 @@ export function StaggerGroup({
       }}
     >
       {children}
-    </motion.div>
+    </MotionTag>
   );
 }
 
