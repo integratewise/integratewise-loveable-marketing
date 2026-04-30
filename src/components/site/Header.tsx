@@ -138,8 +138,9 @@ export function Header() {
                     </p>
                     {item.groups.flatMap((g) => g.items).map((leaf) => (
                       <Link
-                        key={leaf.to}
+                        key={`${leaf.to}#${leaf.hash ?? ""}`}
                         to={leaf.to}
+                        hash={leaf.hash}
                         className="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-white/5"
                       >
                         <leaf.icon size={16} className="mt-0.5 text-brand-accent" />
