@@ -12,7 +12,7 @@ export const Route = createFileRoute("/resources")({
       {
         name: "description",
         content:
-          "Docs, changelog, blog, and stories — one hub that ties everything back to scattered apps → Adaptive Spine → Digital Memory → Workbench → Twin → Approval.",
+          "Docs, changelog, blog, and stories — one hub that ties everything back to scattered apps → Adaptive Spine → Digital Memory → Workspace → Twin → Approval.",
       },
       { property: "og:title", content: "Resources — IntegrateWise" },
       {
@@ -28,12 +28,12 @@ export const Route = createFileRoute("/resources")({
 const PRODUCT_LEARNING = [
   { to: "/docs", icon: BookOpen, label: "Docs home", body: "Concepts, getting started, and reference for the whole product." },
   { to: "/docs", icon: Layers, label: "Getting started with the Platform", body: "How apps connect to the Adaptive Spine and how Digital Memory is built." },
-  { to: "/docs", icon: Workflow, label: "Getting started with the Workbench", body: "How the adaptive screen reads from Memory and reshapes around your slice of work." },
+  { to: "/docs", icon: Workflow, label: "Getting started with the Workspace", body: "How the adaptive screen reads from Memory and reshapes around your slice of work." },
   { to: "/docs", icon: Sparkles, label: "Getting started with Twin & Approval", body: "How the Twin reads Memory, proposes actions, and waits behind the Approval Gate." },
 ];
 
 const CHANGELOG_HIGHLIGHTS = [
-  { tag: "Workbench", title: "GST filings in Accounts view", why: "CAs and founders see who is late and how much is at risk in one stitched client view." },
+  { tag: "Workspace", title: "GST filings in Accounts view", why: "CAs and founders see who is late and how much is at risk in one stitched client view." },
   { tag: "Spine", title: "Budget-freeze context in Digital Memory", why: "Twin proposals can now show the exact budget-freeze emails as Evidence." },
   { tag: "Twin", title: "Clear Truth/Context/Session labels in proposals", why: "You can see what is data, what is communication, and what is AI summary before you approve." },
 ];
@@ -46,9 +46,9 @@ const STORIES = [
 ];
 
 const TEMPLATES = [
-  { label: "Account Success Workbench example", body: "A CSM\u2019s Monday: accounts, churn risk, evidence, approvals." },
-  { label: "Business Ops Workbench example", body: "Revenue, filings, support, and renewals on one screen." },
-  { label: "Personal Space Workbench example", body: "Your own operating system across personal apps and inboxes." },
+  { label: "Account Success Workspace example", body: "A CSM\u2019s Monday: accounts, churn risk, evidence, approvals." },
+  { label: "Business Ops Workspace example", body: "Revenue, filings, support, and renewals on one screen." },
+  { label: "Personal Space Workspace example", body: "Your own operating system across personal apps and inboxes." },
 ];
 
 function ResourcesPage() {
@@ -66,7 +66,7 @@ function ResourcesPage() {
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-[17px] leading-relaxed text-text-secondary">
               Docs, changelog, stories, and templates — all tied back to the same flow:
-              scattered apps → Adaptive Spine → Digital Memory → Workbench → Twin → Approval.
+              scattered apps → Adaptive Spine → Digital Memory → Workspace → Twin → Approval.
             </p>
           </Reveal>
         </Container>

@@ -36,7 +36,7 @@ export const Route = createFileRoute("/solutions")({
       {
         name: "description",
         content:
-          "Account Success, Business Ops, Personal Space — three doors into the same Adaptive Spine, Digital Memory, Workbench, Twin, and Approval Gate.",
+          "Account Success, Business Ops, Personal Space — three doors into the same Adaptive Spine, Digital Memory, Workspace, Twin, and Approval Gate.",
       },
       { property: "og:title", content: "IntegrateWise Solutions" },
       {
@@ -84,7 +84,7 @@ function SolutionsPage() {
               One Spine. <span className="text-gradient-hero">Many ways of working.</span>
             </h1>
             <p className="mx-auto mt-5 text-[17px] leading-relaxed text-text-secondary">
-              The Adaptive Spine, Digital Memory, Workbench, and Twin are the same for everyone.
+              The Adaptive Spine, Digital Memory, Workspace, and Twin are the same for everyone.
               Solutions are just different doors into that foundation — tuned for how you work, not
               for one job title.
             </p>
@@ -141,7 +141,7 @@ function SolutionsPage() {
             <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
               Whether you are a CA, SaaS CSM, agency owner, retail founder, or operations lead, you
               face the same pattern: scattered data, no shared memory, too much manual stitching.
-              Each solution here uses the same Adaptive Spine and Workbench to solve that pattern
+              Each solution here uses the same Adaptive Spine and Workspace to solve that pattern
               for a different slice of your day.
             </p>
           </Reveal>
@@ -150,7 +150,7 @@ function SolutionsPage() {
             <div className="card-iw p-6 text-center" style={{ background: "var(--bg-surface)" }}>
               <p className="text-[14px] text-foreground/90">
                 <span className="font-semibold text-brand-accent">Same foundation:</span> Adaptive
-                Spine + Digital Memory + Adaptive Workbench + Twin + Approval Gate.
+                Spine + Digital Memory + Adaptive Workspace + Twin + Approval Gate.
               </p>
               <p className="mt-1.5 text-[14px] text-foreground/90">
                 <span className="font-semibold">Different entry points:</span> Account Success,
@@ -207,7 +207,7 @@ function SolutionsPage() {
                     Notion into one client Memory.
                   </li>
                   <li>
-                    • The Account Success Workbench view shows every client with status, risk, and
+                    • The Account Success Workspace view shows every client with status, risk, and
                     next steps.
                   </li>
                 </ul>
@@ -276,7 +276,7 @@ function SolutionsPage() {
             <p className="mx-auto mt-5 text-[16px] leading-relaxed text-text-secondary">
               Founders, owners, and operations leaders — in retail shops, agencies, SaaS,
               professional services — all have the same problem: every Monday starts with
-              spreadsheets and tab-hunting. Business Ops uses Digital Memory and the Workbench to
+              spreadsheets and tab-hunting. Business Ops uses Digital Memory and the Workspace to
               give you one practical view of business health.
             </p>
           </Reveal>
@@ -308,7 +308,7 @@ function SolutionsPage() {
                 <ul className="mt-4 space-y-3 text-[14px] leading-relaxed text-foreground/90">
                   <li>
                     • Business Ops reads from Org Memory — sales, payments, tickets, hiring, tasks
-                    — and arranges it into a simple daily Workbench.
+                    — and arranges it into a simple daily Workspace.
                   </li>
                   <li>
                     • You see sales, credit outstanding, key risks, and team capacity without
@@ -378,7 +378,7 @@ function SolutionsPage() {
             </h2>
             <p className="mx-auto mt-5 text-[16px] leading-relaxed text-text-secondary">
               Everyone has scattered personal work — side projects, learning, family tasks,
-              finances. Personal Space uses the same Adaptive Spine and Workbench, but just for
+              finances. Personal Space uses the same Adaptive Spine and Workspace, but just for
               you. Your notes, tasks, calendar, and links become Digital Memory, not messy lists.
             </p>
           </Reveal>
@@ -397,7 +397,7 @@ function SolutionsPage() {
                     one private Digital Memory.
                   </li>
                   <li>
-                    • Your Personal Workbench shows today's focus, upcoming deadlines, and a simple
+                    • Your Personal Workspace shows today's focus, upcoming deadlines, and a simple
                     view of each project.
                   </li>
                 </ul>
@@ -461,7 +461,7 @@ function SolutionsPage() {
             <p className="mx-auto mt-5 text-[16px] leading-relaxed text-text-secondary">
               Account Success, Business Ops, and Personal Space are three ways to enter the same
               IntegrateWise foundation. Under the hood, everyone uses the Adaptive Spine, Digital
-              Memory, Adaptive Workbench, Twin, and Approval Gate. Over time, your User, Work, and
+              Memory, Adaptive Workspace, Twin, and Approval Gate. Over time, your User, Work, and
               Org Memory grow together — and your AI stays grounded in your own library.
             </p>
             <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
@@ -768,7 +768,7 @@ function PersonalView() {
   return (
     <div className="card-iw overflow-hidden" style={{ background: "var(--bg-surface)" }}>
       <div className="flex items-center justify-between border-b border-border px-4 py-2.5">
-        <span className="badge-iw badge-iw-muted !text-[11px]">Personal Workbench</span>
+        <span className="badge-iw badge-iw-muted !text-[11px]">Personal Workspace</span>
         <span className="text-[11px] text-text-secondary">Private · User Memory</span>
       </div>
       <div className="grid gap-3 p-4 md:grid-cols-2">
