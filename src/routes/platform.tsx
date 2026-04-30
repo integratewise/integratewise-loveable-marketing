@@ -681,7 +681,7 @@ function PlatformPage() {
       </Section>
 
       {/* 8. CTA */}
-      <Section alt>
+      <Section>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <h2 className="heading-h2">See how your stack becomes Digital Memory.</h2>
