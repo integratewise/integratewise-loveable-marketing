@@ -24,7 +24,17 @@ import { Container } from "@/components/site/Container";
 import { Section } from "@/components/site/Section";
 import { Badge } from "@/components/site/Badge";
 import { Reveal } from "@/components/site/Reveal";
+import { InPageNav } from "@/components/site/InPageNav";
 import { useDemoModal } from "@/components/site/demo-modal-context";
+
+const PLATFORM_NAV = [
+  { id: "spine", label: "Spine" },
+  { id: "how-it-works", label: "How it works" },
+  { id: "digital-memory", label: "Digital Memory" },
+  { id: "connectors", label: "Connectors" },
+  { id: "security", label: "Security" },
+  { id: "integrations", label: "Integrations" },
+];
 
 export const Route = createFileRoute("/platform")({
   head: () => ({

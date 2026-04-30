@@ -19,6 +19,7 @@ import { Route as ProductRouteImport } from './routes/product'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PlatformRouteImport } from './routes/platform'
 import { Route as ManifestoRouteImport } from './routes/manifesto'
+import { Route as IntelligenceRouteImport } from './routes/intelligence'
 import { Route as DocsRouteImport } from './routes/docs'
 import { Route as CustomerZeroRouteImport } from './routes/customer-zero'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -95,6 +96,11 @@ const PlatformRoute = PlatformRouteImport.update({
 const ManifestoRoute = ManifestoRouteImport.update({
   id: '/manifesto',
   path: '/manifesto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IntelligenceRoute = IntelligenceRouteImport.update({
+  id: '/intelligence',
+  path: '/intelligence',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DocsRoute = DocsRouteImport.update({
@@ -243,6 +249,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/customer-zero': typeof CustomerZeroRoute
   '/docs': typeof DocsRoute
+  '/intelligence': typeof IntelligenceRoute
   '/manifesto': typeof ManifestoRoute
   '/platform': typeof PlatformRouteWithChildren
   '/pricing': typeof PricingRoute
@@ -282,6 +289,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/customer-zero': typeof CustomerZeroRoute
   '/docs': typeof DocsRoute
+  '/intelligence': typeof IntelligenceRoute
   '/manifesto': typeof ManifestoRoute
   '/platform': typeof PlatformRouteWithChildren
   '/pricing': typeof PricingRoute
@@ -322,6 +330,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/customer-zero': typeof CustomerZeroRoute
   '/docs': typeof DocsRoute
+  '/intelligence': typeof IntelligenceRoute
   '/manifesto': typeof ManifestoRoute
   '/platform': typeof PlatformRouteWithChildren
   '/pricing': typeof PricingRoute
@@ -363,6 +372,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/customer-zero'
     | '/docs'
+    | '/intelligence'
     | '/manifesto'
     | '/platform'
     | '/pricing'
@@ -402,6 +412,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/customer-zero'
     | '/docs'
+    | '/intelligence'
     | '/manifesto'
     | '/platform'
     | '/pricing'
@@ -441,6 +452,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/customer-zero'
     | '/docs'
+    | '/intelligence'
     | '/manifesto'
     | '/platform'
     | '/pricing'
@@ -481,6 +493,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   CustomerZeroRoute: typeof CustomerZeroRoute
   DocsRoute: typeof DocsRoute
+  IntelligenceRoute: typeof IntelligenceRoute
   ManifestoRoute: typeof ManifestoRoute
   PlatformRoute: typeof PlatformRouteWithChildren
   PricingRoute: typeof PricingRoute
@@ -563,6 +576,13 @@ declare module '@tanstack/react-router' {
       path: '/manifesto'
       fullPath: '/manifesto'
       preLoaderRoute: typeof ManifestoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/intelligence': {
+      id: '/intelligence'
+      path: '/intelligence'
+      fullPath: '/intelligence'
+      preLoaderRoute: typeof IntelligenceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/docs': {
@@ -842,6 +862,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   CustomerZeroRoute: CustomerZeroRoute,
   DocsRoute: DocsRoute,
+  IntelligenceRoute: IntelligenceRoute,
   ManifestoRoute: ManifestoRoute,
   PlatformRoute: PlatformRouteWithChildren,
   PricingRoute: PricingRoute,
