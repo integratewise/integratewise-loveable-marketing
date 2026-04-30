@@ -9,9 +9,9 @@ const TRUTH = [
   { k: "Usage 30d", v: "−40%" },
 ];
 const CONTEXT = [
-  "📧  Re: budget freeze, will revisit Q3",
-  "💬  Champion silent — 12 days",
-  "📅  QBR rescheduled twice",
+  { tag: "email", body: "Re: budget freeze — revisit Q3" },
+  { tag: "slack", body: "Champion silent · 12 days" },
+  { tag: "calendar", body: "QBR rescheduled twice" },
 ];
 const SESSIONS = [
   { d: "QBR · Feb 12", t: "Renewal risk · budget freeze · champion moving" },
