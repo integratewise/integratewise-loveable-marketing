@@ -28,6 +28,16 @@ import { Badge } from "@/components/site/Badge";
 import { Reveal } from "@/components/site/Reveal";
 import { useDemoModal } from "@/components/site/demo-modal-context";
 import { CONNECTOR_LOGOS } from "@/components/site/ConnectorMarquee";
+import { StickySubNav } from "@/components/site/StickySubNav";
+
+const SUBNAV_ITEMS = [
+  { id: "spine", label: "Spine" },
+  { id: "how-it-works", label: "How it works" },
+  { id: "digital-memory", label: "Digital Memory" },
+  { id: "connectors", label: "Connectors" },
+  { id: "security", label: "Security" },
+  { id: "integrations", label: "Integrations" },
+];
 
 export const Route = createFileRoute("/platform")({
   head: () => ({
@@ -163,6 +173,8 @@ function PlatformPage() {
 
   return (
     <>
+      <StickySubNav items={SUBNAV_ITEMS} />
+
       {/* 1. Hero — #spine */}
       <Section orbs id="spine" className="!pt-20 lg:!pt-28">
         <Container>
@@ -241,8 +253,8 @@ function PlatformPage() {
         </Container>
       </Section>
 
-      {/* 2. Spine vs ETL — #how-it-works (the "Spine behaves" frame) */}
-      <Section alt id="how-it-works">
+      {/* 2. Spine vs ETL — narrative under hero */}
+      <Section alt id="spine-detail">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Spine</Badge>
@@ -305,8 +317,8 @@ function PlatformPage() {
         </Container>
       </Section>
 
-      {/* 3. Flow into Digital Memory — #digital-memory */}
-      <Section id="digital-memory">
+      {/* 3. Flow into Digital Memory — #how-it-works steps + #digital-memory three lines */}
+      <Section id="how-it-works">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">How it works</Badge>
@@ -344,6 +356,7 @@ function PlatformPage() {
           </Reveal>
 
           {/* Three lines sub-section */}
+          <div id="digital-memory" className="scroll-mt-24" />
           <Reveal className="mx-auto mt-20 max-w-3xl text-center">
             <h3 className="text-[28px] md:text-[32px] font-semibold text-foreground">
               Digital Memory: three lines that meet but don't mix.
@@ -549,8 +562,84 @@ function PlatformPage() {
         </Container>
       </Section>
 
+      {/* 6b. Integrations — #integrations */}
+      <Section id="integrations">
+        <Container>
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <Badge variant="muted">Integrations</Badge>
+            <h2 className="heading-h2 mt-4">Integrations that grow with you.</h2>
+            <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
+              Start with the tools that power one book of work. Add more connectors as your Spine
+              and Digital Memory deepen. New integrations join the same foundation — no new silos.
+            </p>
+          </Reveal>
+
+          <div className="mx-auto mt-10 grid max-w-5xl gap-5 md:grid-cols-2">
+            <Reveal>
+              <div className="card-iw h-full p-6">
+                <p className="text-[11px] font-semibold uppercase tracking-wider text-brand-accent">
+                  Pre‑built integrations
+                </p>
+                <ul className="mt-3 grid grid-cols-2 gap-y-1.5 text-[13.5px] text-foreground/85">
+                  {[
+                    "Tally",
+                    "Razorpay",
+                    "HubSpot",
+                    "Zoho CRM",
+                    "Freshdesk",
+                    "Gmail",
+                    "Slack",
+                    "Notion",
+                    "Google Sheets",
+                    "Jira",
+                  ].map((it) => (
+                    <li key={it}>• {it}</li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+            <Reveal delay={120}>
+              <div className="card-iw h-full p-6">
+                <p className="text-[11px] font-semibold uppercase tracking-wider text-text-secondary">
+                  Coming soon / beta
+                </p>
+                <ul className="mt-3 grid grid-cols-2 gap-y-1.5 text-[13.5px] text-foreground/85">
+                  {[
+                    "Stripe",
+                    "QuickBooks",
+                    "Salesforce",
+                    "Zendesk",
+                    "Intercom",
+                    "Asana",
+                    "ClickUp",
+                    "Airtable",
+                    "WhatsApp",
+                    "Outlook",
+                  ].map((it) => (
+                    <li key={it}>• {it}</li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          </div>
+
+          <Reveal delay={250} className="mx-auto mt-8 max-w-3xl text-center">
+            <p className="text-[14px] leading-relaxed text-text-secondary">
+              Don't see a tool you need?{" "}
+              <button
+                onClick={() => open("Platform integrations request")}
+                className="text-brand-accent underline-offset-4 hover:underline"
+              >
+                Tell us about your stack
+              </button>
+              .
+            </p>
+          </Reveal>
+        </Container>
+      </Section>
+
       {/* 7. The Loop — #loop */}
-      <Section id="loop">
+      <Section alt id="loop">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">The Loop</Badge>
@@ -592,7 +681,7 @@ function PlatformPage() {
       </Section>
 
       {/* 8. CTA */}
-      <Section alt>
+      <Section>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <h2 className="heading-h2">See how your stack becomes Digital Memory.</h2>
