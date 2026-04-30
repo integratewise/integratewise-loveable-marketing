@@ -581,8 +581,8 @@ function HomePage() {
               {
                 icon: Database,
                 title: "Schema Registry",
-                body: "Tracks every data shape from every connector. Detects drift, resolves conflicts, and keeps your truth layer clean — automatically.",
-                meta: "Auto-healing data contracts",
+                body: "Tracks every data shape from every connector. When a Salesforce field is renamed or a Stripe webhook payload changes, the Registry catches it before your dashboard silently breaks — and proposes the fix.",
+                meta: "No more silent dashboard breakage",
               },
             ].map((c, i) => (
               <Reveal key={c.title} delay={i * 80} className="card-iw p-7">
@@ -650,10 +650,11 @@ function HomePage() {
       {/* ========================= 9. PROOF / TRUST STRIP ========================= */}
       <Section className="!py-12">
         <Container>
-          <div className="grid gap-3 md:grid-cols-3">
+          <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
             {[
-              { t: "Cloudflare Workers", b: "Edge-first. Sub-50ms globally." },
-              { t: "Enterprise-ready", b: "SOC 2 Type II. GDPR compliant." },
+              { t: "Edge-first", b: "Cloudflare Workers. Sub-50ms globally." },
+              { t: "SOC 2 Type II · GDPR", b: "Compliant by architecture, not by checklist." },
+              { t: "Single-tenant by default", b: "Your data, your isolation. EU residency available." },
               { t: "Founder-led", b: "Every customer has a direct line." },
             ].map((p) => (
               <div key={p.t} className="flex items-center gap-3 rounded-xl border border-border bg-white/[0.02] px-5 py-4">
