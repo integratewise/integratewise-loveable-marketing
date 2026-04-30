@@ -138,8 +138,9 @@ export function Header() {
                     </p>
                     {item.groups.flatMap((g) => g.items).map((leaf) => (
                       <Link
-                        key={leaf.to}
+                        key={`${leaf.to}#${leaf.hash ?? ""}`}
                         to={leaf.to}
+                        hash={leaf.hash}
                         className="flex items-start gap-3 rounded-lg px-3 py-2.5 hover:bg-white/5"
                       >
                         <leaf.icon size={16} className="mt-0.5 text-brand-accent" />
@@ -198,9 +199,10 @@ function MegaMenu({ item }: { item: Extract<NavGroup, { kind: "menu" }> }) {
               {g.items.map((leaf) => {
                 const showWaitlist = "waitlist" in leaf && (leaf as { waitlist?: boolean }).waitlist;
                 return (
-                  <li key={leaf.to}>
+                  <li key={`${leaf.to}#${leaf.hash ?? ""}`}>
                     <Link
                       to={leaf.to}
+                      hash={leaf.hash}
                       className="group flex items-start gap-3 rounded-lg p-2.5 hover:bg-white/5"
                     >
                       <leaf.icon size={16} className="mt-0.5 shrink-0 text-brand-accent" />
