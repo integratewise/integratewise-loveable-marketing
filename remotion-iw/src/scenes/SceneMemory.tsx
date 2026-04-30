@@ -171,12 +171,27 @@ export const SceneMemory: React.FC = () => {
                     background: T.bg2,
                     border: `1px solid ${T.border}`,
                     borderRadius: 10,
-                    color: T.text,
-                    fontSize: 15,
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 12,
                     opacity: op,
                   }}
                 >
-                  {line}
+                  <span
+                    style={{
+                      fontFamily: T.mono,
+                      fontSize: 11,
+                      color: T.accent2,
+                      letterSpacing: 1.5,
+                      textTransform: "uppercase",
+                      padding: "2px 8px",
+                      border: `1px solid ${T.accent2}55`,
+                      borderRadius: 999,
+                    }}
+                  >
+                    {line.tag}
+                  </span>
+                  <span style={{ color: T.text, fontSize: 15 }}>{line.body}</span>
                 </div>
               );
             })}
