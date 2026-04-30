@@ -39,6 +39,7 @@ import { Route as ProductHowItWorksRouteImport } from './routes/product.how-it-w
 import { Route as ProductApprovalRouteImport } from './routes/product.approval'
 import { Route as PlatformTheSpineRouteImport } from './routes/platform.the-spine'
 import { Route as PlatformSecurityRouteImport } from './routes/platform.security'
+import { Route as PlatformMemoryRouteImport } from './routes/platform.memory'
 import { Route as PlatformIntegrationsRouteImport } from './routes/platform.integrations'
 import { Route as PlatformInfrastructureRouteImport } from './routes/platform.infrastructure'
 import { Route as PlatformHowItWorksRouteImport } from './routes/platform.how-it-works'
@@ -194,6 +195,11 @@ const PlatformSecurityRoute = PlatformSecurityRouteImport.update({
   path: '/security',
   getParentRoute: () => PlatformRoute,
 } as any)
+const PlatformMemoryRoute = PlatformMemoryRouteImport.update({
+  id: '/memory',
+  path: '/memory',
+  getParentRoute: () => PlatformRoute,
+} as any)
 const PlatformIntegrationsRoute = PlatformIntegrationsRouteImport.update({
   id: '/integrations',
   path: '/integrations',
@@ -236,6 +242,7 @@ export interface FileRoutesByFullPath {
   '/platform/how-it-works': typeof PlatformHowItWorksRoute
   '/platform/infrastructure': typeof PlatformInfrastructureRoute
   '/platform/integrations': typeof PlatformIntegrationsRoute
+  '/platform/memory': typeof PlatformMemoryRoute
   '/platform/security': typeof PlatformSecurityRoute
   '/platform/the-spine': typeof PlatformTheSpineRoute
   '/product/approval': typeof ProductApprovalRoute
@@ -272,6 +279,7 @@ export interface FileRoutesByTo {
   '/platform/how-it-works': typeof PlatformHowItWorksRoute
   '/platform/infrastructure': typeof PlatformInfrastructureRoute
   '/platform/integrations': typeof PlatformIntegrationsRoute
+  '/platform/memory': typeof PlatformMemoryRoute
   '/platform/security': typeof PlatformSecurityRoute
   '/platform/the-spine': typeof PlatformTheSpineRoute
   '/product/approval': typeof ProductApprovalRoute
@@ -309,6 +317,7 @@ export interface FileRoutesById {
   '/platform/how-it-works': typeof PlatformHowItWorksRoute
   '/platform/infrastructure': typeof PlatformInfrastructureRoute
   '/platform/integrations': typeof PlatformIntegrationsRoute
+  '/platform/memory': typeof PlatformMemoryRoute
   '/platform/security': typeof PlatformSecurityRoute
   '/platform/the-spine': typeof PlatformTheSpineRoute
   '/product/approval': typeof ProductApprovalRoute
@@ -347,6 +356,7 @@ export interface FileRouteTypes {
     | '/platform/how-it-works'
     | '/platform/infrastructure'
     | '/platform/integrations'
+    | '/platform/memory'
     | '/platform/security'
     | '/platform/the-spine'
     | '/product/approval'
@@ -383,6 +393,7 @@ export interface FileRouteTypes {
     | '/platform/how-it-works'
     | '/platform/infrastructure'
     | '/platform/integrations'
+    | '/platform/memory'
     | '/platform/security'
     | '/platform/the-spine'
     | '/product/approval'
@@ -419,6 +430,7 @@ export interface FileRouteTypes {
     | '/platform/how-it-works'
     | '/platform/infrastructure'
     | '/platform/integrations'
+    | '/platform/memory'
     | '/platform/security'
     | '/platform/the-spine'
     | '/product/approval'
@@ -667,6 +679,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlatformSecurityRouteImport
       parentRoute: typeof PlatformRoute
     }
+    '/platform/memory': {
+      id: '/platform/memory'
+      path: '/memory'
+      fullPath: '/platform/memory'
+      preLoaderRoute: typeof PlatformMemoryRouteImport
+      parentRoute: typeof PlatformRoute
+    }
     '/platform/integrations': {
       id: '/platform/integrations'
       path: '/integrations'
@@ -702,6 +721,7 @@ interface PlatformRouteChildren {
   PlatformHowItWorksRoute: typeof PlatformHowItWorksRoute
   PlatformInfrastructureRoute: typeof PlatformInfrastructureRoute
   PlatformIntegrationsRoute: typeof PlatformIntegrationsRoute
+  PlatformMemoryRoute: typeof PlatformMemoryRoute
   PlatformSecurityRoute: typeof PlatformSecurityRoute
   PlatformTheSpineRoute: typeof PlatformTheSpineRoute
 }
@@ -710,6 +730,7 @@ const PlatformRouteChildren: PlatformRouteChildren = {
   PlatformHowItWorksRoute: PlatformHowItWorksRoute,
   PlatformInfrastructureRoute: PlatformInfrastructureRoute,
   PlatformIntegrationsRoute: PlatformIntegrationsRoute,
+  PlatformMemoryRoute: PlatformMemoryRoute,
   PlatformSecurityRoute: PlatformSecurityRoute,
   PlatformTheSpineRoute: PlatformTheSpineRoute,
 }
