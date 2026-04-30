@@ -610,9 +610,14 @@ function ProductFrame() {
             <div className="text-[12px] text-text-secondary">4 actions pending your approval</div>
           </div>
 
-          <ul className="mt-4 space-y-3">
+          <StaggerGroup as="ul" className="mt-4 space-y-3" stagger={0.09} delay={0.1} amount={0.15}>
             {ACTIONS.map((a) => (
-              <li key={a.app} className="rounded-lg border border-border bg-white/[0.02] p-3">
+              <StaggerItem
+                as="li"
+                key={a.app}
+                x={20}
+                className="rounded-lg border border-border bg-white/[0.02] p-3"
+              >
                 <div className="flex items-center justify-between">
                   <span
                     className="rounded-md px-2 py-0.5 text-[11px] font-semibold text-white"
@@ -627,9 +632,9 @@ function ProductFrame() {
                   <button type="button" className="btn-secondary-iw !px-2.5 !py-1 text-[11.5px]">Deny</button>
                   <button type="button" className="btn-primary-iw !px-2.5 !py-1 text-[11.5px]">Approve &amp; Execute</button>
                 </div>
-              </li>
+              </StaggerItem>
             ))}
-          </ul>
+          </StaggerGroup>
         </aside>
       </div>
     </div>
