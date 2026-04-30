@@ -202,6 +202,15 @@ function HomePage() {
         </Container>
       </Section>
 
+      {/* ========================= 4b. PRODUCT WALKTHROUGH VIDEO ========================= */}
+      <ProductVideo
+        title="See the Spine, Workbench, and Twin in one flow."
+        subline="A quick look at how apps flow into Digital Memory, how your Workbench comes alive, and how Twin proposes the next move — always behind Approval Gate."
+        src="/videos/integratewise-walkthrough.mp4"
+        webm="/videos/integratewise-walkthrough.webm"
+        poster="/videos/integratewise-walkthrough-poster.jpg"
+      />
+
       {/* ========================= 5. WORKSPACE / INTELLIGENCE VALUE PROPS ========================= */}
       <Section>
         <Container>
