@@ -214,7 +214,7 @@ function ProductPage() {
                   As you grow
                 </p>
                 <ul className="mt-4 space-y-3 text-[14px] leading-relaxed text-foreground/90">
-                  <li>• As more data flows into the Adaptive Spine, your Digital Memory deepens.</li>
+                  <li>• As more data flows into the Spine, your Digital Memory deepens.</li>
                   <li>
                     • Workspace views evolve: richer client views, project boards, account health,
                     filings, and risks.
@@ -372,7 +372,7 @@ function ProductPage() {
 
           <Reveal delay={300} className="mx-auto mt-8 max-w-3xl text-center">
             <p className="text-[14px] leading-relaxed text-text-secondary">
-              Every view is backed by the same Adaptive Spine and Digital Memory. Change the way you
+              Every view is backed by the same Spine and Digital Memory. Change the way you
               group work; the underlying Memory stays consistent.
             </p>
           </Reveal>
