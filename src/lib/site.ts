@@ -229,11 +229,11 @@ export interface NavLeaf {
 
 export const PLATFORM_LINKS: NavLeaf[] = [
   { to: "/platform", hash: "spine", label: "Spine", blurb: "The Adaptive Spine — one layer, one Memory.", icon: CircuitBoard },
-  { to: "/platform", hash: "how-it-works", label: "How it works", blurb: "Apps → Spine → Memory loop.", icon: Workflow },
-  { to: "/platform", hash: "digital-memory", label: "Digital Memory", blurb: "Truth, Context, approved Summaries.", icon: Database },
-  { to: "/platform", hash: "connectors", label: "Connectors", blurb: "Loaders, adapters, schema registry.", icon: Plug },
+  { to: "/platform", hash: "memory", label: "Digital Memory", blurb: "Truth, Context, approved Summaries.", icon: Database },
+  { to: "/platform", hash: "integrations", label: "Integrations", blurb: "Loaders, adapters, schema registry.", icon: Plug },
   { to: "/platform", hash: "security", label: "Security", blurb: "SOC 2, GDPR, tenant isolation.", icon: ShieldCheck },
-  { to: "/platform", hash: "integrations", label: "Integrations", blurb: "Connect the apps you already use.", icon: Package },
+  { to: "/platform", hash: "how-it-works", label: "How it works", blurb: "Apps → Spine → Memory loop.", icon: Workflow },
+  { to: "/platform", hash: "stack", label: "The stack", blurb: "Spine · Workspace · Twin.", icon: Package },
 ];
 
 export const PRODUCT_LINKS: NavLeaf[] = [
