@@ -154,7 +154,7 @@ function IndustryDetailPage() {
               <span className="text-gradient-hero">powered by Memory that never resets.</span>
             </h1>
             <p className="mx-auto mt-5 text-[17px] leading-relaxed text-text-secondary">
-              {detail.name} teams rebuild context daily across {detail.tools}. Within seconds of opening the Workbench, you see what changed. Twin connects, explains, and prepares the next action.
+              {detail.name} teams rebuild context daily across {detail.tools}. Within seconds of opening the Workspace, you see what changed. Twin connects, explains, and prepares the next action.
             </p>
           </div>
 

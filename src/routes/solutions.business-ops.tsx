@@ -8,7 +8,7 @@ export const Route = createFileRoute("/solutions/business-ops")({
       {
         name: "description",
         content:
-          "Founders, COOs, and finance leads across SaaS, agency, retail, and services run the day from one Workbench built on Org Memory.",
+          "Founders, COOs, and finance leads across SaaS, agency, retail, and services run the day from one Workspace built on Org Memory.",
       },
       { property: "og:title", content: "Business Ops — IntegrateWise" },
       {
@@ -26,7 +26,7 @@ function BusinessOpsPage() {
       preLabel="Solution · Business Ops"
       h1Lead="Run the day"
       h1Accent="from one screen."
-      subcopy="Founders, owners, and operations leads across SaaS, services, retail and more all fight the same battle: spreadsheets and tabs before decisions. Business Ops gives you a daily Workbench built on your Org Memory."
+      subcopy="Founders, owners, and operations leads across SaaS, services, retail and more all fight the same battle: spreadsheets and tabs before decisions. Business Ops gives you a daily Workspace built on your Org Memory."
       primaryCta={{ label: "Book a demo", kind: "demo" }}
       secondaryCtaHref="#mapper"
       secondaryCtaLabel="See it for your role"
@@ -77,7 +77,7 @@ function BusinessOpsPage() {
             "End the day still not knowing what actually moved over the weekend.",
           ],
           with: [
-            "Business Workbench shows yesterday's revenue, open invoices, key risks, and capacity in one view.",
+            "Business Workspace shows yesterday's revenue, open invoices, key risks, and capacity in one view.",
             "Org Memory holds all key metrics and changes; Twin prepares a short Monday brief.",
             "You open one screen and know what to talk about, without Excel.",
             "Every number is traceable back to the original tool — no spreadsheet rebuilds.",
@@ -92,7 +92,7 @@ function BusinessOpsPage() {
             "Miss the one account that quietly slipped because nothing tied the signals together.",
           ],
           with: [
-            "Workbench shows MRR, churn risks, pipeline, hiring, and key issues in one view.",
+            "Workspace shows MRR, churn risks, pipeline, hiring, and key issues in one view.",
             "Twin links usage drops with email signals to flag at-risk accounts before churn.",
             "Org Memory keeps your last decisions and their outcomes — no more 'why did we do this?'",
           ],
@@ -106,7 +106,7 @@ function BusinessOpsPage() {
             "Issues escalate before you see the early signal.",
           ],
           with: [
-            "Ops Workbench shows projects, utilisation, collections, and open issues stitched together.",
+            "Ops Workspace shows projects, utilisation, collections, and open issues stitched together.",
             "Twin proposes which projects need attention and which collections are slipping.",
             "Decisions log into Org Memory so the next week starts where this one ended.",
           ],
@@ -120,7 +120,7 @@ function BusinessOpsPage() {
             "Discover bounced payments days late.",
           ],
           with: [
-            "Finance Workbench shows daily sales, credit outstanding, supplier dues, and GST status in one view.",
+            "Finance Workspace shows daily sales, credit outstanding, supplier dues, and GST status in one view.",
             "Org Memory keeps every payment event linked to its source.",
             "Twin flags payment failures and overdue credit — you approve reminders before they go out.",
           ],
@@ -133,7 +133,7 @@ function BusinessOpsPage() {
             "Walk into the store unsure what's broken or what sold well yesterday.",
           ],
           with: [
-            "Workbench shows yesterday's sales, low-stock alerts, staff schedule, and open complaints in one view.",
+            "Workspace shows yesterday's sales, low-stock alerts, staff schedule, and open complaints in one view.",
             "Twin proposes restocks and shift adjustments — you approve before anything changes.",
           ],
         },
@@ -142,9 +142,9 @@ function BusinessOpsPage() {
         {
           id: "function-business-ops",
           group: "Function",
-          title: "One Workbench for business health.",
+          title: "One Workspace for business health.",
           body: [
-            "One Workbench view for business health — driven by Org Memory from the Adaptive Spine.",
+            "One Workspace view for business health — driven by Org Memory from the Adaptive Spine.",
             "Revenue, collections, tickets, hiring, and key tasks pulled into one stitched overview.",
             "Twin prepares a morning brief; you approve which actions to run.",
           ],
@@ -155,7 +155,7 @@ function BusinessOpsPage() {
           title: "For founders and owners.",
           body: [
             "Without: Monday spent rebuilding numbers in 5 spreadsheets before any real work happens.",
-            "With: open one Workbench and see revenue, risks, capacity, and what changed over the weekend.",
+            "With: open one Workspace and see revenue, risks, capacity, and what changed over the weekend.",
             "Twin's morning brief becomes your weekly leadership ritual — you approve every action.",
           ],
         },
@@ -165,7 +165,7 @@ function BusinessOpsPage() {
           title: "For COOs and operations leads.",
           body: [
             "Without: chasing managers for utilisation, project status, and collections every week.",
-            "With: one stitched Ops Workbench showing projects, utilisation, collections, and open issues.",
+            "With: one stitched Ops Workspace showing projects, utilisation, collections, and open issues.",
             "Twin highlights which projects, teams, or collections need attention this week.",
           ],
         },
@@ -175,7 +175,7 @@ function BusinessOpsPage() {
           title: "For finance and collections leads.",
           body: [
             "Without: reconciling sales, credit, payments, and GST across Tally, billing, sheets, and email.",
-            "With: a Finance Workbench tied to Org Memory — every number traceable to its source.",
+            "With: a Finance Workspace tied to Org Memory — every number traceable to its source.",
             "Twin proposes payment reminders and surfaces overdue credit — you approve before it's sent.",
           ],
         },
@@ -184,7 +184,7 @@ function BusinessOpsPage() {
           group: "Industry",
           title: "Daily SaaS health.",
           body: [
-            "MRR, churn signals, pipeline, hiring, and key issues stitched into one Workbench view.",
+            "MRR, churn signals, pipeline, hiring, and key issues stitched into one Workspace view.",
             "Twin connects usage drops with conversations to surface at-risk accounts early.",
             "Org Memory keeps decisions and outcomes — no more 'why did we choose that pricing?'",
           ],
@@ -194,7 +194,7 @@ function BusinessOpsPage() {
           group: "Industry",
           title: "Daily agency health.",
           body: [
-            "Retainers, utilisation, invoices, project load — all stitched in one Business Workbench.",
+            "Retainers, utilisation, invoices, project load — all stitched in one Business Workspace.",
             "Twin flags slipping retainers and overdue invoices, with evidence from email and WhatsApp.",
             "Org Memory keeps every client decision connected to people, projects, and money.",
           ],
@@ -204,7 +204,7 @@ function BusinessOpsPage() {
           group: "Industry",
           title: "Daily retail health.",
           body: [
-            "Sales, inventory alerts, credit, staff shifts — in one Workbench tab, every morning.",
+            "Sales, inventory alerts, credit, staff shifts — in one Workspace tab, every morning.",
             "Twin proposes restocks, shift changes, and credit reminders before they become problems.",
             "All actions go through your Approval Gate before anything moves.",
           ],

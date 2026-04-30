@@ -21,7 +21,7 @@ export const Route = createFileRoute("/solutions/by-industry")({
       {
         name: "description",
         content:
-          "SaaS, eCommerce, Healthcare, FinTech, Manufacturing, Professional Services — pick your market and see how Attention, Workbench, Twin, and Approval shape the day.",
+          "SaaS, eCommerce, Healthcare, FinTech, Manufacturing, Professional Services — pick your market and see how Attention, Workspace, Twin, and Approval shape the day.",
       },
       { property: "og:title", content: "Solutions by Industry" },
       { property: "og:description", content: "One platform, many industries — same Memory, same Twin, same Approval Gate." },
@@ -40,7 +40,7 @@ function ByIndustryIndex() {
             Adapt the same platform to <span className="text-gradient-hero">your sector.</span>
           </h1>
           <p className="mx-auto mt-5 text-[17px] leading-relaxed text-text-secondary">
-            Pick your market and see how Attention Layer, Workbench, Twin, and Approval flow looks for your day-to-day work.
+            Pick your market and see how Attention Layer, Workspace, Twin, and Approval flow looks for your day-to-day work.
           </p>
         </div>
 

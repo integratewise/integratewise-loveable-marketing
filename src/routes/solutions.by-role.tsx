@@ -22,7 +22,7 @@ export const Route = createFileRoute("/solutions/by-role")({
       {
         name: "description",
         content:
-          "Filter the same Adaptive Spine, Digital Memory, Workbench, Twin, and Approval Gate by your role — CSM, Founder, Ops Lead, Sales, Finance, and more.",
+          "Filter the same Adaptive Spine, Digital Memory, Workspace, Twin, and Approval Gate by your role — CSM, Founder, Ops Lead, Sales, Finance, and more.",
       },
       { property: "og:title", content: "Solutions by Role" },
       {
@@ -77,14 +77,14 @@ const ROLE_DOORS: RoleEntry[] = [
     to: "/solutions/account-success",
     label: "Agency / Consultant",
     blurb:
-      "Per-client Workbench with messages, tasks, and deliverables stitched together.",
+      "Per-client Workspace with messages, tasks, and deliverables stitched together.",
     icon: Briefcase,
   },
   {
     to: "/solutions/personal-space",
     label: "Individual / Personal",
     blurb:
-      "Your private Workbench for personal projects, learning, and life admin.",
+      "Your private Workspace for personal projects, learning, and life admin.",
     icon: User,
     badge: "Waitlist",
   },
@@ -101,7 +101,7 @@ function ByRoleIndex() {
             <span className="text-gradient-hero">your point of view.</span>
           </h1>
           <p className="mx-auto mt-5 text-[17px] leading-relaxed text-text-secondary">
-            Same foundation for everyone — Adaptive Spine, Digital Memory, Adaptive Workbench,
+            Same foundation for everyone — Adaptive Spine, Digital Memory, Adaptive Workspace,
             Twin, and Approval Gate. Pick the role that matches your day; the underlying system
             is shared.
           </p>
