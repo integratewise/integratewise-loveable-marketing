@@ -268,13 +268,43 @@ function HomePage() {
         </Container>
       </Section>
 
-      {/* ========================= 4. WORKSPACE + COGNITIVE LAYER (PRODUCT FRAME) ========================= */}
+      {/* ========================= 4. SPINE → WORKSPACE → TWIN ========================= */}
+      <Section>
+        <Container>
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <span className="badge-iw badge-iw-muted">Spine → Workspace → Twin</span>
+            <h2 className="heading-h2 mt-4">The Spine connects.</h2>
+            <p className="mt-4 text-[16px] text-text-secondary">
+              The Twin reads Truth, Context and governed Session Summaries together — then proposes the next move with full evidence.
+            </p>
+          </Reveal>
+
+          <div className="mx-auto mt-10 grid max-w-5xl gap-4 md:grid-cols-3">
+            {[
+              { t: "Money", b: "Tally and Razorpay." },
+              { t: "Conversations", b: "Gmail and WhatsApp." },
+              { t: "Notes & plans", b: "Notion and Sheets." },
+            ].map((s) => (
+              <div key={s.t} className="card-iw p-5">
+                <div className="text-[13px] font-semibold text-brand-accent uppercase tracking-wider">{s.t}</div>
+                <p className="mt-2 text-[14.5px] text-foreground/90">{s.b}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mx-auto mt-6 max-w-3xl text-center text-[15px] leading-relaxed text-text-secondary">
+            All stitched into one Workspace: <span className="font-semibold text-foreground">Accounts &amp; Revenue</span> — health, ARR, risk and renewal timelines on a single screen.
+          </p>
+        </Container>
+      </Section>
+
+      {/* ========================= 4a. WORKSPACE + COGNITIVE LAYER (PRODUCT FRAME) ========================= */}
       <Section alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <h2 className="heading-h2">The Spine connects.</h2>
+            <span className="badge-iw badge-iw-muted">Workspace</span>
+            <h2 className="heading-h2 mt-4">You stop being the human API between tools.</h2>
             <p className="mt-4 text-[16px] text-text-secondary">
-              The Cognitive Layer reads Truth, Context, and governed Session Summaries together — then your Twin proposes the next move with full evidence.
+              The system does the stitching; you stay in control.
             </p>
           </Reveal>
           <Reveal className="mt-12">
@@ -285,15 +315,71 @@ function HomePage() {
         </Container>
       </Section>
 
-      {/* ========================= 4b. PRODUCT WALKTHROUGH VIDEO ========================= */}
+      {/* ========================= 4b. APPROVALS INSIDE YOUR DAY ========================= */}
+      <Section>
+        <Container>
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <span className="badge-iw badge-iw-muted">Approvals inside your day</span>
+            <h2 className="heading-h2 mt-4">You decide what happens next.</h2>
+            <p className="mt-4 text-[16px] text-text-secondary">
+              Twin watches Digital Memory and prepares actions across your tools. Each proposal shows confidence, linked evidence and clear buttons: <span className="font-semibold text-foreground">Deny · Approve &amp; Execute</span>.
+            </p>
+          </Reveal>
+
+          <div className="mx-auto mt-12 grid max-w-5xl gap-4 md:grid-cols-2">
+            {[
+              { app: "HubSpot", body: "Update lifecycle stage." },
+              { app: "Jira", body: "Escalate tickets to P1." },
+              { app: "Slack", body: "Alert a channel." },
+              { app: "Salesforce", body: "Update an opportunity." },
+            ].map((a) => (
+              <div key={a.app} className="flex items-center gap-3 rounded-xl border border-border bg-white/[0.02] p-4">
+                <span className="rounded-md border border-border bg-bg-elevated px-2.5 py-1 text-[12.5px] font-semibold text-foreground">{a.app}</span>
+                <span className="text-[14px] text-foreground/90">{a.body}</span>
+              </div>
+            ))}
+          </div>
+          <p className="mx-auto mt-8 max-w-2xl text-center text-[15px] font-semibold text-foreground">
+            AI proposes. You decide.
+          </p>
+        </Container>
+      </Section>
+
+      {/* ========================= 4c. PRODUCT WALKTHROUGH VIDEO ========================= */}
       <ProductVideo
-        title="See the Spine, Workspace, and Twin in one flow."
-        subline="A quick look at how apps flow into Digital Memory, how your Workspace comes alive, and how Twin proposes the next move — always behind the Approval Gate."
+        title="See the Spine, Workspace and Twin in one flow."
+        subline="A quick walkthrough of how apps flow into Digital Memory, how your Workspace comes alive from day one, and how Twin proposes the next move — always behind the Approval line."
         src="/videos/integratewise-walkthrough.mp4"
         webm="/videos/integratewise-walkthrough.webm"
         poster="/videos/integratewise-walkthrough-poster.jpg"
       />
 
+      {/* ========================= 4d. WALKTHROUGH NUMBERED FLOW ========================= */}
+      <Section alt>
+        <Container>
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <span className="badge-iw badge-iw-muted">Product walkthrough</span>
+            <h2 className="heading-h2 mt-4">Apps → Spine → Workspace → Twin → Approval → Loop.</h2>
+          </Reveal>
+          <div className="mx-auto mt-10 grid max-w-5xl grid-cols-2 gap-3 md:grid-cols-6">
+            {[
+              { n: 1, t: "Apps" },
+              { n: 2, t: "Spine" },
+              { n: 3, t: "Workspace" },
+              { n: 4, t: "Twin" },
+              { n: 5, t: "Approval" },
+              { n: 6, t: "Loop" },
+            ].map((s) => (
+              <div key={s.n} className="card-iw flex flex-col items-center p-5 text-center">
+                <div className="grid size-9 place-items-center rounded-full border border-brand-accent/40 bg-brand-accent/10 text-[13px] font-bold text-brand-accent">
+                  {s.n}
+                </div>
+                <div className="mt-3 text-[14.5px] font-semibold text-foreground">{s.t}</div>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </Section>
       {/* ========================= 5. WORKSPACE / INTELLIGENCE VALUE PROPS ========================= */}
       <Section>
         <Container>
