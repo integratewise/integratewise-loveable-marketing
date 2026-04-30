@@ -5,6 +5,7 @@ import { Section } from "@/components/site/Section";
 import { Reveal } from "@/components/site/Reveal";
 import { AnnouncementBar } from "@/components/site/AnnouncementBar";
 import { ClosingCtaBand } from "@/components/site/ClosingCtaBand";
+import { ProductVideo } from "@/components/site/ProductVideo";
 import { useDemoModal } from "@/components/site/demo-modal-context";
 import { CONNECTOR_LOGOS } from "@/components/site/ConnectorMarquee";
 import { SpineFlow } from "@/components/site/motion/SpineFlow";
