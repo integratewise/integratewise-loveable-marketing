@@ -24,7 +24,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "One workspace. Full context. Every action under your control. The Knowledge Workspace over the Spine — apps connect, truth stays intact, your Twin proposes what's next.",
+          "One workspace. Full context. Every action under your control. Still juggling your work? — apps connect, truth stays intact, your Twin proposes what's next.",
       },
       { property: "og:title", content: "IntegrateWise — Stop being the human API between your tools." },
       {
