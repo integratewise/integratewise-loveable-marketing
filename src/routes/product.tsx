@@ -226,6 +226,36 @@ function ProductPage() {
               </div>
             </Reveal>
           </div>
+
+          {/* Inline loop diagram */}
+          <Reveal delay={200} className="mx-auto mt-10 max-w-5xl">
+            <div className="card-iw flex flex-wrap items-center justify-center gap-2 p-4 text-[12.5px] font-medium text-foreground/85">
+              {[
+                "Apps",
+                "Spine",
+                "Digital Memory",
+                "Workspace",
+                "Twin",
+                "Approval",
+                "Loop",
+              ].map((label, i, arr) => (
+                <span key={label} className="flex items-center gap-2">
+                  <span
+                    className={
+                      label === "Workspace"
+                        ? "rounded-md bg-brand-accent/15 px-2.5 py-1 text-brand-accent"
+                        : "rounded-md border border-border bg-elevated/50 px-2.5 py-1"
+                    }
+                  >
+                    {label}
+                  </span>
+                  {i < arr.length - 1 && (
+                    <ArrowRight size={12} className="text-text-secondary" />
+                  )}
+                </span>
+              ))}
+            </div>
+          </Reveal>
         </Container>
       </Section>
 
