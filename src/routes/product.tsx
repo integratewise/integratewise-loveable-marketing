@@ -157,7 +157,7 @@ function ProductPage() {
               <button onClick={() => open()} className="btn-primary-iw">
                 Book a demo <ArrowRight size={16} />
               </button>
-              <a href="#layout" className="btn-secondary-iw">
+              <a href="#frame" className="btn-secondary-iw">
                 See it in action
               </a>
             </div>
