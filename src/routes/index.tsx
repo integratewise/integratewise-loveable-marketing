@@ -206,8 +206,8 @@ function HomePage() {
 
       {/* ========================= 4b. PRODUCT WALKTHROUGH VIDEO ========================= */}
       <ProductVideo
-        title="See the Spine, Workbench, and Twin in one flow."
-        subline="A quick look at how apps flow into Digital Memory, how your Workbench comes alive, and how Twin proposes the next move — always behind Approval Gate."
+        title="See the Spine, Workspace, and Twin in one flow."
+        subline="A quick look at how apps flow into Digital Memory, how your Workspace comes alive, and how Twin proposes the next move — always behind the Approval Gate."
         src="/videos/integratewise-walkthrough.mp4"
         webm="/videos/integratewise-walkthrough.webm"
         poster="/videos/integratewise-walkthrough-poster.jpg"
