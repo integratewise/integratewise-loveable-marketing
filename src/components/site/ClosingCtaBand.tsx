@@ -13,8 +13,8 @@ export function ClosingCtaBand() {
           <h2 className="heading-h1">
             Stop the reset. <span className="text-gradient-hero">Start the loop.</span>
           </h2>
-          <p className="mx-auto mt-5 max-w-xl text-[16.5px] leading-relaxed text-text-secondary">
-            See your Memory assembled on your own data in 30 minutes. No rebuild. No reset.
+          <p className="mx-auto mt-5 max-w-2xl text-[16.5px] leading-relaxed text-text-secondary">
+            Connect 2–3 tools, see your Spine built, and watch your Twin's first proposals — all on your own data, in the first 30 minutes. No rebuild. No reset.
           </p>
           <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
             <button type="button" onClick={() => open("Home · Closing band")} className="btn-primary-iw">
