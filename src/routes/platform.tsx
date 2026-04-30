@@ -206,11 +206,15 @@ function PlatformPage() {
               </div>
             </div>
           </Reveal>
+
+          <Reveal delay={120} className="mt-12">
+            <InPageNav items={PLATFORM_NAV} />
+          </Reveal>
         </Container>
       </Section>
 
       {/* 2. From scattered apps to Digital Memory */}
-      <Section alt>
+      <Section id="digital-memory" alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">The end of the Human API</Badge>
