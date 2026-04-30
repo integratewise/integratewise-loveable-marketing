@@ -8,7 +8,7 @@ export function Footer() {
   return (
     <footer className="border-t border-border bg-section-alt">
       <Container className="py-16">
-        <div className="grid gap-10 md:grid-cols-5">
+        <div className="grid gap-10 md:grid-cols-6">
           <div className="md:col-span-2">
             <div className="flex items-center gap-2.5">
               <SpineLogo className="h-[28px] w-auto text-foreground" />
@@ -28,12 +28,21 @@ export function Footer() {
           <FooterCol
             title="Platform"
             links={[
-              { to: "/platform/the-spine", label: "Spine" },
-              { to: "/platform", label: "Memory" },
+              { to: "/platform", label: "Spine" },
+              { to: "/platform/memory", label: "Memory" },
               { to: "/platform/integrations", label: "Integrations" },
               { to: "/platform/security", label: "Security" },
               { to: "/platform/how-it-works", label: "How it works" },
               { to: "/platform/infrastructure", label: "Infrastructure" },
+            ]}
+          />
+          <FooterCol
+            title="Product"
+            links={[
+              { to: "/product", label: "Workbench" },
+              { to: "/product/the-twin", label: "The Twin" },
+              { to: "/product/approval", label: "Approval" },
+              { to: "/product/reference-layer", label: "Reference Layer" },
             ]}
           />
           <FooterCol
