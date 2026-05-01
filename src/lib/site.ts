@@ -487,7 +487,16 @@ export const PRIMARY_NAV: ReadonlyArray<NavGroup> = [
   {
     kind: "menu",
     label: "Company",
-    groups: [{ heading: "Company", items: COMPANY_LINKS }],
+    groups: [
+      {
+        heading: "Story",
+        items: pickLinks(COMPANY_LINKS, ["About", "Manifesto", "Why"]),
+      },
+      {
+        heading: "Engage",
+        items: pickLinks(COMPANY_LINKS, ["Customer Zero", "Pricing", "Contact"]),
+      },
+    ],
   },
 ];
 
