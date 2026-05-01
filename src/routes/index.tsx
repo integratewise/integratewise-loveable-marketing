@@ -303,44 +303,44 @@ function HomePage() {
                 title: "Memory",
                 kicker: "The Platform",
                 body: "Data from your apps becomes a living Digital Memory.",
-                icon: Database,
+                Visual: StepMemory,
               },
               {
                 n: "02",
                 title: "Workbench",
                 kicker: "The Product",
                 body: "Your workspace adapts around what your memory knows.",
-                icon: Layers,
+                Visual: StepWorkbench,
               },
               {
                 n: "03",
                 title: "Twin",
                 kicker: "The Intelligence",
                 body: "Watches what changes and proposes the next move (powered by Claude Opus 4.7).",
-                icon: Sparkles,
+                Visual: StepTwin,
               },
               {
                 n: "04",
                 title: "Approval",
                 kicker: "The Control",
                 body: "Every proposal comes with evidence. You approve or deny. AI cannot act alone.",
-                icon: ShieldCheck,
+                Visual: StepApproval,
               },
               {
                 n: "05",
                 title: "The Loop",
                 kicker: "Compounds",
                 body: "Results return as new Truth. Tomorrow starts smarter than today.",
-                icon: Workflow,
+                Visual: StepLoop,
               },
             ].map((step, i) => (
               <Reveal key={step.title} delay={i * 70}>
-                <div className="relative h-full card-iw p-5">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[12px] font-semibold tracking-wider text-brand-accent">
-                      {step.n}
-                    </span>
-                    <step.icon size={18} className="text-brand-accent" />
+                <div className="relative h-full card-iw p-4">
+                  <span className="text-[12px] font-semibold tracking-wider text-brand-accent">
+                    {step.n}
+                  </span>
+                  <div className="mt-3">
+                    <step.Visual />
                   </div>
                   <div className="mt-4 text-[17px] font-semibold text-foreground">{step.title}</div>
                   <div className="text-[12px] uppercase tracking-wider text-text-secondary">
