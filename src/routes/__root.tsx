@@ -7,6 +7,8 @@ import { Footer } from "@/components/site/Footer";
 import { DemoModalProvider } from "@/components/site/demo-modal-context";
 import { LeadModals } from "@/components/site/LeadModals";
 import { RouteTransition } from "@/components/site/RouteTransition";
+import { ScrollProgressBar } from "@/components/site/motion/ScrollProgressBar";
+import { SpotlightCursor } from "@/components/site/motion/SpotlightCursor";
 import { SITE_NAME, SITE_DESCRIPTION } from "@/lib/site";
 
 function NotFoundComponent() {
@@ -75,9 +77,11 @@ function RootComponent() {
   return (
     <MotionConfig reducedMotion="user">
       <DemoModalProvider>
-        <div className="flex min-h-screen flex-col bg-background text-foreground">
+        <div className="relative flex min-h-screen flex-col bg-background text-foreground">
+          <ScrollProgressBar />
+          <SpotlightCursor />
           <Header />
-          <main className="flex-1 pt-[88px]">
+          <main className="relative z-10 flex-1 pt-[88px]">
             <RouteTransition>
               <Outlet />
             </RouteTransition>
