@@ -18,7 +18,7 @@ import { Container } from "@/components/site/Container";
 import { Section } from "@/components/site/Section";
 import { Badge } from "@/components/site/Badge";
 import { Reveal } from "@/components/site/Reveal";
-import { SectionNav } from "@/components/site/SectionNav";
+
 import { useDemoModal } from "@/components/site/demo-modal-context";
 import { MEMORY_COPY } from "@/lib/site";
 
@@ -111,17 +111,6 @@ function TwinPage() {
           </div>
         </Container>
       </Section>
-
-      {/* Sticky in-page nav */}
-      <SectionNav
-        items={[
-          { id: "twin", label: "Twin" },
-          { id: "how-it-works", label: "How it works" },
-          { id: "digital-memory-reference", label: "Digital Memory Reference" },
-          { id: "twin-execution", label: "Twin Execution" },
-          { id: "security", label: "Security" },
-        ]}
-      />
 
       {/* 2. Core thesis */}
       <Section alt>

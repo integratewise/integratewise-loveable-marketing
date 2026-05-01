@@ -29,7 +29,7 @@ import { Container } from "@/components/site/Container";
 import { Section } from "@/components/site/Section";
 import { Badge } from "@/components/site/Badge";
 import { Reveal } from "@/components/site/Reveal";
-import { SectionNav } from "@/components/site/SectionNav";
+
 import { ConnectorMarquee, CONNECTOR_LOGOS } from "@/components/site/ConnectorMarquee";
 import { useDemoModal } from "@/components/site/demo-modal-context";
 
@@ -291,19 +291,6 @@ function PlatformPage() {
           </Reveal>
         </Container>
       </Section>
-
-      {/* Sticky in-page nav (matches spec section order) */}
-      <SectionNav
-        items={[
-          { id: "spine", label: "Spine" },
-          { id: "digital-memory", label: "Digital Memory" },
-          { id: "connectors", label: "Connectors" },
-          { id: "how-it-works", label: "How it works" },
-          { id: "security", label: "Security" },
-          { id: "integrations", label: "Integrations" },
-          { id: "platform-cta", label: "Get started" },
-        ]}
-      />
 
       {/* 1. Spine */}
       <Section id="spine" alt>

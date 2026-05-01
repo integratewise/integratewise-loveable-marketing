@@ -29,7 +29,7 @@ import { Section } from "@/components/site/Section";
 import { Badge } from "@/components/site/Badge";
 import { Reveal } from "@/components/site/Reveal";
 import { ProductVideo } from "@/components/site/ProductVideo";
-import { SectionNav } from "@/components/site/SectionNav";
+
 import { useDemoModal } from "@/components/site/demo-modal-context";
 import { MEMORY_COPY } from "@/lib/site";
 import { Lock, KeyRound, FileSearch } from "lucide-react";
@@ -170,16 +170,6 @@ function ProductPage() {
           </Reveal>
         </Container>
       </Section>
-
-      {/* Sticky in-page nav */}
-      <SectionNav
-        items={[
-          { id: "workspace", label: "Workspace" },
-          { id: "how-it-works", label: "How it works" },
-          { id: "digital-memory", label: "Digital Memory" },
-          { id: "security", label: "Security" },
-        ]}
-      />
 
       {/* 2. From empty dashboards to a living workspace */}
       <Section alt>
