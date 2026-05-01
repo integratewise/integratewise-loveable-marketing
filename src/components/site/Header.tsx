@@ -142,7 +142,7 @@ export function Header() {
                     key={item.label}
                     className="border-b border-white/5 py-2 last:border-0"
                   >
-                    <p className="px-3 pb-2 pt-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/40">
+                    <p className="px-3 pb-2 pt-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/70">
                       {item.label}
                     </p>
                     {item.groups
