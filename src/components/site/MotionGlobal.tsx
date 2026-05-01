@@ -17,7 +17,7 @@ export function MotionGlobal() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    document.documentElement.classList.add("js-motion");
 
     // Assign stagger indices to direct children of [data-stagger] containers.
     const staggerRoots = document.querySelectorAll<HTMLElement>("[data-stagger]");
