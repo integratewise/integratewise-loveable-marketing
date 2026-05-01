@@ -174,19 +174,23 @@ function HomePage() {
               {
                 title: "Data scattered.",
                 body: "You hunt across twelve tabs before every decision.",
+                Visual: PainScatter,
               },
               {
                 title: "Intelligence blind.",
                 body: "Without the full picture, AI nudges arrive late or wrong.",
+                Visual: PainBlind,
               },
               {
                 title: "Automation rogue.",
                 body: "Things fire without you, so trust quietly erodes.",
+                Visual: PainRogue,
               },
             ].map((p) => (
-              <StaggerItem key={p.title} className="card-iw p-7">
-                <h3 className="text-[18px] font-semibold text-foreground">{p.title}</h3>
-                <p className="mt-2 text-[15px] leading-relaxed text-text-secondary">{p.body}</p>
+              <StaggerItem key={p.title} className="card-iw p-6">
+                <p.Visual />
+                <h3 className="mt-5 text-[18px] font-semibold text-foreground">{p.title}</h3>
+                <p className="mt-2 text-[14.5px] leading-relaxed text-text-secondary">{p.body}</p>
               </StaggerItem>
             ))}
           </StaggerGroup>
