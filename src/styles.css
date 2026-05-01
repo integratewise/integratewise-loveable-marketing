@@ -420,9 +420,6 @@
 .js-motion .reveal-scale { transform: translateY(0) scale(0.96); }
 .js-motion .reveal-left { transform: translateX(-24px); }
 .js-motion .reveal-right { transform: translateX(24px); }
-.reveal-scale { transform: translateY(0) scale(0.96); }
-.reveal-left { transform: translateX(-24px); }
-.reveal-right { transform: translateX(24px); }
 .reveal.is-in,
 .reveal-fade.is-in,
 .reveal-scale.is-in,
