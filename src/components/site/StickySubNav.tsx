@@ -190,7 +190,7 @@ export function StickySubNav({
                     className={cn(
                       "h-1.5 w-1.5 shrink-0 rounded-full transition-colors",
                       isActive
-                        ? "bg-[hsl(var(--accent,28_100%_64%))] shadow-[0_0_0_3px_hsl(var(--accent,28_100%_64%)/0.18)]"
+                        ? "bg-brand-accent shadow-[0_0_0_3px_color-mix(in_oklab,var(--brand-accent)_25%,transparent)]"
                         : "bg-white/15 group-hover:bg-white/30",
                     )}
                   />
