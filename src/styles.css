@@ -157,7 +157,15 @@
   body {
     background-color: var(--bg-base);
     color: var(--text-primary);
+    line-height: 1.65;
   }
+
+  p {
+    line-height: 1.7;
+  }
+
+  /* Comfortable max width for any standalone paragraph */
+  section p { max-width: 68ch; }
 
   ::selection {
     background-color: rgba(255, 225, 204, 0.25);
