@@ -187,28 +187,40 @@ function HomePage() {
             <h2 className="heading-h2 mt-5">One memory for your work.</h2>
           </Reveal>
 
-          <div className="mx-auto mt-14 grid max-w-5xl gap-5 md:grid-cols-3">
+          <div className="mx-auto mt-14 grid max-w-5xl gap-6 md:grid-cols-3">
             {[
               {
                 icon: Workflow,
                 title: "Apps plug in once.",
-                body: "Connect your sources with OAuth or API key. No CSV exports. No code.",
+                body: "OAuth or API key. No CSVs. No code.",
+                gradient: "from-[#FFE1CC]/15 via-transparent to-transparent",
               },
               {
                 icon: Database,
                 title: "Data becomes Digital Memory.",
-                body: "Records, conversations, and decisions normalize into one stable memory that survives app and AI changes.",
+                body: "One stable memory that survives app and AI changes.",
+                gradient: "from-[#C7B6FF]/15 via-transparent to-transparent",
               },
               {
                 icon: Sparkles,
                 title: "Workspace and Twin sit on top.",
-                body: "Every day starts with full context — not with a blank tab and yesterday's questions.",
+                body: "Every day starts with full context — not a blank tab.",
+                gradient: "from-[#9CD6FF]/15 via-transparent to-transparent",
               },
             ].map((c) => (
-              <Reveal key={c.title} className="card-iw p-6">
-                <c.icon size={22} className="text-brand-accent" />
-                <h3 className="mt-4 text-[18px] font-semibold text-foreground">{c.title}</h3>
-                <p className="mt-2 text-[14.5px] leading-relaxed text-text-secondary">{c.body}</p>
+              <Reveal key={c.title} className="card-iw overflow-hidden p-0">
+                {/* Image-first visual area (~65% of card height) */}
+                <div className={`relative aspect-[4/3] w-full bg-gradient-to-br ${c.gradient} flex items-center justify-center border-b border-border`}>
+                  <span aria-hidden className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.05),_transparent_70%)]" />
+                  <div className="relative flex size-20 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm">
+                    <c.icon size={32} className="text-brand-accent" />
+                  </div>
+                </div>
+                {/* Caption ~35% */}
+                <div className="p-6">
+                  <h3 className="text-[17px] font-semibold text-foreground">{c.title}</h3>
+                  <p className="mt-2 text-[14px] leading-relaxed text-text-secondary">{c.body}</p>
+                </div>
               </Reveal>
             ))}
           </div>
