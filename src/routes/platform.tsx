@@ -173,7 +173,7 @@ function PlatformPage() {
 
   return (
     <>
-      <StickySubNav items={SUBNAV_ITEMS} />
+      <StickySubNav items={SUBNAV_ITEMS} variant="rail" />
 
       {/* 1. Hero — #spine */}
       <Section orbs id="spine" className="!pt-20 lg:!pt-28">

@@ -163,7 +163,7 @@ function IntelligencePage() {
 
   return (
     <>
-      <StickySubNav items={SUBNAV_ITEMS} />
+      <StickySubNav items={SUBNAV_ITEMS} variant="rail" />
 
       {/* 1. Hero — #twin */}
       <Section orbs id="twin" className="!pt-20 lg:!pt-28">

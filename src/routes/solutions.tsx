@@ -148,7 +148,7 @@ function SolutionsPage() {
 
   return (
     <>
-      <StickySubNav items={SUBNAV_ITEMS} />
+      <StickySubNav items={SUBNAV_ITEMS} variant="rail" />
 
       {/* 1. Hero */}
       <Section orbs className="!pt-20 lg:!pt-28">

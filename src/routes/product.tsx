@@ -146,7 +146,7 @@ function ProductPage() {
 
   return (
     <>
-      <StickySubNav items={SUBNAV_ITEMS} />
+      <StickySubNav items={SUBNAV_ITEMS} variant="rail" />
 
       {/* 1. Hero — #workspace */}
       <Section id="workspace" orbs className="!pt-20 lg:!pt-28">
