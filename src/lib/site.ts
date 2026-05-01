@@ -261,6 +261,7 @@ export interface NavLeaf {
   label: string;
   blurb: string;
   icon: ComponentType<{ size?: number; className?: string }>;
+  waitlist?: boolean;
 }
 
 /* All Platform dropdown items are anchors on /platform (single long page). */
