@@ -3,21 +3,19 @@ import {
   ArrowRight,
   ShieldCheck,
   Database,
-  Lock,
-  Layers,
-  Workflow,
   Sparkles,
-  UserCheck,
   Eye,
   Telescope,
   CircuitBoard,
   CheckCircle2,
+  Workflow,
 } from "lucide-react";
 import { Container } from "@/components/site/Container";
 import { Section } from "@/components/site/Section";
 import { Badge } from "@/components/site/Badge";
 import { Reveal } from "@/components/site/Reveal";
 import { useDemoModal } from "@/components/site/demo-modal-context";
+import { PRINCIPLES, CONTROL_POINTS } from "@/content/company-content";
 
 export const Route = createFileRoute("/company")({
   head: () => ({
@@ -38,46 +36,6 @@ export const Route = createFileRoute("/company")({
   }),
   component: CompanyPage,
 });
-
-const PRINCIPLES = [
-  {
-    icon: UserCheck,
-    title: "You stay in control.",
-    body: "Nothing acts without your approval. Twin can think, draft, and suggest, but the Approval Gate is mandatory. AI proposes. You decide.",
-  },
-  {
-    icon: Database,
-    title: "Truth you own. AI you rent.",
-    body: "Your data becomes governed Digital Memory in the Spine. Models can change; your Memory stays.",
-  },
-  {
-    icon: Lock,
-    title: "Private by architecture. Shared by choice.",
-    body: "User Memory, Work Memory, and Org Memory are separate by design. Sharing happens only when you create it on purpose.",
-  },
-  {
-    icon: Layers,
-    title: "Memory before intelligence.",
-    body: "We fix the memory problem first — Truth and Context in one place — then add governed intelligence on top. Not the other way round.",
-  },
-  {
-    icon: Workflow,
-    title: "Work, not vanity dashboards.",
-    body: "The Workspace is built to run your day, not to show pretty charts. It is shaped by a former CSM and a current Business Ops operator.",
-  },
-  {
-    icon: Sparkles,
-    title: "Grounded AI, no magic.",
-    body: "Twin must always ground its answers in your Digital Memory and show its evidence. No black-box magic, no hallucinated guesses from the open web.",
-  },
-];
-
-const CONTROL_POINTS = [
-  "No AI action without explicit human approval.",
-  "Clear history of what data Twin accessed, what it suggested, why it suggested it, and who approved.",
-  "Strong separation between User, Work, and Org Memory.",
-  "Your Memory is not used to train someone else's AI.",
-];
 
 function CompanyPage() {
   const { open } = useDemoModal();

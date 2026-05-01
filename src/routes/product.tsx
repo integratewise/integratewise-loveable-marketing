@@ -7,22 +7,14 @@ import {
   Sparkles,
   ShieldCheck,
   Search,
-  Home,
-  Users,
-  Briefcase,
-  FileText,
-  ListChecks,
-  Calendar,
-  StickyNote,
-  Building2,
-  TrendingUp,
-  AlertTriangle,
-  BarChart3,
   MessageSquare,
   Mail,
   Receipt,
   CreditCard,
   ExternalLink,
+  Lock,
+  KeyRound,
+  FileSearch,
 } from "lucide-react";
 import { Container } from "@/components/site/Container";
 import { Section } from "@/components/site/Section";
@@ -32,7 +24,7 @@ import { ProductVideo } from "@/components/site/ProductVideo";
 import { SectionNav } from "@/components/site/SectionNav";
 import { useDemoModal } from "@/components/site/demo-modal-context";
 import { MEMORY_COPY } from "@/lib/site";
-import { Lock, KeyRound, FileSearch } from "lucide-react";
+import { NAV_ITEMS, ACCOUNT_ROWS, VIEWS } from "@/content/product-content";
 
 export const Route = createFileRoute("/product")({
   head: () => ({
@@ -53,88 +45,6 @@ export const Route = createFileRoute("/product")({
   }),
   component: ProductPage,
 });
-
-const NAV_ITEMS = [
-  { label: "Home", icon: Home },
-  { label: "Clients", icon: Users },
-  { label: "Accounts", icon: Building2 },
-  { label: "Projects", icon: Briefcase },
-  { label: "Filings", icon: FileText },
-  { label: "Tasks", icon: ListChecks },
-  { label: "Meetings", icon: Calendar },
-  { label: "Docs", icon: FileText },
-  { label: "Notes", icon: StickyNote },
-  { label: "Team", icon: Users },
-  { label: "Pipeline", icon: TrendingUp },
-  { label: "Risks", icon: AlertTriangle },
-  { label: "Analytics", icon: BarChart3 },
-];
-
-const ACCOUNT_ROWS = [
-  {
-    name: "FinanceFlow",
-    status: "At-risk",
-    arr: "$84k",
-    outstanding: "₹2.4L",
-    gst: "Due Apr 20",
-    tickets: 3,
-    next: "Escalate renewal",
-    tone: "warning" as const,
-  },
-  {
-    name: "TechServe",
-    status: "At-risk",
-    arr: "$120k",
-    outstanding: "—",
-    gst: "Filed",
-    tickets: 1,
-    next: "Send check-in",
-    tone: "warning" as const,
-  },
-  {
-    name: "CloudBridge",
-    status: "Healthy",
-    arr: "$56k",
-    outstanding: "—",
-    gst: "Filed",
-    tickets: 0,
-    next: "QBR Apr 28",
-    tone: "success" as const,
-  },
-  {
-    name: "Northwind Co",
-    status: "Healthy",
-    arr: "$210k",
-    outstanding: "₹48k",
-    gst: "Due Apr 22",
-    tickets: 0,
-    next: "Renewal call",
-    tone: "success" as const,
-  },
-];
-
-const VIEWS = [
-  {
-    title: "Client / Account view",
-    body: "360° view of each client: revenue, invoices, tickets, conversations, risks.",
-    icon: Users,
-  },
-  {
-    title: "Project / Filing view",
-    body: "Projects and GST filings across tools, with status and next actions in one place.",
-    icon: FileText,
-  },
-  {
-    title: "Task and day view",
-    body: "Your day across tools — who to call, what to send, what to review.",
-    icon: ListChecks,
-  },
-  {
-    title: "Org view (when you're ready)",
-    body: "Org-level Memory for founders and leaders — one place to see business health.",
-    icon: BarChart3,
-  },
-];
 
 function ProductPage() {
   const { open } = useDemoModal();

@@ -1,28 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
   ArrowRight,
-  Database,
   Layers,
-  ShieldCheck,
-  Sparkles,
   Plug,
   Filter,
   BookOpen,
-  User,
-  Briefcase,
   Building2,
-  MessageSquare,
-  Mail,
-  FileSpreadsheet,
-  StickyNote,
-  CreditCard,
-  Receipt,
-  LifeBuoy,
-  Users,
-  Lock,
-  Globe,
-  KeyRound,
-  Cpu,
+  Database,
 } from "lucide-react";
 import { Container } from "@/components/site/Container";
 import { Section } from "@/components/site/Section";
@@ -34,6 +18,15 @@ import { ConnectorMarquee } from "@/components/site/ConnectorMarquee";
 import { IntegrationsGrid } from "@/components/site/IntegrationsGrid";
 import { useDemoModal } from "@/components/site/demo-modal-context";
 import { MEMORY_COPY } from "@/lib/site";
+import {
+  PLATFORM_SECTIONS,
+  SOURCE_APPS,
+  THREE_LINES,
+  SCOPES,
+  FLOW_STEPS,
+  SECURITY_PILLARS,
+  INTEGRATION_LOGOS,
+} from "@/content/platform-content";
 
 export const Route = createFileRoute("/platform")({
   head: () => ({
@@ -55,114 +48,7 @@ export const Route = createFileRoute("/platform")({
   component: PlatformPage,
 });
 
-const SOURCE_APPS: { name: string; icon: typeof MessageSquare }[] = [
-  { name: "WhatsApp", icon: MessageSquare },
-  { name: "Tally", icon: Receipt },
-  { name: "Razorpay", icon: CreditCard },
-  { name: "Gmail", icon: Mail },
-  { name: "Google Sheets", icon: FileSpreadsheet },
-  { name: "Notion", icon: StickyNote },
-  { name: "CRM", icon: Users },
-  { name: "Support", icon: LifeBuoy },
-  { name: "Billing", icon: Receipt },
-];
 
-const THREE_LINES = [
-  {
-    title: "Truth",
-    sub: "What is actually happening.",
-    body: "Transactions, usage, invoices, tickets, account records from your tools.",
-    color: "var(--state-success)",
-    icon: Database,
-  },
-  {
-    title: "Context",
-    sub: "Why it is happening.",
-    body: "Emails, WhatsApp messages, chats, docs, notes around that work.",
-    color: "var(--state-info)",
-    icon: MessageSquare,
-  },
-  {
-    title: "Session Summaries",
-    sub: "Governed AI knowledge.",
-    body: "Short AI-generated summaries you have reviewed and approved — never raw chat.",
-    color: "var(--brand-accent, var(--state-warning))",
-    icon: Sparkles,
-  },
-];
-
-const SCOPES = [
-  {
-    title: "User Memory",
-    body: "Your personal notes, tasks, drafts, and focus — private by default.",
-    icon: User,
-  },
-  {
-    title: "Work Memory",
-    body: "Your professional work: clients, filings, accounts, deals — structured so you stop rebuilding the story every time.",
-    icon: Briefcase,
-  },
-  {
-    title: "Org Memory",
-    body: "Shared company memory that exists only when you intentionally create a team space.",
-    icon: Building2,
-  },
-];
-
-const FLOW_STEPS = [
-  { n: "01", title: "Apps", body: "WhatsApp, Tally, Razorpay, Gmail, Sheets, Notion, CRM…" },
-  { n: "02", title: "Spine", body: "Cleans, dedupes, and links records across tools." },
-  { n: "03", title: "Digital Memory", body: "Truth + Context + approved Session Summaries." },
-  { n: "04", title: "Workspace", body: "Your living screen — built from Memory, not exports." },
-  { n: "05", title: "Twin", body: "Reads Memory, proposes, never writes without approval." },
-  { n: "06", title: "Approval → Loop", body: "You approve. Action runs. Memory learns." },
-];
-
-const SECURITY_PILLARS = [
-  {
-    title: "SOC 2 Type II",
-    body: "Independently audited controls across security, availability, and confidentiality.",
-    icon: ShieldCheck,
-  },
-  {
-    title: "GDPR-ready",
-    body: "Data subject rights, processor agreements, and EU-region storage on request.",
-    icon: Globe,
-  },
-  {
-    title: "Tenant isolation",
-    body: "Your Memory is yours alone — strict row-level isolation, never co-mingled with other customers.",
-    icon: Lock,
-  },
-  {
-    title: "Cloudflare Workers edge",
-    body: "Globally distributed compute, zero-trust network access, and DDoS-grade protection out of the box.",
-    icon: Cpu,
-  },
-  {
-    title: "Approval-gated execution",
-    body: "Twin proposes; you decide. Every action is logged with the evidence it was based on.",
-    icon: KeyRound,
-  },
-];
-
-const INTEGRATION_LOGOS = [
-  "Salesforce",
-  "HubSpot",
-  "Stripe",
-  "Jira",
-  "Notion",
-  "Slack",
-  "Zendesk",
-  "Gmail",
-  "Shopify",
-  "QuickBooks",
-  "Intercom",
-  "GitHub",
-  "Airtable",
-  "Asana",
-  "Google Drive",
-];
 
 function PlatformPage() {
   const { open } = useDemoModal();

@@ -21,6 +21,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { SectionNav } from "@/components/site/SectionNav";
 import { useDemoModal } from "@/components/site/demo-modal-context";
 import { MEMORY_COPY } from "@/lib/site";
+import { IS_LIST, IS_NOT_LIST, PROPOSALS } from "@/content/twin-content";
 
 export const Route = createFileRoute("/twin")({
   head: () => ({
@@ -40,39 +41,6 @@ export const Route = createFileRoute("/twin")({
   }),
   component: TwinPage,
 });
-
-const IS_LIST = [
-  "Reads your Digital Memory (Truth, Context, approved Session Summaries).",
-  "Spots patterns and early risks.",
-  "Prepares next actions: messages, tasks, updates.",
-  "Explains its proof and confidence.",
-  "Learns from your approvals and edits.",
-];
-
-const IS_NOT_LIST = [
-  "Not the owner of your data.",
-  "Not an autonomous agent that acts alone.",
-  "Not a generic chatbot guessing from the web.",
-  "Not a permanent memory store — Memory lives in the Spine, not in the model.",
-];
-
-const PROPOSALS = [
-  {
-    title: "Send check-in to TechServe PM",
-    confidence: 92,
-    evidence: ["Truth: usage -23%", "Context: 2 emails", "Summary: CSM playbook"],
-  },
-  {
-    title: "Escalate CloudBridge renewal",
-    confidence: 88,
-    evidence: ["Truth: unsigned renewal", "Context: legal email", "Summary: escalation rule"],
-  },
-  {
-    title: "Schedule QBR for FinanceFlow",
-    confidence: 76,
-    evidence: ["Truth: overdue invoices", "Context: WhatsApp", "Summary: QBR cadence"],
-  },
-];
 
 function TwinPage() {
   const { open } = useDemoModal();

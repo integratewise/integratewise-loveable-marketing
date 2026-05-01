@@ -2,34 +2,33 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
   Brain,
-  Lightbulb,
-  UserCheck,
-  Zap,
-  Search,
-  Plus,
-  Download,
-  Bell,
+  Eye,
   ShieldCheck,
-  Activity,
-  FileText,
   Cpu,
   Database,
   Workflow,
   Layers,
   Network,
+  Globe,
+  Lock,
+  Users,
+  BarChart3,
+  TrendingDown,
+  LineChart,
+  Zap,
+  CheckCircle2,
+  Quote,
+  Server,
+  FileCode2,
+  Gauge,
 } from "lucide-react";
+import { motion } from "framer-motion";
 import { Container } from "@/components/site/Container";
 import { Section } from "@/components/site/Section";
 import { Reveal } from "@/components/site/Reveal";
-import { MEMORY_COPY } from "@/lib/site";
-// AnnouncementBar removed per IA refresh — Home no longer shows the "Spine 2.0" promo strip.
 import { ClosingCtaBand } from "@/components/site/ClosingCtaBand";
-import { ProductVideo } from "@/components/site/ProductVideo";
 import { useDemoModal } from "@/components/site/demo-modal-context";
 import { CONNECTOR_LOGOS } from "@/components/site/ConnectorMarquee";
-import { SpineFlow } from "@/components/site/motion/SpineFlow";
-import { WorkbenchMorph } from "@/components/site/motion/WorkbenchMorph";
-import { TwinSignals, ApprovalGate } from "@/components/site/motion/TwinSignals";
 import { StaggerGroup, StaggerItem, Parallax } from "@/components/site/motion/Stagger";
 import airtable from "@/assets/logos/airtable.svg";
 import asana from "@/assets/logos/asana.svg";
@@ -42,7 +41,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "One workspace. Full context. Every action under your control. The Knowledge Workspace over the Spine — apps connect, truth stays intact, your Twin proposes what's next.",
+          "Every app runs on the Workspace. It turns raw data into scoped memory — relevant, stable, and ready to act on. AI proposes structured changes. The governance layer decides what becomes real.",
       },
       {
         property: "og:title",
@@ -70,7 +69,11 @@ function HomePage() {
   return (
     <>
       {/* ========================= 1. HERO ========================= */}
-      <section className="relative overflow-hidden pt-32 pb-20 lg:pt-40 lg:pb-28" aria-label="Hero">
+      <section
+        className="relative overflow-hidden pt-32 pb-20 lg:min-h-[90vh] lg:pt-40 lg:pb-28"
+        aria-label="Hero"
+      >
+        {/* Background orbs */}
         <span
           aria-hidden
           className="orb orb-peach"
@@ -81,38 +84,83 @@ function HomePage() {
           className="orb orb-purple"
           style={{ width: 520, height: 520, top: 80, left: -140 }}
         />
+        {/* Subtle grain overlay */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+          }}
+        />
 
         <Container>
-          <div className="fade-up mx-auto max-w-4xl text-center">
-            <span className="badge-iw badge-iw-muted">The Knowledge Workspace over the Spine</span>
-            <h1 className="heading-display mt-6">
-              <span className="block">Stop being the</span>
-              <span className="block text-gradient-hero">human API between your tools.</span>
-            </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-[18px] leading-relaxed text-text-secondary">
-              One workspace. Full context. Every action under your control.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <button type="button" onClick={() => open("Home hero")} className="btn-primary-iw">
-                Book a demo <ArrowRight size={16} />
-              </button>
-              <Link to="/platform/how-it-works" className="btn-secondary-iw">
-                See How It Works
-              </Link>
-            </div>
-          </div>
+          <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+            {/* Left: text stack */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <span className="badge-iw badge-iw-muted">The Knowledge Workspace</span>
+              <h1 className="heading-display mt-6">
+                <span className="block">Stop being the</span>
+                <span className="block text-gradient-hero">human API</span>
+                <span className="block">between your tools.</span>
+              </h1>
+              <p className="mt-6 max-w-lg text-[17px] leading-relaxed text-text-secondary">
+                Raw data in many tools becomes scoped memory — relevant, stable, and ready to act
+                on. Your Twin proposes structured changes. You approve every move.
+              </p>
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => open("Home hero")}
+                  className="btn-primary-iw"
+                >
+                  See it live <ArrowRight size={16} />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => openEarlyAccess("Home hero")}
+                  className="btn-secondary-iw"
+                >
+                  Talk to a founder
+                </button>
+              </div>
+              <p className="mt-5 text-[13px] text-text-secondary">
+                SOC 2 ready · No card required · Setup in days
+              </p>
+            </motion.div>
 
-          {/* Logo strip — parallaxed for subtle depth between hero copy and connectors */}
-          <Parallax y={-24} className="mt-16">
-            <p className="text-center text-[12.5px] font-semibold uppercase tracking-[0.18em] text-text-secondary">
-              Connect the apps you already use
+            {/* Right: product preview card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <HeroPreviewCard />
+            </motion.div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ========================= 2. SOCIAL PROOF / LOGOS ========================= */}
+      <Section className="!py-12 lg:!py-16">
+        <Container>
+          <Parallax y={-18}>
+            <p className="text-center text-[13px] font-semibold uppercase tracking-[0.18em] text-text-secondary">
+              Teams use IntegrateWise to keep their tools in sync
             </p>
             <div className="marquee-mask relative mt-6 overflow-hidden py-4">
               <div className="marquee-track flex w-max items-center gap-10">
                 {[...HERO_LOGOS, ...HERO_LOGOS].map((logo, i) => (
-                  <div key={`${logo.name}-${i}`} className="flex items-center gap-2.5 opacity-70">
-                    <img src={logo.src} alt="" aria-hidden className="h-7 w-auto" />
-                    <span className="text-[13.5px] font-medium text-text-secondary whitespace-nowrap">
+                  <div
+                    key={`${logo.name}-${i}`}
+                    className="flex items-center gap-2.5 opacity-60 transition-opacity hover:opacity-100"
+                  >
+                    <img src={logo.src} alt="" aria-hidden className="h-7 w-auto grayscale" />
+                    <span className="whitespace-nowrap text-[13.5px] font-medium text-text-secondary">
                       {logo.name}
                     </span>
                   </div>
@@ -121,374 +169,221 @@ function HomePage() {
             </div>
           </Parallax>
         </Container>
-      </section>
+      </Section>
 
-      {/* ========================= 2. CORE PROBLEM ========================= */}
+      {/* ========================= 3. VALUE PILLARS (3 cards) ========================= */}
       <Section alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="badge-iw badge-iw-muted">2025</span>
-            <h2 className="heading-h2 mt-4">The Core Problem of 2025</h2>
-            <p className="mt-4 text-[17px] text-text-secondary">
-              You are the bridge. And it's exhausting.
+            <span className="badge-iw badge-iw-muted">Why this works</span>
+            <h2 className="heading-h2 mt-4">
+              One system that remembers, proposes, and waits for you.
+            </h2>
+            <p className="mt-4 text-[16px] text-text-secondary">
+              Three capabilities that replace the daily scramble across twelve tabs.
             </p>
           </Reveal>
           <StaggerGroup
             className="mx-auto mt-12 grid max-w-5xl gap-5 md:grid-cols-3"
             stagger={0.09}
           >
-            {[
-              {
-                title: "Data scattered.",
-                body: "You hunt across twelve tabs before every decision.",
-              },
-              {
-                title: "Intelligence blind.",
-                body: "No full context, so nudges arrive late or wrong.",
-              },
-              {
-                title: "Automation rogue.",
-                body: "Things fire without you, so trust quietly erodes.",
-              },
-            ].map((p) => (
+            {VALUE_PILLARS.map((p) => (
               <StaggerItem key={p.title} className="card-iw p-7">
-                <h3 className="text-[18px] font-semibold text-foreground">{p.title}</h3>
+                <div className="flex size-11 items-center justify-center rounded-full bg-brand-accent/10">
+                  <p.icon size={20} className="text-brand-accent" />
+                </div>
+                <h3 className="mt-4 text-[18px] font-semibold text-foreground">{p.title}</h3>
                 <p className="mt-2 text-[15px] leading-relaxed text-text-secondary">{p.body}</p>
+                <div className="mt-4 text-[12.5px] font-semibold uppercase tracking-wider text-brand-accent">
+                  {p.pill}
+                </div>
               </StaggerItem>
             ))}
           </StaggerGroup>
         </Container>
       </Section>
 
-      {/* ========================= 3. SPINE OVERVIEW ========================= */}
+      {/* ========================= 4. PRODUCT IN ACTION ========================= */}
       <Section>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="badge-iw badge-iw-muted">The Spine</span>
-            <h2 className="heading-h2 mt-4">One layer connects everything.</h2>
+            <span className="badge-iw badge-iw-muted">Product in action</span>
+            <h2 className="heading-h2 mt-4">Show, not tell.</h2>
             <p className="mt-4 text-[16px] text-text-secondary">
-              Apps plug in. Data normalizes. Truth stays intact — even when tools change.
-            </p>
-            <p className="mx-auto mt-4 max-w-3xl text-[15px] leading-relaxed text-foreground/85">
-              {MEMORY_COPY.primary}
-            </p>
-          </Reveal>
-
-          <div className="mt-14 grid items-start gap-10 lg:grid-cols-2">
-            {/* Connector cluster → Spine → Digital Memory (animated) */}
-            <SpineFlow />
-
-            {/* Truth/Context/Memory → Workspaces */}
-            <div className="card-iw p-8">
-              <div className="grid grid-cols-3 gap-3">
-                {[
-                  { label: "Truth", icon: Database, sub: "What's actually happening" },
-                  { label: "Context", icon: Layers, sub: "Why it's happening" },
-                  { label: "Session Summaries", icon: Brain, sub: "Governed AI knowledge" },
-                ].map((s) => (
-                  <div
-                    key={s.label}
-                    className="rounded-xl border border-border bg-white/[0.02] p-3 text-center"
-                  >
-                    <s.icon size={18} className="mx-auto text-brand-accent" />
-                    <div className="mt-1.5 text-[13px] font-semibold text-foreground">
-                      {s.label}
-                    </div>
-                    <div className="mt-0.5 text-[11px] text-text-secondary">{s.sub}</div>
-                  </div>
-                ))}
-              </div>
-              <div className="my-5 flex justify-center">
-                <div className="h-8 w-px bg-gradient-to-b from-brand-accent/60 to-transparent" />
-              </div>
-              <div className="grid grid-cols-3 gap-3">
-                {["Account Success", "Business Ops", "Personal Space"].map((w) => (
-                  <div
-                    key={w}
-                    className="rounded-xl border border-border bg-bg-elevated p-3 text-center"
-                  >
-                    <span className="text-[13px] font-semibold text-foreground">{w}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="mx-auto mt-10 grid max-w-5xl gap-4 md:grid-cols-3">
-            {[
-              { t: "Apps flow in", b: "OAuth connect. No code. No CSV exports." },
-              {
-                t: "Truth & context converge into reality",
-                b: "Duplicates merge. Conflicts resolve. One Digital Memory.",
-              },
-              {
-                t: "AI can change but Memory Persist",
-                b: "AI can change. Tools can change. Memory remains. The Spine keeps your Digital Memory stable underneath.",
-              },
-            ].map((s, i) => (
-              <div
-                key={s.t}
-                className="flex gap-3 rounded-xl border border-border bg-white/[0.02] p-5"
-              >
-                <span className="text-[13px] font-semibold text-brand-accent">0{i + 1}</span>
-                <div>
-                  <div className="text-[15px] font-semibold text-foreground">{s.t}</div>
-                  <p className="mt-1 text-[14px] text-text-secondary">{s.b}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </Section>
-
-      {/* ========================= 4. WORKSPACE + COGNITIVE LAYER (PRODUCT FRAME) ========================= */}
-      <Section alt>
-        <Container>
-          <Reveal className="mx-auto max-w-3xl text-center">
-            <h2 className="heading-h2">The Spine connects.</h2>
-            <p className="mt-4 text-[16px] text-text-secondary">
-              The Cognitive Layer reads Truth, Context, and governed Session Summaries together —
-              then your Twin proposes the next move with full evidence.
+              See how scattered signals become clear, approved actions — in one workspace.
             </p>
           </Reveal>
           <Reveal className="mt-12">
-            <WorkbenchMorph>
-              <ProductFrame />
-            </WorkbenchMorph>
+            <ProductInAction />
           </Reveal>
         </Container>
       </Section>
 
-      {/* ========================= 4b. PRODUCT WALKTHROUGH VIDEO ========================= */}
-      <ProductVideo
-        title="See the Spine, Workspace, and Twin in one flow."
-        subline="A quick look at how apps flow into Digital Memory, how your Workspace comes alive, and how Twin proposes the next move — always behind Approval Gate."
-        src="/videos/integratewise-walkthrough.mp4"
-        webm="/videos/integratewise-walkthrough.webm"
-        poster="/videos/integratewise-walkthrough-poster.jpg"
-      />
-
-      {/* ========================= 5. WORKSPACE / INTELLIGENCE VALUE PROPS ========================= */}
-      <Section>
-        <Container>
-          <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:items-start">
-            <div>
-              <span className="badge-iw badge-iw-muted">Workspace · Intelligence</span>
-              <h2 className="heading-h2 mt-4">One nervous system.</h2>
-              <p className="mt-4 text-[16px] text-text-secondary">
-                Every tool connected. Every action approved.
-              </p>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-3">
-              {[
-                {
-                  n: "01",
-                  t: "Unifies",
-                  b: "One truth from many sources, so you stop reconciling.",
-                },
-                { n: "02", t: "Adapts", b: "Survives tool changes, so your history never resets." },
-                {
-                  n: "03",
-                  t: "Remembers",
-                  b: "Compounds knowledge daily, so tomorrow starts smarter than today.",
-                },
-              ].map((f) => (
-                <div key={f.n} className="card-iw p-6">
-                  <div className="text-[13px] font-semibold text-brand-accent">{f.n}</div>
-                  <div className="mt-2 text-[18px] font-semibold text-foreground">{f.t}</div>
-                  <p className="mt-2 text-[14px] leading-relaxed text-text-secondary">{f.b}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      {/* ========================= 6. TRUST & GOVERNANCE ========================= */}
+      {/* ========================= 5. HOW IT WORKS (3 steps) ========================= */}
       <Section alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="badge-iw">Trust & Governance</span>
-            <h2 className="heading-h2 mt-4">AI that cannot act without you.</h2>
+            <span className="badge-iw badge-iw-muted">How it works</span>
+            <h2 className="heading-h2 mt-4">
+              Three services keep everything in one clear state.
+            </h2>
             <p className="mt-4 text-[16px] text-text-secondary">
-              Every signal is Truth + Context + governed Session Summaries — with full evidence
-              visible before you approve.
+              From raw connector data to approved action — in three steps.
             </p>
           </Reveal>
-
-          <div className="mx-auto mt-12 grid max-w-5xl grid-cols-2 gap-3 md:grid-cols-4">
-            {[
-              { i: Brain, t: "AI Detects" },
-              { i: Lightbulb, t: "Suggestion" },
-              { i: UserCheck, t: "Human Reviews" },
-              { i: Zap, t: "Execution" },
-            ].map((s) => (
-              <div key={s.t} className="card-iw flex flex-col items-center gap-2 p-5 text-center">
-                <s.i size={22} className="text-brand-accent" />
-                <span className="text-[14px] font-semibold text-foreground">{s.t}</span>
-              </div>
-            ))}
-          </div>
-
-          <div className="mx-auto mt-10 max-w-3xl">
-            <TwinSignals>
-              <div className="card-iw p-6">
-                <div className="flex items-center gap-2 text-[13px] text-text-secondary">
-                  <span className="size-2 rounded-full bg-brand-highlight twin-pulse" />
-                  <span className="font-semibold text-foreground">Twin Recommendation</span>
-                  <span>·</span>
-                  <span>Churn risk detected</span>
-                  <span>·</span>
-                  <span>2 min ago</span>
+          <StaggerGroup
+            className="mx-auto mt-12 grid max-w-5xl gap-5 md:grid-cols-3"
+            stagger={0.1}
+          >
+            {HOW_STEPS.map((s) => (
+              <StaggerItem key={s.n} className="card-iw p-7">
+                <div className="flex size-9 items-center justify-center rounded-full border border-brand-accent/40 text-[15px] font-bold text-brand-accent">
+                  {s.n}
                 </div>
-                <blockquote className="mt-3 border-l-2 border-brand-accent/60 pl-4 text-[15.5px] leading-relaxed text-foreground/90">
-                  Account <span className="font-semibold">Acme Corp</span>: usage drop{" "}
-                  <span className="text-text-secondary">(Truth)</span> + budget freeze in email{" "}
-                  <span className="text-text-secondary">(Context)</span> + escalation rule{" "}
-                  <span className="text-text-secondary">(Session Summaries)</span>. Recommend
-                  escalation to VP with QBR deck.
-                </blockquote>
-                <div className="mt-3 text-[13px] text-text-secondary">
-                  Evidence: 3 sources across Truth + Context + Session Summaries · Confidence: 87%.
-                </div>
-                <ApprovalGate />
-              </div>
-            </TwinSignals>
-
-            <p className="mx-auto mt-5 max-w-2xl text-center text-[13.5px] leading-relaxed text-text-secondary">
-              <span className="font-semibold text-foreground">After approval,</span> actions execute
-              in your apps. Results return as new Truth. Your Twin learns from every decision.
-            </p>
-          </div>
-
-          <ul className="mx-auto mt-8 grid max-w-4xl gap-3 md:grid-cols-3">
-            {[
-              "Full audit trail — every decision logged with timestamp and evidence.",
-              "Confidence scores — see exactly how certain the AI is about each signal.",
-              "Impact preview — understand consequences before you approve.",
-            ].map((t) => (
-              <li
-                key={t}
-                className="flex gap-2 rounded-xl border border-border bg-white/[0.02] p-4 text-[13.5px] text-text-secondary"
-              >
-                <ShieldCheck size={16} className="mt-0.5 shrink-0 text-success" />
-                <span>{t}</span>
-              </li>
+                <h3 className="mt-4 text-[18px] font-semibold text-foreground">{s.title}</h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-text-secondary">{s.body}</p>
+              </StaggerItem>
             ))}
-          </ul>
+          </StaggerGroup>
         </Container>
       </Section>
 
-      {/* ========================= 7. INTEGRATION ARCHITECTURE ========================= */}
+      {/* ========================= 6. USE CASES / SOLUTIONS ========================= */}
+      <Section>
+        <Container>
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <span className="badge-iw badge-iw-muted">Use cases</span>
+            <h2 className="heading-h2 mt-4">Real signals. Real actions.</h2>
+            <p className="mt-4 text-[16px] text-text-secondary">
+              Every scenario follows the same loop: signal detected → Twin scores → you approve.
+            </p>
+          </Reveal>
+          <StaggerGroup
+            className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3"
+            stagger={0.08}
+          >
+            {USE_CASES.map((u) => (
+              <StaggerItem key={u.title} className="card-iw p-6">
+                <span className="badge-iw badge-iw-muted">{u.tag}</span>
+                <h3 className="mt-4 text-[18px] font-semibold text-foreground">{u.title}</h3>
+                <p className="mt-2 text-[14px] leading-relaxed text-text-secondary">{u.signal}</p>
+                <div className="mt-3 inline-flex rounded-md border border-brand-highlight/30 bg-brand-highlight/10 px-2 py-1 text-[12px] font-semibold text-brand-highlight">
+                  {u.score}
+                </div>
+                <p className="mt-3 text-[14px] text-foreground/90">{u.action}</p>
+                <p className="mt-2 rounded-lg border border-border bg-white/[0.02] px-3 py-2 text-[13px] text-text-secondary">
+                  {u.outcome}
+                </p>
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
+        </Container>
+      </Section>
+
+      {/* ========================= 7. PROOF / OUTCOMES ========================= */}
+      <Section alt>
+        <Container>
+          <Reveal className="mx-auto max-w-5xl">
+            <div className="grid gap-5 md:grid-cols-3">
+              {METRICS.map((m) => (
+                <div
+                  key={m.label}
+                  className="rounded-xl border border-border bg-white/[0.02] p-6 text-center"
+                >
+                  <div className="text-[36px] font-bold tracking-tight text-gradient-hero">
+                    {m.value}
+                  </div>
+                  <p className="mt-2 text-[14px] text-text-secondary">{m.label}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-10 rounded-xl border border-border bg-white/[0.02] p-8">
+              <Quote size={28} className="text-brand-accent/40" />
+              <blockquote className="mt-4 text-[17px] leading-relaxed text-foreground/90">
+                "First tool I open every morning. The reset is gone — I just see what changed and
+                approve the next move. We replaced four standing meetings with one Workspace view."
+              </blockquote>
+              <div className="mt-5 flex items-center gap-3">
+                <div className="flex size-10 items-center justify-center rounded-full bg-brand-accent text-[13px] font-bold text-text-inverse">
+                  PM
+                </div>
+                <div>
+                  <div className="text-[14px] font-semibold text-foreground">Priya M.</div>
+                  <div className="text-[13px] text-text-secondary">
+                    VP Customer Success, Series B SaaS
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </Container>
+      </Section>
+
+      {/* ========================= 8. ARCHITECTURE ========================= */}
       <Section>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-iw badge-iw-muted">Architecture</span>
             <h2 className="heading-h2 mt-4">Built to absorb any tool.</h2>
             <p className="mt-4 text-[16px] text-text-secondary">
-              Three services work together to make every connector a first-class citizen.
+              Three services work together so every connector is a first-class citizen.
             </p>
           </Reveal>
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
-            {[
-              {
-                icon: Cpu,
-                title: "Loader Service",
-                body: "Connect any SaaS tool via OAuth or API key. Data flows in automatically — no CSV exports, no manual sync, no code.",
-                meta: "70+ connectors available",
-              },
-              {
-                icon: Workflow,
-                title: "Adapter Pattern",
-                body: "Every tool speaks a different language. The Adapter normalizes everything into one canonical schema — your single source of truth.",
-                meta: "Schema-aware transformation",
-              },
-              {
-                icon: Database,
-                title: "Schema Registry",
-                body: "Tracks every data shape from every connector. Detects drift, resolves conflicts, and keeps your truth layer clean — automatically.",
-                meta: "Auto-healing data contracts",
-              },
-            ].map((c, i) => (
+            {ARCH_CARDS.map((c, i) => (
               <Reveal key={c.title} delay={i * 80} className="card-iw p-7">
-                <c.icon size={22} className="text-brand-accent" />
+                <c.icon size={22} className="text-info" />
                 <h3 className="mt-4 text-[19px] font-semibold text-foreground">{c.title}</h3>
                 <p className="mt-2 text-[14.5px] leading-relaxed text-text-secondary">{c.body}</p>
-                <div className="mt-4 text-[12.5px] font-semibold uppercase tracking-wider text-brand-accent">
+                <div className="mt-4 text-[12.5px] font-semibold uppercase tracking-wider text-info">
                   {c.meta}
                 </div>
               </Reveal>
             ))}
           </div>
+          <Reveal className="mx-auto mt-8 max-w-2xl text-center">
+            <p className="text-[14px] leading-relaxed text-text-secondary">
+              Runs on a modern, cloud-native stack. Secure by default with least-privilege access.
+              Your data stays in your tenant — always.
+            </p>
+          </Reveal>
         </Container>
       </Section>
 
-      {/* ========================= 8. USE CASES ========================= */}
+      {/* ========================= 9. PRICING TEASER ========================= */}
       <Section alt>
         <Container>
-          <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="badge-iw badge-iw-muted">Use Cases</span>
-            <h2 className="heading-h2 mt-4">Real signals. Real actions.</h2>
+          <Reveal className="mx-auto max-w-2xl text-center">
+            <h2 className="heading-h2">Pricing that matches your footprint.</h2>
+            <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
+              Starts with a pilot. Scales by workspaces, entities, and seats. No surprise overages,
+              no forced annuals.
+            </p>
+            <div className="mt-7">
+              <Link to="/pricing" className="btn-secondary-iw">
+                View pricing <ArrowRight size={16} />
+              </Link>
+            </div>
+            <p className="mt-4 text-[13px] text-text-secondary">
+              No surprise overages · No forced annuals · Pilot-first
+            </p>
           </Reveal>
-          <div className="mt-12 grid gap-5 lg:grid-cols-3">
-            {[
-              {
-                tag: "Account Success",
-                title: "Churn detection",
-                signal: "Usage dropped 40% + champion left + ticket spike",
-                score: "Twin score: 87 Critical",
-                action: "Escalate to VP with QBR deck.",
-                outcome: "90-day early warning vs. renewal-day surprise.",
-              },
-              {
-                tag: "RevOps",
-                title: "Pipeline clarity",
-                signal: "Deal unchanged 21 days + no activity + quarter ending",
-                score: "Twin score: 55 Watch",
-                action: "Verify deal, update forecast.",
-                outcome: "Pipeline accuracy improved by removing stale deals.",
-              },
-              {
-                tag: "BizOps",
-                title: "System-wide visibility",
-                signal: "Monday morning — 12 accounts changed status + 3 renewals this week",
-                score: "Automated brief with prioritized actions",
-                action: "Executives prepared in 2 min.",
-                outcome: "vs. 45-min spreadsheet review.",
-              },
-            ].map((u) => (
-              <div key={u.title} className="card-iw p-6">
-                <span className="badge-iw badge-iw-muted">{u.tag}</span>
-                <h3 className="mt-4 text-[19px] font-semibold text-foreground">{u.title}</h3>
-                <p className="mt-2 text-[14px] text-text-secondary">{u.signal}</p>
-                <div className="mt-3 inline-flex rounded-md border border-brand-highlight/30 bg-brand-highlight/10 px-2 py-1 text-[12px] font-semibold text-brand-highlight">
-                  {u.score}
-                </div>
-                <p className="mt-3 text-[14px] text-foreground/90">{u.action}</p>
-                <p className="mt-1 text-[13px] text-text-secondary">{u.outcome}</p>
-              </div>
-            ))}
-          </div>
         </Container>
       </Section>
 
-      {/* ========================= 9. PROOF / TRUST STRIP ========================= */}
-      <Section className="!py-12">
+      {/* ========================= 10. TRUST & COMPLIANCE STRIP ========================= */}
+      <Section className="!py-12 lg:!py-16">
         <Container>
           <div className="grid gap-3 md:grid-cols-3">
-            {[
-              { t: "Cloudflare Workers", b: "Edge-first. Sub-50ms globally." },
-              { t: "Enterprise-ready", b: "SOC 2 Type II. GDPR compliant." },
-              { t: "Founder-led", b: "Every customer has a direct line." },
-            ].map((p) => (
+            {TRUST_ITEMS.map((p) => (
               <div
-                key={p.t}
+                key={p.title}
                 className="flex items-center gap-3 rounded-xl border border-border bg-white/[0.02] px-5 py-4"
               >
-                <ShieldCheck size={18} className="text-success" />
+                <p.icon size={18} className="shrink-0 text-success" />
                 <div>
-                  <div className="text-[14px] font-semibold text-foreground">{p.t}</div>
-                  <div className="text-[12.5px] text-text-secondary">{p.b}</div>
+                  <div className="text-[14px] font-semibold text-foreground">{p.title}</div>
+                  <div className="text-[12.5px] text-text-secondary">{p.body}</div>
                 </div>
               </div>
             ))}
@@ -496,361 +391,439 @@ function HomePage() {
         </Container>
       </Section>
 
-      {/* ========================= 10. FOOTER CTA ========================= */}
+      {/* ========================= 11. CLOSING CTA BAND ========================= */}
       <ClosingCtaBand />
     </>
   );
 }
 
-/* -------------------- Helpers -------------------- */
+/* ====================================================================
+   DATA
+   ==================================================================== */
 
-function ConnectorChip({ src, name }: { src: string; name: string }) {
+const VALUE_PILLARS = [
+  {
+    icon: Brain,
+    title: "Scoped Memory",
+    body: "One connected record across your apps. Accumulates with every update, every decision, every interaction — and never resets between mornings.",
+    pill: "Scoped memory",
+  },
+  {
+    icon: Eye,
+    title: "Attention Layer",
+    body: "Three things that need you today — surfaced before you ask. Your Twin reads truth, context, and governed session summaries to score what matters.",
+    pill: "Governance",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Approval Gate",
+    body: "Nothing executes without you. Every move passes through the approval gate with full evidence, confidence scores, and a complete audit trail.",
+    pill: "One active context",
+  },
+];
+
+const HOW_STEPS = [
+  {
+    n: 1,
+    title: "Connect & load",
+    body: "OAuth into your tools. The Loader Service pulls data automatically — no CSV exports, no manual sync, no code. 70+ connectors available today.",
+  },
+  {
+    n: 2,
+    title: "Normalize to truth",
+    body: "Every tool speaks a different language. The Adapter Pattern normalizes everything into one canonical schema — your single source of truth. Drift is detected and resolved automatically.",
+  },
+  {
+    n: 3,
+    title: "Twin proposes, you approve",
+    body: "Your Twin reads scoped memory, scores signals, and prepares the next move with full evidence. You approve, edit, or reject. The decision becomes memory — and the loop compounds.",
+  },
+];
+
+const USE_CASES = [
+  {
+    tag: "Account Success",
+    title: "Churn detection",
+    signal: "Usage dropped 40% · Champion left · 3 support tickets this week",
+    score: "Twin score: 87 Critical",
+    action: "Escalate to VP with QBR deck.",
+    outcome: "90-day early warning vs. renewal-day surprise.",
+  },
+  {
+    tag: "RevOps",
+    title: "Pipeline clarity",
+    signal: "Deal unchanged 21 days · No activity · Quarter ending",
+    score: "Twin score: 55 Watch",
+    action: "Verify deal status, update forecast.",
+    outcome: "Pipeline accuracy improved by removing stale deals early.",
+  },
+  {
+    tag: "BizOps",
+    title: "System-wide visibility",
+    signal: "Monday morning — 12 accounts changed status · 3 renewals this week",
+    score: "Automated brief with prioritized actions",
+    action: "Executives prepared in 2 minutes.",
+    outcome: "vs. 45-min spreadsheet review every Monday.",
+  },
+  {
+    tag: "Finance",
+    title: "Revenue reconciliation",
+    signal: "Stripe payment failed · Invoice overdue 14 days · Contract mismatch",
+    score: "Twin score: 72 Action needed",
+    action: "Flag for collections, update billing record.",
+    outcome: "Cash collection cycle shortened by 11 days on average.",
+  },
+  {
+    tag: "Ops Lead",
+    title: "Integration drift",
+    signal: "Jira schema changed upstream · 2 fields renamed · Mapping broken",
+    score: "Auto-correction proposed",
+    action: "Review and approve schema migration.",
+    outcome: "Zero manual data cleanup. Drift resolved in minutes, not days.",
+  },
+  {
+    tag: "Founder",
+    title: "Board-ready snapshot",
+    signal: "Quarter close · ARR, churn, pipeline, NPS all updated",
+    score: "Automated board pack draft",
+    action: "Review, adjust narrative, share.",
+    outcome: "Board prep in 20 minutes vs. 2-day scramble.",
+  },
+];
+
+const METRICS = [
+  { value: "40%", label: "Less time reconciling tools" },
+  { value: "2×", label: "Faster weekly reporting" },
+  { value: "90 days", label: "Earlier churn warning vs. renewal day" },
+];
+
+const ARCH_CARDS = [
+  {
+    icon: Cpu,
+    title: "Loader Service",
+    body: "Connect any SaaS tool via OAuth or API key. Data flows in automatically — no CSV exports, no manual sync, no code. Auth, ingestion, and scheduling handled for you.",
+    meta: "70+ connectors",
+  },
+  {
+    icon: Workflow,
+    title: "Adapter Pattern",
+    body: "Every tool speaks a different language. The Adapter normalizes everything into one canonical schema — your single source of truth. Swap tools without losing history.",
+    meta: "Schema-aware transformation",
+  },
+  {
+    icon: Database,
+    title: "Schema Registry",
+    body: "Tracks every data shape from every connector. Detects drift, resolves conflicts, and keeps your truth layer clean — automatically. Data contracts enforced by default.",
+    meta: "Auto-healing data contracts",
+  },
+];
+
+const TRUST_ITEMS = [
+  {
+    icon: Globe,
+    title: "Edge-first infrastructure",
+    body: "Cloudflare Workers. Sub-50ms globally.",
+  },
+  {
+    icon: Lock,
+    title: "Enterprise security",
+    body: "SOC 2 Type II ready. GDPR aligned. Tenant isolation.",
+  },
+  {
+    icon: Users,
+    title: "Founder-led support",
+    body: "Every customer has a direct line to the team.",
+  },
+];
+
+/* ====================================================================
+   HERO PREVIEW CARD — glassmorphism AI suggestion blocks
+   ==================================================================== */
+
+function HeroPreviewCard() {
+  const suggestions = [
+    {
+      title: "Churn risk detected",
+      explanation: "Usage dropped 40% this month. Champion left the company. 3 escalation tickets opened this week.",
+      chips: ["Usage -40%", "Champion left", "3 tickets"],
+      confidence: 87,
+      evidence: "Truth + Context + Session Summaries",
+    },
+    {
+      title: "Pipeline drift",
+      explanation: "Deal stalled 21 days with no activity. Quarter closes in 9 days. Forecast at risk.",
+      chips: ["21d stale", "Q-close 9d", "No activity"],
+      confidence: 72,
+      evidence: "Salesforce + HubSpot + Calendar",
+    },
+    {
+      title: "Schema change upstream",
+      explanation: "Jira renamed 2 fields. Mapping broken for 3 accounts. Auto-correction ready.",
+      chips: ["2 fields changed", "3 accounts", "Auto-fix ready"],
+      confidence: 94,
+      evidence: "Schema Registry + Jira API",
+    },
+  ];
+
   return (
-    <div className="flex items-center gap-2 rounded-lg border border-border bg-white/[0.03] px-3 py-2">
-      <img src={src} alt="" aria-hidden className="h-5 w-auto" />
-      <span className="text-[12.5px] font-medium text-foreground/90">{name}</span>
+    <div
+      className="relative rounded-2xl border border-border p-1"
+      style={{
+        background: "rgba(28, 28, 28, 0.6)",
+        backdropFilter: "blur(16px) saturate(1.3)",
+        WebkitBackdropFilter: "blur(16px) saturate(1.3)",
+        boxShadow: "0 32px 80px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.04)",
+      }}
+    >
+      {/* Soft glow behind */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute -inset-8 -z-10 rounded-full opacity-40"
+        style={{
+          background: "radial-gradient(circle, rgba(255,225,204,0.15) 0%, transparent 70%)",
+        }}
+      />
+
+      {/* Faux browser chrome */}
+      <div className="flex items-center gap-2 rounded-t-xl border-b border-border bg-white/[0.02] px-4 py-2.5">
+        <span className="size-2.5 rounded-full bg-destructive/60" />
+        <span className="size-2.5 rounded-full bg-warning/60" />
+        <span className="size-2.5 rounded-full bg-success/60" />
+        <span className="ml-3 text-[11px] text-text-secondary">
+          workspace.integratewise.app
+        </span>
+      </div>
+
+      {/* Suggestion blocks */}
+      <div className="space-y-3 p-4">
+        {suggestions.map((s, i) => (
+          <motion.div
+            key={s.title}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+            className="rounded-xl border border-border bg-white/[0.02] p-4"
+          >
+            <div className="flex items-center justify-between">
+              <h4 className="text-[14px] font-semibold text-foreground">{s.title}</h4>
+              <span className="text-[11px] text-text-secondary">
+                Confidence: {s.confidence}%
+              </span>
+            </div>
+            <p className="mt-1.5 text-[12.5px] leading-relaxed text-text-secondary">
+              {s.explanation}
+            </p>
+            <div className="mt-2.5 flex flex-wrap gap-1.5">
+              {s.chips.map((chip) => (
+                <span
+                  key={chip}
+                  className="rounded-md border border-border bg-white/[0.03] px-2 py-0.5 text-[11px] font-medium text-foreground/80"
+                >
+                  {chip}
+                </span>
+              ))}
+            </div>
+            <div className="mt-2.5 flex items-center justify-between">
+              <span className="text-[11px] text-text-secondary">{s.evidence}</span>
+              <div className="flex gap-1.5">
+                <button
+                  type="button"
+                  className="rounded-md border border-border bg-white/[0.02] px-2.5 py-1 text-[11px] font-medium text-text-secondary transition-colors hover:bg-white/[0.05] hover:text-foreground"
+                >
+                  Reject
+                </button>
+                <button
+                  type="button"
+                  className="rounded-md bg-brand-accent/90 px-2.5 py-1 text-[11px] font-semibold text-text-inverse transition-colors hover:bg-brand-accent"
+                >
+                  Approve
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
     </div>
   );
 }
 
-/* -------------------- Product frame: Nav rail + Workspace + Cognitive Layer -------------------- */
+/* ====================================================================
+   PRODUCT IN ACTION — app-window mockup with tabs and scripted sequence
+   ==================================================================== */
 
-const NAV_ITEMS = [
-  "Home",
-  "Projects",
-  "Accounts",
-  "Contacts",
-  "Meetings",
-  "Docs",
-  "Tasks",
-  "Notes",
-  "Knowledge",
-  "Team",
-  "Pipeline",
-  "Risks",
-  "Deals",
-  "Forecasting",
-  "Analytics",
-  "Workflows",
-  "Integrations",
-  "AI Chat",
-  "System",
-  "Intelligence",
-];
-
-const ACCOUNTS = [
+const ACCOUNTS_DATA = [
+  {
+    name: "Acme Corp",
+    status: "Critical",
+    health: 42,
+    signal: "Usage -40%, champion left, 3 tickets",
+  },
   {
     name: "TechServe India",
-    tier: "Enterprise · Tech",
-    arr: "$420K",
-    delta: "+12.5%",
-    deltaPos: true,
-    health: 92,
     status: "Healthy",
-    renewal: "126d",
+    health: 92,
+    signal: "Expansion opportunity detected",
   },
   {
     name: "CloudBridge APAC",
-    tier: "Enterprise · Cloud",
-    arr: "$280K",
-    delta: "+8.3%",
-    deltaPos: true,
-    health: 78,
     status: "At-Risk",
-    renewal: "72d",
+    health: 68,
+    signal: "Payment failed, budget freeze mentioned",
   },
   {
     name: "FinanceFlow",
-    tier: "Mid-Market · FinTech",
-    arr: "$180K",
-    delta: "-2.1%",
-    deltaPos: false,
-    health: 54,
     status: "Critical",
-    renewal: "29d",
+    health: 29,
+    signal: "Renewal in 29d, 3 P1 tickets open",
   },
   {
     name: "DataVault AU",
-    tier: "Enterprise · Security",
-    arr: "$350K",
-    delta: "+15.2%",
-    deltaPos: true,
+    status: "Healthy",
     health: 88,
-    status: "Healthy",
-    renewal: "204d",
-  },
-  {
-    name: "RetailNest Pte",
-    tier: "SMB · Retail",
-    arr: "$95K",
-    delta: "+5.7%",
-    deltaPos: true,
-    health: 71,
-    status: "At-Risk",
-    renewal: "98d",
-  },
-  {
-    name: "HealthTech Innov",
-    tier: "Mid-Market · Health",
-    arr: "$210K",
-    delta: "+22%",
-    deltaPos: true,
-    health: 95,
-    status: "Healthy",
-    renewal: "202d",
+    signal: "QBR scheduled, NPS 72",
   },
 ];
 
-const ACTIONS = [
-  {
-    app: "HubSpot",
-    color: "#FF7A59",
-    body: "Update lifecycle stage in HubSpot. Move 'FinanceFlow' from Customer → At-Risk.",
-    confidence: 94,
-  },
-  {
-    app: "Jira",
-    color: "#2684FF",
-    body: "Escalate support tickets to P1. 3 open tickets blocking renewal sync.",
-    confidence: 91,
-  },
-  {
-    app: "Slack",
-    color: "#E01E5A",
-    body: "Alert the CS team on Slack. Notify #renewals-critical about FinanceFlow.",
-    confidence: 88,
-  },
-  {
-    app: "Salesforce",
-    color: "#00A1E0",
-    body: "Update opportunity in Salesforce. Move to 'Renewal at Risk' with notes.",
-    confidence: 96,
-  },
-];
-
-function statusClass(status: string) {
-  if (status === "Healthy") return "border-success/30 bg-success/10 text-success";
-  if (status === "At-Risk")
-    return "border-brand-highlight/30 bg-brand-highlight/10 text-brand-highlight";
-  return "border-destructive/40 bg-destructive/10 text-destructive";
+function statusColor(status: string) {
+  if (status === "Healthy") return "text-success border-success/30 bg-success/10";
+  if (status === "At-Risk") return "text-brand-highlight border-brand-highlight/30 bg-brand-highlight/10";
+  return "text-destructive border-destructive/30 bg-destructive/10";
 }
 
-function ProductFrame() {
+function ProductInAction() {
   return (
-    <div className="card-iw overflow-hidden">
-      <div className="grid grid-cols-1 lg:grid-cols-[180px_minmax(0,1fr)_320px]">
-        {/* LEFT: Nav rail */}
-        <aside className="border-b border-border bg-bg-elevated/60 p-3 lg:border-b-0 lg:border-r">
-          <div className="flex items-center gap-2 px-2 py-2">
-            <div className="grid size-8 place-items-center rounded-full bg-brand-accent text-[12px] font-bold text-text-inverse">
-              AR
-            </div>
-            <div className="min-w-0">
-              <div className="truncate text-[12.5px] font-semibold text-foreground">
-                Alex Rivera
-              </div>
-              <div className="truncate text-[11px] text-text-secondary">Operations Lead</div>
-            </div>
-          </div>
-          <div className="mt-2 px-2 text-[10.5px] font-semibold uppercase tracking-wider text-text-secondary">
-            Workspace › Accounts
-          </div>
-          <ul className="mt-2 max-h-[420px] space-y-0.5 overflow-y-auto pr-1">
-            {NAV_ITEMS.map((n) => (
-              <li key={n}>
-                <button
-                  type="button"
-                  className={
-                    "block w-full rounded-md px-2.5 py-1.5 text-left text-[12.5px] " +
-                    (n === "Accounts"
-                      ? "bg-white/5 font-semibold text-foreground"
-                      : "text-text-secondary hover:bg-white/5 hover:text-foreground")
-                  }
-                >
-                  {n}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </aside>
+    <div
+      className="mx-auto max-w-[900px] overflow-hidden rounded-2xl border border-border"
+      style={{
+        background: "rgba(28, 28, 28, 0.5)",
+        boxShadow: "0 32px 80px rgba(0,0,0,0.45)",
+      }}
+    >
+      {/* Browser chrome */}
+      <div className="flex items-center gap-2 border-b border-border bg-white/[0.02] px-4 py-2.5">
+        <span className="size-2.5 rounded-full bg-destructive/60" />
+        <span className="size-2.5 rounded-full bg-warning/60" />
+        <span className="size-2.5 rounded-full bg-success/60" />
+        <span className="ml-3 text-[11px] text-text-secondary">
+          workspace.integratewise.app/accounts
+        </span>
+      </div>
 
-        {/* CENTER: Workspace */}
-        <div className="border-b border-border p-5 lg:border-b-0 lg:border-r">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <div>
-              <h3 className="text-[18px] font-semibold text-foreground">Accounts &amp; Revenue</h3>
-              <div className="mt-0.5 text-[12.5px] text-text-secondary">
-                Total ARR: <span className="font-semibold text-foreground">$1.75M</span> · 6
-                accounts
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-              <button type="button" className="btn-secondary-iw !px-3 !py-1.5 text-[12.5px]">
-                <Download size={14} /> Export
-              </button>
-              <button type="button" className="btn-primary-iw !px-3 !py-1.5 text-[12.5px]">
-                <Plus size={14} /> Add Account
-              </button>
-            </div>
-          </div>
+      {/* Tabs */}
+      <div className="flex gap-0 border-b border-border">
+        {["Account view", "Signals", "Approvals"].map((tab, i) => (
+          <button
+            key={tab}
+            type="button"
+            className={
+              "px-5 py-2.5 text-[13px] font-medium transition-colors " +
+              (i === 0
+                ? "border-b-2 border-brand-accent text-foreground"
+                : "text-text-secondary hover:text-foreground")
+            }
+          >
+            {tab}
+          </button>
+        ))}
+      </div>
 
-          {/* Notification chip */}
-          <div className="mt-4 flex flex-wrap items-center gap-2 rounded-lg border border-brand-highlight/30 bg-brand-highlight/10 px-3 py-2 text-[12.5px] text-foreground">
-            <Bell size={14} className="text-brand-highlight" />
-            <span className="font-semibold">Schema Drift Detected </span>
-            <span className="text-text-secondary">
-              — Jira Integration · 2 fields changed upstream. Auto-correction proposed.
-            </span>
-            <button
-              type="button"
-              className="ml-auto rounded-md border border-border px-2 py-0.5 text-[11.5px] font-semibold text-foreground hover:bg-white/5"
+      {/* Content: list + detail */}
+      <div className="grid grid-cols-1 md:grid-cols-[280px_1fr]">
+        {/* Left: account list */}
+        <div className="border-b border-border md:border-b-0 md:border-r">
+          {ACCOUNTS_DATA.map((a, i) => (
+            <div
+              key={a.name}
+              className={
+                "flex items-center justify-between border-b border-border px-4 py-3 transition-colors " +
+                (i === 0 ? "bg-white/[0.04]" : "hover:bg-white/[0.02]")
+              }
             >
-              Review
-            </button>
-          </div>
-
-          {/* Search */}
-          <div className="mt-4 flex items-center gap-2 rounded-lg border border-border bg-white/[0.02] px-3 py-2">
-            <Search size={14} className="text-text-secondary" />
-            <input
-              placeholder="Search accounts…"
-              className="w-full bg-transparent text-[13px] text-foreground placeholder:text-text-secondary focus:outline-none"
-            />
-          </div>
-
-          {/* Table */}
-          <div className="mt-4 overflow-hidden rounded-xl border border-border">
-            <div className="hidden bg-white/[0.02] px-4 py-2 text-[11px] font-semibold uppercase tracking-wider text-text-secondary md:grid md:grid-cols-[1.5fr_0.8fr_0.6fr_0.9fr_0.7fr]">
-              <div>Account</div>
-              <div>ARR</div>
-              <div>Δ</div>
-              <div>Health</div>
-              <div className="text-right">Renewal</div>
+              <div className="min-w-0">
+                <div className="truncate text-[13px] font-semibold text-foreground">{a.name}</div>
+                <div className="text-[11px] text-text-secondary">Health: {a.health}/100</div>
+              </div>
+              <span
+                className={
+                  "shrink-0 rounded-full border px-2 py-0.5 text-[10px] font-semibold " +
+                  statusColor(a.status)
+                }
+              >
+                {a.status}
+              </span>
             </div>
-            <StaggerGroup as="ul" className="divide-y divide-border" stagger={0.05} amount={0.15}>
-              {ACCOUNTS.map((a) => (
-                <StaggerItem
-                  as="li"
-                  key={a.name}
-                  y={8}
-                  className="grid grid-cols-2 gap-2 px-4 py-3 text-[13px] hover:bg-white/[0.02] md:grid-cols-[1.5fr_0.8fr_0.6fr_0.9fr_0.7fr] md:items-center md:gap-3"
-                >
-                  <div>
-                    <div className="font-semibold text-foreground">{a.name}</div>
-                    <div className="text-[11.5px] text-text-secondary">{a.tier}</div>
-                  </div>
-                  <div className="font-semibold text-foreground">{a.arr} ARR</div>
-                  <div className={a.deltaPos ? "text-success" : "text-destructive"}>{a.delta}</div>
-                  <div className="flex items-center gap-2">
-                    <span className="font-semibold text-foreground">{a.health}/100</span>
-                    <span
-                      className={
-                        "rounded-full border px-2 py-0.5 text-[10.5px] font-semibold " +
-                        statusClass(a.status)
-                      }
-                    >
-                      {a.status}
-                    </span>
-                  </div>
-                  <div className="text-text-secondary md:text-right">in {a.renewal}</div>
-                </StaggerItem>
-              ))}
-            </StaggerGroup>
-          </div>
-
-          {/* Inline signal banner */}
-          <div className="mt-4 rounded-xl border border-destructive/30 bg-destructive/10 p-4">
-            <div className="flex items-center gap-2 text-[13px] font-semibold text-destructive">
-              <Activity size={14} /> Renewal Risk → FinanceFlow
-            </div>
-            <p className="mt-1 text-[13px] text-foreground/90">
-              3 P1 tickets, champion silent 12 days, payment failed twice. Renewal in 29 days.
-            </p>
-            <div className="mt-2 flex flex-wrap items-center gap-2 text-[11.5px] text-text-secondary">
-              <span className="badge-iw badge-iw-muted !py-0.5 !text-[11px]">Salesforce</span>
-              <span className="badge-iw badge-iw-muted !py-0.5 !text-[11px]">Zendesk</span>
-              <span className="badge-iw badge-iw-muted !py-0.5 !text-[11px]">Stripe</span>
-              <span>· 3 min ago</span>
-            </div>
-          </div>
+          ))}
         </div>
 
-        {/* RIGHT: Cognitive Layer */}
-        <aside className="bg-bg-elevated/50 p-5">
-          <div className="flex items-center gap-2">
-            <span className="size-2 rounded-full bg-success twin-pulse" />
-            <span className="text-[11.5px] font-semibold uppercase tracking-wider text-success">
-              Cognitive Layer — Active
+        {/* Right: detail panel for selected account */}
+        <div className="p-5">
+          <div className="flex items-center justify-between">
+            <div>
+              <h4 className="text-[17px] font-semibold text-foreground">Acme Corp</h4>
+              <p className="text-[12px] text-text-secondary">Enterprise · SaaS · $420K ARR</p>
+            </div>
+            <span className="rounded-full border border-destructive/30 bg-destructive/10 px-2.5 py-1 text-[11px] font-semibold text-destructive">
+              Critical
             </span>
           </div>
-          <p className="mt-2 text-[12.5px] text-text-secondary">
-            AI proposes. You decide what happens.
-          </p>
 
-          <div className="mt-4 rounded-lg border border-border bg-white/[0.02] p-3">
-            <div className="flex flex-wrap gap-1 text-[11px] text-text-secondary">
-              {[
-                "Your Data",
-                "Full Picture",
-                "Knowledge",
-                "Evidence",
-                "What Matters",
-                "AI Thinking",
-                "Next Steps",
-                "Your Call",
-                "Controls",
-                "Adjust",
-                "Learning",
-                "History",
-                "Your Twin",
-              ].map((t, i, arr) => (
-                <span key={t} className="inline-flex items-center gap-1">
-                  <span className="text-foreground/90">{t}</span>
-                  {i < arr.length - 1 && <span className="text-text-secondary">→</span>}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-5">
-            <div className="text-[14px] font-semibold text-foreground">
-              You decide what happens next
-            </div>
-            <div className="text-[12px] text-text-secondary">4 actions pending your approval</div>
-          </div>
-
-          <StaggerGroup as="ul" className="mt-4 space-y-3" stagger={0.09} delay={0.1} amount={0.15}>
-            {ACTIONS.map((a) => (
-              <StaggerItem
-                as="li"
-                key={a.app}
-                x={20}
-                className="rounded-lg border border-border bg-white/[0.02] p-3"
+          {/* Timeline */}
+          <div className="mt-5 space-y-3">
+            <p className="text-[11px] font-semibold uppercase tracking-wider text-text-secondary">
+              Recent events
+            </p>
+            {[
+              { time: "2h ago", event: "Support ticket #1847 escalated to P1", src: "Zendesk" },
+              { time: "1d ago", event: "Champion Sarah Chen left the company", src: "LinkedIn" },
+              { time: "3d ago", event: "Usage dropped 40% week-over-week", src: "Product analytics" },
+              { time: "5d ago", event: "Budget freeze mentioned in email thread", src: "Gmail" },
+            ].map((e) => (
+              <div
+                key={e.event}
+                className="flex gap-3 rounded-lg border border-border bg-white/[0.02] px-3 py-2.5"
               >
-                <div className="flex items-center justify-between">
-                  <span
-                    className="rounded-md px-2 py-0.5 text-[11px] font-semibold text-white"
-                    style={{ background: a.color }}
-                  >
-                    {a.app}
-                  </span>
-                  <span className="text-[11px] text-text-secondary">
-                    Confidence: {a.confidence}%
-                  </span>
+                <span className="shrink-0 text-[11px] text-text-secondary">{e.time}</span>
+                <div className="min-w-0">
+                  <p className="text-[12.5px] text-foreground/90">{e.event}</p>
+                  <p className="text-[11px] text-text-secondary">{e.src}</p>
                 </div>
-                <p className="mt-2 text-[12.5px] leading-snug text-foreground/90">{a.body}</p>
-                <div className="mt-2 flex gap-2">
-                  <button type="button" className="btn-secondary-iw !px-2.5 !py-1 text-[11.5px]">
-                    Deny
-                  </button>
-                  <button type="button" className="btn-primary-iw !px-2.5 !py-1 text-[11.5px]">
-                    Approve &amp; Execute
-                  </button>
-                </div>
-              </StaggerItem>
+              </div>
             ))}
-          </StaggerGroup>
-        </aside>
+          </div>
+
+          {/* AI suggestion */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+            className="mt-5 rounded-xl border border-brand-highlight/30 bg-brand-highlight/5 p-4"
+          >
+            <div className="flex items-center gap-2">
+              <span className="size-2 rounded-full bg-brand-highlight twin-pulse" />
+              <span className="text-[12px] font-semibold text-foreground">Twin Recommendation</span>
+            </div>
+            <p className="mt-2 text-[13px] leading-relaxed text-foreground/90">
+              Escalate to VP Customer Success with QBR deck. Schedule executive sponsor call within
+              48 hours. Pause upsell motion until health recovers above 60.
+            </p>
+            <div className="mt-3 flex items-center gap-2">
+              <button
+                type="button"
+                className="rounded-md bg-brand-accent/90 px-3 py-1.5 text-[12px] font-semibold text-text-inverse transition-colors hover:bg-brand-accent"
+              >
+                Approve
+              </button>
+              <button
+                type="button"
+                className="rounded-md border border-border px-3 py-1.5 text-[12px] font-medium text-text-secondary transition-colors hover:bg-white/[0.04]"
+              >
+                Reject
+              </button>
+              <span className="ml-auto text-[11px] text-text-secondary">Confidence: 87%</span>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </div>
   );
