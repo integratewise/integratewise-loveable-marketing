@@ -374,6 +374,7 @@ export const COMPANY_LINKS: NavLeaf[] = [
   { to: "/manifesto", label: "Manifesto", blurb: "Principles we build by.", icon: FileText },
   { to: "/customer-zero", label: "Customer Zero", blurb: "I run it on itself.", icon: Rocket },
   { to: "/why", label: "Why", blurb: "The category thesis.", icon: Star },
+  { to: "/pricing", label: "Pricing", blurb: "Plans, sync intervals, ROI.", icon: Wallet },
   { to: "/contact", label: "Contact", blurb: "Founder-led contact.", icon: LifeBuoy },
 ];
 
