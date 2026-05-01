@@ -111,52 +111,6 @@ function HomePage() {
 
   return (
     <>
-      {/* ============= STICKY ANCHOR SUB-NAV ============= */}
-      <div
-        className="sticky top-[60px] z-40 border-b border-white/5 backdrop-blur"
-        style={{
-          background: "rgba(5, 7, 10, 0.85)",
-          WebkitBackdropFilter: "blur(14px) saturate(1.4)",
-          backdropFilter: "blur(14px) saturate(1.4)",
-        }}
-      >
-        <Container>
-          <nav
-            aria-label="Page sections"
-            className="flex items-center justify-between gap-4 py-3"
-          >
-            <div className="hide-scrollbar flex items-center gap-1 overflow-x-auto">
-              {ANCHOR_NAV.map((n) => {
-                const isActive = active === n.id;
-                return (
-                  <button
-                    key={n.id}
-                    type="button"
-                    onClick={() => smoothScrollTo(n.id)}
-                    aria-current={isActive ? "true" : undefined}
-                    className={
-                      "shrink-0 rounded-md px-3 py-1.5 text-[13.5px] font-medium transition-colors " +
-                      (isActive
-                        ? "bg-white/10 text-white"
-                        : "text-white/65 hover:bg-white/5 hover:text-white")
-                    }
-                  >
-                    {n.label}
-                  </button>
-                );
-              })}
-            </div>
-            <button
-              type="button"
-              onClick={() => open("Sticky sub-nav")}
-              className="btn-primary-iw shrink-0 !px-4 !py-2 text-[13.5px]"
-            >
-              Book a Demo <ArrowRight size={14} />
-            </button>
-          </nav>
-        </Container>
-      </div>
-
       {/* ========================= 1. HERO ========================= */}
       <section
         id="top"
