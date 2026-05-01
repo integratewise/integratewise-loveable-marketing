@@ -29,7 +29,7 @@ import { Section } from "@/components/site/Section";
 import { Badge } from "@/components/site/Badge";
 import { Reveal } from "@/components/site/Reveal";
 import { ProductVideo } from "@/components/site/ProductVideo";
-import { SectionNav } from "@/components/site/SectionNav";
+
 import { useDemoModal } from "@/components/site/demo-modal-context";
 import { MEMORY_COPY } from "@/lib/site";
 import { Lock, KeyRound, FileSearch } from "lucide-react";
