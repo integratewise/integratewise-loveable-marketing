@@ -1,9 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { StubPage, stubMeta } from "@/components/site/StubPage";
+/** /platform/infrastructure — alias to the Connectors section on /platform. */
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/platform/infrastructure")({
-  head: () => stubMeta("Infrastructure", "Speed, durability, and the freedom to swap models."),
-  component: () => (
-    <StubPage title="Infrastructure" description="Speed, durability, and the freedom to swap models." />
-  ),
+  beforeLoad: () => {
+    throw redirect({ to: "/platform", hash: "connectors" });
+  },
 });

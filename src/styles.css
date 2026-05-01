@@ -589,3 +589,11 @@ html {
 .heading-rule.is-in::after {
   transform: scaleX(1);
 }
+
+/* Anchor offset: keep section[id] / [id] hash targets clear of the fixed
+   header (~76px) plus a small breathing gap. Used by mega-menu deep links
+   that redirect into hub anchors (e.g. /platform#digital-memory). */
+:where(section[id], [id]) {
+  scroll-margin-top: 96px;
+}
+

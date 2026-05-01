@@ -1,7 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { StubPage, stubMeta } from "@/components/site/StubPage";
+/** /contact — alias to the Contact section on /company. */
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/contact")({
-  head: () => stubMeta("Contact", "Talk to the founder. Real conversation, no forms-as-walls."),
-  component: () => <StubPage title="Contact" description="Talk to the founder. Real conversation, no forms-as-walls." />,
+  beforeLoad: () => {
+    throw redirect({ to: "/company", hash: "contact" });
+  },
 });

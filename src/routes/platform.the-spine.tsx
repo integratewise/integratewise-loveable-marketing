@@ -1,9 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { StubPage, stubMeta } from "@/components/site/StubPage";
+/** /platform/the-spine — alias to the Spine section on /platform. */
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/platform/the-spine")({
-  head: () => stubMeta("The Spine", "The unified layer that turns scattered apps into one Memory."),
-  component: () => (
-    <StubPage title="The Spine" description="The unified layer that turns scattered apps into one Memory." />
-  ),
+  beforeLoad: () => {
+    throw redirect({ to: "/platform", hash: "spine" });
+  },
 });

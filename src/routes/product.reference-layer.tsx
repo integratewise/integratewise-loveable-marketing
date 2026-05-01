@@ -1,7 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { StubPage, stubMeta } from "@/components/site/StubPage";
+/** /product/reference-layer — alias to the Digital Memory section on /product. */
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/product/reference-layer")({
-  head: () => stubMeta("Reference Layer", "Separate memories. Coherent life."),
-  component: () => <StubPage title="The Reference Layer" description="Separate memories. Coherent life." />,
+  beforeLoad: () => {
+    throw redirect({ to: "/product", hash: "digital-memory" });
+  },
 });
