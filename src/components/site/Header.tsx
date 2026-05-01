@@ -200,11 +200,11 @@ function MegaMenu({ item }: { item: Extract<NavGroup, { kind: "menu" }> }) {
         width,
       )}
       style={{
-        background: "rgba(10, 11, 16, 0.92)",
+        background: "rgba(12, 14, 20, 0.98)",
         backdropFilter: "blur(20px) saturate(1.4)",
         WebkitBackdropFilter: "blur(20px) saturate(1.4)",
-        border: "1px solid rgba(255, 255, 255, 0.08)",
-        boxShadow: "0 12px 40px rgba(0, 0, 0, 0.5)",
+        border: "1px solid rgba(255, 255, 255, 0.12)",
+        boxShadow: "0 16px 48px rgba(0, 0, 0, 0.6)",
       }}
     >
       <div
@@ -215,7 +215,7 @@ function MegaMenu({ item }: { item: Extract<NavGroup, { kind: "menu" }> }) {
       >
         {item.groups.map((g) => (
           <div key={g.heading}>
-            <p className="px-2 pb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/40">
+            <p className="px-2 pb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/70">
               {g.heading}
             </p>
             <ul className="flex flex-col gap-0.5">
@@ -226,7 +226,7 @@ function MegaMenu({ item }: { item: Extract<NavGroup, { kind: "menu" }> }) {
                   <li key={leaf.to}>
                     <Link
                       to={leaf.to}
-                      className="group flex items-start gap-3 rounded-lg p-2.5 hover:bg-white/[0.06]"
+                      className="group flex items-start gap-3 rounded-lg p-2.5 hover:bg-white/[0.08]"
                     >
                       <leaf.icon size={16} className="mt-0.5 shrink-0 text-primary" />
                       <div className="min-w-0 flex-1">
@@ -240,7 +240,7 @@ function MegaMenu({ item }: { item: Extract<NavGroup, { kind: "menu" }> }) {
                             </span>
                           )}
                         </div>
-                        <p className="mt-0.5 text-[12.5px] leading-snug text-white/50">
+                        <p className="mt-0.5 text-[12.5px] leading-snug text-white/75">
                           {leaf.blurb}
                         </p>
                       </div>
