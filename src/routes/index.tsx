@@ -187,7 +187,7 @@ function HomePage() {
             <h2 className="heading-h2 mt-5">One memory for your work.</h2>
           </Reveal>
 
-          <div className="mx-auto mt-14 grid max-w-5xl gap-6 md:grid-cols-3">
+          <div data-stagger className="mx-auto mt-14 grid max-w-5xl gap-6 md:grid-cols-3">
             {[
               {
                 icon: Workflow,
@@ -282,7 +282,7 @@ function HomePage() {
             </p>
           </Reveal>
 
-          <div className="mx-auto mt-16 grid max-w-6xl gap-4 md:grid-cols-5">
+          <div data-stagger className="mx-auto mt-16 grid max-w-6xl gap-4 md:grid-cols-5">
             {[
               {
                 n: "01",
@@ -483,7 +483,7 @@ function HomePage() {
             </p>
           </Reveal>
 
-          <div className="mx-auto mt-16 grid max-w-6xl gap-5 lg:grid-cols-3">
+          <div data-stagger className="mx-auto mt-16 grid max-w-6xl gap-5 lg:grid-cols-3">
             {/* Account Success */}
             <div className="card-iw flex flex-col p-7">
               <div className="flex items-center gap-2">
@@ -591,7 +591,7 @@ function HomePage() {
             </p>
           </Reveal>
 
-          <div className="mx-auto mt-16 grid max-w-6xl gap-5 lg:grid-cols-3">
+          <div data-stagger className="mx-auto mt-16 grid max-w-6xl gap-5 lg:grid-cols-3">
             {[
               {
                 name: "Starter",
