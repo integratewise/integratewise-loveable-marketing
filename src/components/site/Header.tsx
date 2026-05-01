@@ -188,7 +188,7 @@ function MegaMenu({ item }: { item: Extract<NavGroup, { kind: "menu" }> }) {
   const cols = item.groups.length;
   const width =
     cols >= 3
-      ? "w-[920px] max-w-[calc(100vw-2rem)]"
+      ? "w-[1040px] max-w-[calc(100vw-2rem)]"
       : cols === 2
         ? "w-[760px] max-w-[calc(100vw-2rem)]"
         : "w-[340px]";
