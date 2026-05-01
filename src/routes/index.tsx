@@ -137,7 +137,7 @@ function HomePage() {
       </section>
 
       {/* ========================= 2. WHY / CORE PROBLEM ========================= */}
-      <section id="why" className="bg-bg-section-alt scroll-mt-32 py-20 lg:py-28">
+      <section id="why" className="bg-bg-section-alt scroll-mt-32 py-28 lg:py-40">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-iw badge-iw-muted">2025</span>
@@ -179,7 +179,7 @@ function HomePage() {
       </section>
 
       {/* ========================= 3. SOLUTION OVERVIEW ========================= */}
-      <section id="overview" className="scroll-mt-32 py-20 lg:py-28">
+      <section id="overview" className="scroll-mt-32 py-28 lg:py-40">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-iw badge-iw-muted">Solution</span>
@@ -259,7 +259,7 @@ function HomePage() {
       </section>
 
       {/* ========================= 4. HOW IT WORKS (5-PART LOOP) ========================= */}
-      <section id="product" className="bg-bg-section-alt scroll-mt-32 py-20 lg:py-28">
+      <section id="product" className="bg-bg-section-alt scroll-mt-32 py-28 lg:py-40">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-iw badge-iw-muted">How it works</span>
@@ -337,7 +337,7 @@ function HomePage() {
       </section>
 
       {/* ========================= 5. VISUAL DEMO / WORKSPACE PREVIEW ========================= */}
-      <section id="demo" className="scroll-mt-32 py-20 lg:py-28">
+      <section id="demo" className="scroll-mt-32 py-28 lg:py-40">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-iw badge-iw-muted">Workspace · Intelligence</span>
@@ -354,7 +354,7 @@ function HomePage() {
       </section>
 
       {/* ========================= 6. TRUST & GOVERNANCE ========================= */}
-      <section id="trust" className="bg-bg-section-alt scroll-mt-32 py-20 lg:py-28">
+      <section id="trust" className="bg-bg-section-alt scroll-mt-32 py-28 lg:py-40">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-iw">Trust &amp; Governance</span>
@@ -460,7 +460,7 @@ function HomePage() {
       </section>
 
       {/* ========================= 7. SOLUTIONS / THREE DOORS ========================= */}
-      <section id="solutions" className="scroll-mt-32 py-20 lg:py-28">
+      <section id="solutions" className="scroll-mt-32 py-28 lg:py-40">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-iw badge-iw-muted">Solutions</span>
@@ -568,7 +568,7 @@ function HomePage() {
       </section>
 
       {/* ========================= 8. ACCESS & PRICING SNAPSHOT ========================= */}
-      <section id="pricing" className="bg-bg-section-alt scroll-mt-32 py-20 lg:py-28">
+      <section id="pricing" className="bg-bg-section-alt scroll-mt-32 py-28 lg:py-40">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-iw badge-iw-muted">Access &amp; Pricing</span>
@@ -665,7 +665,7 @@ function HomePage() {
       </section>
 
       {/* ========================= 9. FINAL CLOSER ========================= */}
-      <section className="relative overflow-hidden py-24 lg:py-32">
+      <section className="relative overflow-hidden py-32 lg:py-44">
         <span
           aria-hidden
           className="orb orb-peach"
