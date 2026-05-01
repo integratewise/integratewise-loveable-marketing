@@ -42,7 +42,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Every app runs on the Workspace. It turns raw data into scoped memory — relevant, stable, and ready to act on. AI doesn't work on raw data; it works on memory, proposing structured changes. The governance layer decides what becomes real and maintains a single active context — so work always happens in one clear state.",
+          "IntegrateWise is the Work Memory layer for the AI era. Your apps connect once. Every record, message, and decision becomes one shared memory. Your AI Twin reads it, prepares the next move, and waits for your approval — every time.",
       },
       {
         property: "og:title",
@@ -51,7 +51,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Every app → Workspace → scoped memory. AI proposes structured changes against memory, never raw data. Governance decides what becomes real → one active context, one clear state.",
+          "Your apps connect once. Memory grows. Your AI Twin proposes the next move. You approve. Nothing happens behind your back.",
       },
     ],
   }),
