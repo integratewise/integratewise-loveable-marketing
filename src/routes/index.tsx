@@ -72,7 +72,7 @@ function HomePage() {
       {/* ========================= 1. HERO ========================= */}
       <section
         id="top"
-        className="relative overflow-hidden pt-20 pb-20 lg:pt-28 lg:pb-28"
+        className="relative overflow-hidden pt-24 pb-28 lg:pt-36 lg:pb-40"
         aria-label="Hero"
       >
         <span
@@ -91,16 +91,15 @@ function HomePage() {
             <span className="badge-iw badge-iw-muted">
               A new category — Work Memory for the AI era
             </span>
-            <h1 className="heading-display mt-6">
+            <h1 className="heading-display mt-8">
               <span className="block">Build memory</span>
               <span className="block text-gradient-hero">for your work.</span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-[18px] leading-relaxed text-text-secondary">
-              Your data becomes your Digital Memory. Your Digital Memory grows into knowledge. Your
-              Twin watches it and proposes what to do next.{" "}
+            <p className="mx-auto mt-8 max-w-2xl text-[18px] leading-relaxed text-text-secondary">
+              Your data becomes your Digital Memory. Your Twin watches it and proposes what to do next.{" "}
               <span className="text-foreground">You approve every move.</span>
             </p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
               <button type="button" onClick={() => open("Home hero")} className="btn-primary-iw">
                 Book a Demo <ArrowRight size={16} />
               </button>
@@ -112,30 +111,29 @@ function HomePage() {
                 Join Early Access
               </button>
             </div>
-            <p className="mx-auto mt-5 max-w-xl text-[13.5px] text-text-secondary">
-              Connect your apps once. Your work stops resetting every day.
-            </p>
           </div>
-
-          {/* Logo strip */}
-          <Parallax y={-24} className="mt-16">
-            <p className="text-center text-[12.5px] font-semibold uppercase tracking-[0.18em] text-text-secondary">
-              Connect the apps you already use
-            </p>
-            <div className="marquee-mask relative mt-6 overflow-hidden py-4">
-              <div className="marquee-track flex w-max items-center gap-10">
-                {[...HERO_LOGOS, ...HERO_LOGOS].map((logo, i) => (
-                  <div key={`${logo.name}-${i}`} className="flex items-center gap-2.5 opacity-70">
-                    <img src={logo.src} alt="" aria-hidden className="h-7 w-auto" />
-                    <span className="whitespace-nowrap text-[13.5px] font-medium text-text-secondary">
-                      {logo.name}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Parallax>
         </Container>
+      </section>
+
+      {/* ========================= 1b. CONNECTOR MARQUEE (full-bleed) ========================= */}
+      <section aria-label="Integrations" className="relative border-y border-white/5 bg-bg-section-alt/40 py-16 lg:py-20">
+        <Container>
+          <p className="text-center text-[12px] font-semibold uppercase tracking-[0.22em] text-text-secondary">
+            Connect the apps you already use
+          </p>
+        </Container>
+        <div className="marquee-mask relative mt-10 overflow-hidden">
+          <div className="marquee-track flex w-max items-center gap-14 py-2">
+            {[...HERO_LOGOS, ...HERO_LOGOS, ...HERO_LOGOS].map((logo, i) => (
+              <div key={`${logo.name}-${i}`} className="flex items-center gap-3 opacity-60 transition-opacity hover:opacity-100">
+                <img src={logo.src} alt="" aria-hidden className="h-8 w-auto" />
+                <span className="whitespace-nowrap text-[14px] font-medium text-text-secondary">
+                  {logo.name}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* ========================= 2. WHY / CORE PROBLEM ========================= */}
