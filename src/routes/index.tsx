@@ -25,7 +25,7 @@ import { Container } from "@/components/site/Container";
 import { Reveal } from "@/components/site/Reveal";
 import { useDemoModal } from "@/components/site/demo-modal-context";
 import { CONNECTOR_LOGOS } from "@/components/site/ConnectorMarquee";
-import { StaggerGroup, StaggerItem, Parallax } from "@/components/site/motion/Stagger";
+import { StaggerGroup, StaggerItem } from "@/components/site/motion/Stagger";
 import { TwinSignals, ApprovalGate } from "@/components/site/motion/TwinSignals";
 import airtable from "@/assets/logos/airtable.svg";
 import asana from "@/assets/logos/asana.svg";
