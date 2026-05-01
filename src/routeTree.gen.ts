@@ -29,7 +29,9 @@ import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SolutionsSalesOpsRouteImport } from './routes/solutions.sales-ops'
+import { Route as SolutionsRoleRouteImport } from './routes/solutions.role'
 import { Route as SolutionsPersonalSpaceRouteImport } from './routes/solutions.personal-space'
+import { Route as SolutionsIndustryRouteImport } from './routes/solutions.industry'
 import { Route as SolutionsFinanceOpsRouteImport } from './routes/solutions.finance-ops'
 import { Route as SolutionsByRoleRouteImport } from './routes/solutions.by-role'
 import { Route as SolutionsByIndustryRouteImport } from './routes/solutions.by-industry'
@@ -37,14 +39,11 @@ import { Route as SolutionsBusinessOpsRouteImport } from './routes/solutions.bus
 import { Route as SolutionsAccountSuccessRouteImport } from './routes/solutions.account-success'
 import { Route as ProductWorkbenchRouteImport } from './routes/product.workbench'
 import { Route as ProductTheTwinRouteImport } from './routes/product.the-twin'
-import { Route as ProductReferenceLayerRouteImport } from './routes/product.reference-layer'
 import { Route as ProductHowItWorksRouteImport } from './routes/product.how-it-works'
-import { Route as ProductApprovalRouteImport } from './routes/product.approval'
 import { Route as PlatformTheSpineRouteImport } from './routes/platform.the-spine'
 import { Route as PlatformSecurityRouteImport } from './routes/platform.security'
 import { Route as PlatformMemoryRouteImport } from './routes/platform.memory'
 import { Route as PlatformIntegrationsRouteImport } from './routes/platform.integrations'
-import { Route as PlatformInfrastructureRouteImport } from './routes/platform.infrastructure'
 import { Route as PlatformHowItWorksRouteImport } from './routes/platform.how-it-works'
 import { Route as SolutionsByIndustryIndustryRouteImport } from './routes/solutions.by-industry.$industry'
 
@@ -148,9 +147,19 @@ const SolutionsSalesOpsRoute = SolutionsSalesOpsRouteImport.update({
   path: '/sales-ops',
   getParentRoute: () => SolutionsRoute,
 } as any)
+const SolutionsRoleRoute = SolutionsRoleRouteImport.update({
+  id: '/role',
+  path: '/role',
+  getParentRoute: () => SolutionsRoute,
+} as any)
 const SolutionsPersonalSpaceRoute = SolutionsPersonalSpaceRouteImport.update({
   id: '/personal-space',
   path: '/personal-space',
+  getParentRoute: () => SolutionsRoute,
+} as any)
+const SolutionsIndustryRoute = SolutionsIndustryRouteImport.update({
+  id: '/industry',
+  path: '/industry',
   getParentRoute: () => SolutionsRoute,
 } as any)
 const SolutionsFinanceOpsRoute = SolutionsFinanceOpsRouteImport.update({
@@ -188,19 +197,9 @@ const ProductTheTwinRoute = ProductTheTwinRouteImport.update({
   path: '/the-twin',
   getParentRoute: () => ProductRoute,
 } as any)
-const ProductReferenceLayerRoute = ProductReferenceLayerRouteImport.update({
-  id: '/reference-layer',
-  path: '/reference-layer',
-  getParentRoute: () => ProductRoute,
-} as any)
 const ProductHowItWorksRoute = ProductHowItWorksRouteImport.update({
   id: '/how-it-works',
   path: '/how-it-works',
-  getParentRoute: () => ProductRoute,
-} as any)
-const ProductApprovalRoute = ProductApprovalRouteImport.update({
-  id: '/approval',
-  path: '/approval',
   getParentRoute: () => ProductRoute,
 } as any)
 const PlatformTheSpineRoute = PlatformTheSpineRouteImport.update({
@@ -221,11 +220,6 @@ const PlatformMemoryRoute = PlatformMemoryRouteImport.update({
 const PlatformIntegrationsRoute = PlatformIntegrationsRouteImport.update({
   id: '/integrations',
   path: '/integrations',
-  getParentRoute: () => PlatformRoute,
-} as any)
-const PlatformInfrastructureRoute = PlatformInfrastructureRouteImport.update({
-  id: '/infrastructure',
-  path: '/infrastructure',
   getParentRoute: () => PlatformRoute,
 } as any)
 const PlatformHowItWorksRoute = PlatformHowItWorksRouteImport.update({
@@ -261,14 +255,11 @@ export interface FileRoutesByFullPath {
   '/twin': typeof TwinRoute
   '/why': typeof WhyRoute
   '/platform/how-it-works': typeof PlatformHowItWorksRoute
-  '/platform/infrastructure': typeof PlatformInfrastructureRoute
   '/platform/integrations': typeof PlatformIntegrationsRoute
   '/platform/memory': typeof PlatformMemoryRoute
   '/platform/security': typeof PlatformSecurityRoute
   '/platform/the-spine': typeof PlatformTheSpineRoute
-  '/product/approval': typeof ProductApprovalRoute
   '/product/how-it-works': typeof ProductHowItWorksRoute
-  '/product/reference-layer': typeof ProductReferenceLayerRoute
   '/product/the-twin': typeof ProductTheTwinRoute
   '/product/workbench': typeof ProductWorkbenchRoute
   '/solutions/account-success': typeof SolutionsAccountSuccessRoute
@@ -276,7 +267,9 @@ export interface FileRoutesByFullPath {
   '/solutions/by-industry': typeof SolutionsByIndustryRouteWithChildren
   '/solutions/by-role': typeof SolutionsByRoleRoute
   '/solutions/finance-ops': typeof SolutionsFinanceOpsRoute
+  '/solutions/industry': typeof SolutionsIndustryRoute
   '/solutions/personal-space': typeof SolutionsPersonalSpaceRoute
+  '/solutions/role': typeof SolutionsRoleRoute
   '/solutions/sales-ops': typeof SolutionsSalesOpsRoute
   '/solutions/by-industry/$industry': typeof SolutionsByIndustryIndustryRoute
 }
@@ -301,14 +294,11 @@ export interface FileRoutesByTo {
   '/twin': typeof TwinRoute
   '/why': typeof WhyRoute
   '/platform/how-it-works': typeof PlatformHowItWorksRoute
-  '/platform/infrastructure': typeof PlatformInfrastructureRoute
   '/platform/integrations': typeof PlatformIntegrationsRoute
   '/platform/memory': typeof PlatformMemoryRoute
   '/platform/security': typeof PlatformSecurityRoute
   '/platform/the-spine': typeof PlatformTheSpineRoute
-  '/product/approval': typeof ProductApprovalRoute
   '/product/how-it-works': typeof ProductHowItWorksRoute
-  '/product/reference-layer': typeof ProductReferenceLayerRoute
   '/product/the-twin': typeof ProductTheTwinRoute
   '/product/workbench': typeof ProductWorkbenchRoute
   '/solutions/account-success': typeof SolutionsAccountSuccessRoute
@@ -316,7 +306,9 @@ export interface FileRoutesByTo {
   '/solutions/by-industry': typeof SolutionsByIndustryRouteWithChildren
   '/solutions/by-role': typeof SolutionsByRoleRoute
   '/solutions/finance-ops': typeof SolutionsFinanceOpsRoute
+  '/solutions/industry': typeof SolutionsIndustryRoute
   '/solutions/personal-space': typeof SolutionsPersonalSpaceRoute
+  '/solutions/role': typeof SolutionsRoleRoute
   '/solutions/sales-ops': typeof SolutionsSalesOpsRoute
   '/solutions/by-industry/$industry': typeof SolutionsByIndustryIndustryRoute
 }
@@ -342,14 +334,11 @@ export interface FileRoutesById {
   '/twin': typeof TwinRoute
   '/why': typeof WhyRoute
   '/platform/how-it-works': typeof PlatformHowItWorksRoute
-  '/platform/infrastructure': typeof PlatformInfrastructureRoute
   '/platform/integrations': typeof PlatformIntegrationsRoute
   '/platform/memory': typeof PlatformMemoryRoute
   '/platform/security': typeof PlatformSecurityRoute
   '/platform/the-spine': typeof PlatformTheSpineRoute
-  '/product/approval': typeof ProductApprovalRoute
   '/product/how-it-works': typeof ProductHowItWorksRoute
-  '/product/reference-layer': typeof ProductReferenceLayerRoute
   '/product/the-twin': typeof ProductTheTwinRoute
   '/product/workbench': typeof ProductWorkbenchRoute
   '/solutions/account-success': typeof SolutionsAccountSuccessRoute
@@ -357,7 +346,9 @@ export interface FileRoutesById {
   '/solutions/by-industry': typeof SolutionsByIndustryRouteWithChildren
   '/solutions/by-role': typeof SolutionsByRoleRoute
   '/solutions/finance-ops': typeof SolutionsFinanceOpsRoute
+  '/solutions/industry': typeof SolutionsIndustryRoute
   '/solutions/personal-space': typeof SolutionsPersonalSpaceRoute
+  '/solutions/role': typeof SolutionsRoleRoute
   '/solutions/sales-ops': typeof SolutionsSalesOpsRoute
   '/solutions/by-industry/$industry': typeof SolutionsByIndustryIndustryRoute
 }
@@ -384,14 +375,11 @@ export interface FileRouteTypes {
     | '/twin'
     | '/why'
     | '/platform/how-it-works'
-    | '/platform/infrastructure'
     | '/platform/integrations'
     | '/platform/memory'
     | '/platform/security'
     | '/platform/the-spine'
-    | '/product/approval'
     | '/product/how-it-works'
-    | '/product/reference-layer'
     | '/product/the-twin'
     | '/product/workbench'
     | '/solutions/account-success'
@@ -399,7 +387,9 @@ export interface FileRouteTypes {
     | '/solutions/by-industry'
     | '/solutions/by-role'
     | '/solutions/finance-ops'
+    | '/solutions/industry'
     | '/solutions/personal-space'
+    | '/solutions/role'
     | '/solutions/sales-ops'
     | '/solutions/by-industry/$industry'
   fileRoutesByTo: FileRoutesByTo
@@ -424,14 +414,11 @@ export interface FileRouteTypes {
     | '/twin'
     | '/why'
     | '/platform/how-it-works'
-    | '/platform/infrastructure'
     | '/platform/integrations'
     | '/platform/memory'
     | '/platform/security'
     | '/platform/the-spine'
-    | '/product/approval'
     | '/product/how-it-works'
-    | '/product/reference-layer'
     | '/product/the-twin'
     | '/product/workbench'
     | '/solutions/account-success'
@@ -439,7 +426,9 @@ export interface FileRouteTypes {
     | '/solutions/by-industry'
     | '/solutions/by-role'
     | '/solutions/finance-ops'
+    | '/solutions/industry'
     | '/solutions/personal-space'
+    | '/solutions/role'
     | '/solutions/sales-ops'
     | '/solutions/by-industry/$industry'
   id:
@@ -464,14 +453,11 @@ export interface FileRouteTypes {
     | '/twin'
     | '/why'
     | '/platform/how-it-works'
-    | '/platform/infrastructure'
     | '/platform/integrations'
     | '/platform/memory'
     | '/platform/security'
     | '/platform/the-spine'
-    | '/product/approval'
     | '/product/how-it-works'
-    | '/product/reference-layer'
     | '/product/the-twin'
     | '/product/workbench'
     | '/solutions/account-success'
@@ -479,7 +465,9 @@ export interface FileRouteTypes {
     | '/solutions/by-industry'
     | '/solutions/by-role'
     | '/solutions/finance-ops'
+    | '/solutions/industry'
     | '/solutions/personal-space'
+    | '/solutions/role'
     | '/solutions/sales-ops'
     | '/solutions/by-industry/$industry'
   fileRoutesById: FileRoutesById
@@ -648,11 +636,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SolutionsSalesOpsRouteImport
       parentRoute: typeof SolutionsRoute
     }
+    '/solutions/role': {
+      id: '/solutions/role'
+      path: '/role'
+      fullPath: '/solutions/role'
+      preLoaderRoute: typeof SolutionsRoleRouteImport
+      parentRoute: typeof SolutionsRoute
+    }
     '/solutions/personal-space': {
       id: '/solutions/personal-space'
       path: '/personal-space'
       fullPath: '/solutions/personal-space'
       preLoaderRoute: typeof SolutionsPersonalSpaceRouteImport
+      parentRoute: typeof SolutionsRoute
+    }
+    '/solutions/industry': {
+      id: '/solutions/industry'
+      path: '/industry'
+      fullPath: '/solutions/industry'
+      preLoaderRoute: typeof SolutionsIndustryRouteImport
       parentRoute: typeof SolutionsRoute
     }
     '/solutions/finance-ops': {
@@ -704,25 +706,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductTheTwinRouteImport
       parentRoute: typeof ProductRoute
     }
-    '/product/reference-layer': {
-      id: '/product/reference-layer'
-      path: '/reference-layer'
-      fullPath: '/product/reference-layer'
-      preLoaderRoute: typeof ProductReferenceLayerRouteImport
-      parentRoute: typeof ProductRoute
-    }
     '/product/how-it-works': {
       id: '/product/how-it-works'
       path: '/how-it-works'
       fullPath: '/product/how-it-works'
       preLoaderRoute: typeof ProductHowItWorksRouteImport
-      parentRoute: typeof ProductRoute
-    }
-    '/product/approval': {
-      id: '/product/approval'
-      path: '/approval'
-      fullPath: '/product/approval'
-      preLoaderRoute: typeof ProductApprovalRouteImport
       parentRoute: typeof ProductRoute
     }
     '/platform/the-spine': {
@@ -753,13 +741,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlatformIntegrationsRouteImport
       parentRoute: typeof PlatformRoute
     }
-    '/platform/infrastructure': {
-      id: '/platform/infrastructure'
-      path: '/infrastructure'
-      fullPath: '/platform/infrastructure'
-      preLoaderRoute: typeof PlatformInfrastructureRouteImport
-      parentRoute: typeof PlatformRoute
-    }
     '/platform/how-it-works': {
       id: '/platform/how-it-works'
       path: '/how-it-works'
@@ -779,7 +760,6 @@ declare module '@tanstack/react-router' {
 
 interface PlatformRouteChildren {
   PlatformHowItWorksRoute: typeof PlatformHowItWorksRoute
-  PlatformInfrastructureRoute: typeof PlatformInfrastructureRoute
   PlatformIntegrationsRoute: typeof PlatformIntegrationsRoute
   PlatformMemoryRoute: typeof PlatformMemoryRoute
   PlatformSecurityRoute: typeof PlatformSecurityRoute
@@ -788,7 +768,6 @@ interface PlatformRouteChildren {
 
 const PlatformRouteChildren: PlatformRouteChildren = {
   PlatformHowItWorksRoute: PlatformHowItWorksRoute,
-  PlatformInfrastructureRoute: PlatformInfrastructureRoute,
   PlatformIntegrationsRoute: PlatformIntegrationsRoute,
   PlatformMemoryRoute: PlatformMemoryRoute,
   PlatformSecurityRoute: PlatformSecurityRoute,
@@ -800,17 +779,13 @@ const PlatformRouteWithChildren = PlatformRoute._addFileChildren(
 )
 
 interface ProductRouteChildren {
-  ProductApprovalRoute: typeof ProductApprovalRoute
   ProductHowItWorksRoute: typeof ProductHowItWorksRoute
-  ProductReferenceLayerRoute: typeof ProductReferenceLayerRoute
   ProductTheTwinRoute: typeof ProductTheTwinRoute
   ProductWorkbenchRoute: typeof ProductWorkbenchRoute
 }
 
 const ProductRouteChildren: ProductRouteChildren = {
-  ProductApprovalRoute: ProductApprovalRoute,
   ProductHowItWorksRoute: ProductHowItWorksRoute,
-  ProductReferenceLayerRoute: ProductReferenceLayerRoute,
   ProductTheTwinRoute: ProductTheTwinRoute,
   ProductWorkbenchRoute: ProductWorkbenchRoute,
 }
@@ -835,7 +810,9 @@ interface SolutionsRouteChildren {
   SolutionsByIndustryRoute: typeof SolutionsByIndustryRouteWithChildren
   SolutionsByRoleRoute: typeof SolutionsByRoleRoute
   SolutionsFinanceOpsRoute: typeof SolutionsFinanceOpsRoute
+  SolutionsIndustryRoute: typeof SolutionsIndustryRoute
   SolutionsPersonalSpaceRoute: typeof SolutionsPersonalSpaceRoute
+  SolutionsRoleRoute: typeof SolutionsRoleRoute
   SolutionsSalesOpsRoute: typeof SolutionsSalesOpsRoute
 }
 
@@ -845,7 +822,9 @@ const SolutionsRouteChildren: SolutionsRouteChildren = {
   SolutionsByIndustryRoute: SolutionsByIndustryRouteWithChildren,
   SolutionsByRoleRoute: SolutionsByRoleRoute,
   SolutionsFinanceOpsRoute: SolutionsFinanceOpsRoute,
+  SolutionsIndustryRoute: SolutionsIndustryRoute,
   SolutionsPersonalSpaceRoute: SolutionsPersonalSpaceRoute,
+  SolutionsRoleRoute: SolutionsRoleRoute,
   SolutionsSalesOpsRoute: SolutionsSalesOpsRoute,
 }
 

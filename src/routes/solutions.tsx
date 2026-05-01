@@ -27,8 +27,11 @@ import { Container } from "@/components/site/Container";
 import { Section } from "@/components/site/Section";
 import { Badge } from "@/components/site/Badge";
 import { Reveal } from "@/components/site/Reveal";
+import { SectionNav } from "@/components/site/SectionNav";
+import { HashSlider, type HashSlide } from "@/components/site/HashSlider";
 import { useDemoModal } from "@/components/site/demo-modal-context";
 import { SolutionsLayout } from "@/components/site/SolutionsLayout";
+import { SOLUTIONS_BY_ROLE, SOLUTIONS_BY_INDUSTRY } from "@/lib/site";
 
 export const Route = createFileRoute("/solutions")({
   head: () => ({
@@ -133,6 +136,17 @@ function SolutionsPage() {
             </div>
           </Container>
         </Section>
+
+        {/* Sticky in-page nav */}
+        <SectionNav
+          items={[
+            { id: "account-success", label: "Account Success" },
+            { id: "business-ops", label: "Business Ops" },
+            { id: "personal-space", label: "Personal Space" },
+            { id: "by-role", label: "By Role" },
+            { id: "by-industry", label: "By Industry" },
+          ]}
+        />
 
         {/* 2. Intro */}
         <Section alt>
@@ -454,6 +468,36 @@ function SolutionsPage() {
               </Reveal>
             </div>
           </Container>
+        </Section>
+
+        {/* === BY ROLE SLIDER === */}
+        <Section id="by-role" alt>
+          <Container>
+            <Reveal className="mx-auto mb-10 max-w-2xl text-center">
+              <Badge variant="muted">By Role</Badge>
+              <h2 className="heading-h2 mt-4">Same Memory. Different roles.</h2>
+              <p className="mt-4 text-[16px] text-text-secondary">
+                The Spine and Digital Memory are the same for everyone. Each role gets a Workspace
+                shaped for how that role actually works.
+              </p>
+            </Reveal>
+          </Container>
+          <RoleSlider open={open} openWaitlist={openWaitlist} />
+        </Section>
+
+        {/* === BY INDUSTRY SLIDER === */}
+        <Section id="by-industry">
+          <Container>
+            <Reveal className="mx-auto mb-10 max-w-2xl text-center">
+              <Badge variant="muted">By Industry</Badge>
+              <h2 className="heading-h2 mt-4">One Memory. Different industries.</h2>
+              <p className="mt-4 text-[16px] text-text-secondary">
+                Same Spine. Same Workspace engine. Signals, tools, and Twin proposals shaped for
+                each industry's actual work.
+              </p>
+            </Reveal>
+          </Container>
+          <IndustrySlider open={open} />
         </Section>
 
         {/* Closing */}
@@ -840,4 +884,101 @@ function PersonalView() {
       </div>
     </div>
   );
+}
+
+/* --------------------------------------------------------------------- */
+/*  Role slider                                                            */
+/* --------------------------------------------------------------------- */
+
+function RoleSlider({
+  open,
+  openWaitlist,
+}: {
+  open: (source?: string) => void;
+  openWaitlist: (source?: string) => void;
+}) {
+  const slides: HashSlide[] = SOLUTIONS_BY_ROLE.map((r) => ({
+    id: r.to.replace(/.*#/, ""),
+    label: r.label,
+    render: () => (
+      <Container>
+        <div className="mx-auto max-w-4xl">
+          <div className="card-iw p-6 sm:p-8">
+            <div className="flex items-start gap-4">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-brand-accent/10 text-brand-accent">
+                <r.icon size={20} />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-[12px] font-semibold uppercase tracking-wider text-text-secondary">
+                  {r.label}
+                </p>
+                <p className="mt-1 text-[16px] font-semibold text-foreground">{r.blurb}</p>
+              </div>
+              {r.waitlist && (
+                <span className="shrink-0 rounded-full border border-brand-highlight/30 bg-brand-highlight/10 px-2 py-0.5 text-[10.5px] font-semibold uppercase tracking-wider text-brand-highlight">
+                  Waitlist
+                </span>
+              )}
+            </div>
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <button
+                type="button"
+                onClick={() =>
+                  r.waitlist
+                    ? openWaitlist(`Solutions · Role · ${r.label}`)
+                    : open(`Solutions · Role · ${r.label}`)
+                }
+                className="btn-primary-iw"
+              >
+                {r.waitlist ? "Join Waitlist" : "Book a demo"} <ArrowRight size={15} />
+              </button>
+            </div>
+          </div>
+        </div>
+      </Container>
+    ),
+  }));
+
+  return <HashSlider slides={slides} ariaLabel="Solutions by role" />;
+}
+
+/* --------------------------------------------------------------------- */
+/*  Industry slider                                                        */
+/* --------------------------------------------------------------------- */
+
+function IndustrySlider({ open }: { open: (source?: string) => void }) {
+  const slides: HashSlide[] = SOLUTIONS_BY_INDUSTRY.map((ind) => ({
+    id: ind.to.replace(/.*#/, ""),
+    label: ind.label,
+    render: () => (
+      <Container>
+        <div className="mx-auto max-w-4xl">
+          <div className="card-iw p-6 sm:p-8">
+            <div className="flex items-start gap-4">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-brand-accent/10 text-brand-accent">
+                <ind.icon size={20} />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-[12px] font-semibold uppercase tracking-wider text-text-secondary">
+                  {ind.label}
+                </p>
+                <p className="mt-1 text-[16px] font-semibold text-foreground">{ind.blurb}</p>
+              </div>
+            </div>
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <button
+                type="button"
+                onClick={() => open(`Solutions · Industry · ${ind.label}`)}
+                className="btn-primary-iw"
+              >
+                Book a demo <ArrowRight size={15} />
+              </button>
+            </div>
+          </div>
+        </div>
+      </Container>
+    ),
+  }));
+
+  return <HashSlider slides={slides} ariaLabel="Solutions by industry" />;
 }

@@ -1,8 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Container } from "@/components/site/Container";
 import { Section } from "@/components/site/Section";
+import { Badge } from "@/components/site/Badge";
 import { Reveal } from "@/components/site/Reveal";
+import { SectionNav } from "@/components/site/SectionNav";
 import { ClosingCtaBand } from "@/components/site/ClosingCtaBand";
+
 import {
   ArrowRight,
   Brain,
@@ -112,20 +115,15 @@ function DocsPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden pt-32 pb-16 lg:pt-40 lg:pb-20">
-        <span
-          aria-hidden
-          className="orb orb-peach"
-          style={{ width: 540, height: 540, top: -160, left: "55%" }}
-        />
+      <Section orbs className="!pt-20 lg:!pt-28">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="badge-iw badge-iw-muted">Docs</span>
-            <h1 className="heading-display mt-6">
-              <span className="block">Docs for the Knowledge Workspace</span>
-              <span className="block text-gradient-hero">over the Spine.</span>
+            <Badge variant="muted">Docs</Badge>
+            <h1 className="heading-h1 mt-5">
+              Docs for the{" "}
+              <span className="text-gradient-hero">Knowledge Workspace.</span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-[17px] leading-relaxed text-text-secondary">
+            <p className="mx-auto mt-5 text-[17px] leading-relaxed text-text-secondary">
               These docs explain how IntegrateWise turns scattered tools into Digital Memory, how
               your Workspace uses that Memory, and how your Twin proposes actions without ever
               taking control away from you.
@@ -140,7 +138,16 @@ function DocsPage() {
             </div>
           </Reveal>
         </Container>
-      </section>
+      </Section>
+
+      <SectionNav
+        items={[
+          { id: "getting-started", label: "Getting started" },
+          { id: "concepts", label: "Concepts" },
+          { id: "guides", label: "Guides" },
+          { id: "reference", label: "Reference" },
+        ]}
+      />
 
       {/* Getting started */}
       <Section alt id="getting-started">
@@ -181,7 +188,7 @@ function DocsPage() {
       </Section>
 
       {/* Guides */}
-      <Section alt>
+      <Section alt id="guides">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-iw badge-iw-muted">How-to guides</span>
@@ -204,7 +211,7 @@ function DocsPage() {
       </Section>
 
       {/* Reference */}
-      <Section>
+      <Section id="reference">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-iw badge-iw-muted">Reference</span>

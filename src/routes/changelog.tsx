@@ -1,7 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Container } from "@/components/site/Container";
 import { Section } from "@/components/site/Section";
+import { Badge } from "@/components/site/Badge";
 import { Reveal } from "@/components/site/Reveal";
+import { SectionNav } from "@/components/site/SectionNav";
 import { ClosingCtaBand } from "@/components/site/ClosingCtaBand";
 
 export const Route = createFileRoute("/changelog")({
@@ -33,12 +35,14 @@ interface Entry {
 }
 
 interface MonthBlock {
+  id: string;
   month: string;
   entries: Entry[];
 }
 
 const CHANGELOG: MonthBlock[] = [
   {
+    id: "apr-2026",
     month: "April 2026",
     entries: [
       {
@@ -65,6 +69,7 @@ const CHANGELOG: MonthBlock[] = [
     ],
   },
   {
+    id: "mar-2026",
     month: "March 2026",
     entries: [
       {
@@ -90,6 +95,7 @@ const CHANGELOG: MonthBlock[] = [
     ],
   },
   {
+    id: "feb-2026",
     month: "February 2026",
     entries: [
       {
@@ -116,34 +122,32 @@ function ChangelogPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden pt-32 pb-16 lg:pt-40 lg:pb-20">
-        <span
-          aria-hidden
-          className="orb orb-peach"
-          style={{ width: 540, height: 540, top: -160, left: "55%" }}
-        />
+      <Section orbs className="!pt-20 lg:!pt-28">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="badge-iw badge-iw-muted">Changelog</span>
-            <h1 className="heading-display mt-6">
-              <span className="block">How IntegrateWise is</span>
-              <span className="block text-gradient-hero">learning with you.</span>
+            <Badge variant="muted">Changelog</Badge>
+            <h1 className="heading-h1 mt-5">
+              How IntegrateWise is{" "}
+              <span className="text-gradient-hero">learning with you.</span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-[17px] leading-relaxed text-text-secondary">
+            <p className="mx-auto mt-5 text-[17px] leading-relaxed text-text-secondary">
               Every update is about one thing: helping you stop being the Human API. We log changes
-              the way we think about the product \u2014 by Spine, Memory, Workspace, Twin, and
-              Approval.
+              the way we think about the product \u2014 by Spine, Memory, Workspace, Twin, and Approval.
             </p>
           </Reveal>
         </Container>
-      </section>
+      </Section>
+
+      <SectionNav
+        items={CHANGELOG.map((b) => ({ id: b.id, label: b.month }))}
+      />
 
       {/* Entries */}
       <Section alt>
         <Container>
           <div className="mx-auto max-w-3xl space-y-16">
             {CHANGELOG.map((block) => (
-              <div key={block.month}>
+              <div key={block.month} id={block.id}>
                 <Reveal>
                   <h2 className="text-[13px] font-semibold uppercase tracking-[0.18em] text-text-secondary">
                     {block.month}

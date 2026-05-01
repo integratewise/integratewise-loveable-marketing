@@ -1,7 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Container } from "@/components/site/Container";
 import { Section } from "@/components/site/Section";
+import { Badge } from "@/components/site/Badge";
 import { Reveal } from "@/components/site/Reveal";
+import { SectionNav } from "@/components/site/SectionNav";
 import { ClosingCtaBand } from "@/components/site/ClosingCtaBand";
 import {
   BookOpen,
@@ -126,29 +128,33 @@ function ResourcesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden pt-32 pb-16 lg:pt-40 lg:pb-20">
-        <span
-          aria-hidden
-          className="orb orb-peach"
-          style={{ width: 540, height: 540, top: -160, left: "55%" }}
-        />
+      <Section orbs className="!pt-20 lg:!pt-28">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="badge-iw badge-iw-muted">Resources</span>
-            <h1 className="heading-display mt-6">
-              <span className="block">Everything that helps you</span>
-              <span className="block text-gradient-hero">stop being the Human API.</span>
+            <Badge variant="muted">Resources</Badge>
+            <h1 className="heading-h1 mt-5">
+              Everything that helps you{" "}
+              <span className="text-gradient-hero">understand the product.</span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-[17px] leading-relaxed text-text-secondary">
+            <p className="mx-auto mt-5 text-[17px] leading-relaxed text-text-secondary">
               Docs, changelog, stories, and templates — all tied back to the same flow: scattered
               apps → Spine → Digital Memory → Workspace → Twin → Approval.
             </p>
           </Reveal>
         </Container>
-      </section>
+      </Section>
+
+      <SectionNav
+        items={[
+          { id: "product-learning", label: "Product learning" },
+          { id: "whats-new", label: "What's new" },
+          { id: "stories", label: "Stories" },
+          { id: "templates", label: "Templates" },
+        ]}
+      />
 
       {/* Product learning */}
-      <Section alt>
+      <Section alt id="product-learning">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-iw badge-iw-muted">Product learning</span>
@@ -174,7 +180,7 @@ function ResourcesPage() {
       </Section>
 
       {/* What's new */}
-      <Section>
+      <Section id="whats-new">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-iw badge-iw-muted">What\u2019s new</span>
@@ -205,7 +211,7 @@ function ResourcesPage() {
       </Section>
 
       {/* Stories */}
-      <Section alt>
+      <Section alt id="stories">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-iw badge-iw-muted">Stories & strategy</span>
@@ -231,7 +237,7 @@ function ResourcesPage() {
       </Section>
 
       {/* Templates */}
-      <Section>
+      <Section id="templates">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-iw badge-iw-muted">Templates & walkthroughs</span>

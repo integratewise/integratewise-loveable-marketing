@@ -17,6 +17,7 @@ import { Container } from "@/components/site/Container";
 import { Section } from "@/components/site/Section";
 import { Badge } from "@/components/site/Badge";
 import { Reveal } from "@/components/site/Reveal";
+import { SectionNav } from "@/components/site/SectionNav";
 import { useDemoModal } from "@/components/site/demo-modal-context";
 
 export const Route = createFileRoute("/company")({
@@ -129,6 +130,19 @@ function CompanyPage() {
         </Container>
       </Section>
 
+      {/* Sticky in-page nav */}
+      <SectionNav
+        items={[
+          { id: "story", label: "Our story" },
+          { id: "principles", label: "Principles" },
+          { id: "architecture", label: "Architecture" },
+          { id: "control", label: "Control" },
+          { id: "vision", label: "Vision" },
+          { id: "founder", label: "Founder" },
+          { id: "contact", label: "Contact" },
+        ]}
+      />
+
       {/* 2. Founder story */}
       <Section id="story" alt>
         <Container>
@@ -203,7 +217,7 @@ function CompanyPage() {
       </Section>
 
       {/* 3. Principles */}
-      <Section>
+      <Section id="principles">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Principles</Badge>
@@ -230,7 +244,7 @@ function CompanyPage() {
       </Section>
 
       {/* 4. Architecture */}
-      <Section alt>
+      <Section id="architecture" alt>
         <Container>
           <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
             <Reveal>
@@ -271,7 +285,7 @@ function CompanyPage() {
       </Section>
 
       {/* 5. Control matters */}
-      <Section>
+      <Section id="control">
         <Container>
           <div className="mx-auto max-w-4xl">
             <Reveal className="text-center">
@@ -302,7 +316,7 @@ function CompanyPage() {
       </Section>
 
       {/* 6. Vision */}
-      <Section alt>
+      <Section id="vision" alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Vision</Badge>
@@ -346,7 +360,7 @@ function CompanyPage() {
       </Section>
 
       {/* 7. Operator highlight */}
-      <Section>
+      <Section id="founder">
         <Container>
           <div className="mx-auto max-w-3xl">
             <Reveal className="text-center">
@@ -379,7 +393,7 @@ function CompanyPage() {
       </Section>
 
       {/* 8. Final CTA */}
-      <Section alt>
+      <Section id="contact" alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Get started</Badge>
