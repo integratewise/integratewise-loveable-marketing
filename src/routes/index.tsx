@@ -665,7 +665,23 @@ function HomePage() {
         </Container>
       </section>
 
-      {/* ========================= 9. FINAL CLOSER ========================= */}
+      {/* ========================= 9. FAQ ========================= */}
+      <section id="faq" className="scroll-mt-32 py-28 lg:py-40">
+        <Container>
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <span className="badge-iw badge-iw-muted">FAQ</span>
+            <h2 className="heading-h2 mt-5">Common questions, short answers.</h2>
+            <p className="mt-6 text-[16px] text-text-secondary">
+              The things teams ask before booking a call.
+            </p>
+          </Reveal>
+          <Reveal className="mx-auto mt-14 max-w-3xl">
+            <FaqAccordion />
+          </Reveal>
+        </Container>
+      </section>
+
+      {/* ========================= 10. FINAL CLOSER ========================= */}
       <section className="relative overflow-hidden py-32 lg:py-44">
         <span
           aria-hidden
