@@ -408,7 +408,7 @@
    - .reveal-left/right   slide from side
    - data-stagger="80"    on a parent staggers direct .reveal children
    ============================================================ */
-.reveal {
+.js-motion .reveal {
   opacity: 0;
   transform: translateY(18px);
   transition:
@@ -416,7 +416,10 @@
     transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
-.reveal-fade { transform: none; }
+.js-motion .reveal-fade { transform: none; }
+.js-motion .reveal-scale { transform: translateY(0) scale(0.96); }
+.js-motion .reveal-left { transform: translateX(-24px); }
+.js-motion .reveal-right { transform: translateX(24px); }
 .reveal-scale { transform: translateY(0) scale(0.96); }
 .reveal-left { transform: translateX(-24px); }
 .reveal-right { transform: translateX(24px); }
@@ -429,9 +432,10 @@
   transform: translateY(0) translateX(0) scale(1);
 }
 
-/* Auto-reveal: every <section> fades up on first view without code changes.
-   Pages that opt out can add the `no-auto-reveal` class to the section. */
-main section:not(.no-auto-reveal) {
+/* Auto-reveal: every <main> <section> fades up on first view.
+   Only activates after JS sets `js-motion` on <html>, so no-JS / pre-hydration
+   users always see content (avoids a blank hero on first paint). */
+.js-motion main section:not(.no-auto-reveal):not(.is-in) {
   opacity: 0;
   transform: translateY(20px);
   transition:
@@ -439,7 +443,7 @@ main section:not(.no-auto-reveal) {
     transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
-main section.is-in {
+.js-motion main section.is-in {
   opacity: 1;
   transform: none;
 }
