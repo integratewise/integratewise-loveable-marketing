@@ -261,6 +261,7 @@ export interface NavLeaf {
   label: string;
   blurb: string;
   icon: ComponentType<{ size?: number; className?: string }>;
+  waitlist?: boolean;
 }
 
 /* All Platform dropdown items are anchors on /platform (single long page). */
@@ -408,7 +409,45 @@ export const PRIMARY_NAV: ReadonlyArray<NavGroup> = [
     label: "Intelligence",
     groups: [{ heading: "Intelligence", items: INTELLIGENCE_LINKS }],
   },
-  { kind: "link", label: "Solutions", to: "/solutions" },
+  {
+    kind: "menu",
+    label: "Solutions",
+    groups: [
+      {
+        heading: "By Use Case",
+        items: SOLUTIONS_BY_USE_CASE.map((s) => ({
+          to: s.to,
+          label: s.label,
+          blurb: s.blurb,
+          icon: s.icon,
+          ...(s.waitlist ? { waitlist: true } : {}),
+        })) as NavLeaf[],
+      },
+      {
+        heading: "By Role",
+        items: SOLUTIONS_BY_ROLE.map((s) => ({
+          to: s.to,
+          label: s.label,
+          blurb: s.blurb,
+          icon: s.icon,
+        })) as NavLeaf[],
+      },
+      {
+        heading: "By Industry",
+        items: SOLUTIONS_BY_INDUSTRY.map((s) => ({
+          to: s.to,
+          label: s.label,
+          blurb: s.blurb,
+          icon: s.icon,
+        })) as NavLeaf[],
+      },
+    ],
+    footer: {
+      label: "See all solutions",
+      to: "/solutions",
+      chips: SOLUTIONS_INDUSTRIES,
+    },
+  },
   { kind: "link", label: "Pricing", to: "/pricing" },
   {
     kind: "menu",
