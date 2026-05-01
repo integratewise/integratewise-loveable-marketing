@@ -394,21 +394,55 @@ export type NavGroup =
       footer?: { label: string; to: string; chips?: IndustryItem[] };
     };
 
+/* Helper: split a flat link list into two semantic columns. */
+function pickLinks(source: NavLeaf[], labels: string[]): NavLeaf[] {
+  return labels
+    .map((l) => source.find((x) => x.label === l))
+    .filter((x): x is NavLeaf => Boolean(x));
+}
+
 export const PRIMARY_NAV: ReadonlyArray<NavGroup> = [
   {
     kind: "menu",
     label: "Platform",
-    groups: [{ heading: "Platform", items: PLATFORM_LINKS }],
+    groups: [
+      {
+        heading: "Overview",
+        items: pickLinks(PLATFORM_LINKS, ["Spine", "How it works", "Digital Memory"]),
+      },
+      {
+        heading: "Foundations",
+        items: pickLinks(PLATFORM_LINKS, ["Connectors", "Integrations", "Security"]),
+      },
+    ],
   },
   {
     kind: "menu",
     label: "Product",
-    groups: [{ heading: "Product", items: PRODUCT_LINKS }],
+    groups: [
+      {
+        heading: "Surface",
+        items: pickLinks(PRODUCT_LINKS, ["Workspace", "How it works"]),
+      },
+      {
+        heading: "Foundations",
+        items: pickLinks(PRODUCT_LINKS, ["Digital Memory", "Security"]),
+      },
+    ],
   },
   {
     kind: "menu",
     label: "Intelligence",
-    groups: [{ heading: "Intelligence", items: INTELLIGENCE_LINKS }],
+    groups: [
+      {
+        heading: "Twin",
+        items: pickLinks(INTELLIGENCE_LINKS, ["Twin", "How it works", "Twin Execution"]),
+      },
+      {
+        heading: "Foundations",
+        items: pickLinks(INTELLIGENCE_LINKS, ["Digital Memory Reference", "Security"]),
+      },
+    ],
   },
   {
     kind: "menu",
@@ -453,7 +487,16 @@ export const PRIMARY_NAV: ReadonlyArray<NavGroup> = [
   {
     kind: "menu",
     label: "Company",
-    groups: [{ heading: "Company", items: COMPANY_LINKS }],
+    groups: [
+      {
+        heading: "Story",
+        items: pickLinks(COMPANY_LINKS, ["About", "Manifesto", "Why"]),
+      },
+      {
+        heading: "Engage",
+        items: pickLinks(COMPANY_LINKS, ["Customer Zero", "Pricing", "Contact"]),
+      },
+    ],
   },
 ];
 
