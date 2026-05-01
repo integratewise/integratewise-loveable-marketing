@@ -147,7 +147,7 @@ function ChangelogPage() {
         <Container>
           <div className="mx-auto max-w-3xl space-y-16">
             {CHANGELOG.map((block) => (
-              <div key={block.month} id={block.id}>
+              <div key={block.id} id={block.id}>
                 <Reveal>
                   <h2 className="text-[13px] font-semibold uppercase tracking-[0.18em] text-text-secondary">
                     {block.month}
