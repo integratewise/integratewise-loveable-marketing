@@ -57,7 +57,7 @@ export function Header() {
                 <Link
                   key={item.label}
                   to={item.to}
-                  className="rounded-md px-3 py-2 text-[15px] font-medium tracking-[-0.02em] text-white/50 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/50"
+                  className="rounded-md px-3 py-2 text-[15px] font-medium tracking-[-0.02em] text-white/85 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/50"
                   activeProps={{ className: "text-white" }}
                 >
                   {item.label}
@@ -75,7 +75,7 @@ export function Header() {
                 <button
                   type="button"
                   className={cn(
-                    "flex items-center gap-1 rounded-md px-3 py-2 text-[15px] font-medium tracking-[-0.02em] text-white/50 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/50",
+                    "flex items-center gap-1 rounded-md px-3 py-2 text-[15px] font-medium tracking-[-0.02em] text-white/85 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/50",
                     isOpen && "text-white",
                   )}
                   onFocus={() => handleEnter(item.label)}
