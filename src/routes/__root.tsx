@@ -91,7 +91,6 @@ function RootComponent() {
           <Header />
           <HashScroll />
           <main className="flex-1 pt-[60px]">
-            <PageSubnav />
             <RouteTransition>
               <Outlet />
             </RouteTransition>

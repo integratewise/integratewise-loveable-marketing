@@ -171,16 +171,6 @@ function ProductPage() {
         </Container>
       </Section>
 
-      {/* Sticky in-page nav */}
-      <SectionNav
-        items={[
-          { id: "workspace", label: "Workspace" },
-          { id: "how-it-works", label: "How it works" },
-          { id: "digital-memory", label: "Digital Memory" },
-          { id: "security", label: "Security" },
-        ]}
-      />
-
       {/* 2. From empty dashboards to a living workspace */}
       <Section alt>
         <Container>

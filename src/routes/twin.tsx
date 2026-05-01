@@ -112,17 +112,6 @@ function TwinPage() {
         </Container>
       </Section>
 
-      {/* Sticky in-page nav */}
-      <SectionNav
-        items={[
-          { id: "twin", label: "Twin" },
-          { id: "how-it-works", label: "How it works" },
-          { id: "digital-memory-reference", label: "Digital Memory Reference" },
-          { id: "twin-execution", label: "Twin Execution" },
-          { id: "security", label: "Security" },
-        ]}
-      />
-
       {/* 2. Core thesis */}
       <Section alt>
         <Container>
