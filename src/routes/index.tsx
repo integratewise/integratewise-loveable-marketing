@@ -251,26 +251,26 @@ function HomePage() {
               <div className="mt-7 grid gap-4 md:grid-cols-3">
                 {[
                   {
-                    icon: User,
+                    Visual: ScopeUser,
                     title: "User Memory",
                     body: "Private to you. No accidental leaks.",
                   },
                   {
-                    icon: Users,
+                    Visual: ScopeWork,
                     title: "Work Memory",
                     body: "Shared with your team. Patterns and context stay in context.",
                   },
                   {
-                    icon: Building2,
+                    Visual: ScopeOrg,
                     title: "Org Memory",
                     body: "Company-wide signals and policies, with governed sharing.",
                   },
                 ].map((s) => (
                   <div
                     key={s.title}
-                    className="rounded-xl border border-border bg-white/[0.02] p-5"
+                    className="overflow-hidden rounded-xl border border-border bg-white/[0.02] p-4"
                   >
-                    <s.icon size={18} className="text-brand-accent" />
+                    <s.Visual />
                     <div className="mt-3 text-[15.5px] font-semibold text-foreground">
                       {s.title}
                     </div>
