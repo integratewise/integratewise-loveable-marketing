@@ -38,17 +38,17 @@ import { MEMORY_COPY } from "@/lib/site";
 export const Route = createFileRoute("/platform")({
   head: () => ({
     meta: [
-      { title: "Platform — Where scattered data becomes Digital Memory" },
+      { title: "Platform — The Workspace, scoped memory, governance" },
       {
         name: "description",
         content:
-          "The Spine connects your apps and turns only what matters into Digital Memory — Truth, Context, and approved Session Summaries, intersecting but never mixing.",
+          "Every app runs on the Workspace. It turns raw data into scoped memory — Truth, Context, and approved Session Summaries — relevant, stable, ready to act on. AI proposes structured changes against memory; the governance layer decides what becomes real.",
       },
-      { property: "og:title", content: "IntegrateWise Platform — Spine & Digital Memory" },
+      { property: "og:title", content: "IntegrateWise Platform — Workspace, Memory, Governance" },
       {
         property: "og:description",
         content:
-          "Not ETL. A clean, growing schema that ingests only what your work actually needs to remember.",
+          "Not ETL. Raw data becomes scoped memory. AI never works on raw data — only on memory. Governance decides what becomes real.",
       },
     ],
   }),

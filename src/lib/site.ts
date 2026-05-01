@@ -30,9 +30,11 @@ import {
 } from "lucide-react";
 
 export const SITE_NAME = "IntegrateWise";
-export const SITE_TAGLINE = "Your work resets every day.";
+export const SITE_TAGLINE = "Stop being the human API between your tools.";
 export const SITE_DESCRIPTION =
-  "IntegrateWise stops the reset. Your work becomes Memory. Within seconds of opening, you see what changed. Your Twin connects, explains, and prepares — you approve every move.";
+  "Every app runs on the Workspace. It turns raw data into scoped memory — relevant, stable, and ready to act on. AI doesn't work on raw data; it works on memory, proposing structured changes. The governance layer decides what becomes real and maintains a single active context — so work always happens in one clear state.";
+export const SITE_URL = "https://integratewise.ai";
+export const SITE_OG_IMAGE = `${SITE_URL}/og-image.png`;
 
 /* Canonical copy tokens — accumulating, reusable Digital Memory. */
 export const MEMORY_COPY = {
@@ -406,19 +408,7 @@ export const PRIMARY_NAV: ReadonlyArray<NavGroup> = [
     label: "Intelligence",
     groups: [{ heading: "Intelligence", items: INTELLIGENCE_LINKS }],
   },
-  {
-    kind: "menu",
-    label: "Solutions",
-    groups: [
-      { heading: "By Use Case", items: SOLUTIONS_BY_USE_CASE },
-      { heading: "By Role", items: SOLUTIONS_BY_ROLE },
-      { heading: "By Industry", items: SOLUTIONS_BY_INDUSTRY },
-    ],
-    footer: {
-      label: "All solutions",
-      to: SOLUTIONS_OVERVIEW.to,
-    },
-  },
+  { kind: "link", label: "Solutions", to: "/solutions" },
   { kind: "link", label: "Pricing", to: "/pricing" },
   {
     kind: "menu",

@@ -18,17 +18,17 @@ import {
 export const Route = createFileRoute("/docs")({
   head: () => ({
     meta: [
-      { title: "Docs — IntegrateWise" },
+      { title: "Docs — Workspace, scoped memory, Twin, governance" },
       {
         name: "description",
         content:
-          "Docs for the Knowledge Workspace over the Spine. Learn how scattered apps become Digital Memory, how the Workspace reads from it, and how Twin proposes inside the Approval Gate.",
+          "How every app runs on the Workspace. How raw data becomes scoped memory — relevant, stable, ready to act on. How AI works on memory (never raw data) and proposes structured changes — and how governance decides what becomes real inside one active context.",
       },
       { property: "og:title", content: "Docs — IntegrateWise" },
       {
         property: "og:description",
         content:
-          "Concepts, getting-started, guides, and reference — written like a guided extension of the product, not a generic API reference.",
+          "Concepts and reference for the Workspace. Scoped memory, Twin's structured proposals, governance layer, Session Summaries.",
       },
     ],
   }),

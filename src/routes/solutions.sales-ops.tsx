@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SolutionPage } from "@/components/site/SolutionPage";
 import { salesOpsAttention } from "@/content/attention-scenarios";
-import type { WorkbenchScenario } from "@/components/site/Workspace";
+import type { WorkbenchScenario } from "@/components/site/Workbench";
 
 const salesScenario: WorkbenchScenario = {
   entityType: "Deal",

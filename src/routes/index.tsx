@@ -42,7 +42,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "One workspace. Full context. Every action under your control. The Knowledge Workspace over the Spine — apps connect, truth stays intact, your Twin proposes what's next.",
+          "Every app runs on the Workspace. It turns raw data into scoped memory — relevant, stable, and ready to act on. AI doesn't work on raw data; it works on memory, proposing structured changes. The governance layer decides what becomes real and maintains a single active context — so work always happens in one clear state.",
       },
       {
         property: "og:title",
@@ -50,7 +50,8 @@ export const Route = createFileRoute("/")({
       },
       {
         property: "og:description",
-        content: "One workspace. Full context. Every action under your control.",
+        content:
+          "Every app → Workspace → scoped memory. AI proposes structured changes against memory, never raw data. Governance decides what becomes real → one active context, one clear state.",
       },
     ],
   }),

@@ -37,17 +37,17 @@ import { Lock, KeyRound, FileSearch } from "lucide-react";
 export const Route = createFileRoute("/product")({
   head: () => ({
     meta: [
-      { title: "Product — Your Workspace adapts to how you work" },
+      { title: "Product — One Workspace. One active context. One clear state." },
       {
         name: "description",
         content:
-          "The Workspace reads from your Digital Memory and reshapes itself around your clients, projects, filings, and tasks. One living screen, never an empty dashboard.",
+          "Every app runs on the Workspace. It composes scoped memory per client, project or filing — relevant, stable, ready to act on. AI proposes structured changes against memory; the governance layer decides what becomes real and maintains a single active context.",
       },
       { property: "og:title", content: "IntegrateWise Product — Workspace" },
       {
         property: "og:description",
         content:
-          "Not a static dashboard. A living workspace built on Digital Memory, with evidence and approval beside every action.",
+          "Scoped memory per entity. AI proposes against memory, never raw data. Governance decides what becomes real — every action logged inside one active context.",
       },
     ],
   }),

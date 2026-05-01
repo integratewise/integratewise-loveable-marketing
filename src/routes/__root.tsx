@@ -1,4 +1,4 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { Outlet, Link, createRootRoute, HeadContent, Scripts, useRouterState } from "@tanstack/react-router";
 import { MotionConfig } from "framer-motion";
 
 import appCss from "../styles.css?url";
@@ -7,7 +7,9 @@ import { Footer } from "@/components/site/Footer";
 import { DemoModalProvider } from "@/components/site/demo-modal-context";
 import { LeadModals } from "@/components/site/LeadModals";
 import { RouteTransition } from "@/components/site/RouteTransition";
-import { SITE_NAME, SITE_DESCRIPTION } from "@/lib/site";
+import { PageSubnav } from "@/components/site/PageSubnav";
+import { HashScroll } from "@/components/site/HashScroll";
+import { SITE_NAME, SITE_DESCRIPTION, SITE_OG_IMAGE, SITE_TAGLINE, SITE_URL } from "@/lib/site";
 
 function NotFoundComponent() {
   return (
@@ -36,43 +38,26 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: `${SITE_NAME} — Build memory for your work.` },
+      { title: `${SITE_NAME} — ${SITE_TAGLINE}` },
       { name: "description", content: SITE_DESCRIPTION },
       { name: "theme-color", content: "#111111" },
-      { property: "og:title", content: `${SITE_NAME} — Build memory for your work.` },
+      { name: "robots", content: "index,follow" },
+
+      { property: "og:site_name", content: SITE_NAME },
+      { property: "og:title", content: `${SITE_NAME} — ${SITE_TAGLINE}` },
       { property: "og:description", content: SITE_DESCRIPTION },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: SITE_OG_IMAGE },
+
       { name: "twitter:card", content: "summary_large_image" },
-      { title: "IntegrateWise - Knowledge Workspace" },
-      { property: "og:title", content: "IntegrateWise - Knowledge Workspace" },
-      { name: "twitter:title", content: "IntegrateWise - Knowledge Workspace" },
-      {
-        name: "description",
-        content:
-          "IntegrateWise is a knowledge workspace that unifies scattered data into Digital Memory for AI-powered insights and actions.",
-      },
-      {
-        property: "og:description",
-        content:
-          "IntegrateWise is a knowledge workspace that unifies scattered data into Digital Memory for AI-powered insights and actions.",
-      },
-      {
-        name: "twitter:description",
-        content:
-          "IntegrateWise is a knowledge workspace that unifies scattered data into Digital Memory for AI-powered insights and actions.",
-      },
-      {
-        property: "og:image",
-        content:
-          "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/dd17b894-d1f7-41da-885b-2257b58f4ffd",
-      },
-      {
-        name: "twitter:image",
-        content:
-          "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/dd17b894-d1f7-41da-885b-2257b58f4ffd",
-      },
+      { name: "twitter:title", content: `${SITE_NAME} — ${SITE_TAGLINE}` },
+      { name: "twitter:description", content: SITE_DESCRIPTION },
+      { name: "twitter:image", content: SITE_OG_IMAGE },
     ],
-    links: [{ rel: "stylesheet", href: appCss }],
+    links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", href: "/favicon.ico" },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -80,10 +65,15 @@ export const Route = createRootRoute({
 });
 
 function RootShell({ children }: { children: React.ReactNode }) {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const cleanPath = pathname.replace(/\/+$/, "") || "/";
+  const canonical = `${SITE_URL}${cleanPath === "/" ? "" : cleanPath}`;
   return (
     <html lang="en">
       <head>
         <HeadContent />
+        <link rel="canonical" href={canonical} />
+        <meta property="og:url" content={canonical} />
       </head>
       <body>
         {children}
@@ -99,7 +89,9 @@ function RootComponent() {
       <DemoModalProvider>
         <div className="flex min-h-screen flex-col bg-background text-foreground">
           <Header />
-          <main className="flex-1 pt-[88px]">
+          <HashScroll />
+          <main className="flex-1 pt-[60px]">
+            <PageSubnav />
             <RouteTransition>
               <Outlet />
             </RouteTransition>

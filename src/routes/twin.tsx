@@ -25,16 +25,17 @@ import { MEMORY_COPY } from "@/lib/site";
 export const Route = createFileRoute("/twin")({
   head: () => ({
     meta: [
-      { title: "Twin — Not usual AI. Your Twin reads your Digital Memory." },
+      { title: "Twin — Works on memory, not raw data. Proposes structured changes." },
       {
         name: "description",
         content:
-          "Your Twin is governed intelligence: it reads only your Digital Memory, prepares actions with evidence and confidence, and waits for your approval. Truth you own. AI you rent. Approval in between.",
+          "Twin doesn't work on raw data. It reads scoped memory from the Workspace and proposes structured changes with linked evidence and confidence. The governance layer decides what becomes real — every action logged, outcome looped back as a Session Summary.",
       },
       { property: "og:title", content: "IntegrateWise Twin — Intelligence Layer" },
       {
         property: "og:description",
-        content: "Grounded in your AI library, not the open internet. Twin proposes; you approve.",
+        content:
+          "Twin proposes structured changes against memory, never raw data. Governance decides what becomes real — no silent actions.",
       },
     ],
   }),

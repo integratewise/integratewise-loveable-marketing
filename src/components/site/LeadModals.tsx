@@ -1,7 +1,16 @@
 import { useState, type FormEvent } from "react";
 import { X, Check } from "lucide-react";
 import { useDemoModal } from "./demo-modal-context";
-import { supabase } from "@/integrations/supabase/client";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { getDb } from "@/integrations/firebase/client";
+
+async function submitTo(collectionName: string, payload: Record<string, unknown>): Promise<void> {
+  await addDoc(collection(getDb(), collectionName), {
+    ...payload,
+    created_at: serverTimestamp(),
+    user_agent: typeof navigator !== "undefined" ? navigator.userAgent : null,
+  });
+}
 
 export function LeadModals() {
   const { kind, source, close } = useDemoModal();
@@ -77,14 +86,15 @@ function DemoForm({ source, onDone }: { source: string; onDone: () => void }) {
       notes: String(fd.get("notes") ?? "").trim() || null,
       source_page: source,
     };
-    const { error } = await supabase.from("demo_requests").insert(payload);
-    setBusy(false);
-    if (error) {
-      setErr("Something went wrong. Please try again or email hello@integratewise.com");
-      return;
+    try {
+      await submitTo("demo_requests", payload);
+      setDone(true);
+      setTimeout(onDone, 2200);
+    } catch {
+      setErr("Something went wrong. Please try again or email connect@integratewise.ai");
+    } finally {
+      setBusy(false);
     }
-    setDone(true);
-    setTimeout(onDone, 2200);
   }
 
   if (done) {
@@ -131,18 +141,19 @@ function EarlyAccessForm({ source, onDone }: { source: string; onDone: () => voi
     setBusy(true);
     setErr(null);
     const fd = new FormData(e.currentTarget);
-    const { error } = await supabase.from("early_access").insert({
-      email: String(fd.get("email") ?? "").trim(),
-      role: String(fd.get("role") ?? "").trim() || null,
-      source_page: source,
-    });
-    setBusy(false);
-    if (error) {
+    try {
+      await submitTo("early_access", {
+        email: String(fd.get("email") ?? "").trim(),
+        role: String(fd.get("role") ?? "").trim() || null,
+        source_page: source,
+      });
+      setDone(true);
+      setTimeout(onDone, 2000);
+    } catch {
       setErr("Something went wrong. Please try again.");
-      return;
+    } finally {
+      setBusy(false);
     }
-    setDone(true);
-    setTimeout(onDone, 2000);
   }
 
   if (done) return <Done title="You're on the list." body="We'll reach out as cohorts open." />;
@@ -175,17 +186,18 @@ function WaitlistForm({ source, onDone }: { source: string; onDone: () => void }
     setBusy(true);
     setErr(null);
     const fd = new FormData(e.currentTarget);
-    const { error } = await supabase.from("waitlist").insert({
-      email: String(fd.get("email") ?? "").trim(),
-      source_page: source,
-    });
-    setBusy(false);
-    if (error) {
+    try {
+      await submitTo("waitlist", {
+        email: String(fd.get("email") ?? "").trim(),
+        source_page: source,
+      });
+      setDone(true);
+      setTimeout(onDone, 2000);
+    } catch {
       setErr("Something went wrong. Please try again.");
-      return;
+    } finally {
+      setBusy(false);
     }
-    setDone(true);
-    setTimeout(onDone, 2000);
   }
 
   if (done)
