@@ -1,8 +1,12 @@
-/** /contact — alias to the Contact section on /company. */
-import { createFileRoute, redirect } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { StubPage, stubMeta } from "@/components/site/StubPage";
 
 export const Route = createFileRoute("/contact")({
-  beforeLoad: () => {
-    throw redirect({ to: "/company", hash: "contact" });
-  },
+  head: () => stubMeta("Contact", "Talk to the founder. Real conversation, no forms-as-walls."),
+  component: () => (
+    <StubPage
+      title="Contact"
+      description="Talk to the founder. Real conversation, no forms-as-walls."
+    />
+  ),
 });

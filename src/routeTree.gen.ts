@@ -12,14 +12,11 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WhyRouteImport } from './routes/why'
 import { Route as TwinRouteImport } from './routes/twin'
 import { Route as SolutionsRouteImport } from './routes/solutions'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as ProductRouteImport } from './routes/product'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PlatformRouteImport } from './routes/platform'
 import { Route as ManifestoRouteImport } from './routes/manifesto'
-import { Route as IntelligenceRouteImport } from './routes/intelligence'
 import { Route as DocsRouteImport } from './routes/docs'
 import { Route as CustomerZeroRouteImport } from './routes/customer-zero'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -63,16 +60,6 @@ const SolutionsRoute = SolutionsRouteImport.update({
   path: '/solutions',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
-  id: '/robots.txt',
-  path: '/robots.txt',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ResourcesRoute = ResourcesRouteImport.update({
   id: '/resources',
   path: '/resources',
@@ -96,11 +83,6 @@ const PlatformRoute = PlatformRouteImport.update({
 const ManifestoRoute = ManifestoRouteImport.update({
   id: '/manifesto',
   path: '/manifesto',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const IntelligenceRoute = IntelligenceRouteImport.update({
-  id: '/intelligence',
-  path: '/intelligence',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DocsRoute = DocsRouteImport.update({
@@ -249,14 +231,11 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/customer-zero': typeof CustomerZeroRoute
   '/docs': typeof DocsRoute
-  '/intelligence': typeof IntelligenceRoute
   '/manifesto': typeof ManifestoRoute
   '/platform': typeof PlatformRouteWithChildren
   '/pricing': typeof PricingRoute
   '/product': typeof ProductRouteWithChildren
   '/resources': typeof ResourcesRoute
-  '/robots.txt': typeof RobotsDottxtRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solutions': typeof SolutionsRouteWithChildren
   '/twin': typeof TwinRoute
   '/why': typeof WhyRoute
@@ -289,14 +268,11 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/customer-zero': typeof CustomerZeroRoute
   '/docs': typeof DocsRoute
-  '/intelligence': typeof IntelligenceRoute
   '/manifesto': typeof ManifestoRoute
   '/platform': typeof PlatformRouteWithChildren
   '/pricing': typeof PricingRoute
   '/product': typeof ProductRouteWithChildren
   '/resources': typeof ResourcesRoute
-  '/robots.txt': typeof RobotsDottxtRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solutions': typeof SolutionsRouteWithChildren
   '/twin': typeof TwinRoute
   '/why': typeof WhyRoute
@@ -330,14 +306,11 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/customer-zero': typeof CustomerZeroRoute
   '/docs': typeof DocsRoute
-  '/intelligence': typeof IntelligenceRoute
   '/manifesto': typeof ManifestoRoute
   '/platform': typeof PlatformRouteWithChildren
   '/pricing': typeof PricingRoute
   '/product': typeof ProductRouteWithChildren
   '/resources': typeof ResourcesRoute
-  '/robots.txt': typeof RobotsDottxtRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/solutions': typeof SolutionsRouteWithChildren
   '/twin': typeof TwinRoute
   '/why': typeof WhyRoute
@@ -372,14 +345,11 @@ export interface FileRouteTypes {
     | '/contact'
     | '/customer-zero'
     | '/docs'
-    | '/intelligence'
     | '/manifesto'
     | '/platform'
     | '/pricing'
     | '/product'
     | '/resources'
-    | '/robots.txt'
-    | '/sitemap.xml'
     | '/solutions'
     | '/twin'
     | '/why'
@@ -412,14 +382,11 @@ export interface FileRouteTypes {
     | '/contact'
     | '/customer-zero'
     | '/docs'
-    | '/intelligence'
     | '/manifesto'
     | '/platform'
     | '/pricing'
     | '/product'
     | '/resources'
-    | '/robots.txt'
-    | '/sitemap.xml'
     | '/solutions'
     | '/twin'
     | '/why'
@@ -452,14 +419,11 @@ export interface FileRouteTypes {
     | '/contact'
     | '/customer-zero'
     | '/docs'
-    | '/intelligence'
     | '/manifesto'
     | '/platform'
     | '/pricing'
     | '/product'
     | '/resources'
-    | '/robots.txt'
-    | '/sitemap.xml'
     | '/solutions'
     | '/twin'
     | '/why'
@@ -493,14 +457,11 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   CustomerZeroRoute: typeof CustomerZeroRoute
   DocsRoute: typeof DocsRoute
-  IntelligenceRoute: typeof IntelligenceRoute
   ManifestoRoute: typeof ManifestoRoute
   PlatformRoute: typeof PlatformRouteWithChildren
   PricingRoute: typeof PricingRoute
   ProductRoute: typeof ProductRouteWithChildren
   ResourcesRoute: typeof ResourcesRoute
-  RobotsDottxtRoute: typeof RobotsDottxtRoute
-  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SolutionsRoute: typeof SolutionsRouteWithChildren
   TwinRoute: typeof TwinRoute
   WhyRoute: typeof WhyRoute
@@ -527,20 +488,6 @@ declare module '@tanstack/react-router' {
       path: '/solutions'
       fullPath: '/solutions'
       preLoaderRoute: typeof SolutionsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/robots.txt': {
-      id: '/robots.txt'
-      path: '/robots.txt'
-      fullPath: '/robots.txt'
-      preLoaderRoute: typeof RobotsDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/resources': {
@@ -576,13 +523,6 @@ declare module '@tanstack/react-router' {
       path: '/manifesto'
       fullPath: '/manifesto'
       preLoaderRoute: typeof ManifestoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/intelligence': {
-      id: '/intelligence'
-      path: '/intelligence'
-      fullPath: '/intelligence'
-      preLoaderRoute: typeof IntelligenceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/docs': {
@@ -862,14 +802,11 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   CustomerZeroRoute: CustomerZeroRoute,
   DocsRoute: DocsRoute,
-  IntelligenceRoute: IntelligenceRoute,
   ManifestoRoute: ManifestoRoute,
   PlatformRoute: PlatformRouteWithChildren,
   PricingRoute: PricingRoute,
   ProductRoute: ProductRouteWithChildren,
   ResourcesRoute: ResourcesRoute,
-  RobotsDottxtRoute: RobotsDottxtRoute,
-  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SolutionsRoute: SolutionsRouteWithChildren,
   TwinRoute: TwinRoute,
   WhyRoute: WhyRoute,

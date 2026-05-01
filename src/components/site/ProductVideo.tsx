@@ -24,36 +24,6 @@ import { Section } from "@/components/site/Section";
 import { Reveal } from "@/components/site/Reveal";
 import { Badge } from "@/components/site/Badge";
 
-/**
- * Chapter on the walkthrough timeline. `start` is a fraction of total
- * duration (0..1) so we don't have to hard-code seconds before the final
- * cut lands. When the real MP4 ships, swap to absolute seconds by passing
- * a `chapters` prop with `startSeconds`.
- */
-export interface VideoChapter {
-  id: string;
-  label: string;
-  /** 0..1 fraction of total duration where this chapter begins. */
-  start: number;
-  /** Optional absolute seconds; overrides `start` when provided. */
-  startSeconds?: number;
-}
-
-/**
- * Default chapter map — mirrors the locked architecture beats the
- * walkthrough is scripted to: Apps → Spine → Workspace → Twin →
- * Approval → Loop. Even spacing is a placeholder until the final cut
- * timings are known.
- */
-const DEFAULT_CHAPTERS: VideoChapter[] = [
-  { id: "apps", label: "Apps", start: 0 / 6 },
-  { id: "spine", label: "Spine", start: 1 / 6 },
-  { id: "workspace", label: "Workspace", start: 2 / 6 },
-  { id: "twin", label: "Twin", start: 3 / 6 },
-  { id: "approval", label: "Approval", start: 4 / 6 },
-  { id: "loop", label: "Loop", start: 5 / 6 },
-];
-
 interface Props {
   eyebrow?: string;
   title: string;
@@ -64,8 +34,6 @@ interface Props {
   /** Faux browser URL shown in the chrome bar. */
   urlLabel?: string;
   alt?: boolean;
-  /** Override the default Apps→Spine→Workspace→Twin→Approval→Loop chapters. */
-  chapters?: VideoChapter[];
 }
 
 function useIsMobile() {
@@ -89,7 +57,6 @@ export function ProductVideo({
   poster,
   urlLabel = "workspace.integratewise.app/accounts",
   alt = false,
-  chapters = DEFAULT_CHAPTERS,
 }: Props) {
   const isMobile = useIsMobile();
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -97,8 +64,6 @@ export function ProductVideo({
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [hasStarted, setHasStarted] = useState(false);
-  const [duration, setDuration] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0);
 
   // Desktop: autoplay muted on scroll-into-view.
   useEffect(() => {
@@ -137,20 +102,14 @@ export function ProductVideo({
     const onTime = () => {
       if (!video.duration) return;
       setProgress((video.currentTime / video.duration) * 100);
-      setCurrentTime(video.currentTime);
     };
-    const onMeta = () => setDuration(video.duration || 0);
     video.addEventListener("play", onPlay);
     video.addEventListener("pause", onPause);
     video.addEventListener("timeupdate", onTime);
-    video.addEventListener("loadedmetadata", onMeta);
-    video.addEventListener("durationchange", onMeta);
     return () => {
       video.removeEventListener("play", onPlay);
       video.removeEventListener("pause", onPause);
       video.removeEventListener("timeupdate", onTime);
-      video.removeEventListener("loadedmetadata", onMeta);
-      video.removeEventListener("durationchange", onMeta);
     };
   }, []);
 
@@ -178,35 +137,6 @@ export function ProductVideo({
 
   const showVideoElement = !isMobile || hasStarted;
 
-  // Resolve each chapter's start time in seconds against the loaded
-  // duration. When `startSeconds` is provided we honour it directly;
-  // otherwise we map the 0..1 fraction onto the live duration so the
-  // overlay still works before the final cut timings are wired in.
-  const chapterTimes = chapters.map((c) =>
-    typeof c.startSeconds === "number" ? c.startSeconds : c.start * (duration || 0),
-  );
-  const activeChapterIndex = (() => {
-    if (!chapters.length) return -1;
-    let idx = 0;
-    for (let i = 0; i < chapterTimes.length; i++) {
-      if (currentTime + 0.05 >= chapterTimes[i]) idx = i;
-    }
-    return idx;
-  })();
-  const activeChapter = chapters[activeChapterIndex];
-
-  function jumpToChapter(i: number) {
-    const video = videoRef.current;
-    const t = chapterTimes[i];
-    if (!video || typeof t !== "number") return;
-    if (isMobile && !hasStarted) {
-      video.muted = false;
-      setHasStarted(true);
-    }
-    video.currentTime = t;
-    video.play().catch(() => undefined);
-  }
-
   return (
     <Section alt={alt}>
       <Container>
@@ -233,49 +163,6 @@ export function ProductVideo({
                 {urlLabel}
               </div>
               <div className="w-12" />
-            </div>
-
-            {/* Chapter strip — Apps → Spine → Workspace → Twin → Approval → Loop */}
-            <div
-              className="flex items-stretch gap-1 overflow-x-auto border-b border-border/60 bg-background/30 px-3 py-2"
-              role="tablist"
-              aria-label="Walkthrough chapters"
-            >
-              {chapters.map((c, i) => {
-                const isActive = i === activeChapterIndex;
-                return (
-                  <button
-                    key={c.id}
-                    type="button"
-                    role="tab"
-                    aria-selected={isActive}
-                    onClick={() => jumpToChapter(i)}
-                    className={[
-                      "flex shrink-0 items-center gap-2 rounded-md px-2.5 py-1 text-[11.5px] font-medium font-mono uppercase tracking-wider transition-colors",
-                      isActive
-                        ? "bg-brand-accent/15 text-brand-accent"
-                        : "text-text-secondary hover:bg-foreground/5 hover:text-foreground",
-                    ].join(" ")}
-                  >
-                    <span
-                      className={[
-                        "inline-flex h-4 w-4 items-center justify-center rounded-full text-[9px]",
-                        isActive
-                          ? "bg-brand-accent text-background"
-                          : "bg-foreground/10 text-text-secondary",
-                      ].join(" ")}
-                    >
-                      {i + 1}
-                    </span>
-                    {c.label}
-                    {i < chapters.length - 1 ? (
-                      <span aria-hidden className="ml-1 text-text-secondary/40">
-                        →
-                      </span>
-                    ) : null}
-                  </button>
-                );
-              })}
             </div>
 
             {/* 16:9 stage */}
@@ -317,18 +204,7 @@ export function ProductVideo({
                 </button>
               )}
 
-              {/* Active-chapter pill — keeps the architecture beat visible
-                  even while the viewer is mid-scrub. */}
-              {showVideoElement && activeChapter ? (
-                <div className="pointer-events-none absolute left-4 top-4 z-10 flex items-center gap-2 rounded-full bg-black/60 px-3 py-1.5 text-[11px] font-mono uppercase tracking-wider text-white shadow-lg backdrop-blur-sm">
-                  <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-brand-accent text-[9px] font-semibold text-background">
-                    {activeChapterIndex + 1}
-                  </span>
-                  <span className="text-text-secondary">Step</span>
-                  <span className="text-white">{activeChapter.label}</span>
-                </div>
-              ) : null}
-
+              {/* Custom controls (desktop + post-tap mobile) */}
               {showVideoElement ? (
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-4">
                   <button
@@ -345,29 +221,16 @@ export function ProductVideo({
                   </button>
                   <div
                     onClick={seek}
-                    className="pointer-events-auto relative h-1.5 flex-1 cursor-pointer rounded-full bg-white/15"
+                    className="pointer-events-auto h-1.5 flex-1 cursor-pointer overflow-hidden rounded-full bg-white/15"
                     role="progressbar"
                     aria-valuenow={Math.round(progress)}
                     aria-valuemin={0}
                     aria-valuemax={100}
                   >
                     <div
-                      className="absolute inset-y-0 left-0 rounded-full bg-brand-accent transition-[width] duration-150 ease-out"
+                      className="h-full rounded-full bg-brand-accent transition-[width] duration-150 ease-out"
                       style={{ width: `${progress}%` }}
                     />
-                    {/* Chapter tick marks aligned with the chapter strip above. */}
-                    {duration > 0
-                      ? chapterTimes.map((t, i) =>
-                          i === 0 ? null : (
-                            <span
-                              key={chapters[i].id}
-                              aria-hidden
-                              className="absolute top-1/2 h-2.5 w-px -translate-y-1/2 bg-white/60"
-                              style={{ left: `${(t / duration) * 100}%` }}
-                            />
-                          ),
-                        )
-                      : null}
                   </div>
                 </div>
               ) : null}
