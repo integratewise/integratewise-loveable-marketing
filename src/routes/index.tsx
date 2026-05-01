@@ -25,8 +25,9 @@ import { Container } from "@/components/site/Container";
 import { Reveal } from "@/components/site/Reveal";
 import { useDemoModal } from "@/components/site/demo-modal-context";
 import { CONNECTOR_LOGOS } from "@/components/site/ConnectorMarquee";
-import { StaggerGroup, StaggerItem, Parallax } from "@/components/site/motion/Stagger";
+import { StaggerGroup, StaggerItem } from "@/components/site/motion/Stagger";
 import { TwinSignals, ApprovalGate } from "@/components/site/motion/TwinSignals";
+import { FaqAccordion } from "@/components/site/FaqAccordion";
 import airtable from "@/assets/logos/airtable.svg";
 import asana from "@/assets/logos/asana.svg";
 import gdrive from "@/assets/logos/google-drive.svg";
@@ -72,7 +73,7 @@ function HomePage() {
       {/* ========================= 1. HERO ========================= */}
       <section
         id="top"
-        className="relative overflow-hidden pt-20 pb-20 lg:pt-28 lg:pb-28"
+        className="relative overflow-hidden pt-24 pb-28 lg:pt-36 lg:pb-40"
         aria-label="Hero"
       >
         <span
@@ -91,16 +92,15 @@ function HomePage() {
             <span className="badge-iw badge-iw-muted">
               A new category — Work Memory for the AI era
             </span>
-            <h1 className="heading-display mt-6">
+            <h1 className="heading-display mt-8">
               <span className="block">Build memory</span>
               <span className="block text-gradient-hero">for your work.</span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-[18px] leading-relaxed text-text-secondary">
-              Your data becomes your Digital Memory. Your Digital Memory grows into knowledge. Your
-              Twin watches it and proposes what to do next.{" "}
+            <p className="mx-auto mt-8 max-w-2xl text-[18px] leading-relaxed text-text-secondary">
+              Your data becomes your Digital Memory. Your Twin watches it and proposes what to do next.{" "}
               <span className="text-foreground">You approve every move.</span>
             </p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
               <button type="button" onClick={() => open("Home hero")} className="btn-primary-iw">
                 Book a Demo <ArrowRight size={16} />
               </button>
@@ -112,45 +112,44 @@ function HomePage() {
                 Join Early Access
               </button>
             </div>
-            <p className="mx-auto mt-5 max-w-xl text-[13.5px] text-text-secondary">
-              Connect your apps once. Your work stops resetting every day.
-            </p>
           </div>
-
-          {/* Logo strip */}
-          <Parallax y={-24} className="mt-16">
-            <p className="text-center text-[12.5px] font-semibold uppercase tracking-[0.18em] text-text-secondary">
-              Connect the apps you already use
-            </p>
-            <div className="marquee-mask relative mt-6 overflow-hidden py-4">
-              <div className="marquee-track flex w-max items-center gap-10">
-                {[...HERO_LOGOS, ...HERO_LOGOS].map((logo, i) => (
-                  <div key={`${logo.name}-${i}`} className="flex items-center gap-2.5 opacity-70">
-                    <img src={logo.src} alt="" aria-hidden className="h-7 w-auto" />
-                    <span className="whitespace-nowrap text-[13.5px] font-medium text-text-secondary">
-                      {logo.name}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Parallax>
         </Container>
       </section>
 
+      {/* ========================= 1b. CONNECTOR MARQUEE (full-bleed) ========================= */}
+      <section aria-label="Integrations" className="relative border-y border-white/5 bg-bg-section-alt/40 py-16 lg:py-20">
+        <Container>
+          <p className="text-center text-[12px] font-semibold uppercase tracking-[0.22em] text-text-secondary">
+            Connect the apps you already use
+          </p>
+        </Container>
+        <div className="marquee-mask relative mt-10 overflow-hidden">
+          <div className="marquee-track flex w-max items-center gap-14 py-2">
+            {[...HERO_LOGOS, ...HERO_LOGOS, ...HERO_LOGOS].map((logo, i) => (
+              <div key={`${logo.name}-${i}`} className="flex items-center gap-3 opacity-60 transition-opacity hover:opacity-100">
+                <img src={logo.src} alt="" aria-hidden className="h-8 w-auto" />
+                <span className="whitespace-nowrap text-[14px] font-medium text-text-secondary">
+                  {logo.name}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ========================= 2. WHY / CORE PROBLEM ========================= */}
-      <section id="why" className="bg-bg-section-alt scroll-mt-32 py-20 lg:py-28">
+      <section id="why" className="bg-bg-section-alt scroll-mt-32 py-28 lg:py-40">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-iw badge-iw-muted">2025</span>
-            <h2 className="heading-h2 mt-4">The Core Problem of 2025</h2>
-            <p className="mt-4 text-[17px] text-text-secondary">
+            <h2 className="heading-h2 mt-5">The Core Problem of 2025</h2>
+            <p className="mt-6 text-[17px] text-text-secondary">
               You are the bridge between your apps. And it's exhausting.
             </p>
           </Reveal>
 
           <StaggerGroup
-            className="mx-auto mt-12 grid max-w-5xl gap-5 md:grid-cols-3"
+            className="mx-auto mt-16 grid max-w-5xl gap-5 md:grid-cols-3"
             stagger={0.09}
           >
             {[
@@ -181,35 +180,47 @@ function HomePage() {
       </section>
 
       {/* ========================= 3. SOLUTION OVERVIEW ========================= */}
-      <section id="overview" className="scroll-mt-32 py-20 lg:py-28">
+      <section id="overview" className="scroll-mt-32 py-28 lg:py-40">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-iw badge-iw-muted">Solution</span>
-            <h2 className="heading-h2 mt-4">One memory for your work.</h2>
+            <h2 className="heading-h2 mt-5">One memory for your work.</h2>
           </Reveal>
 
-          <div className="mx-auto mt-10 grid max-w-5xl gap-5 md:grid-cols-3">
+          <div className="mx-auto mt-14 grid max-w-5xl gap-6 md:grid-cols-3">
             {[
               {
                 icon: Workflow,
                 title: "Apps plug in once.",
-                body: "Connect your sources with OAuth or API key. No CSV exports. No code.",
+                body: "OAuth or API key. No CSVs. No code.",
+                gradient: "from-[#FFE1CC]/15 via-transparent to-transparent",
               },
               {
                 icon: Database,
                 title: "Data becomes Digital Memory.",
-                body: "Records, conversations, and decisions normalize into one stable memory that survives app and AI changes.",
+                body: "One stable memory that survives app and AI changes.",
+                gradient: "from-[#C7B6FF]/15 via-transparent to-transparent",
               },
               {
                 icon: Sparkles,
                 title: "Workspace and Twin sit on top.",
-                body: "Every day starts with full context — not with a blank tab and yesterday's questions.",
+                body: "Every day starts with full context — not a blank tab.",
+                gradient: "from-[#9CD6FF]/15 via-transparent to-transparent",
               },
             ].map((c) => (
-              <Reveal key={c.title} className="card-iw p-6">
-                <c.icon size={22} className="text-brand-accent" />
-                <h3 className="mt-4 text-[18px] font-semibold text-foreground">{c.title}</h3>
-                <p className="mt-2 text-[14.5px] leading-relaxed text-text-secondary">{c.body}</p>
+              <Reveal key={c.title} className="card-iw overflow-hidden p-0">
+                {/* Image-first visual area (~65% of card height) */}
+                <div className={`relative aspect-[4/3] w-full bg-gradient-to-br ${c.gradient} flex items-center justify-center border-b border-border`}>
+                  <span aria-hidden className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.05),_transparent_70%)]" />
+                  <div className="relative flex size-20 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm">
+                    <c.icon size={32} className="text-brand-accent" />
+                  </div>
+                </div>
+                {/* Caption ~35% */}
+                <div className="p-6">
+                  <h3 className="text-[17px] font-semibold text-foreground">{c.title}</h3>
+                  <p className="mt-2 text-[14px] leading-relaxed text-text-secondary">{c.body}</p>
+                </div>
               </Reveal>
             ))}
           </div>
@@ -261,17 +272,17 @@ function HomePage() {
       </section>
 
       {/* ========================= 4. HOW IT WORKS (5-PART LOOP) ========================= */}
-      <section id="product" className="bg-bg-section-alt scroll-mt-32 py-20 lg:py-28">
+      <section id="product" className="bg-bg-section-alt scroll-mt-32 py-28 lg:py-40">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-iw badge-iw-muted">How it works</span>
-            <h2 className="heading-h2 mt-4">A loop that compounds, not a stack that resets.</h2>
-            <p className="mt-4 text-[16px] text-text-secondary">
+            <h2 className="heading-h2 mt-5">A loop that compounds, not a stack that resets.</h2>
+            <p className="mt-6 text-[16px] text-text-secondary">
               Five simple steps. Every loop, your Digital Memory and your Twin get sharper.
             </p>
           </Reveal>
 
-          <div className="mx-auto mt-12 grid max-w-6xl gap-4 md:grid-cols-5">
+          <div className="mx-auto mt-16 grid max-w-6xl gap-4 md:grid-cols-5">
             {[
               {
                 n: "01",
@@ -339,12 +350,12 @@ function HomePage() {
       </section>
 
       {/* ========================= 5. VISUAL DEMO / WORKSPACE PREVIEW ========================= */}
-      <section id="demo" className="scroll-mt-32 py-20 lg:py-28">
+      <section id="demo" className="scroll-mt-32 py-28 lg:py-40">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-iw badge-iw-muted">Workspace · Intelligence</span>
-            <h2 className="heading-h2 mt-4">See the full picture in one view.</h2>
-            <p className="mt-4 text-[16px] text-text-secondary">
+            <h2 className="heading-h2 mt-5">See the full picture in one view.</h2>
+            <p className="mt-6 text-[16px] text-text-secondary">
               A static preview of what your team sees on Monday morning — Truth, Context, and Twin's
               prepared next move.
             </p>
@@ -356,12 +367,12 @@ function HomePage() {
       </section>
 
       {/* ========================= 6. TRUST & GOVERNANCE ========================= */}
-      <section id="trust" className="bg-bg-section-alt scroll-mt-32 py-20 lg:py-28">
+      <section id="trust" className="bg-bg-section-alt scroll-mt-32 py-28 lg:py-40">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-iw">Trust &amp; Governance</span>
-            <h2 className="heading-h2 mt-4">AI that cannot act without you.</h2>
-            <p className="mt-4 text-[16px] text-text-secondary">
+            <h2 className="heading-h2 mt-5">AI that cannot act without you.</h2>
+            <p className="mt-6 text-[16px] text-text-secondary">
               Your Twin reads your Digital Memory but cannot write into systems or memory without
               passing the Approval Gate.
             </p>
@@ -395,7 +406,7 @@ function HomePage() {
             </p>
           </div>
 
-          <ul className="mx-auto mt-10 grid max-w-4xl gap-3 md:grid-cols-3">
+          <ul className="mx-auto mt-14 grid max-w-4xl gap-3 md:grid-cols-3">
             {[
               {
                 title: "Full audit trail",
@@ -462,17 +473,17 @@ function HomePage() {
       </section>
 
       {/* ========================= 7. SOLUTIONS / THREE DOORS ========================= */}
-      <section id="solutions" className="scroll-mt-32 py-20 lg:py-28">
+      <section id="solutions" className="scroll-mt-32 py-28 lg:py-40">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-iw badge-iw-muted">Solutions</span>
-            <h2 className="heading-h2 mt-4">Three doors in.</h2>
-            <p className="mt-4 text-[16px] text-text-secondary">
+            <h2 className="heading-h2 mt-5">Three doors in.</h2>
+            <p className="mt-6 text-[16px] text-text-secondary">
               Same Memory. Same Twin. Shaped for the work you actually do.
             </p>
           </Reveal>
 
-          <div className="mx-auto mt-12 grid max-w-6xl gap-5 lg:grid-cols-3">
+          <div className="mx-auto mt-16 grid max-w-6xl gap-5 lg:grid-cols-3">
             {/* Account Success */}
             <div className="card-iw flex flex-col p-7">
               <div className="flex items-center gap-2">
@@ -570,17 +581,17 @@ function HomePage() {
       </section>
 
       {/* ========================= 8. ACCESS & PRICING SNAPSHOT ========================= */}
-      <section id="pricing" className="bg-bg-section-alt scroll-mt-32 py-20 lg:py-28">
+      <section id="pricing" className="bg-bg-section-alt scroll-mt-32 py-28 lg:py-40">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-iw badge-iw-muted">Access &amp; Pricing</span>
-            <h2 className="heading-h2 mt-4">Founder-led access today.</h2>
-            <p className="mt-4 text-[16px] text-text-secondary">
+            <h2 className="heading-h2 mt-5">Founder-led access today.</h2>
+            <p className="mt-6 text-[16px] text-text-secondary">
               We assemble your Digital Memory on your own data first. Then we onboard your team.
             </p>
           </Reveal>
 
-          <div className="mx-auto mt-12 grid max-w-6xl gap-5 lg:grid-cols-3">
+          <div className="mx-auto mt-16 grid max-w-6xl gap-5 lg:grid-cols-3">
             {[
               {
                 name: "Starter",
@@ -666,8 +677,24 @@ function HomePage() {
         </Container>
       </section>
 
-      {/* ========================= 9. FINAL CLOSER ========================= */}
-      <section className="relative overflow-hidden py-24 lg:py-32">
+      {/* ========================= 9. FAQ ========================= */}
+      <section id="faq" className="scroll-mt-32 py-28 lg:py-40">
+        <Container>
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <span className="badge-iw badge-iw-muted">FAQ</span>
+            <h2 className="heading-h2 mt-5">Common questions, short answers.</h2>
+            <p className="mt-6 text-[16px] text-text-secondary">
+              The things teams ask before booking a call.
+            </p>
+          </Reveal>
+          <Reveal className="mx-auto mt-14 max-w-3xl">
+            <FaqAccordion />
+          </Reveal>
+        </Container>
+      </section>
+
+      {/* ========================= 10. FINAL CLOSER ========================= */}
+      <section className="relative overflow-hidden py-32 lg:py-44">
         <span
           aria-hidden
           className="orb orb-peach"
