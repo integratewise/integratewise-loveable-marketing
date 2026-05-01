@@ -2,7 +2,11 @@
 import { createFileRoute, redirect } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/twin")({
-  beforeLoad: () => {
-    throw redirect({ to: "/intelligence" });
+  beforeLoad: ({ location }) => {
+    throw redirect({
+      to: "/intelligence",
+      hash: location.hash ? location.hash.slice(1) : undefined,
+      replace: true,
+    });
   },
 });
