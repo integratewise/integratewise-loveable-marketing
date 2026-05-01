@@ -154,7 +154,7 @@ function BusinessOpsPage() {
 
   return (
     <>
-      <StickySubNav items={SUBNAV_ITEMS} />
+      <StickySubNav items={SUBNAV_ITEMS} variant="rail" />
 
       {/* 1. Hero — #overview */}
       <Section orbs id="overview" className="!pt-20 lg:!pt-28">

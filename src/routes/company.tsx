@@ -103,7 +103,7 @@ function CompanyPage() {
 
   return (
     <div className="bg-background text-foreground">
-      <StickySubNav items={SUBNAV_ITEMS} />
+      <StickySubNav items={SUBNAV_ITEMS} variant="rail" />
 
       {/* HERO / ABOUT */}
       <Section id="about" className="pt-16 md:pt-24">
