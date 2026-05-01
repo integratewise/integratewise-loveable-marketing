@@ -485,7 +485,7 @@ function HomePage() {
 
           <div data-stagger className="mx-auto mt-16 grid max-w-6xl gap-5 lg:grid-cols-3">
             {/* Account Success */}
-            <div className="card-iw flex flex-col p-7">
+            <div className="reveal card-iw flex flex-col p-7">
               <div className="flex items-center gap-2">
                 <Handshake size={20} className="text-brand-accent" />
                 <span className="text-[12px] font-semibold uppercase tracking-wider text-text-secondary">
@@ -516,7 +516,7 @@ function HomePage() {
             </div>
 
             {/* Business Ops */}
-            <div className="card-iw flex flex-col p-7">
+            <div className="reveal card-iw flex flex-col p-7">
               <div className="flex items-center gap-2">
                 <Activity size={20} className="text-brand-accent" />
                 <span className="text-[12px] font-semibold uppercase tracking-wider text-text-secondary">
@@ -547,7 +547,7 @@ function HomePage() {
             </div>
 
             {/* Personal Space */}
-            <div className="card-iw relative flex flex-col p-7">
+            <div className="reveal card-iw relative flex flex-col p-7">
               <span className="absolute right-5 top-5 rounded-full border border-brand-highlight/40 bg-brand-highlight/10 px-2.5 py-0.5 text-[11px] font-semibold text-brand-highlight">
                 Waitlist
               </span>
