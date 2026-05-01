@@ -374,6 +374,7 @@ export const COMPANY_LINKS: NavLeaf[] = [
   { to: "/manifesto", label: "Manifesto", blurb: "Principles we build by.", icon: FileText },
   { to: "/customer-zero", label: "Customer Zero", blurb: "I run it on itself.", icon: Rocket },
   { to: "/why", label: "Why", blurb: "The category thesis.", icon: Star },
+  { to: "/pricing", label: "Pricing", blurb: "Plans, sync intervals, ROI.", icon: Wallet },
   { to: "/contact", label: "Contact", blurb: "Founder-led contact.", icon: LifeBuoy },
 ];
 
@@ -448,7 +449,7 @@ export const PRIMARY_NAV: ReadonlyArray<NavGroup> = [
       chips: SOLUTIONS_INDUSTRIES,
     },
   },
-  { kind: "link", label: "Pricing", to: "/pricing" },
+  
   {
     kind: "menu",
     label: "Company",
