@@ -141,14 +141,14 @@ function HomePage() {
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-iw badge-iw-muted">2025</span>
-            <h2 className="heading-h2 mt-4">The Core Problem of 2025</h2>
-            <p className="mt-4 text-[17px] text-text-secondary">
+            <h2 className="heading-h2 mt-5">The Core Problem of 2025</h2>
+            <p className="mt-6 text-[17px] text-text-secondary">
               You are the bridge between your apps. And it's exhausting.
             </p>
           </Reveal>
 
           <StaggerGroup
-            className="mx-auto mt-12 grid max-w-5xl gap-5 md:grid-cols-3"
+            className="mx-auto mt-16 grid max-w-5xl gap-5 md:grid-cols-3"
             stagger={0.09}
           >
             {[
@@ -183,10 +183,10 @@ function HomePage() {
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-iw badge-iw-muted">Solution</span>
-            <h2 className="heading-h2 mt-4">One memory for your work.</h2>
+            <h2 className="heading-h2 mt-5">One memory for your work.</h2>
           </Reveal>
 
-          <div className="mx-auto mt-10 grid max-w-5xl gap-5 md:grid-cols-3">
+          <div className="mx-auto mt-14 grid max-w-5xl gap-5 md:grid-cols-3">
             {[
               {
                 icon: Workflow,
@@ -263,13 +263,13 @@ function HomePage() {
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-iw badge-iw-muted">How it works</span>
-            <h2 className="heading-h2 mt-4">A loop that compounds, not a stack that resets.</h2>
-            <p className="mt-4 text-[16px] text-text-secondary">
+            <h2 className="heading-h2 mt-5">A loop that compounds, not a stack that resets.</h2>
+            <p className="mt-6 text-[16px] text-text-secondary">
               Five simple steps. Every loop, your Digital Memory and your Twin get sharper.
             </p>
           </Reveal>
 
-          <div className="mx-auto mt-12 grid max-w-6xl gap-4 md:grid-cols-5">
+          <div className="mx-auto mt-16 grid max-w-6xl gap-4 md:grid-cols-5">
             {[
               {
                 n: "01",
@@ -341,8 +341,8 @@ function HomePage() {
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-iw badge-iw-muted">Workspace · Intelligence</span>
-            <h2 className="heading-h2 mt-4">See the full picture in one view.</h2>
-            <p className="mt-4 text-[16px] text-text-secondary">
+            <h2 className="heading-h2 mt-5">See the full picture in one view.</h2>
+            <p className="mt-6 text-[16px] text-text-secondary">
               A static preview of what your team sees on Monday morning — Truth, Context, and Twin's
               prepared next move.
             </p>
@@ -358,8 +358,8 @@ function HomePage() {
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-iw">Trust &amp; Governance</span>
-            <h2 className="heading-h2 mt-4">AI that cannot act without you.</h2>
-            <p className="mt-4 text-[16px] text-text-secondary">
+            <h2 className="heading-h2 mt-5">AI that cannot act without you.</h2>
+            <p className="mt-6 text-[16px] text-text-secondary">
               Your Twin reads your Digital Memory but cannot write into systems or memory without
               passing the Approval Gate.
             </p>
@@ -393,7 +393,7 @@ function HomePage() {
             </p>
           </div>
 
-          <ul className="mx-auto mt-10 grid max-w-4xl gap-3 md:grid-cols-3">
+          <ul className="mx-auto mt-14 grid max-w-4xl gap-3 md:grid-cols-3">
             {[
               {
                 title: "Full audit trail",
@@ -464,13 +464,13 @@ function HomePage() {
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-iw badge-iw-muted">Solutions</span>
-            <h2 className="heading-h2 mt-4">Three doors in.</h2>
-            <p className="mt-4 text-[16px] text-text-secondary">
+            <h2 className="heading-h2 mt-5">Three doors in.</h2>
+            <p className="mt-6 text-[16px] text-text-secondary">
               Same Memory. Same Twin. Shaped for the work you actually do.
             </p>
           </Reveal>
 
-          <div className="mx-auto mt-12 grid max-w-6xl gap-5 lg:grid-cols-3">
+          <div className="mx-auto mt-16 grid max-w-6xl gap-5 lg:grid-cols-3">
             {/* Account Success */}
             <div className="card-iw flex flex-col p-7">
               <div className="flex items-center gap-2">
@@ -572,13 +572,13 @@ function HomePage() {
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-iw badge-iw-muted">Access &amp; Pricing</span>
-            <h2 className="heading-h2 mt-4">Founder-led access today.</h2>
-            <p className="mt-4 text-[16px] text-text-secondary">
+            <h2 className="heading-h2 mt-5">Founder-led access today.</h2>
+            <p className="mt-6 text-[16px] text-text-secondary">
               We assemble your Digital Memory on your own data first. Then we onboard your team.
             </p>
           </Reveal>
 
-          <div className="mx-auto mt-12 grid max-w-6xl gap-5 lg:grid-cols-3">
+          <div className="mx-auto mt-16 grid max-w-6xl gap-5 lg:grid-cols-3">
             {[
               {
                 name: "Starter",
