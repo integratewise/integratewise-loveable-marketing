@@ -674,3 +674,33 @@
 /* Hide scrollbar but keep scrolling — used by the sticky on-page sub-nav. */
 .hide-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
 .hide-scrollbar::-webkit-scrollbar { display: none; }
+
+/* ----------------------------------------------------------------------- */
+/* Ambient micro-motion for finished card visuals (SolutionVisuals, etc.)  */
+/* Subtle by design — gives "alive, finished" feel without distraction.    */
+/* ----------------------------------------------------------------------- */
+@keyframes orbit-slow {
+  to { transform: rotate(360deg); }
+}
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50%      { opacity: 0.95; transform: scale(1.06); }
+}
+@keyframes sheen {
+  0%   { transform: translateX(0%); opacity: 0; }
+  20%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { transform: translateX(320%); opacity: 0; }
+}
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-2px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-\[orbit-slow_28s_linear_infinite\],
+  .animate-\[pulse-soft_3\.6s_ease-in-out_infinite\],
+  .animate-\[sheen_6s_ease-in-out_infinite\] {
+    animation: none !important;
+  }
+}
