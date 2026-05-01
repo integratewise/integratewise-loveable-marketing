@@ -27,6 +27,7 @@ import { useDemoModal } from "@/components/site/demo-modal-context";
 import { CONNECTOR_LOGOS } from "@/components/site/ConnectorMarquee";
 import { StaggerGroup, StaggerItem } from "@/components/site/motion/Stagger";
 import { TwinSignals, ApprovalGate } from "@/components/site/motion/TwinSignals";
+import { FaqAccordion } from "@/components/site/FaqAccordion";
 import airtable from "@/assets/logos/airtable.svg";
 import asana from "@/assets/logos/asana.svg";
 import gdrive from "@/assets/logos/google-drive.svg";
