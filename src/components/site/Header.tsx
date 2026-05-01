@@ -254,7 +254,7 @@ function MegaMenu({ item }: { item: Extract<NavGroup, { kind: "menu" }> }) {
       </div>
 
       {item.footer && (
-        <div className="mt-3 border-t border-white/5 pt-3">
+        <div className="mt-3 border-t border-white/10 pt-3">
           <div className="flex items-center justify-between gap-3 px-2">
             <Link
               to={item.footer.to}
@@ -268,7 +268,7 @@ function MegaMenu({ item }: { item: Extract<NavGroup, { kind: "menu" }> }) {
                   <Link
                     key={c.slug}
                     to={c.to}
-                    className="rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-1 text-[12px] text-white/60 hover:border-primary/40 hover:text-white"
+                    className="rounded-full border border-white/15 bg-white/[0.06] px-2.5 py-1 text-[12px] text-white/85 hover:border-primary/50 hover:text-white"
                   >
                     {c.label}
                   </Link>
