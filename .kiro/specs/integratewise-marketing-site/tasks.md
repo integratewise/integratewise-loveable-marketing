@@ -96,8 +96,8 @@ Consolidate the IntegrateWise marketing site from a multi-route nested structure
     - Generate random `BlogPost` and `ChangelogEntry` objects via fast-check; verify each has all required display fields (title, summary, category for blog; tags, title, what, why for changelog)
     - **Validates: Requirements 6.4, 9.4**
 
-- [-] 4. Build the Solutions RoleMatcher component
-  - [ ] 4.1 Create `src/components/site/RoleMatcher.tsx`
+- [x] 4. Build the Solutions RoleMatcher component
+  - [x] 4.1 Create `src/components/site/RoleMatcher.tsx`
     - Accept `cards: SolutionCard[]`, `dimensions: FilterDimension[]`, `sectionId: string` props
     - Render filter pills for each dimension using `role="tablist"` / `role="tab"` with `aria-selected`
     - Implement keyboard navigation (arrow keys between pills, Enter/Space to select)
@@ -106,26 +106,26 @@ Consolidate the IntegrateWise marketing site from a multi-route nested structure
     - Use `aria-live="polite"` on the card grid to announce filter result changes
     - _Requirements: 18.1, 18.2, 18.3, 18.5, 15.2, 15.3_
 
-  - [~] 4.2 Wire RoleMatcher filter state to URL search params
+  - [x] 4.2 Wire RoleMatcher filter state to URL search params
     - Use TanStack Router `validateSearch` in the Solutions route to parse `role`, `domain`, `industry` from URL search params, defaulting to `"all"`
     - Use `useSearch` and `useNavigate` in RoleMatcher to read/write filter state
     - Import `filterCards` from `src/lib/track.ts` to compute visible cards
     - _Requirements: 18.3, 18.4_
 
-- [ ] 5. Update consolidated page routes with content files and SectionNav
-  - [~] 5.1 Update `/platform` route to use extracted content and ensure all section ids are present
+- [x] 5. Update consolidated page routes with content files and SectionNav
+  - [x] 5.1 Update `/platform` route to use extracted content and ensure all section ids are present
     - Import from `src/content/platform-content.ts`
     - Verify all `<section id="...">` elements match the defined anchors: `spine`, `how-it-works`, `digital-memory`, `connectors`, `security`, `integrations`
     - Verify SectionNav renders with correct items
     - _Requirements: 1.1, 1.2, 1.5, 12.1_
 
-  - [~] 5.2 Update `/product` route to use extracted content and add missing section ids
+  - [x] 5.2 Update `/product` route to use extracted content and add missing section ids
     - Import from `src/content/product-content.ts`
     - Add `human-in-the-loop` and `example-walkthrough` section ids if not already present
     - Update SectionNav items to include all defined sections
     - _Requirements: 2.1, 2.2, 2.5, 12.1_
 
-  - [~] 5.3 Update `/solutions` route with RoleMatcher and content file
+  - [x] 5.3 Update `/solutions` route with RoleMatcher and content file
     - Import from `src/content/solutions-content.ts`
     - Add `validateSearch` for filter params (`role`, `domain`, `industry`)
     - Mount `RoleMatcher` component in the solutions overview section
@@ -133,38 +133,38 @@ Consolidate the IntegrateWise marketing site from a multi-route nested structure
     - Add SectionNav with items for each solution category
     - _Requirements: 3.1, 3.2, 3.4, 3.5, 18.1, 12.1_
 
-  - [~] 5.4 Update `/company` route with section ids and SectionNav
+  - [x] 5.4 Update `/company` route with section ids and SectionNav
     - Restructure existing Company page to use section ids: `about`, `manifesto`, `customer-zero`, `trust-governance`, `contact`
     - Import from `src/content/company-content.ts`
     - Add SectionNav with items for each section
     - _Requirements: 4.1, 4.2, 4.4, 12.1_
 
-  - [~] 5.5 Update `/twin` route with additional section ids
+  - [x] 5.5 Update `/twin` route with additional section ids
     - Add `approval-gate`, `evidence-transparency`, and `learning-history` section ids if not already present
     - Update SectionNav items to match design: `twin`, `how-it-works`, `approval-gate`, `evidence-transparency`, `twin-execution`, `learning-history`
     - Import from `src/content/twin-content.ts`
     - _Requirements: 5.1, 5.2, 5.3, 12.1_
 
-  - [~] 5.6 Update `/blog` route with section ids and SectionNav
+  - [x] 5.6 Update `/blog` route with section ids and SectionNav
     - Add section ids for categories: `all`, `product`, `platform`, `intelligence`, `case-studies`
     - Import from `src/content/blog-content.ts`
     - Add SectionNav with items for each category
     - Ensure each blog post card displays title, summary, category tag, and audience label
     - _Requirements: 6.1, 6.2, 6.3, 6.4, 12.1_
 
-  - [~] 5.7 Update `/resources` route with section ids and SectionNav
+  - [x] 5.7 Update `/resources` route with section ids and SectionNav
     - Add section ids: `guides`, `webinars`, `one-pagers`, `getting-started`
     - Import from `src/content/resources-content.ts`
     - Add SectionNav with items for each section
     - _Requirements: 7.1, 7.2, 7.3, 12.1_
 
-  - [~] 5.8 Update `/docs` route with section ids and SectionNav
+  - [x] 5.8 Update `/docs` route with section ids and SectionNav
     - Add section ids: `getting-started`, `connectors`, `workspaces`, `twin-approvals`, `security-compliance`
     - Import from `src/content/docs-content.ts`
     - Add SectionNav with items for each section
     - _Requirements: 8.1, 8.2, 8.3, 12.1_
 
-  - [~] 5.9 Update `/changelog` route with section ids and SectionNav
+  - [x] 5.9 Update `/changelog` route with section ids and SectionNav
     - Add section ids: `latest`, `platform`, `product`, `twin`, `connectors`
     - Import from `src/content/changelog-content.ts`
     - Add SectionNav with items for each filter section
@@ -174,8 +174,8 @@ Consolidate the IntegrateWise marketing site from a multi-route nested structure
 - [ ] 6. Checkpoint — Ensure all tests pass
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 7. Create redirect route files for all legacy sub-routes
-  - [~] 7.1 Create or verify Platform redirect routes
+- [x] 7. Create redirect route files for all legacy sub-routes
+  - [x] 7.1 Create or verify Platform redirect routes
     - Ensure `platform.the-spine.tsx` redirects to `/platform#spine` (already exists)
     - Ensure `platform.how-it-works.tsx` redirects to `/platform#how-it-works`
     - Ensure `platform.memory.tsx` redirects to `/platform#digital-memory`
@@ -184,13 +184,13 @@ Consolidate the IntegrateWise marketing site from a multi-route nested structure
     - Each file uses `beforeLoad` + `throw redirect({ to, hash })` pattern
     - _Requirements: 1.3, 1.4_
 
-  - [~] 7.2 Create or verify Product redirect routes
+  - [x] 7.2 Create or verify Product redirect routes
     - Convert `product.workbench.tsx` to redirect to `/product#workspace`
     - Convert `product.how-it-works.tsx` to redirect to `/product#how-it-works`
     - Convert `product.the-twin.tsx` to redirect to `/product#human-in-the-loop`
     - _Requirements: 2.3, 2.4_
 
-  - [~] 7.3 Create or verify Solutions redirect routes
+  - [x] 7.3 Create or verify Solutions redirect routes
     - Convert `solutions.account-success.tsx` to redirect to `/solutions#account-success`
     - Convert `solutions.business-ops.tsx` to redirect to `/solutions#business-ops`
     - Convert `solutions.personal-space.tsx` to redirect to `/solutions#personal-space`
@@ -203,7 +203,7 @@ Consolidate the IntegrateWise marketing site from a multi-route nested structure
     - Convert `solutions.industry.tsx` to redirect to `/solutions#solutions-overview`
     - _Requirements: 3.3_
 
-  - [~] 7.4 Create or verify Company redirect routes
+  - [x] 7.4 Create or verify Company redirect routes
     - Convert `about.tsx` to redirect to `/company#about`
     - Convert `manifesto.tsx` to redirect to `/company#manifesto`
     - Convert `customer-zero.tsx` to redirect to `/company#customer-zero`
@@ -216,33 +216,33 @@ Consolidate the IntegrateWise marketing site from a multi-route nested structure
     - Define the complete redirect map as test data; for each entry, invoke the route's `beforeLoad` and verify it throws a TanStack Router `redirect` with the correct `to` path and `hash` anchor
     - **Validates: Requirements 1.3, 2.3, 3.3, 4.3**
 
-- [ ] 8. Update navigation config and global components
-  - [~] 8.1 Update `COMPANY_LINKS` in `src/lib/site.ts` to use anchor links
+- [x] 8. Update navigation config and global components
+  - [x] 8.1 Update `COMPANY_LINKS` in `src/lib/site.ts` to use anchor links
     - Change `to` values from `/about`, `/manifesto`, `/customer-zero`, `/why`, `/contact` to `/company#about`, `/company#manifesto`, `/company#customer-zero`, `/company#customer-zero`, `/company#contact`
     - _Requirements: 13.4_
 
-  - [~] 8.2 Update `PRIMARY_NAV` in `src/lib/site.ts` to add new page links
+  - [x] 8.2 Update `PRIMARY_NAV` in `src/lib/site.ts` to add new page links
     - Add `kind: "link"` entries for Blog (`/blog`), Resources (`/resources`), Docs (`/docs`), and Changelog (`/changelog`)
     - _Requirements: 11.2_
 
-  - [~] 8.3 Update Footer links in `src/components/site/Footer.tsx`
+  - [x] 8.3 Update Footer links in `src/components/site/Footer.tsx`
     - Update Solutions column links to use anchor paths: `/solutions#account-success`, `/solutions#business-ops`, `/solutions#personal-space`
     - Update Company column links to use `/company#about`, `/company#manifesto`, `/company#customer-zero`, `/company#customer-zero`, `/company#contact`
     - _Requirements: 13.1, 13.4_
 
-  - [~] 8.4 Integrate `trackCta` into existing CTA components
+  - [x] 8.4 Integrate `trackCta` into existing CTA components
     - Add `trackCta` calls in `useDemoModal` callbacks (`open`, `openEarlyAccess`, `openWaitlist`) in `src/components/site/demo-modal-context.tsx`
     - Add `trackCta` calls to non-modal CTAs (e.g., "See how it works" anchor links) across page routes
     - Ensure tracking fires before navigation or modal action
     - _Requirements: 10.4, 14.1, 14.2_
 
-- [ ] 9. Update prerender script
-  - [~] 9.1 Update `scripts/prerender.mjs` ROUTES array
+- [x] 9. Update prerender script
+  - [x] 9.1 Update `scripts/prerender.mjs` ROUTES array
     - Set the primary routes to: `/`, `/platform`, `/product`, `/twin`, `/solutions`, `/company`, `/blog`, `/resources`, `/docs`, `/changelog`, `/pricing`
     - Add legacy redirect routes for SEO continuity: `/platform/the-spine`, `/platform/how-it-works`, `/platform/memory`, `/platform/security`, `/platform/integrations`, `/product/workbench`, `/product/how-it-works`, `/product/the-twin`, `/solutions/account-success`, `/solutions/business-ops`, `/solutions/personal-space`, `/about`, `/manifesto`, `/customer-zero`, `/why`, `/contact`
     - _Requirements: 17.1_
 
-  - [~] 9.2 Update prerender exit code logic
+  - [x] 9.2 Update prerender exit code logic
     - Change the exit condition from `fail > 0 && ok === 0` to `fail > 0` so the build fails if ANY route fails to prerender
     - _Requirements: 17.2_
 

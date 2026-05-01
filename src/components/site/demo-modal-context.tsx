@@ -1,4 +1,5 @@
 import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from "react";
+import { trackCta } from "@/lib/track";
 
 type ModalKind = "demo" | "early-access" | "waitlist" | null;
 
@@ -18,14 +19,17 @@ export function DemoModalProvider({ children }: { children: ReactNode }) {
   const [source, setSource] = useState("");
 
   const open = useCallback((s = "Unknown") => {
+    trackCta(s, "Book a demo");
     setSource(s);
     setKind("demo");
   }, []);
   const openEarlyAccess = useCallback((s = "Unknown") => {
+    trackCta(s, "Early access");
     setSource(s);
     setKind("early-access");
   }, []);
   const openWaitlist = useCallback((s = "Unknown") => {
+    trackCta(s, "Join waitlist");
     setSource(s);
     setKind("waitlist");
   }, []);

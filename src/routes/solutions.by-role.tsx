@@ -1,9 +1,7 @@
 import { createFileRoute, redirect } from "@tanstack/react-router";
 
-/** Legacy index — redirect to the new singular hash-driven slider. */
 export const Route = createFileRoute("/solutions/by-role")({
   beforeLoad: () => {
-    throw redirect({ to: "/solutions/role", replace: true });
+    throw redirect({ to: "/solutions", hash: "solutions-overview", search: { role: "all", domain: "all", industry: "all" } });
   },
-  component: () => null,
 });

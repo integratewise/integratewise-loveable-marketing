@@ -39,7 +39,11 @@ export function SolutionsDoors() {
               >
                 {s.waitlist ? "Join Waitlist" : "Book a Demo"}
               </button>
-              <Link to={s.to} className="text-[13px] text-text-secondary hover:text-foreground">
+              <Link
+                to={s.to}
+                search={{ role: "all", domain: "all", industry: "all" }}
+                className="text-[13px] text-text-secondary hover:text-foreground"
+              >
                 Learn →
               </Link>
             </div>
@@ -64,6 +68,7 @@ export function SolutionsDoors() {
           ))}
           <Link
             to={SOLUTIONS_BY_INDUSTRY_INDEX.to}
+            search={{ role: "all", domain: "all", industry: "all" }}
             className="ml-1 inline-flex items-center gap-1 text-[13px] font-semibold text-brand-accent hover:underline underline-offset-4"
           >
             Browse all <ArrowRight size={12} />

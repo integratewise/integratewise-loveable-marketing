@@ -21,7 +21,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { SectionNav } from "@/components/site/SectionNav";
 import { useDemoModal } from "@/components/site/demo-modal-context";
 import { MEMORY_COPY } from "@/lib/site";
-import { IS_LIST, IS_NOT_LIST, PROPOSALS } from "@/content/twin-content";
+import { IS_LIST, IS_NOT_LIST, PROPOSALS, TWIN_SECTIONS } from "@/content/twin-content";
 
 export const Route = createFileRoute("/twin")({
   head: () => ({
@@ -81,13 +81,7 @@ function TwinPage() {
 
       {/* Sticky in-page nav */}
       <SectionNav
-        items={[
-          { id: "twin", label: "Twin" },
-          { id: "how-it-works", label: "How it works" },
-          { id: "digital-memory-reference", label: "Digital Memory Reference" },
-          { id: "twin-execution", label: "Twin Execution" },
-          { id: "security", label: "Security" },
-        ]}
+        items={TWIN_SECTIONS.map((s) => ({ id: s.id, label: s.navLabel }))}
       />
 
       {/* 2. Core thesis */}
@@ -131,8 +125,8 @@ function TwinPage() {
         </Container>
       </Section>
 
-      {/* 3. Is / Is not */}
-      <Section>
+      {/* 3. Is / Is not → Approval Gate */}
+      <Section id="approval-gate">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Boundaries</Badge>
@@ -306,8 +300,8 @@ function TwinPage() {
         </Container>
       </Section>
 
-      {/* 6. Digital Memory Reference */}
-      <Section id="digital-memory-reference" alt>
+      {/* 6. Digital Memory Reference → Evidence & Transparency */}
+      <Section id="evidence-transparency" alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Digital Memory Reference</Badge>
@@ -427,8 +421,8 @@ function TwinPage() {
         </Container>
       </Section>
 
-      {/* 8. Security */}
-      <Section id="security" alt>
+      {/* 8. Security → Learning History */}
+      <Section id="learning-history" alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Security</Badge>

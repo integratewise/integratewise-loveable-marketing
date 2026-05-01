@@ -2,8 +2,10 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Container } from "@/components/site/Container";
 import { Section } from "@/components/site/Section";
 import { Reveal } from "@/components/site/Reveal";
+import { SectionNav } from "@/components/site/SectionNav";
 import { ClosingCtaBand } from "@/components/site/ClosingCtaBand";
 import { ArrowRight } from "lucide-react";
+import { BLOG_SECTIONS, BLOG_POSTS, BLOG_CATEGORIES } from "@/content/blog-content";
 
 export const Route = createFileRoute("/blog")({
   head: () => ({
@@ -25,79 +27,11 @@ export const Route = createFileRoute("/blog")({
   component: BlogPage,
 });
 
-const CATEGORIES = [
-  {
-    tag: "End of the Human API",
-    blurb:
-      "How people rebuild context across apps today, and what a day looks like once that stops.",
-  },
-  {
-    tag: "Digital Memory & Spine",
-    blurb:
-      "Why Memory comes before intelligence. How Truth, Context, and Session Summaries stay separate.",
-  },
-  {
-    tag: "Workspace in the real world",
-    blurb:
-      "Operator stories: a Monday in Business Ops, a CA firm running GST work from one screen.",
-  },
-  {
-    tag: "Twin & Governed AI",
-    blurb:
-      "Approval Gate, org AI library, and keeping AI in its lane — Truth you own, AI you rent.",
-  },
-];
-
-const POSTS = [
-  {
-    category: "End of the Human API",
-    title: "Why Monday morning still feels like archaeology",
-    summary:
-      "A CSM rebuilds the same customer story from CRM, email, Slack, and Sheets — every single week. Here is what changes when that story lives in one place.",
-    audience: "For CSMs and Account Success leads",
-  },
-  {
-    category: "Digital Memory & Spine",
-    title: "Why we built Memory before we built the AI",
-    summary:
-      "Most AI products bolt a model onto chaos. We built the Spine first so Truth, Context, and Session Summaries can converge into one Digital Memory.",
-    audience: "For founders and ops leads",
-  },
-  {
-    category: "Workspace in the real world",
-    title: "A Monday in Business Ops with IntegrateWise",
-    summary:
-      "Twelve apps on Friday. One Workspace on Monday. Walk through how revenue, support tickets, and renewal risks land on a single screen.",
-    audience: "For BizOps and RevOps",
-  },
-  {
-    category: "Workspace in the real world",
-    title: "How a CA firm runs GST work from one screen",
-    summary:
-      "Tally, Sheets, WhatsApp, and email — stitched into a single client view. Filings, invoices, and chase-ups stop being a tab-hunt.",
-    audience: "For CAs and small firms",
-  },
-  {
-    category: "Twin & Governed AI",
-    title: "Truth you own. AI you rent. Approval in between.",
-    summary:
-      "The three sentences that decide what AI is allowed to do inside your business — and why raw AI chat never writes directly into Memory.",
-    audience: "For founders and security leads",
-  },
-  {
-    category: "Twin & Governed AI",
-    title: "Confidence scores, evidence chains, and the Approval Gate",
-    summary:
-      "What a Twin proposal actually looks like in the Workspace: severity, sources, confidence, and the gate that keeps execution in your hands.",
-    audience: "For ops leads and admins",
-  },
-];
-
 function BlogPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden pt-32 pb-16 lg:pt-40 lg:pb-20">
+      <section id="all" className="relative overflow-hidden pt-32 pb-16 lg:pt-40 lg:pb-20">
         <span
           aria-hidden
           className="orb orb-peach"
@@ -119,6 +53,11 @@ function BlogPage() {
         </Container>
       </section>
 
+      {/* Sticky in-page nav */}
+      <SectionNav
+        items={BLOG_SECTIONS.map((s) => ({ id: s.id, label: s.navLabel }))}
+      />
+
       {/* Categories */}
       <Section alt>
         <Container>
@@ -130,7 +69,7 @@ function BlogPage() {
             </p>
           </Reveal>
           <div className="mx-auto mt-12 grid max-w-5xl gap-5 md:grid-cols-2">
-            {CATEGORIES.map((c, i) => (
+            {BLOG_CATEGORIES.map((c, i) => (
               <Reveal key={c.tag} delay={i * 60} className="card-iw p-7">
                 <span className="badge-iw badge-iw-muted">{c.tag}</span>
                 <p className="mt-4 text-[15px] leading-relaxed text-text-secondary">{c.blurb}</p>
@@ -140,36 +79,119 @@ function BlogPage() {
         </Container>
       </Section>
 
-      {/* Posts */}
-      <Section>
-        <Container>
-          <Reveal className="mx-auto max-w-3xl text-center">
-            <h2 className="heading-h2">Latest posts</h2>
-            <p className="mt-4 text-[16px] text-text-secondary">
-              Practical, operator-first writing. No abstract AI thought-leadership.
-            </p>
-          </Reveal>
-          <div className="mt-12 grid gap-5 lg:grid-cols-3">
-            {POSTS.map((p, i) => (
-              <Reveal key={p.title} delay={i * 60} className="card-iw flex h-full flex-col p-7">
-                <span className="badge-iw badge-iw-muted">{p.category}</span>
-                <h3 className="mt-4 text-[19px] font-semibold text-foreground">{p.title}</h3>
-                <p className="mt-2 text-[14.5px] leading-relaxed text-text-secondary">
-                  {p.summary}
-                </p>
-                <div className="mt-4 text-[12.5px] font-semibold uppercase tracking-wider text-brand-accent">
-                  {p.audience}
-                </div>
-                <div className="mt-auto pt-5">
-                  <span className="inline-flex items-center gap-1 text-[13px] text-text-secondary">
-                    Coming soon <ArrowRight size={13} />
-                  </span>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </Section>
+      {/* Product posts */}
+      <section id="product">
+        <Section>
+          <Container>
+            <Reveal className="mx-auto max-w-3xl text-center">
+              <h2 className="heading-h2">Latest posts</h2>
+              <p className="mt-4 text-[16px] text-text-secondary">
+                Practical, operator-first writing. No abstract AI thought-leadership.
+              </p>
+            </Reveal>
+            <div className="mt-12 grid gap-5 lg:grid-cols-3">
+              {BLOG_POSTS.filter((p) => p.category === "product").map((p, i) => (
+                <Reveal key={p.slug} delay={i * 60} className="card-iw flex h-full flex-col p-7">
+                  <span className="badge-iw badge-iw-muted">{p.category}</span>
+                  <h3 className="mt-4 text-[19px] font-semibold text-foreground">{p.title}</h3>
+                  <p className="mt-2 text-[14.5px] leading-relaxed text-text-secondary">
+                    {p.summary}
+                  </p>
+                  <div className="mt-4 text-[12.5px] font-semibold uppercase tracking-wider text-brand-accent">
+                    {p.audience}
+                  </div>
+                  <div className="mt-auto pt-5">
+                    <span className="inline-flex items-center gap-1 text-[13px] text-text-secondary">
+                      Coming soon <ArrowRight size={13} />
+                    </span>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </Container>
+        </Section>
+      </section>
+
+      {/* Platform posts */}
+      <section id="platform">
+        <Section alt>
+          <Container>
+            <div className="grid gap-5 lg:grid-cols-3">
+              {BLOG_POSTS.filter((p) => p.category === "platform").map((p, i) => (
+                <Reveal key={p.slug} delay={i * 60} className="card-iw flex h-full flex-col p-7">
+                  <span className="badge-iw badge-iw-muted">{p.category}</span>
+                  <h3 className="mt-4 text-[19px] font-semibold text-foreground">{p.title}</h3>
+                  <p className="mt-2 text-[14.5px] leading-relaxed text-text-secondary">
+                    {p.summary}
+                  </p>
+                  <div className="mt-4 text-[12.5px] font-semibold uppercase tracking-wider text-brand-accent">
+                    {p.audience}
+                  </div>
+                  <div className="mt-auto pt-5">
+                    <span className="inline-flex items-center gap-1 text-[13px] text-text-secondary">
+                      Coming soon <ArrowRight size={13} />
+                    </span>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </Container>
+        </Section>
+      </section>
+
+      {/* Intelligence posts */}
+      <section id="intelligence">
+        <Section>
+          <Container>
+            <div className="grid gap-5 lg:grid-cols-3">
+              {BLOG_POSTS.filter((p) => p.category === "intelligence").map((p, i) => (
+                <Reveal key={p.slug} delay={i * 60} className="card-iw flex h-full flex-col p-7">
+                  <span className="badge-iw badge-iw-muted">{p.category}</span>
+                  <h3 className="mt-4 text-[19px] font-semibold text-foreground">{p.title}</h3>
+                  <p className="mt-2 text-[14.5px] leading-relaxed text-text-secondary">
+                    {p.summary}
+                  </p>
+                  <div className="mt-4 text-[12.5px] font-semibold uppercase tracking-wider text-brand-accent">
+                    {p.audience}
+                  </div>
+                  <div className="mt-auto pt-5">
+                    <span className="inline-flex items-center gap-1 text-[13px] text-text-secondary">
+                      Coming soon <ArrowRight size={13} />
+                    </span>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </Container>
+        </Section>
+      </section>
+
+      {/* Case Studies posts */}
+      <section id="case-studies">
+        <Section alt>
+          <Container>
+            <div className="grid gap-5 lg:grid-cols-3">
+              {BLOG_POSTS.filter((p) => p.category === "case-studies").map((p, i) => (
+                <Reveal key={p.slug} delay={i * 60} className="card-iw flex h-full flex-col p-7">
+                  <span className="badge-iw badge-iw-muted">{p.category}</span>
+                  <h3 className="mt-4 text-[19px] font-semibold text-foreground">{p.title}</h3>
+                  <p className="mt-2 text-[14.5px] leading-relaxed text-text-secondary">
+                    {p.summary}
+                  </p>
+                  <div className="mt-4 text-[12.5px] font-semibold uppercase tracking-wider text-brand-accent">
+                    {p.audience}
+                  </div>
+                  <div className="mt-auto pt-5">
+                    <span className="inline-flex items-center gap-1 text-[13px] text-text-secondary">
+                      Coming soon <ArrowRight size={13} />
+                    </span>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </Container>
+        </Section>
+      </section>
 
       <Section alt className="!py-12">
         <Container>

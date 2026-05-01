@@ -5,7 +5,6 @@ import {
   Database,
   Sparkles,
   Eye,
-  Telescope,
   CircuitBoard,
   CheckCircle2,
   Workflow,
@@ -14,8 +13,15 @@ import { Container } from "@/components/site/Container";
 import { Section } from "@/components/site/Section";
 import { Badge } from "@/components/site/Badge";
 import { Reveal } from "@/components/site/Reveal";
+import { SectionNav } from "@/components/site/SectionNav";
 import { useDemoModal } from "@/components/site/demo-modal-context";
-import { PRINCIPLES, CONTROL_POINTS } from "@/content/company-content";
+import {
+  PRINCIPLES,
+  CONTROL_POINTS,
+  COMPANY_SECTIONS,
+  HERO_STATS,
+  VISION_CARDS,
+} from "@/content/company-content";
 
 export const Route = createFileRoute("/company")({
   head: () => ({
@@ -43,7 +49,7 @@ function CompanyPage() {
   return (
     <>
       {/* 1. Hero */}
-      <Section orbs className="!pt-20 lg:!pt-28">
+      <Section id="about" orbs className="!pt-20 lg:!pt-28">
         <Container>
           <div className="mx-auto max-w-3xl text-center">
             <Reveal>
@@ -69,11 +75,7 @@ function CompanyPage() {
 
             <Reveal delay={150}>
               <div className="mt-12 grid grid-cols-3 gap-3 text-center">
-                {[
-                  { k: "Spine", v: "Adaptive" },
-                  { k: "Memory", v: "Yours" },
-                  { k: "Approval", v: "Always" },
-                ].map((s) => (
+                {HERO_STATS.map((s) => (
                   <div key={s.k} className="card-iw px-4 py-5">
                     <p className="text-[11px] font-semibold uppercase tracking-wider text-text-secondary">
                       {s.k}
@@ -87,8 +89,13 @@ function CompanyPage() {
         </Container>
       </Section>
 
+      {/* Sticky in-page nav */}
+      <SectionNav
+        items={COMPANY_SECTIONS.map((s) => ({ id: s.id, label: s.navLabel }))}
+      />
+
       {/* 2. Founder story */}
-      <Section id="story" alt>
+      <Section id="manifesto" alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl">
             <Badge variant="muted">Origin</Badge>
@@ -228,83 +235,8 @@ function CompanyPage() {
         </Container>
       </Section>
 
-      {/* 5. Control matters */}
-      <Section>
-        <Container>
-          <div className="mx-auto max-w-4xl">
-            <Reveal className="text-center">
-              <Badge variant="muted">Control</Badge>
-              <h2 className="heading-h2 mt-4">Control is not only for large enterprises.</h2>
-              <p className="mt-5 text-[16px] leading-relaxed text-text-secondary">
-                Even a 3-person CA firm, a small agency, or a SaaS startup cannot afford surprise
-                emails, wrong filings, or silent automations. If AI can act alone, it can also make
-                the wrong move alone.
-              </p>
-              <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
-                That is why, from day one, IntegrateWise is built around:
-              </p>
-            </Reveal>
-
-            <div className="mt-8 grid gap-4 md:grid-cols-2">
-              {CONTROL_POINTS.map((point, i) => (
-                <Reveal key={point} delay={i * 80}>
-                  <div className="card-iw flex items-start gap-3 p-5">
-                    <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-brand-accent" />
-                    <p className="text-[14px] text-foreground/90">{point}</p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      {/* 6. Vision */}
-      <Section alt>
-        <Container>
-          <Reveal className="mx-auto max-w-3xl text-center">
-            <Badge variant="muted">Vision</Badge>
-            <h2 className="heading-h2 mt-4">Where we want this to go.</h2>
-          </Reveal>
-
-          <div className="mx-auto mt-10 grid max-w-5xl gap-5 md:grid-cols-3">
-            {[
-              {
-                icon: Database,
-                line: "We believe every person should have a Digital Memory — a place where their work, decisions, and context stay useful over time.",
-              },
-              {
-                icon: ShieldCheck,
-                line: "We believe every business should be able to grow knowledge without losing control to tools or models.",
-              },
-              {
-                icon: Telescope,
-                line: "We believe AI should sit between your Memory and your tools as a rented, governed layer — never as the new owner of your data.",
-              },
-            ].map((v, i) => {
-              const Icon = v.icon;
-              return (
-                <Reveal key={i} delay={i * 100}>
-                  <div className="card-iw h-full p-6">
-                    <Icon size={20} className="text-brand-accent" />
-                    <p className="mt-4 text-[15px] leading-relaxed text-foreground/90">{v.line}</p>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
-
-          <Reveal delay={300} className="mx-auto mt-10 max-w-3xl text-center">
-            <p className="text-[18px] leading-relaxed text-foreground">
-              End the Human API role. Give people a Memory and a Workspace that grow with them, plus
-              a Twin that helps — but never takes over.
-            </p>
-          </Reveal>
-        </Container>
-      </Section>
-
-      {/* 7. Operator highlight */}
-      <Section>
+      {/* 5. Operator highlight */}
+      <Section id="customer-zero">
         <Container>
           <div className="mx-auto max-w-3xl">
             <Reveal className="text-center">
@@ -336,8 +268,70 @@ function CompanyPage() {
         </Container>
       </Section>
 
+      {/* 6. Control matters */}
+      <Section id="trust-governance" alt>
+        <Container>
+          <div className="mx-auto max-w-4xl">
+            <Reveal className="text-center">
+              <Badge variant="muted">Control</Badge>
+              <h2 className="heading-h2 mt-4">Control is not only for large enterprises.</h2>
+              <p className="mt-5 text-[16px] leading-relaxed text-text-secondary">
+                Even a 3-person CA firm, a small agency, or a SaaS startup cannot afford surprise
+                emails, wrong filings, or silent automations. If AI can act alone, it can also make
+                the wrong move alone.
+              </p>
+              <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
+                That is why, from day one, IntegrateWise is built around:
+              </p>
+            </Reveal>
+
+            <div className="mt-8 grid gap-4 md:grid-cols-2">
+              {CONTROL_POINTS.map((point, i) => (
+                <Reveal key={point} delay={i * 80}>
+                  <div className="card-iw flex items-start gap-3 p-5">
+                    <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-brand-accent" />
+                    <p className="text-[14px] text-foreground/90">{point}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* 7. Vision */}
+      <Section>
+        <Container>
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <Badge variant="muted">Vision</Badge>
+            <h2 className="heading-h2 mt-4">Where we want this to go.</h2>
+          </Reveal>
+
+          <div className="mx-auto mt-10 grid max-w-5xl gap-5 md:grid-cols-3">
+            {VISION_CARDS.map((v, i) => {
+              const Icon = v.icon;
+              return (
+                <Reveal key={i} delay={i * 100}>
+                  <div className="card-iw h-full p-6">
+                    <Icon size={20} className="text-brand-accent" />
+                    <p className="mt-4 text-[15px] leading-relaxed text-foreground/90">{v.line}</p>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
+
+          <Reveal delay={300} className="mx-auto mt-10 max-w-3xl text-center">
+            <p className="text-[18px] leading-relaxed text-foreground">
+              End the Human API role. Give people a Memory and a Workspace that grow with them, plus
+              a Twin that helps — but never takes over.
+            </p>
+          </Reveal>
+        </Container>
+      </Section>
+
       {/* 8. Final CTA */}
-      <Section alt>
+      <Section id="contact" alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Get started</Badge>

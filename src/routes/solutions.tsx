@@ -1,4 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useSearch, useNavigate } from "@tanstack/react-router";
+import { useCallback } from "react";
 import {
   ArrowRight,
   Users,
@@ -27,9 +28,18 @@ import { Container } from "@/components/site/Container";
 import { Section } from "@/components/site/Section";
 import { Badge } from "@/components/site/Badge";
 import { Reveal } from "@/components/site/Reveal";
+import { SectionNav } from "@/components/site/SectionNav";
+import { RoleMatcher } from "@/components/site/RoleMatcher";
 import { useDemoModal } from "@/components/site/demo-modal-context";
+import { SOLUTION_CARDS, FILTER_DIMENSIONS, SOLUTIONS_SECTIONS, DOORS } from "@/content/solutions-content";
+import type { FilterState } from "@/lib/track";
 
 export const Route = createFileRoute("/solutions")({
+  validateSearch: (search: Record<string, unknown>) => ({
+    role: (search.role as string) || "all",
+    domain: (search.domain as string) || "all",
+    industry: (search.industry as string) || "all",
+  }),
   head: () => ({
     meta: [
       { title: "Solutions — One Spine. Many ways of working." },
@@ -48,35 +58,25 @@ export const Route = createFileRoute("/solutions")({
   component: SolutionsPage,
 });
 
-const DOORS = [
-  {
-    id: "account-success",
-    icon: Users,
-    title: "Account Success",
-    blurb: "One client story, many tools — for anyone who runs relationships.",
-  },
-  {
-    id: "business-ops",
-    icon: Briefcase,
-    title: "Business Ops",
-    blurb: "Run the day from one screen — for founders, owners, and ops leaders.",
-  },
-  {
-    id: "personal-space",
-    icon: User,
-    title: "Personal Space",
-    blurb: "Your own operating system — your private notes, tasks, and projects as Memory.",
-    waitlist: true,
-  },
-];
-
 function SolutionsPage() {
   const { open, openWaitlist } = useDemoModal();
+  const filters = useSearch({ from: "/solutions" }) as FilterState;
+  const navigate = useNavigate({ from: "/solutions" });
+
+  const onFilterChange = useCallback(
+    (next: FilterState) => {
+      navigate({
+        search: next,
+        replace: true,
+      });
+    },
+    [navigate],
+  );
 
   return (
     <>
       {/* 1. Hero */}
-      <Section orbs className="!pt-20 lg:!pt-28">
+      <Section id="solutions-overview" orbs className="!pt-20 lg:!pt-28">
         <Container>
           <div className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Solutions</Badge>
@@ -129,356 +129,375 @@ function SolutionsPage() {
               );
             })}
           </div>
-        </Container>
-      </Section>
 
-      {/* 2. Intro */}
-      <Section alt>
-        <Container>
-          <Reveal className="mx-auto max-w-3xl text-center">
-            <Badge variant="muted">Spans roles. Spans industries.</Badge>
-            <h2 className="heading-h2 mt-4">Same pattern, different slice of your day.</h2>
-            <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
-              Whether you are a CA, SaaS CSM, agency owner, retail founder, or operations lead, you
-              face the same pattern: scattered data, no shared memory, too much manual stitching.
-              Each solution here uses the same Spine and Workspace to solve that pattern for a
-              different slice of your day.
-            </p>
-          </Reveal>
-
-          <Reveal delay={150} className="mx-auto mt-8 max-w-4xl">
-            <div className="card-iw p-6 text-center" style={{ background: "var(--bg-surface)" }}>
-              <p className="text-[14px] text-foreground/90">
-                <span className="font-semibold text-brand-accent">Same foundation:</span> Adaptive
-                Spine + Digital Memory + Workspace + Twin + Approval Gate.
-              </p>
-              <p className="mt-1.5 text-[14px] text-foreground/90">
-                <span className="font-semibold">Different entry points:</span> Account Success,
-                Business Ops, Personal Space.
-              </p>
-            </div>
-          </Reveal>
-        </Container>
-      </Section>
-
-      {/* === SOLUTION 1 — Account Success === */}
-      <Section id="account-success">
-        <Container>
-          <Reveal className="mx-auto max-w-3xl text-center">
-            <Badge variant="muted">Solution 1 · Account Success</Badge>
-            <h2 className="heading-h2 mt-4">
-              Account Success —{" "}
-              <span className="text-gradient-hero">one client story, many tools.</span>
-            </h2>
-            <p className="mx-auto mt-5 text-[16px] leading-relaxed text-text-secondary">
-              Anyone who manages relationships — CAs, SaaS CSMs, service agencies, freelancers —
-              needs one place to see the full story of each account. Account Success uses Digital
-              Memory to bring that story together, no matter which tools you use.
-            </p>
-          </Reveal>
-
-          <Reveal delay={120} className="mx-auto mt-6 max-w-3xl">
-            <div className="grid gap-3 sm:grid-cols-3">
-              {[
-                "Indian CA firm tracking filings and notices",
-                "SaaS CSM watching renewals and usage",
-                "Agency owner tracking retainers and project health",
-              ].map((e) => (
-                <div
-                  key={e}
-                  className="rounded-lg border border-border bg-elevated/40 px-3 py-2.5 text-center text-[12.5px] text-foreground/85"
-                >
-                  {e}
-                </div>
-              ))}
-            </div>
-          </Reveal>
-
-          {/* Foundations + view */}
-          <div className="mx-auto mt-12 grid max-w-6xl items-start gap-6 lg:grid-cols-2">
+          {/* RoleMatcher filter */}
+          <div className="mx-auto mt-14 max-w-6xl">
             <Reveal>
-              <div className="card-iw h-full p-6">
-                <p className="text-[12px] font-semibold uppercase tracking-wider text-brand-accent">
-                  Foundation
+              <RoleMatcher
+                cards={SOLUTION_CARDS}
+                dimensions={FILTER_DIMENSIONS}
+                sectionId="role-matcher"
+                filters={filters}
+                onFilterChange={onFilterChange}
+              />
+            </Reveal>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Sticky in-page nav */}
+      <SectionNav
+        items={SOLUTIONS_SECTIONS.map((s) => ({ id: s.id, label: s.navLabel }))}
+      />
+
+        {/* 2. Intro */}
+        <Section alt>
+          <Container>
+            <Reveal className="mx-auto max-w-3xl text-center">
+              <Badge variant="muted">Spans roles. Spans industries.</Badge>
+              <h2 className="heading-h2 mt-4">Same pattern, different slice of your day.</h2>
+              <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
+                Whether you are a CA, SaaS CSM, agency owner, retail founder, or operations lead,
+                you face the same pattern: scattered data, no shared memory, too much manual
+                stitching. Each solution here uses the same Spine and Workspace to solve that
+                pattern for a different slice of your day.
+              </p>
+            </Reveal>
+
+            <Reveal delay={150} className="mx-auto mt-8 max-w-4xl">
+              <div className="card-iw p-6 text-center" style={{ background: "var(--bg-surface)" }}>
+                <p className="text-[14px] text-foreground/90">
+                  <span className="font-semibold text-brand-accent">Same foundation:</span> Adaptive
+                  Spine + Digital Memory + Workspace + Twin + Approval Gate.
                 </p>
-                <ul className="mt-4 space-y-3 text-[14px] leading-relaxed text-foreground/90">
-                  <li>
-                    • Digital Memory pulls invoices from Tally, payments from Razorpay, tickets from
-                    your support tool, emails from Gmail, chats from WhatsApp, and notes from Notion
-                    into one client Memory.
-                  </li>
-                  <li>
-                    • The Account Success Workspace view shows every client with status, risk, and
-                    next steps.
-                  </li>
-                </ul>
-                <p className="mt-5 text-[14px] font-medium text-foreground/90">
-                  Whether you call yourself CSM, CA, consultant, or account lead, the pattern is the
-                  same — one stitched view instead of ten tools.
+                <p className="mt-1.5 text-[14px] text-foreground/90">
+                  <span className="font-semibold">Different entry points:</span> Account Success,
+                  Business Ops, Personal Space.
                 </p>
               </div>
             </Reveal>
+          </Container>
+        </Section>
 
-            <Reveal delay={120}>
-              <AccountSuccessView />
+        {/* === SOLUTION 1 — Account Success === */}
+        <Section id="account-success">
+          <Container>
+            <Reveal className="mx-auto max-w-3xl text-center">
+              <Badge variant="muted">Solution 1 · Account Success</Badge>
+              <h2 className="heading-h2 mt-4">
+                Account Success —{" "}
+                <span className="text-gradient-hero">one client story, many tools.</span>
+              </h2>
+              <p className="mx-auto mt-5 text-[16px] leading-relaxed text-text-secondary">
+                Anyone who manages relationships — CAs, SaaS CSMs, service agencies, freelancers —
+                needs one place to see the full story of each account. Account Success uses Digital
+                Memory to bring that story together, no matter which tools you use.
+              </p>
             </Reveal>
-          </div>
 
-          {/* Twin & approvals */}
-          <div className="mx-auto mt-12 max-w-6xl">
-            <Reveal className="text-center">
-              <h3 className="text-[24px] font-semibold text-foreground">
-                Hidden risks surfaced early — always with your approval.
-              </h3>
-            </Reveal>
-
-            <div className="mt-8 grid gap-6 lg:grid-cols-[1.1fr_1fr]">
-              <Reveal>
-                <ChurnEquation />
-              </Reveal>
-              <Reveal delay={120}>
-                <div className="card-iw h-full p-6">
-                  <p className="text-[12px] font-semibold uppercase tracking-wider text-text-secondary">
-                    Twin proposes
-                  </p>
-                  <ul className="mt-3 space-y-2.5 text-[14px] text-foreground/90">
-                    <li>• Who to contact</li>
-                    <li>• What to send</li>
-                    <li>• Which systems to update</li>
-                  </ul>
-                  <div className="mt-5 border-t border-border pt-4">
-                    <ul className="space-y-2.5 text-[13.5px] text-foreground/85">
-                      <li>• You see why the client is at risk, with full evidence.</li>
-                      <li>• You review, edit, or approve Twin's plan.</li>
-                      <li>• No mail, note, or status change happens without your okay.</li>
-                    </ul>
+            <Reveal delay={120} className="mx-auto mt-6 max-w-3xl">
+              <div className="grid gap-3 sm:grid-cols-3">
+                {[
+                  "Indian CA firm tracking filings and notices",
+                  "SaaS CSM watching renewals and usage",
+                  "Agency owner tracking retainers and project health",
+                ].map((e) => (
+                  <div
+                    key={e}
+                    className="rounded-lg border border-border bg-elevated/40 px-3 py-2.5 text-center text-[12.5px] text-foreground/85"
+                  >
+                    {e}
                   </div>
-                  <button
-                    onClick={() => open("Solutions · Account Success")}
-                    className="btn-primary-iw mt-6"
-                  >
-                    See Account Success in a demo <ArrowRight size={16} />
-                  </button>
-                </div>
-              </Reveal>
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      {/* === SOLUTION 2 — Business Ops === */}
-      <Section alt id="business-ops">
-        <Container>
-          <Reveal className="mx-auto max-w-3xl text-center">
-            <Badge variant="muted">Solution 2 · Business Ops</Badge>
-            <h2 className="heading-h2 mt-4">
-              Business Ops —{" "}
-              <span className="text-gradient-hero">run the day from one screen.</span>
-            </h2>
-            <p className="mx-auto mt-5 text-[16px] leading-relaxed text-text-secondary">
-              Founders, owners, and operations leaders — in retail shops, agencies, SaaS,
-              professional services — all have the same problem: every Monday starts with
-              spreadsheets and tab-hunting. Business Ops uses Digital Memory and the Workspace to
-              give you one practical view of business health.
-            </p>
-          </Reveal>
-
-          <Reveal delay={120} className="mx-auto mt-6 max-w-3xl">
-            <div className="grid gap-3 sm:grid-cols-3">
-              {[
-                "Retail owner watching daily sales and credit",
-                "Agency founder tracking pipeline, delivery, and collections",
-                "SaaS founder tracking MRR, churn risks, hiring, and issues",
-              ].map((e) => (
-                <div
-                  key={e}
-                  className="rounded-lg border border-border bg-elevated/40 px-3 py-2.5 text-center text-[12.5px] text-foreground/85"
-                >
-                  {e}
-                </div>
-              ))}
-            </div>
-          </Reveal>
-
-          {/* Views & signals */}
-          <div className="mx-auto mt-12 grid max-w-6xl items-start gap-6 lg:grid-cols-2">
-            <Reveal>
-              <div className="card-iw h-full p-6">
-                <p className="text-[12px] font-semibold uppercase tracking-wider text-brand-accent">
-                  Foundation
-                </p>
-                <ul className="mt-4 space-y-3 text-[14px] leading-relaxed text-foreground/90">
-                  <li>
-                    • Business Ops reads from Org Memory — sales, payments, tickets, hiring, tasks —
-                    and arranges it into a simple daily Workspace.
-                  </li>
-                  <li>
-                    • You see sales, credit outstanding, key risks, and team capacity without
-                    building Excel every week.
-                  </li>
-                </ul>
-                <p className="mt-5 text-[14px] font-medium text-foreground/90">
-                  Same foundation across industries — only the fields and examples change per
-                  business.
-                </p>
+                ))}
               </div>
             </Reveal>
 
-            <Reveal delay={120}>
-              <BusinessOverview />
-            </Reveal>
-          </div>
-
-          {/* Twin morning brief */}
-          <div className="mx-auto mt-12 max-w-6xl">
-            <Reveal className="text-center">
-              <h3 className="text-[24px] font-semibold text-foreground">
-                Morning brief, not Monday chaos.
-              </h3>
-            </Reveal>
-
-            <div className="mt-8 grid gap-6 lg:grid-cols-[1.1fr_1fr]">
+            {/* Foundations + view */}
+            <div className="mx-auto mt-12 grid max-w-6xl items-start gap-6 lg:grid-cols-2">
               <Reveal>
-                <MorningBrief />
-              </Reveal>
-              <Reveal delay={120}>
                 <div className="card-iw h-full p-6">
-                  <ul className="space-y-3 text-[14px] leading-relaxed text-foreground/90">
-                    <li>• Twin reads your Org Memory and prepares a short morning brief.</li>
+                  <p className="text-[12px] font-semibold uppercase tracking-wider text-brand-accent">
+                    Foundation
+                  </p>
+                  <ul className="mt-4 space-y-3 text-[14px] leading-relaxed text-foreground/90">
                     <li>
-                      • You approve which actions to run — in email, billing, CRM, or project tools.
+                      • Digital Memory pulls invoices from Tally, payments from Razorpay, tickets
+                      from your support tool, emails from Gmail, chats from WhatsApp, and notes from
+                      Notion into one client Memory.
                     </li>
-                    <li>• Every step is logged; nothing runs without human Approval Gate.</li>
+                    <li>
+                      • The Account Success Workspace view shows every client with status, risk, and
+                      next steps.
+                    </li>
                   </ul>
-                  <button
-                    onClick={() => open("Solutions · Business Ops")}
-                    className="btn-primary-iw mt-6"
-                  >
-                    See Business Ops in a demo <ArrowRight size={16} />
-                  </button>
+                  <p className="mt-5 text-[14px] font-medium text-foreground/90">
+                    Whether you call yourself CSM, CA, consultant, or account lead, the pattern is
+                    the same — one stitched view instead of ten tools.
+                  </p>
                 </div>
               </Reveal>
-            </div>
-          </div>
-        </Container>
-      </Section>
 
-      {/* === SOLUTION 3 — Personal Space === */}
-      <Section id="personal-space">
-        <Container>
-          <Reveal className="mx-auto max-w-3xl text-center">
-            <div className="flex items-center justify-center gap-2">
-              <Badge variant="muted">Solution 3 · Personal Space</Badge>
-              <span className="rounded-full border border-brand-highlight/30 bg-brand-highlight/10 px-2 py-0.5 text-[10.5px] font-semibold uppercase tracking-wider text-brand-highlight">
-                Waitlist
-              </span>
+              <Reveal delay={120}>
+                <AccountSuccessView />
+              </Reveal>
             </div>
-            <h2 className="heading-h2 mt-4">
-              Personal Space —{" "}
-              <span className="text-gradient-hero">your own operating system.</span>
-            </h2>
-            <p className="mx-auto mt-5 text-[16px] leading-relaxed text-text-secondary">
-              Everyone has scattered personal work — side projects, learning, family tasks,
-              finances. Personal Space uses the same Spine and Workspace, but just for you. Your
-              notes, tasks, calendar, and links become Digital Memory, not messy lists.
-            </p>
-          </Reveal>
 
-          {/* How it works */}
-          <div className="mx-auto mt-12 grid max-w-6xl items-start gap-6 lg:grid-cols-2">
-            <Reveal>
-              <div className="card-iw h-full p-6">
-                <p className="text-[12px] font-semibold uppercase tracking-wider text-brand-accent">
-                  How it works
-                </p>
-                <ul className="mt-4 space-y-3 text-[14px] leading-relaxed text-foreground/90">
-                  <li>• Connect your calendar, tasks app, note tool, and maybe email.</li>
-                  <li>
-                    • The Spine builds your User Memory — meetings, todos, ideas, bookmarks — as one
-                    private Digital Memory.
-                  </li>
-                  <li>
-                    • Your Personal Workspace shows today's focus, upcoming deadlines, and a simple
-                    view of each project.
-                  </li>
-                </ul>
-                <p className="mt-5 text-[14px] font-medium text-foreground/90">
-                  Same engine as Business Ops and Account Success; just filtered to your private
-                  life.
-                </p>
+            {/* Twin & approvals */}
+            <div className="mx-auto mt-12 max-w-6xl">
+              <Reveal className="text-center">
+                <h3 className="text-[24px] font-semibold text-foreground">
+                  Hidden risks surfaced early — always with your approval.
+                </h3>
+              </Reveal>
+
+              <div className="mt-8 grid gap-6 lg:grid-cols-[1.1fr_1fr]">
+                <Reveal>
+                  <ChurnEquation />
+                </Reveal>
+                <Reveal delay={120}>
+                  <div className="card-iw h-full p-6">
+                    <p className="text-[12px] font-semibold uppercase tracking-wider text-text-secondary">
+                      Twin proposes
+                    </p>
+                    <ul className="mt-3 space-y-2.5 text-[14px] text-foreground/90">
+                      <li>• Who to contact</li>
+                      <li>• What to send</li>
+                      <li>• Which systems to update</li>
+                    </ul>
+                    <div className="mt-5 border-t border-border pt-4">
+                      <ul className="space-y-2.5 text-[13.5px] text-foreground/85">
+                        <li>• You see why the client is at risk, with full evidence.</li>
+                        <li>• You review, edit, or approve Twin's plan.</li>
+                        <li>• No mail, note, or status change happens without your okay.</li>
+                      </ul>
+                    </div>
+                    <button
+                      onClick={() => open("Solutions · Account Success")}
+                      className="btn-primary-iw mt-6"
+                    >
+                      See Account Success in a demo <ArrowRight size={16} />
+                    </button>
+                  </div>
+                </Reveal>
+              </div>
+            </div>
+          </Container>
+        </Section>
+
+        {/* === SOLUTION 2 — Business Ops === */}
+        <Section alt id="business-ops">
+          <Container>
+            <Reveal className="mx-auto max-w-3xl text-center">
+              <Badge variant="muted">Solution 2 · Business Ops</Badge>
+              <h2 className="heading-h2 mt-4">
+                Business Ops —{" "}
+                <span className="text-gradient-hero">run the day from one screen.</span>
+              </h2>
+              <p className="mx-auto mt-5 text-[16px] leading-relaxed text-text-secondary">
+                Founders, owners, and operations leaders — in retail shops, agencies, SaaS,
+                professional services — all have the same problem: every Monday starts with
+                spreadsheets and tab-hunting. Business Ops uses Digital Memory and the Workspace to
+                give you one practical view of business health.
+              </p>
+            </Reveal>
+
+            <Reveal delay={120} className="mx-auto mt-6 max-w-3xl">
+              <div className="grid gap-3 sm:grid-cols-3">
+                {[
+                  "Retail owner watching daily sales and credit",
+                  "Agency founder tracking pipeline, delivery, and collections",
+                  "SaaS founder tracking MRR, churn risks, hiring, and issues",
+                ].map((e) => (
+                  <div
+                    key={e}
+                    className="rounded-lg border border-border bg-elevated/40 px-3 py-2.5 text-center text-[12.5px] text-foreground/85"
+                  >
+                    {e}
+                  </div>
+                ))}
               </div>
             </Reveal>
 
-            <Reveal delay={120}>
-              <PersonalView />
-            </Reveal>
-          </div>
+            {/* Views & signals */}
+            <div className="mx-auto mt-12 grid max-w-6xl items-start gap-6 lg:grid-cols-2">
+              <Reveal>
+                <div className="card-iw h-full p-6">
+                  <p className="text-[12px] font-semibold uppercase tracking-wider text-brand-accent">
+                    Foundation
+                  </p>
+                  <ul className="mt-4 space-y-3 text-[14px] leading-relaxed text-foreground/90">
+                    <li>
+                      • Business Ops reads from Org Memory — sales, payments, tickets, hiring, tasks
+                      — and arranges it into a simple daily Workspace.
+                    </li>
+                    <li>
+                      • You see sales, credit outstanding, key risks, and team capacity without
+                      building Excel every week.
+                    </li>
+                  </ul>
+                  <p className="mt-5 text-[14px] font-medium text-foreground/90">
+                    Same foundation across industries — only the fields and examples change per
+                    business.
+                  </p>
+                </div>
+              </Reveal>
 
-          {/* Twin */}
-          <div className="mx-auto mt-12 max-w-4xl">
-            <Reveal className="card-iw p-6">
-              <div className="flex items-center gap-2 text-brand-accent">
-                <Sparkles size={16} />
-                <p className="text-[12px] font-semibold uppercase tracking-wider">
-                  A Twin that respects your space
-                </p>
+              <Reveal delay={120}>
+                <BusinessOverview />
+              </Reveal>
+            </div>
+
+            {/* Twin morning brief */}
+            <div className="mx-auto mt-12 max-w-6xl">
+              <Reveal className="text-center">
+                <h3 className="text-[24px] font-semibold text-foreground">
+                  Morning brief, not Monday chaos.
+                </h3>
+              </Reveal>
+
+              <div className="mt-8 grid gap-6 lg:grid-cols-[1.1fr_1fr]">
+                <Reveal>
+                  <MorningBrief />
+                </Reveal>
+                <Reveal delay={120}>
+                  <div className="card-iw h-full p-6">
+                    <ul className="space-y-3 text-[14px] leading-relaxed text-foreground/90">
+                      <li>• Twin reads your Org Memory and prepares a short morning brief.</li>
+                      <li>
+                        • You approve which actions to run — in email, billing, CRM, or project
+                        tools.
+                      </li>
+                      <li>• Every step is logged; nothing runs without human Approval Gate.</li>
+                    </ul>
+                    <button
+                      onClick={() => open("Solutions · Business Ops")}
+                      className="btn-primary-iw mt-6"
+                    >
+                      See Business Ops in a demo <ArrowRight size={16} />
+                    </button>
+                  </div>
+                </Reveal>
               </div>
-              <ul className="mt-4 space-y-3 text-[14px] leading-relaxed text-foreground/90">
-                <li>
-                  • Twin can propose: follow-up reminders, meeting prep, review plans, study
-                  schedules.
-                </li>
-                <li>
-                  • It still uses only your User Memory — it never sees your Org or Work Memory
-                  unless you explicitly join them.
-                </li>
-                <li>
-                  • Every action still goes through Approval Gate; you stay in control of your own
-                  day.
-                </li>
-              </ul>
-              <div className="mt-6 flex flex-wrap items-center gap-3">
-                <button
-                  onClick={() => openWaitlist("Solutions · Personal Space")}
-                  className="btn-primary-iw"
-                >
-                  Join Personal Space waitlist <ArrowRight size={16} />
-                </button>
-                <span className="text-[12.5px] text-text-secondary">
-                  Personal Space is currently waitlisted — join early access.
+            </div>
+          </Container>
+        </Section>
+
+        {/* === SOLUTION 3 — Personal Space === */}
+        <Section id="personal-space">
+          <Container>
+            <Reveal className="mx-auto max-w-3xl text-center">
+              <div className="flex items-center justify-center gap-2">
+                <Badge variant="muted">Solution 3 · Personal Space</Badge>
+                <span className="rounded-full border border-brand-highlight/30 bg-brand-highlight/10 px-2 py-0.5 text-[10.5px] font-semibold uppercase tracking-wider text-brand-highlight">
+                  Waitlist
                 </span>
               </div>
+              <h2 className="heading-h2 mt-4">
+                Personal Space —{" "}
+                <span className="text-gradient-hero">your own operating system.</span>
+              </h2>
+              <p className="mx-auto mt-5 text-[16px] leading-relaxed text-text-secondary">
+                Everyone has scattered personal work — side projects, learning, family tasks,
+                finances. Personal Space uses the same Spine and Workspace, but just for you. Your
+                notes, tasks, calendar, and links become Digital Memory, not messy lists.
+              </p>
             </Reveal>
-          </div>
-        </Container>
-      </Section>
 
-      {/* Closing */}
-      <Section alt>
-        <Container>
-          <Reveal className="mx-auto max-w-3xl text-center">
-            <Badge variant="muted">One foundation</Badge>
-            <h2 className="heading-h2 mt-4">One foundation. Three doors in.</h2>
-            <p className="mx-auto mt-5 text-[16px] leading-relaxed text-text-secondary">
-              Account Success, Business Ops, and Personal Space are three ways to enter the same
-              IntegrateWise foundation. Under the hood, everyone uses the Spine, Digital Memory,
-              Workspace, Twin, and Approval Gate. Over time, your User, Work, and Org Memory grow
-              together — and your AI stays grounded in your own library.
-            </p>
-            <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
-              <button onClick={() => open()} className="btn-primary-iw">
-                Book a demo <ArrowRight size={16} />
-              </button>
-              <button onClick={() => open()} className="btn-secondary-iw">
-                Talk about your use case
-              </button>
+            {/* How it works */}
+            <div className="mx-auto mt-12 grid max-w-6xl items-start gap-6 lg:grid-cols-2">
+              <Reveal>
+                <div className="card-iw h-full p-6">
+                  <p className="text-[12px] font-semibold uppercase tracking-wider text-brand-accent">
+                    How it works
+                  </p>
+                  <ul className="mt-4 space-y-3 text-[14px] leading-relaxed text-foreground/90">
+                    <li>• Connect your calendar, tasks app, note tool, and maybe email.</li>
+                    <li>
+                      • The Spine builds your User Memory — meetings, todos, ideas, bookmarks — as
+                      one private Digital Memory.
+                    </li>
+                    <li>
+                      • Your Personal Workspace shows today's focus, upcoming deadlines, and a
+                      simple view of each project.
+                    </li>
+                  </ul>
+                  <p className="mt-5 text-[14px] font-medium text-foreground/90">
+                    Same engine as Business Ops and Account Success; just filtered to your private
+                    life.
+                  </p>
+                </div>
+              </Reveal>
+
+              <Reveal delay={120}>
+                <PersonalView />
+              </Reveal>
             </div>
-            <p className="mt-6 text-[13px] text-text-secondary">
-              Truth you own. AI you rent. Approval in between.
-            </p>
-          </Reveal>
-        </Container>
-      </Section>
+
+            {/* Twin */}
+            <div className="mx-auto mt-12 max-w-4xl">
+              <Reveal className="card-iw p-6">
+                <div className="flex items-center gap-2 text-brand-accent">
+                  <Sparkles size={16} />
+                  <p className="text-[12px] font-semibold uppercase tracking-wider">
+                    A Twin that respects your space
+                  </p>
+                </div>
+                <ul className="mt-4 space-y-3 text-[14px] leading-relaxed text-foreground/90">
+                  <li>
+                    • Twin can propose: follow-up reminders, meeting prep, review plans, study
+                    schedules.
+                  </li>
+                  <li>
+                    • It still uses only your User Memory — it never sees your Org or Work Memory
+                    unless you explicitly join them.
+                  </li>
+                  <li>
+                    • Every action still goes through Approval Gate; you stay in control of your own
+                    day.
+                  </li>
+                </ul>
+                <div className="mt-6 flex flex-wrap items-center gap-3">
+                  <button
+                    onClick={() => openWaitlist("Solutions · Personal Space")}
+                    className="btn-primary-iw"
+                  >
+                    Join Personal Space waitlist <ArrowRight size={16} />
+                  </button>
+                  <span className="text-[12.5px] text-text-secondary">
+                    Personal Space is currently waitlisted — join early access.
+                  </span>
+                </div>
+              </Reveal>
+            </div>
+          </Container>
+        </Section>
+
+        {/* Closing */}
+        <Section alt>
+          <Container>
+            <Reveal className="mx-auto max-w-3xl text-center">
+              <Badge variant="muted">One foundation</Badge>
+              <h2 className="heading-h2 mt-4">One foundation. Three doors in.</h2>
+              <p className="mx-auto mt-5 text-[16px] leading-relaxed text-text-secondary">
+                Account Success, Business Ops, and Personal Space are three ways to enter the same
+                IntegrateWise foundation. Under the hood, everyone uses the Spine, Digital Memory,
+                Workspace, Twin, and Approval Gate. Over time, your User, Work, and Org Memory grow
+                together — and your AI stays grounded in your own library.
+              </p>
+              <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
+                <button onClick={() => open()} className="btn-primary-iw">
+                  Book a demo <ArrowRight size={16} />
+                </button>
+                <button onClick={() => open()} className="btn-secondary-iw">
+                  Talk about your use case
+                </button>
+              </div>
+              <p className="mt-6 text-[13px] text-text-secondary">
+                Truth you own. AI you rent. Approval in between.
+              </p>
+            </Reveal>
+          </Container>
+        </Section>
     </>
   );
 }

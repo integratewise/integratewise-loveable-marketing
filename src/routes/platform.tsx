@@ -123,14 +123,7 @@ function PlatformPage() {
 
       {/* Sticky in-page nav */}
       <SectionNav
-        items={[
-          { id: "spine", label: "Spine" },
-          { id: "how-it-works", label: "How it works" },
-          { id: "digital-memory", label: "Digital Memory" },
-          { id: "connectors", label: "Connectors" },
-          { id: "security", label: "Security" },
-          { id: "integrations", label: "Integrations" },
-        ]}
+        items={PLATFORM_SECTIONS.map((s) => ({ id: s.id, label: s.navLabel }))}
       />
 
       {/* 1. Spine */}

@@ -7,7 +7,7 @@ export function Footer() {
   return (
     <footer className="border-t border-border bg-section-alt">
       <Container className="py-16">
-        <div className="grid gap-10 md:grid-cols-3 lg:grid-cols-7">
+        <div className="grid gap-10 md:grid-cols-3 lg:grid-cols-9">
           <div className="md:col-span-3 lg:col-span-2">
             <div className="flex items-center gap-2.5">
               <SpineLogo className="h-[28px] w-auto text-foreground" />
@@ -58,20 +58,57 @@ export function Footer() {
           <FooterCol
             title="Solutions"
             links={[
-              { to: "/solutions/account-success", label: "Account Success" },
-              { to: "/solutions/business-ops", label: "Business Ops" },
-              { to: "/solutions/personal-space", label: "Personal Space" },
+              { to: "/solutions#account-success", label: "Account Success" },
+              { to: "/solutions#business-ops", label: "Business Ops" },
+              { to: "/solutions#personal-space", label: "Personal Space" },
               { to: "/solutions", label: "All solutions" },
             ]}
           />
           <FooterCol
             title="Company"
             links={[
-              { to: "/about", label: "About" },
-              { to: "/manifesto", label: "Manifesto" },
-              { to: "/customer-zero", label: "Customer Zero" },
-              { to: "/why", label: "Why" },
-              { to: "/contact", label: "Contact" },
+              { to: "/company#about", label: "About" },
+              { to: "/company#manifesto", label: "Manifesto" },
+              { to: "/company#customer-zero", label: "Customer Zero" },
+              { to: "/company#customer-zero", label: "Why" },
+              { to: "/company#contact", label: "Contact" },
+            ]}
+          />
+          <FooterCol
+            title="Blog"
+            links={[
+              { to: "/blog", label: "All posts" },
+              { to: "/blog#product", label: "Product" },
+              { to: "/blog#platform", label: "Platform" },
+              { to: "/blog#intelligence", label: "Intelligence" },
+              { to: "/blog#case-studies", label: "Case Studies" },
+            ]}
+          />
+          <FooterCol
+            title="Resources"
+            links={[
+              { to: "/resources", label: "All resources" },
+              { to: "/resources#guides", label: "Guides" },
+              { to: "/resources#webinars", label: "Webinars" },
+              { to: "/resources#one-pagers", label: "One-pagers" },
+            ]}
+          />
+          <FooterCol
+            title="Docs"
+            links={[
+              { to: "/docs", label: "Getting started" },
+              { to: "/docs#connectors", label: "Connectors" },
+              { to: "/docs#workspaces", label: "Workspaces" },
+              { to: "/docs#twin-approvals", label: "Twin & Approvals" },
+            ]}
+          />
+          <FooterCol
+            title="Changelog"
+            links={[
+              { to: "/changelog", label: "Latest" },
+              { to: "/changelog#platform", label: "Platform" },
+              { to: "/changelog#product", label: "Product" },
+              { to: "/changelog#twin", label: "Twin" },
             ]}
           />
         </div>

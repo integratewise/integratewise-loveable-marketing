@@ -1,12 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { StubPage, stubMeta } from "@/components/site/StubPage";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/customer-zero")({
-  head: () => stubMeta("Customer Zero", "Built by an operator. The founder is the first user."),
-  component: () => (
-    <StubPage
-      title="Customer Zero"
-      description="Built by an operator. The founder is the first user."
-    />
-  ),
+  beforeLoad: () => {
+    throw redirect({ to: "/company", hash: "customer-zero" });
+  },
 });

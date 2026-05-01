@@ -24,7 +24,7 @@ import { ProductVideo } from "@/components/site/ProductVideo";
 import { SectionNav } from "@/components/site/SectionNav";
 import { useDemoModal } from "@/components/site/demo-modal-context";
 import { MEMORY_COPY } from "@/lib/site";
-import { NAV_ITEMS, ACCOUNT_ROWS, VIEWS } from "@/content/product-content";
+import { NAV_ITEMS, ACCOUNT_ROWS, VIEWS, PRODUCT_SECTIONS } from "@/content/product-content";
 
 export const Route = createFileRoute("/product")({
   head: () => ({
@@ -82,14 +82,7 @@ function ProductPage() {
       </Section>
 
       {/* Sticky in-page nav */}
-      <SectionNav
-        items={[
-          { id: "workspace", label: "Workspace" },
-          { id: "how-it-works", label: "How it works" },
-          { id: "digital-memory", label: "Digital Memory" },
-          { id: "security", label: "Security" },
-        ]}
-      />
+      <SectionNav items={PRODUCT_SECTIONS.map((s) => ({ id: s.id, label: s.navLabel }))} />
 
       {/* 2. From empty dashboards to a living workspace */}
       <Section alt>
@@ -327,8 +320,8 @@ function ProductPage() {
         </Container>
       </Section>
 
-      {/* 7. Security — Approval Gate, RBAC, audit trail */}
-      <Section id="security">
+      {/* 7. Human-in-the-loop — Approval Gate, RBAC, audit trail */}
+      <Section id="human-in-the-loop">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Security</Badge>
@@ -444,8 +437,8 @@ function ProductPage() {
         </Container>
       </Section>
 
-      {/* 8. CTA */}
-      <Section alt>
+      {/* 8. Example walkthrough CTA */}
+      <Section id="example-walkthrough" alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <h2 className="heading-h2">See your Workspace built on your own data.</h2>
