@@ -139,7 +139,7 @@
 
   --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
 
-  --container-max: 1100px;
+  --container-max: 1200px;
 }
 
 @layer base {
@@ -157,7 +157,15 @@
   body {
     background-color: var(--bg-base);
     color: var(--text-primary);
+    line-height: 1.65;
   }
+
+  p {
+    line-height: 1.7;
+  }
+
+  /* Comfortable max width for any standalone paragraph */
+  section p { max-width: 68ch; }
 
   ::selection {
     background-color: rgba(255, 225, 204, 0.25);
@@ -168,19 +176,35 @@
 @layer components {
   .container-iw {
     width: 100%;
-    max-width: 1100px;
+    max-width: 1200px;
     margin-inline: auto;
     padding-inline: 24px;
   }
   @media (min-width: 768px) {
-    .container-iw { padding-inline: 40px; }
+    .container-iw { padding-inline: 48px; }
+  }
+  @media (min-width: 1280px) {
+    .container-iw { padding-inline: 64px; }
+  }
+
+  /* Narrower reading column for long-form copy inside a section */
+  .container-prose {
+    width: 100%;
+    max-width: 760px;
+    margin-inline: auto;
   }
 
   .section-py {
-    padding-block: 96px;
+    padding-block: 88px;
   }
-  @media (min-width: 768px) { .section-py { padding-block: 160px; } }
-  @media (min-width: 1024px) { .section-py { padding-block: 208px; } }
+  @media (min-width: 768px) { .section-py { padding-block: 144px; } }
+  @media (min-width: 1024px) { .section-py { padding-block: 184px; } }
+
+  /* Standardised vertical rhythm for section heading stacks */
+  .stack-section-head > * + * { margin-top: 20px; }
+  @media (min-width: 768px) {
+    .stack-section-head > * + * { margin-top: 24px; }
+  }
 
   .section-heading {
     font-size: 40px;
