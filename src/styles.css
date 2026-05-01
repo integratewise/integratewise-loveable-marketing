@@ -271,13 +271,27 @@
     color: var(--text-inverse);
     background: var(--gradient-button-primary);
     box-shadow: var(--shadow-button-primary);
-    transition: box-shadow 300ms ease, transform 300ms ease;
+    transition:
+      box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+      filter 220ms ease;
     border: 1px solid rgba(255, 225, 204, 0.6);
     cursor: pointer;
   }
   .btn-primary-iw:hover {
     box-shadow: var(--shadow-button-primary-hover);
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    filter: brightness(1.04);
+  }
+  .btn-primary-iw:active {
+    transform: translateY(0) scale(0.98);
+    transition-duration: 80ms;
+  }
+  .btn-primary-iw:focus-visible {
+    outline: none;
+    box-shadow:
+      var(--shadow-button-primary-hover),
+      0 0 0 3px rgba(255, 225, 204, 0.45);
   }
 
   .btn-secondary-iw {
@@ -293,12 +307,25 @@
     color: var(--text-primary);
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    transition: background 300ms ease, border-color 300ms ease;
+    transition:
+      background 320ms cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 320ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
     cursor: pointer;
   }
   .btn-secondary-iw:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.06);
     border-color: var(--border-interactive);
+    transform: translateY(-2px);
+  }
+  .btn-secondary-iw:active {
+    transform: translateY(0) scale(0.98);
+    transition-duration: 80ms;
+  }
+  .btn-secondary-iw:focus-visible {
+    outline: none;
+    border-color: var(--border-interactive);
+    box-shadow: 0 0 0 3px rgba(255, 225, 204, 0.35);
   }
 
   .card-iw {
@@ -306,7 +333,11 @@
     border: 1px solid var(--border-subtle);
     border-radius: 16px;
     box-shadow: var(--shadow-surface);
-    transition: background 300ms ease, border-color 300ms ease, box-shadow 300ms ease, transform 300ms ease;
+    transition:
+      background 360ms cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 360ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 360ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
     position: relative;
     overflow: hidden;
   }
@@ -314,7 +345,7 @@
     background: var(--bg-surface-hover);
     border-color: var(--border-interactive);
     box-shadow: var(--shadow-surface-lg);
-    transform: translateY(-2px);
+    transform: translateY(-6px);
   }
   .card-iw::before {
     content: "";
@@ -322,10 +353,18 @@
     inset: 0;
     background: var(--gradient-card-glow);
     opacity: 0;
-    transition: opacity 300ms ease;
+    transition: opacity 360ms cubic-bezier(0.22, 1, 0.36, 1);
     pointer-events: none;
   }
   .card-iw:hover::before { opacity: 1; }
+  /* Subtle zoom for media inside cards (Nexify pattern). */
+  .card-iw img,
+  .card-iw .card-media {
+    transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+  }
+  .card-iw:hover img,
+  .card-iw:hover .card-media { transform: scale(1.04); }
 
   .badge-iw {
     display: inline-flex;
@@ -527,18 +566,35 @@
   to { transform: translate(-50%, -50%) rotate(-360deg); }
 }
 
-/* Marquee */
+/* Marquee — Nexify-style: GPU-composited, slower on mobile, pause on hover. */
 @keyframes marquee-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
 }
 .marquee-track {
-  animation: marquee-scroll 28s linear infinite;
+  animation: marquee-scroll 40s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
 }
-.marquee-track:hover { animation-play-state: paused; }
+@media (min-width: 768px) {
+  .marquee-track { animation-duration: 32s; }
+}
+@media (min-width: 1280px) {
+  .marquee-track { animation-duration: 28s; }
+}
+.marquee-track:hover,
+.marquee-mask:hover .marquee-track { animation-play-state: paused; }
 .marquee-mask {
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+.marquee-item {
+  transition: opacity 320ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.marquee-item:hover {
+  opacity: 1 !important;
+  transform: translateY(-2px) scale(1.04);
 }
 
 /* Twin pulse */

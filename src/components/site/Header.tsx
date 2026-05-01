@@ -99,7 +99,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => openDemo("Header")}
-            className="inline-flex h-[38px] items-center justify-center rounded-xl bg-primary px-4 text-[14px] font-semibold tracking-[-0.02em] text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/50"
+            className="inline-flex h-[38px] items-center justify-center rounded-xl bg-primary px-4 text-[14px] font-semibold tracking-[-0.02em] text-white transition-[background-color,transform,box-shadow] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-[0_8px_24px_rgba(52,211,153,0.25)] active:translate-y-0 active:scale-[0.97] active:duration-100 focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/50"
             style={{ border: "1px solid rgba(52, 211, 153, 0.2)" }}
           >
             Book a demo
@@ -108,7 +108,7 @@ export function Header() {
             type="button"
             aria-label={open ? "Close menu" : "Open menu"}
             onClick={() => setOpen((v) => !v)}
-            className="rounded-md p-1.5 text-white/60 hover:text-white focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/50 lg:hidden"
+            className="rounded-md p-1.5 text-white/60 transition-colors duration-200 hover:text-white active:scale-90 focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/50 lg:hidden"
           >
             {open ? <X size={20} /> : <Menu size={20} />}
           </button>
