@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+
 import {
   ArrowRight,
   ShieldCheck,
@@ -61,102 +61,14 @@ const HERO_LOGOS = [
 ];
 
 /* ------------------------------------------------------------------ */
-/* On-page nav config                                                  */
-/* ------------------------------------------------------------------ */
-
-const ANCHOR_NAV: Array<{ id: string; label: string }> = [
-  { id: "why", label: "Why" },
-  { id: "product", label: "Product" },
-  { id: "solutions", label: "Solutions" },
-  { id: "pricing", label: "Pricing" },
-  { id: "security", label: "Security" },
-];
-
-function useActiveSection(ids: string[]): string {
-  const [active, setActive] = useState<string>(ids[0] ?? "");
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible[0]) setActive(visible[0].target.id);
-      },
-      { rootMargin: "-40% 0px -50% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] },
-    );
-    ids.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
-  }, [ids]);
-  return active;
-}
-
-function smoothScrollTo(id: string) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  const offset = 140; // sticky global header (60) + sub-nav (~52) + breathing room
-  const y = el.getBoundingClientRect().top + window.scrollY - offset;
-  window.scrollTo({ top: y, behavior: "smooth" });
-}
-
-/* ------------------------------------------------------------------ */
 /* Page                                                                */
 /* ------------------------------------------------------------------ */
 
 function HomePage() {
   const { open, openEarlyAccess, openWaitlist } = useDemoModal();
-  const active = useActiveSection(ANCHOR_NAV.map((n) => n.id));
 
   return (
     <>
-      {/* ============= STICKY ANCHOR SUB-NAV ============= */}
-      <div
-        className="sticky top-[60px] z-40 border-b border-white/5 backdrop-blur"
-        style={{
-          background: "rgba(5, 7, 10, 0.85)",
-          WebkitBackdropFilter: "blur(14px) saturate(1.4)",
-          backdropFilter: "blur(14px) saturate(1.4)",
-        }}
-      >
-        <Container>
-          <nav
-            aria-label="Page sections"
-            className="flex items-center justify-between gap-4 py-3"
-          >
-            <div className="hide-scrollbar flex items-center gap-1 overflow-x-auto">
-              {ANCHOR_NAV.map((n) => {
-                const isActive = active === n.id;
-                return (
-                  <button
-                    key={n.id}
-                    type="button"
-                    onClick={() => smoothScrollTo(n.id)}
-                    aria-current={isActive ? "true" : undefined}
-                    className={
-                      "shrink-0 rounded-md px-3 py-1.5 text-[13.5px] font-medium transition-colors " +
-                      (isActive
-                        ? "bg-white/10 text-white"
-                        : "text-white/65 hover:bg-white/5 hover:text-white")
-                    }
-                  >
-                    {n.label}
-                  </button>
-                );
-              })}
-            </div>
-            <button
-              type="button"
-              onClick={() => open("Sticky sub-nav")}
-              className="btn-primary-iw shrink-0 !px-4 !py-2 text-[13.5px]"
-            >
-              Book a Demo <ArrowRight size={14} />
-            </button>
-          </nav>
-        </Container>
-      </div>
-
       {/* ========================= 1. HERO ========================= */}
       <section
         id="top"
