@@ -29,30 +29,25 @@ import { Section } from "@/components/site/Section";
 import { Badge } from "@/components/site/Badge";
 import { Reveal } from "@/components/site/Reveal";
 import { ProductVideo } from "@/components/site/ProductVideo";
+import { SectionNav } from "@/components/site/SectionNav";
 import { useDemoModal } from "@/components/site/demo-modal-context";
-import { StickySubNav } from "@/components/site/StickySubNav";
-
-const SUBNAV_ITEMS = [
-  { id: "workspace", label: "Workspace" },
-  { id: "how-it-works", label: "How it works" },
-  { id: "digital-memory", label: "Digital Memory" },
-  { id: "security", label: "Security" },
-];
+import { MEMORY_COPY } from "@/lib/site";
+import { Lock, KeyRound, FileSearch } from "lucide-react";
 
 export const Route = createFileRoute("/product")({
   head: () => ({
     meta: [
-      { title: "Product — Your Workspace adapts to how you work" },
+      { title: "Product — One Workspace. One active context. One clear state." },
       {
         name: "description",
         content:
-          "The Adaptive Workspace reads from your Digital Memory and reshapes itself around your clients, projects, filings, and tasks. One living screen, never an empty dashboard.",
+          "Every app runs on the Workspace. It composes scoped memory per client, project or filing — relevant, stable, ready to act on. AI proposes structured changes against memory; the governance layer decides what becomes real and maintains a single active context.",
       },
-      { property: "og:title", content: "IntegrateWise Product — Adaptive Workspace" },
+      { property: "og:title", content: "IntegrateWise Product — Workspace" },
       {
         property: "og:description",
         content:
-          "Not a static dashboard. A living workspace built on Digital Memory, with evidence and approval beside every action.",
+          "Scoped memory per entity. AI proposes against memory, never raw data. Governance decides what becomes real — every action logged inside one active context.",
       },
     ],
   }),
@@ -146,28 +141,25 @@ function ProductPage() {
 
   return (
     <>
-      <StickySubNav items={SUBNAV_ITEMS} variant="rail" />
-
-      {/* 1. Hero — #workspace */}
+      {/* 1. Hero — Workspace */}
       <Section id="workspace" orbs className="!pt-20 lg:!pt-28">
         <Container>
           <div className="mx-auto max-w-3xl text-center">
-            <Badge variant="muted">Still juggling your work?</Badge>
+            <Badge variant="muted">Product</Badge>
             <h1 className="heading-h1 mt-5">
-              Your Workspace{" "}
-              <span className="text-gradient-hero">adapts to how you work.</span>
+              Your Workspace <span className="text-gradient-hero">adapts to how you work.</span>
             </h1>
             <p className="mx-auto mt-5 text-[17px] leading-relaxed text-text-secondary">
               You don't need another dashboard. You need one living screen that matches your day.
-              The Adaptive Workspace reads from your Digital Memory and reshapes itself around your
-              clients, projects, filings, and tasks. The Workspace is where stitching between apps
-              happens, so you stop being the Human API.
+              The Workspace reads from your Digital Memory and reshapes itself around your clients,
+              projects, filings, and tasks. The Workspace is where stitching between apps happens,
+              so you stop being the Human API.
             </p>
             <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
               <button onClick={() => open()} className="btn-primary-iw">
                 Book a demo <ArrowRight size={16} />
               </button>
-              <a href="#frame" className="btn-secondary-iw">
+              <a href="#how-it-works" className="btn-secondary-iw">
                 See it in action
               </a>
             </div>
@@ -179,8 +171,18 @@ function ProductPage() {
         </Container>
       </Section>
 
+      {/* Sticky in-page nav */}
+      <SectionNav
+        items={[
+          { id: "workspace", label: "Workspace" },
+          { id: "how-it-works", label: "How it works" },
+          { id: "digital-memory", label: "Digital Memory" },
+          { id: "security", label: "Security" },
+        ]}
+      />
+
       {/* 2. From empty dashboards to a living workspace */}
-      <Section id="how-it-works" alt>
+      <Section alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Living workspace</Badge>
@@ -219,48 +221,15 @@ function ProductPage() {
                     • Workspace views evolve: richer client views, project boards, account health,
                     filings, and risks.
                   </li>
-                  <li>
-                    • You never rebuild dashboards by hand — the Workspace adapts with you.
-                  </li>
+                  <li>• You never rebuild dashboards by hand — the Workspace adapts with you.</li>
                 </ul>
               </div>
             </Reveal>
           </div>
-
-          {/* Inline loop diagram */}
-          <Reveal delay={200} className="mx-auto mt-10 max-w-5xl">
-            <div className="card-iw flex flex-wrap items-center justify-center gap-2 p-4 text-[12.5px] font-medium text-foreground/85">
-              {[
-                "Apps",
-                "Spine",
-                "Digital Memory",
-                "Workspace",
-                "Twin",
-                "Approval",
-                "Loop",
-              ].map((label, i, arr) => (
-                <span key={label} className="flex items-center gap-2">
-                  <span
-                    className={
-                      label === "Workspace"
-                        ? "rounded-md bg-brand-accent/15 px-2.5 py-1 text-brand-accent"
-                        : "rounded-md border border-border bg-elevated/50 px-2.5 py-1"
-                    }
-                  >
-                    {label}
-                  </span>
-                  {i < arr.length - 1 && (
-                    <ArrowRight size={12} className="text-text-secondary" />
-                  )}
-                </span>
-              ))}
-            </div>
-          </Reveal>
         </Container>
       </Section>
 
       {/* 2b. Product walkthrough video */}
-      <div id="workspace-in-action" />
       <ProductVideo
         eyebrow="Workspace in action"
         title="Your Workspace, reading from Digital Memory."
@@ -270,8 +239,8 @@ function ProductPage() {
         poster="/videos/integratewise-walkthrough-poster.jpg"
       />
 
-      {/* 3. Workspace frame */}
-      <Section id="frame">
+      {/* 3. Workbench frame */}
+      <Section>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">The frame</Badge>
@@ -292,12 +261,19 @@ function ProductPage() {
         </Container>
       </Section>
 
-      {/* 4. Where stitching happens */}
-      <Section id="no-more-human-api" alt>
+      {/* 4. How it works — where stitching happens */}
+      <Section id="how-it-works" alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <Badge variant="muted">No more Human API</Badge>
-            <h2 className="heading-h2 mt-4">Where stitching happens — and tab-switching ends.</h2>
+            <Badge variant="muted">How it works</Badge>
+            <h2 className="heading-h2 mt-4">
+              Apps → Spine → Memory → Workspace → Twin → Approval → Loop.
+            </h2>
+            <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
+              The Workspace sits on top of Digital Memory. Every view is stitched from Truth,
+              Context, and approved AI knowledge — so tab-switching ends and the system does the
+              stitching.
+            </p>
           </Reveal>
 
           <div className="mx-auto mt-10 grid max-w-5xl gap-5 lg:grid-cols-2">
@@ -308,9 +284,7 @@ function ProductPage() {
                     • Instead of opening five tools to understand one client, the Workspace pulls
                     everything into one stitched view from Digital Memory.
                   </li>
-                  <li>
-                    • You stop copy-pasting between Tally, Razorpay, email, Sheets, and CRM.
-                  </li>
+                  <li>• You stop copy-pasting between Tally, Razorpay, email, Sheets, and CRM.</li>
                   <li>
                     • You stop re-explaining yesterday's story to yourself every morning — it's
                     already assembled.
@@ -345,8 +319,8 @@ function ProductPage() {
         </Container>
       </Section>
 
-      {/* 5. Views */}
-      <Section id="views">
+      {/* 5. Views (sub-section under How it works) */}
+      <Section>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Views</Badge>
@@ -372,90 +346,24 @@ function ProductPage() {
 
           <Reveal delay={300} className="mx-auto mt-8 max-w-3xl text-center">
             <p className="text-[14px] leading-relaxed text-text-secondary">
-              Every view is backed by the same Spine and Digital Memory. Change the way you
-              group work; the underlying Memory stays consistent.
+              Every view is backed by the same Spine and Digital Memory. Change the way you group
+              work; the underlying Memory stays consistent.
             </p>
           </Reveal>
         </Container>
       </Section>
 
-      {/* 5b. Built on Digital Memory — #digital-memory */}
+      {/* 6. Digital Memory — every view built from Memory, with evidence */}
       <Section id="digital-memory" alt>
         <Container>
-          <div className="mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-[1.1fr_1fr]">
-            <Reveal>
-              <Badge variant="muted">Digital Memory</Badge>
-              <h2 className="heading-h2 mt-4">Built on Digital Memory.</h2>
-              <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
-                The Workspace doesn't start from empty states. Because it reads directly from your
-                Digital Memory, every view is backed by the same Spine, Truth, Context and Session
-                Summaries defined on the Platform page. Change the way you group work; the
-                underlying Memory stays consistent.
-              </p>
-              <a
-                href="/platform#digital-memory"
-                className="mt-5 inline-flex items-center gap-1.5 text-[14px] font-medium text-brand-accent hover:underline"
-              >
-                Learn how Digital Memory is built <ArrowRight size={14} />
-              </a>
-            </Reveal>
-
-            <Reveal delay={120}>
-              <div className="card-iw p-5">
-                <p className="text-[11px] font-semibold uppercase tracking-wider text-brand-accent">
-                  Three lines, one Memory
-                </p>
-                <ul className="mt-4 space-y-3">
-                  {[
-                    {
-                      label: "Truth",
-                      sub: "What actually happened",
-                      tone: "var(--state-success)",
-                    },
-                    {
-                      label: "Context",
-                      sub: "Why it happened",
-                      tone: "var(--state-info)",
-                    },
-                    {
-                      label: "Session Summaries",
-                      sub: "Governed AI knowledge",
-                      tone: "var(--brand-accent)",
-                    },
-                  ].map((l) => (
-                    <li
-                      key={l.label}
-                      className="flex items-center gap-3 rounded-lg border border-border bg-elevated/50 px-3 py-2.5"
-                    >
-                      <span
-                        className="h-2.5 w-2.5 shrink-0 rounded-full"
-                        style={{ background: l.tone }}
-                      />
-                      <div className="min-w-0">
-                        <p className="text-[13px] font-semibold text-foreground">{l.label}</p>
-                        <p className="text-[11.5px] text-text-secondary">{l.sub}</p>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-                <p className="mt-4 text-[11.5px] text-text-secondary">
-                  Workspace stitches all three into one screen — Truth and Context never blur,
-                  Session Summaries stay marked as approved.
-                </p>
-              </div>
-            </Reveal>
-          </div>
-        </Container>
-      </Section>
-
-      {/* 6. Evidence */}
-      <Section id="evidence">
-        <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <Badge variant="muted">Evidence</Badge>
-            <h2 className="heading-h2 mt-4">Every insight shows its sources.</h2>
+            <Badge variant="muted">Digital Memory</Badge>
+            <h2 className="heading-h2 mt-4">Every view, every insight, traced to Memory.</h2>
             <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
-              In the Workspace, nothing is a black box. Every number and suggestion can be traced
+              {MEMORY_COPY.primary}
+            </p>
+            <p className="mt-3 text-[15px] text-text-secondary">
+              In the Workspace, nothing is a black box — every number and suggestion can be traced
               back to real records and messages in your Digital Memory.
             </p>
           </Reveal>
@@ -509,16 +417,59 @@ function ProductPage() {
         </Container>
       </Section>
 
-      {/* 7. Approval Gate */}
-      <Section id="security" alt>
+      {/* 7. Security — Approval Gate, RBAC, audit trail */}
+      <Section id="security">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <Badge variant="muted">Approval Gate</Badge>
-            <h2 className="heading-h2 mt-4">Review, edit, approve — inside your Workspace.</h2>
+            <Badge variant="muted">Security</Badge>
+            <h2 className="heading-h2 mt-4">
+              In-product security: Approval Gate, RBAC, audit trail.
+            </h2>
             <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
-              AI never acts behind your back. The Workspace shows every proposed action in your own
-              workspace, with full proof, before anything happens.
+              AI never acts behind your back. Every action is gated, logged, and reviewable inside
+              the Workspace you already use.
             </p>
+          </Reveal>
+
+          <div className="mx-auto mt-10 grid max-w-5xl gap-5 sm:grid-cols-3">
+            {[
+              {
+                icon: KeyRound,
+                title: "Role-based access (RBAC)",
+                body: "Per-user, per-team scopes — Personal, Work, and Org Memory stay separated by architecture.",
+              },
+              {
+                icon: FileSearch,
+                title: "Full audit trail",
+                body: "Every approval, edit, and execution is logged with the evidence it was based on.",
+              },
+              {
+                icon: Lock,
+                title: "Approval Gate",
+                body: "Twin proposes; you decide. Nothing executes silently. No autonomous automation.",
+              },
+            ].map((p) => {
+              const Icon = p.icon;
+              return (
+                <Reveal key={p.title}>
+                  <div className="card-iw h-full p-5">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-elevated text-brand-accent">
+                      <Icon size={18} />
+                    </div>
+                    <h3 className="mt-4 text-[16px] font-semibold text-foreground">{p.title}</h3>
+                    <p className="mt-2 text-[13.5px] leading-relaxed text-foreground/85">
+                      {p.body}
+                    </p>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
+
+          <Reveal className="mx-auto max-w-3xl text-center mt-12">
+            <h3 className="text-[22px] font-semibold text-foreground">
+              Review, edit, approve — inside your Workspace.
+            </h3>
           </Reveal>
 
           <Reveal delay={120} className="mx-auto mt-10 max-w-3xl">
@@ -584,7 +535,7 @@ function ProductPage() {
       </Section>
 
       {/* 8. CTA */}
-      <Section id="demo">
+      <Section alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <h2 className="heading-h2">See your Workspace built on your own data.</h2>
@@ -609,14 +560,14 @@ function ProductPage() {
 }
 
 /* ----------------------------------------------------------------------- */
-/*  Workspace frame mock                                                    */
+/*  Workbench frame mock                                                    */
 /* ----------------------------------------------------------------------- */
 function WorkbenchFrame({ compact = false }: { compact?: boolean }) {
   return (
     <div
       className="card-iw overflow-hidden"
       style={{ background: "var(--bg-surface)" }}
-      aria-label="Workspace preview"
+      aria-label="Workbench preview"
     >
       {/* Browser chrome */}
       <div className="flex items-center gap-2 border-b border-border px-4 py-2.5">
@@ -706,9 +657,7 @@ function WorkbenchFrame({ compact = false }: { compact?: boolean }) {
                               ? "color-mix(in oklab, var(--state-warning) 14%, transparent)"
                               : "color-mix(in oklab, var(--state-success) 14%, transparent)",
                           color:
-                            r.tone === "warning"
-                              ? "var(--state-warning)"
-                              : "var(--state-success)",
+                            r.tone === "warning" ? "var(--state-warning)" : "var(--state-success)",
                           borderColor: "transparent",
                         }}
                       >

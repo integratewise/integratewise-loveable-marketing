@@ -1,5 +1,5 @@
 /**
- * SpineFlow — animated connector cluster → Adaptive Spine → Digital Memory.
+ * SpineFlow — animated connector cluster → Spine → Digital Memory.
  * Replaces the static Spine card on the homepage with a calm, in-view
  * animation: app chips pulse glowing lines toward the Spine node, then
  * Truth / Context / Session Summaries strands converge into a Venn
@@ -138,48 +138,24 @@ function ConnectorLines() {
 }
 
 /**
- * "Spine grows along with you" — visual progression below uses a Day 1 →
- * Day 30 → Day 90 metaphor instead of raw schema column names. Internal
- * field-name lists used to live here; they were removed because they
- * leaked engineer-facing vocabulary into public copy.
+ * Plain-language replacement for the engineer-facing schema chip row.
+ * Keeps the "Schema, learned as you grow" frame but speaks to the operator.
  */
-
 function SchemaChips() {
-  // "Spine grows along with you" — day 1 → day 30 → day 90 progression.
-  // Replaces the old raw schema-row visualization, which exposed internal
-  // vocabulary and engineer-facing detail.
-  const stages = [
-    { label: "Day 1", sub: "Accounts, tasks, upcoming work", width: 35 },
-    { label: "Day 30", sub: "Patterns, owners, relationships", width: 65 },
-    { label: "Day 90", sub: "Living memory of how you operate", width: 100 },
-  ];
   return (
-    <div className="mt-6 rounded-xl border border-border bg-white/[0.02] p-5">
+    <div className="mt-6 rounded-xl border border-border bg-white/[0.02] p-4">
       <div className="text-[11px] font-semibold uppercase tracking-wider text-text-secondary">
-        Spine grows along with you
+        Schema, learned as you grow
       </div>
-      <div className="mt-4 space-y-3">
-        {stages.map((s, i) => (
-          <div key={s.label} className="flex items-center gap-3">
-            <div className="w-16 shrink-0 text-[12px] font-semibold text-foreground">{s.label}</div>
-            <div className="relative h-2 flex-1 overflow-hidden rounded-full bg-white/[0.04]">
-              <motion.div
-                initial={{ width: 0 }}
-                whileInView={{ width: `${s.width}%` }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.7, delay: 0.15 + i * 0.18, ease: "easeOut" }}
-                className="h-full rounded-full bg-gradient-to-r from-brand-accent/70 to-brand-highlight/70"
-              />
-            </div>
-            <div className="hidden w-56 shrink-0 text-[11.5px] text-text-secondary sm:block">
-              {s.sub}
-            </div>
-          </div>
-        ))}
-      </div>
-      <p className="mt-4 text-[12.5px] text-text-secondary">
-        Not an ETL dump. A living memory that earns its depth.
-      </p>
+      <motion.p
+        initial={{ opacity: 0, y: 6 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+        className="mt-2 text-[14px] leading-relaxed text-foreground/90"
+      >
+        Spine grows along with you.
+      </motion.p>
     </div>
   );
 }
@@ -277,7 +253,9 @@ function Strand({
         ? "border-purple-300/40 text-purple-200"
         : "border-brand-highlight/40 text-brand-highlight";
   return (
-    <div className={`flex items-center gap-2.5 rounded-lg border ${ring} bg-white/[0.02] px-3 py-2`}>
+    <div
+      className={`flex items-center gap-2.5 rounded-lg border ${ring} bg-white/[0.02] px-3 py-2`}
+    >
       <Icon size={16} />
       <div className="min-w-0">
         <div className="text-[13px] font-semibold text-foreground">{label}</div>

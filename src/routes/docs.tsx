@@ -3,7 +3,17 @@ import { Container } from "@/components/site/Container";
 import { Section } from "@/components/site/Section";
 import { Reveal } from "@/components/site/Reveal";
 import { ClosingCtaBand } from "@/components/site/ClosingCtaBand";
-import { ArrowRight, Brain, CircuitBoard, Database, FileText, LayoutDashboard, ShieldCheck, Sparkles, Workflow } from "lucide-react";
+import {
+  ArrowRight,
+  Brain,
+  CircuitBoard,
+  Database,
+  FileText,
+  LayoutDashboard,
+  ShieldCheck,
+  Sparkles,
+  Workflow,
+} from "lucide-react";
 
 export const Route = createFileRoute("/docs")({
   head: () => ({
@@ -26,9 +36,21 @@ export const Route = createFileRoute("/docs")({
 });
 
 const GETTING_STARTED = [
-  { to: "/docs", label: "Connect your first tools", body: "Connect WhatsApp, Tally, Razorpay, email, Sheets, Notion, or your CRM — and see your first Digital Memory." },
-  { to: "/docs", label: "Land in a live Workspace", body: "How the Accounts & Revenue and Personal Workspace views appear on day one, before you customise anything." },
-  { to: "/docs", label: "See your Twin safely", body: "How to turn Twin on, see proposals, and use the Approval Gate before anything executes." },
+  {
+    to: "/docs",
+    label: "Connect your first tools",
+    body: "Connect WhatsApp, Tally, Razorpay, email, Sheets, Notion, or your CRM — and see your first Digital Memory.",
+  },
+  {
+    to: "/docs",
+    label: "Land in a live Workspace",
+    body: "How the Accounts & Revenue and Personal Workspace views appear on day one, before you customise anything.",
+  },
+  {
+    to: "/docs",
+    label: "See your Twin safely",
+    body: "How to turn Twin on, see proposals, and use the Approval Gate before anything executes.",
+  },
 ];
 
 const CONCEPTS = [
@@ -39,12 +61,12 @@ const CONCEPTS = [
   },
   {
     icon: CircuitBoard,
-    label: "Adaptive Spine",
+    label: "Spine",
     body: "Platform layer that connects apps and accumulates Digital Memory. Starts as a clean schema, ingests only what it is designed to remember, and grows with you.",
   },
   {
     icon: LayoutDashboard,
-    label: "Adaptive Workspace",
+    label: "Workspace",
     body: "Product layer that reads from Memory. One living screen where stitching between apps happens, so you stop being the Human API.",
   },
   {
@@ -60,8 +82,14 @@ const CONCEPTS = [
 ];
 
 const GUIDES = [
-  { label: "Account Success Workspace", body: "One client story from many tools — usage, communication, and risk in a single view." },
-  { label: "Business Ops Workspace", body: "Run the day from one screen — revenue, filings, support, renewals." },
+  {
+    label: "Account Success Workspace",
+    body: "One client story from many tools — usage, communication, and risk in a single view.",
+  },
+  {
+    label: "Business Ops Workspace",
+    body: "Run the day from one screen — revenue, filings, support, renewals.",
+  },
   { label: "Personal Space", body: "Your own operating system across personal apps and inboxes." },
 ];
 
@@ -85,7 +113,11 @@ function DocsPage() {
     <>
       {/* Hero */}
       <section className="relative overflow-hidden pt-32 pb-16 lg:pt-40 lg:pb-20">
-        <span aria-hidden className="orb orb-peach" style={{ width: 540, height: 540, top: -160, left: "55%" }} />
+        <span
+          aria-hidden
+          className="orb orb-peach"
+          style={{ width: 540, height: 540, top: -160, left: "55%" }}
+        />
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-iw badge-iw-muted">Docs</span>
@@ -94,15 +126,17 @@ function DocsPage() {
               <span className="block text-gradient-hero">over the Spine.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-[17px] leading-relaxed text-text-secondary">
-              These docs explain how IntegrateWise turns scattered tools into Digital Memory,
-              how your Adaptive Workspace uses that Memory, and how your Twin proposes actions
-              without ever taking control away from you.
+              These docs explain how IntegrateWise turns scattered tools into Digital Memory, how
+              your Workspace uses that Memory, and how your Twin proposes actions without ever
+              taking control away from you.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <a href="#getting-started" className="btn-primary-iw">
                 Getting started <ArrowRight size={16} />
               </a>
-              <a href="#concepts" className="btn-secondary-iw">Concepts</a>
+              <a href="#concepts" className="btn-secondary-iw">
+                Concepts
+              </a>
             </div>
           </Reveal>
         </Container>
@@ -153,8 +187,8 @@ function DocsPage() {
             <span className="badge-iw badge-iw-muted">How-to guides</span>
             <h2 className="heading-h2 mt-4">Guides for your slice of work.</h2>
             <p className="mt-4 text-[16px] text-text-secondary">
-              Each guide is pitched as \u201Ca day without IntegrateWise vs a day with IntegrateWise\u201D —
-              pure pain language vs pure feature language.
+              Each guide is pitched as \u201Ca day without IntegrateWise vs a day with
+              IntegrateWise\u201D — pure pain language vs pure feature language.
             </p>
           </Reveal>
           <div className="mx-auto mt-12 grid max-w-5xl gap-4 md:grid-cols-3">

@@ -18,22 +18,24 @@ import { Container } from "@/components/site/Container";
 import { Section } from "@/components/site/Section";
 import { Badge } from "@/components/site/Badge";
 import { Reveal } from "@/components/site/Reveal";
+import { SectionNav } from "@/components/site/SectionNav";
 import { useDemoModal } from "@/components/site/demo-modal-context";
+import { MEMORY_COPY } from "@/lib/site";
 
 export const Route = createFileRoute("/twin")({
   head: () => ({
     meta: [
-      { title: "Twin — Not usual AI. Your Twin reads your Digital Memory." },
+      { title: "Twin — Works on memory, not raw data. Proposes structured changes." },
       {
         name: "description",
         content:
-          "Your Twin is governed intelligence: it reads only your Digital Memory, prepares actions with evidence and confidence, and waits for your approval. Truth you own. AI you rent. Approval in between.",
+          "Twin doesn't work on raw data. It reads scoped memory from the Workspace and proposes structured changes with linked evidence and confidence. The governance layer decides what becomes real — every action logged, outcome looped back as a Session Summary.",
       },
       { property: "og:title", content: "IntegrateWise Twin — Intelligence Layer" },
       {
         property: "og:description",
         content:
-          "Grounded in your AI library, not the open internet. Twin proposes; you approve.",
+          "Twin proposes structured changes against memory, never raw data. Governance decides what becomes real — no silent actions.",
       },
     ],
   }),
@@ -79,11 +81,11 @@ function TwinPage() {
   return (
     <>
       {/* 1. Hero */}
-      <Section orbs className="!pt-20 lg:!pt-28">
+      <Section id="twin" orbs className="!pt-20 lg:!pt-28">
         <Container>
           <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_1fr]">
             <Reveal>
-              <Badge variant="muted">Still juggling your work?</Badge>
+              <Badge variant="muted">Twin</Badge>
               <h1 className="heading-h1 mt-5">
                 Not usual AI.{" "}
                 <span className="text-gradient-hero">Your Twin reads your Digital Memory.</span>
@@ -110,18 +112,30 @@ function TwinPage() {
         </Container>
       </Section>
 
+      {/* Sticky in-page nav */}
+      <SectionNav
+        items={[
+          { id: "twin", label: "Twin" },
+          { id: "how-it-works", label: "How it works" },
+          { id: "digital-memory-reference", label: "Digital Memory Reference" },
+          { id: "twin-execution", label: "Twin Execution" },
+          { id: "security", label: "Security" },
+        ]}
+      />
+
       {/* 2. Core thesis */}
       <Section alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Core thesis</Badge>
             <h2 className="heading-h2 mt-4">
-              Truth you own. <span className="text-brand-accent">AI you rent.</span> Approval in between.
+              Truth you own. <span className="text-brand-accent">AI you rent.</span> Approval in
+              between.
             </h2>
             <p className="mt-5 text-[16px] leading-relaxed text-text-secondary">
               Digital Memory is yours — a growing library of your data and decisions. Twin is rented
-              intelligence that sits outside the Spine. It reads from your Memory, prepares
-              actions, and never crosses into your systems without your say-so.
+              intelligence that sits outside the Spine. It reads from your Memory, prepares actions,
+              and never crosses into your systems without your say-so.
             </p>
           </Reveal>
 
@@ -198,7 +212,9 @@ function TwinPage() {
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">AI library</Badge>
-            <h2 className="heading-h2 mt-4">Grounded in your AI library, not in the open internet.</h2>
+            <h2 className="heading-h2 mt-4">
+              Grounded in your AI library, not in the open internet.
+            </h2>
             <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
               Twin uses your Digital Memory as its AI library. It answers from your records,
               communications, and approved summaries instead of wandering across the web.
@@ -266,7 +282,7 @@ function TwinPage() {
       </Section>
 
       {/* 5. Equation */}
-      <Section>
+      <Section id="how-it-works">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">How signals form</Badge>
@@ -323,12 +339,22 @@ function TwinPage() {
         </Container>
       </Section>
 
-      {/* 6. Proposals with proof */}
-      <Section alt>
+      {/* 6. Digital Memory Reference */}
+      <Section id="digital-memory-reference" alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <Badge variant="muted">Proposals</Badge>
-            <h2 className="heading-h2 mt-4">Every proposal shows its homework.</h2>
+            <Badge variant="muted">Digital Memory Reference</Badge>
+            <h2 className="heading-h2 mt-4">
+              Memory is Twin's reference library — read-only, evidence-first.
+            </h2>
+            <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
+              {MEMORY_COPY.primary}
+            </p>
+            <p className="mt-3 text-[15px] text-text-secondary">
+              Twin reads from accumulated Memory to compare past and present, but{" "}
+              <span className="text-foreground/90">never writes directly into Memory</span>. Every
+              proposal shows its homework.
+            </p>
           </Reveal>
 
           <div className="mx-auto mt-10 grid max-w-6xl items-start gap-6 lg:grid-cols-[1.2fr_1fr]">
@@ -399,11 +425,11 @@ function TwinPage() {
         </Container>
       </Section>
 
-      {/* 7. Approval Gate flow */}
-      <Section>
+      {/* 7. Twin Execution — Approval Gate */}
+      <Section id="twin-execution">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <Badge variant="muted">Approval Gate</Badge>
+            <Badge variant="muted">Twin Execution</Badge>
             <h2 className="heading-h2 mt-4">Approval in between. Always.</h2>
             <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
               Twin can only propose. The Approval Gate stands between Twin and the real world.
@@ -434,23 +460,40 @@ function TwinPage() {
         </Container>
       </Section>
 
-      {/* 8. Optional intelligence layer */}
-      <Section alt>
+      {/* 8. Security */}
+      <Section id="security" alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <Badge variant="muted">Optional</Badge>
-            <h2 className="heading-h2 mt-4">Your Workspace still works without AI.</h2>
+            <Badge variant="muted">Security</Badge>
+            <h2 className="heading-h2 mt-4">Twin operates inside your perimeter.</h2>
             <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
-              The Workspace is fully usable even if you turn Twin off. You still get Digital Memory,
-              stitched views, and one place to work. Twin is an optional Intelligence Layer that
-              enhances your work — it does not replace you.
+              Twin reads only what your scopes already allow. Every proposal is auditable. Every
+              action requires your approval. Turn Twin off and your Workspace still works.
             </p>
           </Reveal>
 
-          <div className="mx-auto mt-8 grid max-w-3xl gap-3 text-[14px] text-foreground/90">
-            <p>• Platform and Workspace are the foundation.</p>
-            <p>• Twin is optional and swappable.</p>
-            <p>• You choose where to use AI.</p>
+          <div className="mx-auto mt-10 grid max-w-4xl gap-4 sm:grid-cols-3">
+            <div className="card-iw p-5">
+              <ShieldCheck size={20} className="text-brand-accent" />
+              <p className="mt-3 text-[14px] font-semibold text-foreground">Scoped reads</p>
+              <p className="mt-1 text-[13px] text-text-secondary">
+                Twin sees only User, Work, or Org Memory you've granted it.
+              </p>
+            </div>
+            <div className="card-iw p-5">
+              <Database size={20} className="text-brand-accent" />
+              <p className="mt-3 text-[14px] font-semibold text-foreground">Auditable proposals</p>
+              <p className="mt-1 text-[13px] text-text-secondary">
+                Every Twin suggestion shows the Memory it was built on.
+              </p>
+            </div>
+            <div className="card-iw p-5">
+              <Sparkles size={20} className="text-brand-accent" />
+              <p className="mt-3 text-[14px] font-semibold text-foreground">Optional layer</p>
+              <p className="mt-1 text-[13px] text-text-secondary">
+                Workspace and Digital Memory work fully without Twin enabled.
+              </p>
+            </div>
           </div>
         </Container>
       </Section>
@@ -595,9 +638,7 @@ function FlowNode({
   return (
     <div
       className={`rounded-xl border p-5 text-center ${
-        emphasised
-          ? "border-brand-accent/30 bg-brand-accent/5"
-          : "border-border bg-elevated/50"
+        emphasised ? "border-brand-accent/30 bg-brand-accent/5" : "border-border bg-elevated/50"
       }`}
     >
       <div

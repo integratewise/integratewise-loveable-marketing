@@ -7,13 +7,15 @@ import {
   Building2,
   CircuitBoard,
   Cpu,
+  Factory,
   FileText,
   Handshake,
   HeartPulse,
+  Landmark,
   LayoutDashboard,
+  LifeBuoy,
   LineChart,
   Package,
-  Receipt,
   Rocket,
   ShieldCheck,
   ShoppingBag,
@@ -22,13 +24,24 @@ import {
   Stethoscope,
   Target,
   User,
+  Wallet,
+  Wrench,
   Workflow,
 } from "lucide-react";
 
 export const SITE_NAME = "IntegrateWise";
-export const SITE_TAGLINE = "Your work resets every day.";
+export const SITE_TAGLINE = "Stop being the human API between your tools.";
 export const SITE_DESCRIPTION =
-  "IntegrateWise stops the reset. Your work becomes Memory. Within seconds of opening, you see what changed. Your Twin connects, explains, and prepares — you approve every move.";
+  "Every app runs on the Workspace. It turns raw data into scoped memory — relevant, stable, and ready to act on. AI doesn't work on raw data; it works on memory, proposing structured changes. The governance layer decides what becomes real and maintains a single active context — so work always happens in one clear state.";
+export const SITE_URL = "https://integratewise.ai";
+export const SITE_OG_IMAGE = `${SITE_URL}/og-image.png`;
+
+/* Canonical copy tokens — accumulating, reusable Digital Memory. */
+export const MEMORY_COPY = {
+  primary:
+    "Digital Memory accumulates with every update, every decision, and every interaction — then gets reused by your Workspace, your Twin, and your team.",
+  short: "Memory compounds. Context improves. Decisions get faster.",
+} as const;
 
 export const TRUST_STRIP = [
   "SOC 2 Type II",
@@ -62,6 +75,33 @@ export const SOLUTIONS_OVERVIEW = {
   icon: LayoutDashboard,
 } as const;
 
+/* By Use Case — three doors into the /solutions hub. Used as first column of Solutions mega-menu. */
+export const SOLUTIONS_BY_USE_CASE: SolutionItem[] = [
+  {
+    to: "/solutions/account-success",
+    label: "Account Success",
+    blurb: "Walk in already knowing what changed.",
+    icon: Handshake,
+  },
+  {
+    to: "/solutions/business-ops",
+    label: "Business Ops",
+    blurb: "One screen. Everything that changed.",
+    icon: Activity,
+  },
+  {
+    to: "/solutions/personal-space",
+    label: "Personal Space",
+    blurb: "Your day, finally assembled.",
+    icon: User,
+    waitlist: true,
+  },
+];
+
+/* Back-compat alias — older callers used SOLUTIONS_BY_FUNCTION. */
+export const SOLUTIONS_BY_FUNCTION: SolutionItem[] = SOLUTIONS_BY_USE_CASE;
+
+/* Back-compat alias — kept so older callers (Home SolutionsDoors, etc.) keep working. */
 export const SOLUTIONS_BY_OUTCOME: SolutionItem[] = [
   {
     to: "/solutions/account-success",
@@ -85,37 +125,130 @@ export const SOLUTIONS_BY_OUTCOME: SolutionItem[] = [
 ];
 
 export const SOLUTIONS_BY_ROLE_INDEX = {
-  to: "/solutions/by-role",
+  to: "/solutions/role",
   label: "By Role",
   blurb: "Filter the same workspace by your role.",
   icon: Target,
 } as const;
 
 export const SOLUTIONS_BY_INDUSTRY_INDEX = {
-  to: "/solutions/by-industry",
+  to: "/solutions/industry",
   label: "By Industry",
-  blurb: "Templates shaped for how your industry actually works.",
+  blurb: "One Memory, different industries.",
   icon: Boxes,
 } as const;
 
+/* By Industry — surface six industries that link into /solutions/industry slider. */
+export const SOLUTIONS_BY_INDUSTRY: SolutionItem[] = [
+  {
+    to: "/solutions/industry#saas",
+    label: "SaaS",
+    blurb: "Renewals, expansion, adoption.",
+    icon: LineChart,
+  },
+  {
+    to: "/solutions/industry#agency",
+    label: "Services & Agencies",
+    blurb: "Projects, utilisation, billing.",
+    icon: Briefcase,
+  },
+  {
+    to: "/solutions/industry#manufacturing",
+    label: "Manufacturing & Trade",
+    blurb: "Orders, shipments, exceptions.",
+    icon: Factory,
+  },
+  {
+    to: "/solutions/industry#retail",
+    label: "Retail & Ecommerce",
+    blurb: "Stock, orders, returns, support.",
+    icon: ShoppingBag,
+  },
+  {
+    to: "/solutions/industry#professional-services",
+    label: "Professional Services",
+    blurb: "Engagements, billing, relationships.",
+    icon: HeartPulse,
+  },
+  {
+    to: "/solutions/industry#finance",
+    label: "Finance",
+    blurb: "Revenue, risk, collections, cash.",
+    icon: Landmark,
+  },
+];
+
+/* By Role — six roles linking into /solutions/role slider. */
+export const SOLUTIONS_BY_ROLE: SolutionItem[] = [
+  {
+    to: "/solutions/role#account-lead",
+    label: "Customer Success & TAMs",
+    blurb: "Save accounts, accelerate renewals.",
+    icon: Handshake,
+  },
+  {
+    to: "/solutions/role#founder",
+    label: "Founders & CXOs",
+    blurb: "Monday brief, board pack, full view.",
+    icon: Rocket,
+  },
+  {
+    to: "/solutions/role#ops",
+    label: "Rev / Business Ops",
+    blurb: "Pipeline, headcount, risk — connected.",
+    icon: Activity,
+  },
+  {
+    to: "/solutions/role#delivery",
+    label: "Operations & Delivery",
+    blurb: "Projects, utilisation, exceptions.",
+    icon: Wrench,
+  },
+  {
+    to: "/solutions/role#finance",
+    label: "Finance Leaders",
+    blurb: "Cash, collections, runway.",
+    icon: Wallet,
+  },
+  {
+    to: "/solutions/role#individual",
+    label: "Individual Professionals",
+    blurb: "Morning brief, session memory.",
+    icon: User,
+    waitlist: true,
+  },
+];
+
+/* Legacy industry slug map — kept so existing /solutions/by-industry/$industry routes resolve. */
 export const SOLUTIONS_INDUSTRIES: IndustryItem[] = [
-  { slug: "saas", to: "/solutions/by-industry/saas", label: "SaaS" },
-  { slug: "ecommerce", to: "/solutions/by-industry/ecommerce", label: "eCommerce" },
-  { slug: "healthcare", to: "/solutions/by-industry/healthcare", label: "Healthcare" },
-  { slug: "fintech", to: "/solutions/by-industry/fintech", label: "FinTech" },
-  { slug: "manufacturing", to: "/solutions/by-industry/manufacturing", label: "Manufacturing" },
+  { slug: "saas", to: "/solutions/industry#saas", label: "SaaS" },
+  { slug: "ecommerce", to: "/solutions/industry#retail", label: "Retail & Ecommerce" },
+  {
+    slug: "healthcare",
+    to: "/solutions/industry#professional-services",
+    label: "Professional Services",
+  },
+  { slug: "fintech", to: "/solutions/industry#finance", label: "Finance" },
+  {
+    slug: "manufacturing",
+    to: "/solutions/industry#manufacturing",
+    label: "Manufacturing & Trade",
+  },
   {
     slug: "professional-services",
-    to: "/solutions/by-industry/professional-services",
-    label: "Professional Services",
+    to: "/solutions/industry#agency",
+    label: "Services & Agencies",
   },
 ];
 
 export const SOLUTIONS_GROUPS = {
   overview: SOLUTIONS_OVERVIEW,
+  byFunction: SOLUTIONS_BY_FUNCTION,
   byOutcome: SOLUTIONS_BY_OUTCOME,
-  byRole: SOLUTIONS_BY_ROLE_INDEX,
-  byIndustry: SOLUTIONS_BY_INDUSTRY_INDEX,
+  byRole: SOLUTIONS_BY_ROLE,
+  byIndustry: SOLUTIONS_BY_INDUSTRY,
+  byRoleIndex: SOLUTIONS_BY_ROLE_INDEX,
+  byIndustryIndex: SOLUTIONS_BY_INDUSTRY_INDEX,
   industries: SOLUTIONS_INDUSTRIES,
 } as const;
 
@@ -130,33 +263,121 @@ export interface NavLeaf {
   icon: ComponentType<{ size?: number; className?: string }>;
 }
 
+/* All Platform dropdown items are anchors on /platform (single long page). */
 export const PLATFORM_LINKS: NavLeaf[] = [
-  { to: "/platform/the-spine", label: "The Spine", blurb: "The Memory engine.", icon: CircuitBoard },
-  { to: "/platform/how-it-works", label: "How it works", blurb: "Ingest → Memory loop.", icon: Workflow },
-  { to: "/platform/integrations", label: "Integrations", blurb: "Connect the apps you already use.", icon: Package },
-  { to: "/platform/security", label: "Security", blurb: "SOC 2, GDPR, isolation.", icon: ShieldCheck },
-  { to: "/platform/infrastructure", label: "Infrastructure", blurb: "Architecture, regions, SLAs.", icon: Cpu },
+  {
+    to: "/platform#spine",
+    label: "Spine",
+    blurb: "One layer connects every app.",
+    icon: CircuitBoard,
+  },
+  {
+    to: "/platform#how-it-works",
+    label: "How it works",
+    blurb: "Apps → Spine → Memory → Workspace.",
+    icon: Workflow,
+  },
+  {
+    to: "/platform#digital-memory",
+    label: "Digital Memory",
+    blurb: "Accumulates and gets reused.",
+    icon: Sparkles,
+  },
+  {
+    to: "/platform#connectors",
+    label: "Connectors",
+    blurb: "70+ schema-aware connectors.",
+    icon: Cpu,
+  },
+  {
+    to: "/platform#security",
+    label: "Security",
+    blurb: "SOC 2, GDPR, tenant isolation.",
+    icon: ShieldCheck,
+  },
+  {
+    to: "/platform#integrations",
+    label: "Integrations",
+    blurb: "The tools you already use.",
+    icon: Package,
+  },
 ];
 
+/* All Product dropdown items are anchors on /product (single long page). */
 export const PRODUCT_LINKS: NavLeaf[] = [
-  { to: "/product", label: "Workspace", blurb: "Your unified work surface.", icon: LayoutDashboard },
-  { to: "/twin", label: "The Twin", blurb: "Connects, explains, prepares.", icon: Sparkles },
-  { to: "/product/approval", label: "Approval", blurb: "Nothing executes without you.", icon: ShieldCheck },
-  { to: "/product/reference-layer", label: "Reference Layer", blurb: "Truth you own.", icon: FileText },
+  {
+    to: "/product#workspace",
+    label: "Workspace",
+    blurb: "Your living work surface.",
+    icon: LayoutDashboard,
+  },
+  {
+    to: "/product#how-it-works",
+    label: "How it works",
+    blurb: "Memory powers every view.",
+    icon: Workflow,
+  },
+  {
+    to: "/product#digital-memory",
+    label: "Digital Memory",
+    blurb: "Built from accumulated context.",
+    icon: Sparkles,
+  },
+  {
+    to: "/product#security",
+    label: "Security",
+    blurb: "RBAC, audit trail, Approval Gate.",
+    icon: ShieldCheck,
+  },
 ];
 
-export const RESOURCES_LINKS: NavLeaf[] = [
-  { to: "/resources", label: "Resources hub", blurb: "Docs, changelog, blog, stories.", icon: LayoutDashboard },
-  { to: "/docs", label: "Docs", blurb: "Concepts, getting started, reference.", icon: FileText },
-  { to: "/changelog", label: "Changelog", blurb: "How IntegrateWise is learning with you.", icon: Activity },
-  { to: "/blog", label: "Blog", blurb: "Stories from the end of the Human API.", icon: FileText },
-  { to: "/why", label: "Why", blurb: "The category thesis.", icon: Star },
+/* Intelligence (Twin) — anchors on /twin. Order per spec: Twin → How it works → Memory Reference → Twin Execution → Security. */
+export const INTELLIGENCE_LINKS: NavLeaf[] = [
+  {
+    to: "/twin#twin",
+    label: "Twin",
+    blurb: "Intelligence layer that proposes.",
+    icon: Sparkles,
+  },
+  {
+    to: "/twin#how-it-works",
+    label: "How it works",
+    blurb: "Reads Memory, scores signals.",
+    icon: Workflow,
+  },
+  {
+    to: "/twin#digital-memory-reference",
+    label: "Digital Memory Reference",
+    blurb: "Twin's read-only library.",
+    icon: FileText,
+  },
+  {
+    to: "/twin#twin-execution",
+    label: "Twin Execution",
+    blurb: "Propose → approve → execute.",
+    icon: Activity,
+  },
+  {
+    to: "/twin#security",
+    label: "Security",
+    blurb: "No autonomous actions, ever.",
+    icon: ShieldCheck,
+  },
+];
+
+/* Back-compat alias — TWIN_LINKS used by older imports. */
+export const TWIN_LINKS: NavLeaf[] = INTELLIGENCE_LINKS;
+
+export const COMPANY_LINKS: NavLeaf[] = [
+  { to: "/about", label: "About", blurb: "Founder bio + the near-miss story.", icon: User },
   { to: "/manifesto", label: "Manifesto", blurb: "Principles we build by.", icon: FileText },
   { to: "/customer-zero", label: "Customer Zero", blurb: "I run it on itself.", icon: Rocket },
-  { to: "/about", label: "About", blurb: "Founder bio + the near-miss story.", icon: User },
-  { to: "/company", label: "Company", blurb: "Why IntegrateWise exists.", icon: Building2 },
-  { to: "/contact", label: "Contact", blurb: "Founder-led contact.", icon: Briefcase },
+  { to: "/why", label: "Why", blurb: "The category thesis.", icon: Star },
+  { to: "/contact", label: "Contact", blurb: "Founder-led contact.", icon: LifeBuoy },
 ];
+
+/* Back-compat — some routes import RESOURCES_LINKS. Mirror COMPANY_LINKS so nothing breaks. */
+export const RESOURCES_LINKS: NavLeaf[] = COMPANY_LINKS;
 
 /* -------------------------------------------------------------------------
  * Primary nav (drives Header rendering)
@@ -182,52 +403,25 @@ export const PRIMARY_NAV: ReadonlyArray<NavGroup> = [
     label: "Product",
     groups: [{ heading: "Product", items: PRODUCT_LINKS }],
   },
-  { kind: "link", label: "Twin", to: "/twin" },
   {
     kind: "menu",
-    label: "Solutions",
-    groups: [
-      {
-        heading: "Overview",
-        items: [
-          {
-            to: SOLUTIONS_OVERVIEW.to,
-            label: SOLUTIONS_OVERVIEW.label,
-            blurb: SOLUTIONS_OVERVIEW.blurb,
-            icon: SOLUTIONS_OVERVIEW.icon,
-          },
-        ],
-      },
-      { heading: "By outcome", items: SOLUTIONS_BY_OUTCOME },
-      {
-        heading: "Filters",
-        items: [
-          {
-            to: SOLUTIONS_BY_INDUSTRY_INDEX.to,
-            label: SOLUTIONS_BY_INDUSTRY_INDEX.label,
-            blurb: SOLUTIONS_BY_INDUSTRY_INDEX.blurb,
-            icon: SOLUTIONS_BY_INDUSTRY_INDEX.icon,
-          },
-          {
-            to: SOLUTIONS_BY_ROLE_INDEX.to,
-            label: SOLUTIONS_BY_ROLE_INDEX.label,
-            blurb: SOLUTIONS_BY_ROLE_INDEX.blurb,
-            icon: SOLUTIONS_BY_ROLE_INDEX.icon,
-          },
-        ],
-      },
-    ],
-    footer: {
-      label: "Browse all 6 industries",
-      to: SOLUTIONS_BY_INDUSTRY_INDEX.to,
-      chips: SOLUTIONS_INDUSTRIES,
-    },
+    label: "Intelligence",
+    groups: [{ heading: "Intelligence", items: INTELLIGENCE_LINKS }],
   },
-  { kind: "link", label: "Company", to: "/company" },
+  { kind: "link", label: "Solutions", to: "/solutions" },
+  { kind: "link", label: "Pricing", to: "/pricing" },
+  {
+    kind: "menu",
+    label: "Company",
+    groups: [{ heading: "Company", items: COMPANY_LINKS }],
+  },
 ];
 
 /* Industry icon map (used by /solutions hub display) */
-export const INDUSTRY_ICONS: Record<string, ComponentType<{ size?: number; className?: string }>> = {
+export const INDUSTRY_ICONS: Record<
+  string,
+  ComponentType<{ size?: number; className?: string }>
+> = {
   saas: LineChart,
   ecommerce: ShoppingBag,
   healthcare: Stethoscope,

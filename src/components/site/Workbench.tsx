@@ -41,7 +41,7 @@ export function Workbench({
     <div
       className="card-iw overflow-hidden"
       style={{ background: "var(--bg-surface)" }}
-      aria-label="Workspace preview"
+      aria-label="Workbench preview"
     >
       {/* Title bar */}
       <div className="flex items-center justify-between border-b border-border px-5 py-3.5">
