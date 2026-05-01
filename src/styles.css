@@ -696,6 +696,16 @@
   0%, 100% { transform: translateY(0); }
   50%      { transform: translateY(-2px); }
 }
+@keyframes scrub {
+  0%   { left: -2%; opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { left: 102%; opacity: 0; }
+}
+@keyframes flash-red {
+  0%, 100% { background-color: rgba(239,68,68,0.06); }
+  50%      { background-color: rgba(239,68,68,0.16); }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .animate-\[orbit-slow_28s_linear_infinite\],

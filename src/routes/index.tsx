@@ -8,15 +8,9 @@ import {
   Plus,
   Download,
   Bell,
-  Database,
-  Layers,
   Brain,
-  Sparkles,
   CheckCircle2,
-  Workflow,
   Lock,
-  Users,
-  Building2,
   User,
   Handshake,
   ChevronRight,
@@ -33,6 +27,19 @@ import {
   VisualMemory,
   VisualWorkbench,
 } from "@/components/site/SolutionVisuals";
+import {
+  PainScatter,
+  PainBlind,
+  PainRogue,
+  ScopeUser,
+  ScopeWork,
+  ScopeOrg,
+  StepMemory,
+  StepWorkbench,
+  StepTwin,
+  StepApproval,
+  StepLoop,
+} from "@/components/site/HomeVisuals";
 import airtable from "@/assets/logos/airtable.svg";
 import asana from "@/assets/logos/asana.svg";
 import gdrive from "@/assets/logos/google-drive.svg";
@@ -161,19 +168,23 @@ function HomePage() {
               {
                 title: "Data scattered.",
                 body: "You hunt across twelve tabs before every decision.",
+                Visual: PainScatter,
               },
               {
                 title: "Intelligence blind.",
                 body: "Without the full picture, AI nudges arrive late or wrong.",
+                Visual: PainBlind,
               },
               {
                 title: "Automation rogue.",
                 body: "Things fire without you, so trust quietly erodes.",
+                Visual: PainRogue,
               },
             ].map((p) => (
-              <StaggerItem key={p.title} className="card-iw p-7">
-                <h3 className="text-[18px] font-semibold text-foreground">{p.title}</h3>
-                <p className="mt-2 text-[15px] leading-relaxed text-text-secondary">{p.body}</p>
+              <StaggerItem key={p.title} className="card-iw p-6">
+                <p.Visual />
+                <h3 className="mt-5 text-[18px] font-semibold text-foreground">{p.title}</h3>
+                <p className="mt-2 text-[14.5px] leading-relaxed text-text-secondary">{p.body}</p>
               </StaggerItem>
             ))}
           </StaggerGroup>
@@ -234,26 +245,26 @@ function HomePage() {
               <div className="mt-7 grid gap-4 md:grid-cols-3">
                 {[
                   {
-                    icon: User,
+                    Visual: ScopeUser,
                     title: "User Memory",
                     body: "Private to you. No accidental leaks.",
                   },
                   {
-                    icon: Users,
+                    Visual: ScopeWork,
                     title: "Work Memory",
                     body: "Shared with your team. Patterns and context stay in context.",
                   },
                   {
-                    icon: Building2,
+                    Visual: ScopeOrg,
                     title: "Org Memory",
                     body: "Company-wide signals and policies, with governed sharing.",
                   },
                 ].map((s) => (
                   <div
                     key={s.title}
-                    className="rounded-xl border border-border bg-white/[0.02] p-5"
+                    className="overflow-hidden rounded-xl border border-border bg-white/[0.02] p-4"
                   >
-                    <s.icon size={18} className="text-brand-accent" />
+                    <s.Visual />
                     <div className="mt-3 text-[15.5px] font-semibold text-foreground">
                       {s.title}
                     </div>
@@ -286,44 +297,44 @@ function HomePage() {
                 title: "Memory",
                 kicker: "The Platform",
                 body: "Data from your apps becomes a living Digital Memory.",
-                icon: Database,
+                Visual: StepMemory,
               },
               {
                 n: "02",
                 title: "Workbench",
                 kicker: "The Product",
                 body: "Your workspace adapts around what your memory knows.",
-                icon: Layers,
+                Visual: StepWorkbench,
               },
               {
                 n: "03",
                 title: "Twin",
                 kicker: "The Intelligence",
                 body: "Watches what changes and proposes the next move (powered by Claude Opus 4.7).",
-                icon: Sparkles,
+                Visual: StepTwin,
               },
               {
                 n: "04",
                 title: "Approval",
                 kicker: "The Control",
                 body: "Every proposal comes with evidence. You approve or deny. AI cannot act alone.",
-                icon: ShieldCheck,
+                Visual: StepApproval,
               },
               {
                 n: "05",
                 title: "The Loop",
                 kicker: "Compounds",
                 body: "Results return as new Truth. Tomorrow starts smarter than today.",
-                icon: Workflow,
+                Visual: StepLoop,
               },
             ].map((step, i) => (
               <Reveal key={step.title} delay={i * 70}>
-                <div className="relative h-full card-iw p-5">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[12px] font-semibold tracking-wider text-brand-accent">
-                      {step.n}
-                    </span>
-                    <step.icon size={18} className="text-brand-accent" />
+                <div className="relative h-full card-iw p-4">
+                  <span className="text-[12px] font-semibold tracking-wider text-brand-accent">
+                    {step.n}
+                  </span>
+                  <div className="mt-3">
+                    <step.Visual />
                   </div>
                   <div className="mt-4 text-[17px] font-semibold text-foreground">{step.title}</div>
                   <div className="text-[12px] uppercase tracking-wider text-text-secondary">
