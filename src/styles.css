@@ -475,3 +475,117 @@
 .about-icon-tile {
   background: linear-gradient(90deg, rgba(255, 225, 204, 0.20), rgba(255, 255, 255, 0.20));
 }
+
+/* ============================================================
+   Framer-style polish — global scroll & motion utilities
+   ============================================================ */
+
+/* Smooth anchor scroll across the site (header offset already handled
+   by StickySubNav for in-page jumps). */
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* Optional snap container — opt-in via .snap-section on a wrapper.
+   Children get .snap-pane. Used sparingly on showcase pages. */
+.snap-section {
+  scroll-snap-type: y proximity;
+}
+.snap-pane {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Sticky-gather: pin a heading/aside while the next block catches up.
+   Use on a column that should "wait" for sibling content to scroll past. */
+.sticky-gather {
+  position: sticky;
+  top: 96px;
+  align-self: start;
+}
+
+/* Scroll-driven shimmer for accent text — use sparingly on hero phrases. */
+@keyframes iw-shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.text-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--brand-accent) 0%,
+    #ffffff 25%,
+    var(--brand-highlight) 50%,
+    #ffffff 75%,
+    var(--brand-accent) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: iw-shimmer 6s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .text-shimmer { animation: none; }
+}
+
+/* Soft lift-on-hover for cards (Framer-style float). */
+.lift-on-hover {
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 320ms ease,
+              border-color 320ms ease;
+  will-change: transform;
+}
+.lift-on-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 48px -16px rgba(0, 0, 0, 0.55),
+              0 0 0 1px rgba(255, 225, 204, 0.18) inset;
+  border-color: rgba(255, 225, 204, 0.28);
+}
+
+/* Underline grow — "story-link" Framer style. */
+.story-link {
+  position: relative;
+  display: inline-block;
+}
+.story-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 1px;
+  width: 100%;
+  background: var(--brand-accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.story-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Scroll-revealed underline beneath section headings. Add `.heading-rule`
+   to an h2/h3 to animate a peach rule when in view. Pair with .reveal. */
+.heading-rule {
+  position: relative;
+  padding-bottom: 14px;
+}
+.heading-rule::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 64px;
+  background: linear-gradient(90deg, var(--brand-accent), var(--brand-highlight));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1) 120ms;
+}
+.reveal.is-in .heading-rule::after,
+.heading-rule.is-in::after {
+  transform: scaleX(1);
+}
