@@ -1,6 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Container } from "./Container";
 import { PRIMARY_NAV, type NavGroup } from "@/lib/site";
 import { useDemoModal } from "./demo-modal-context";
