@@ -33,6 +33,19 @@ import {
   VisualMemory,
   VisualWorkbench,
 } from "@/components/site/SolutionVisuals";
+import {
+  PainScatter,
+  PainBlind,
+  PainRogue,
+  ScopeUser,
+  ScopeWork,
+  ScopeOrg,
+  StepMemory,
+  StepWorkbench,
+  StepTwin,
+  StepApproval,
+  StepLoop,
+} from "@/components/site/HomeVisuals";
 import airtable from "@/assets/logos/airtable.svg";
 import asana from "@/assets/logos/asana.svg";
 import gdrive from "@/assets/logos/google-drive.svg";
