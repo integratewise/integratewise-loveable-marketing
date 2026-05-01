@@ -56,21 +56,39 @@ export function Header() {
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-1 lg:flex">
+          <nav className="relative hidden items-center gap-1 lg:flex">
             {PRIMARY_NAV.map((item) => {
               if (item.kind === "link") {
+                const isActive =
+                  location.pathname === item.to ||
+                  (item.to !== "/" && location.pathname.startsWith(item.to));
                 return (
                   <Link
                     key={item.label}
                     to={item.to}
-                    className="rounded-lg px-3 py-2 text-[15px] text-text-secondary transition-colors hover:bg-white/5 hover:text-foreground"
-                    activeProps={{ className: "text-foreground bg-white/5" }}
+                    className={cn(
+                      "relative rounded-lg px-3 py-2 text-[15px] font-medium transition-colors",
+                      isActive ? "text-foreground" : "text-text-secondary hover:text-foreground",
+                    )}
                   >
-                    {item.label}
+                    <AnimatePresence>
+                      {isActive && (
+                        <motion.span
+                          layoutId="topnav-pill"
+                          className="absolute inset-0 -z-10 rounded-lg bg-white/[0.06] ring-1 ring-inset ring-white/10"
+                          transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                        />
+                      )}
+                    </AnimatePresence>
+                    <span className="relative">{item.label}</span>
                   </Link>
                 );
               }
               const isOpen = openMenu === item.label;
+              const isActive = item.groups
+                .flatMap((g) => g.items)
+                .some((leaf) => location.pathname.startsWith(leaf.to));
+              const showPill = isActive || isOpen;
               return (
                 <div
                   key={item.label}
@@ -81,16 +99,25 @@ export function Header() {
                   <button
                     type="button"
                     className={cn(
-                      "inline-flex items-center gap-1 rounded-lg px-3 py-2 text-[15px] text-text-secondary transition-colors hover:bg-white/5 hover:text-foreground",
-                      isOpen && "text-foreground bg-white/5",
+                      "relative inline-flex items-center gap-1 rounded-lg px-3 py-2 text-[15px] font-medium transition-colors",
+                      showPill ? "text-foreground" : "text-text-secondary hover:text-foreground",
                     )}
                     onFocus={() => handleEnter(item.label)}
                     onBlur={handleLeave}
                     aria-expanded={isOpen}
                     aria-haspopup="menu"
                   >
-                    {item.label}
-                    <ChevronDown size={14} className={cn("transition-transform", isOpen && "rotate-180")} />
+                    <AnimatePresence>
+                      {showPill && (
+                        <motion.span
+                          layoutId="topnav-pill"
+                          className="absolute inset-0 -z-10 rounded-lg bg-white/[0.06] ring-1 ring-inset ring-white/10"
+                          transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                        />
+                      )}
+                    </AnimatePresence>
+                    <span className="relative">{item.label}</span>
+                    <ChevronDown size={14} className={cn("relative transition-transform", isOpen && "rotate-180")} />
                   </button>
                   {isOpen && <MegaMenu item={item} />}
                 </div>
