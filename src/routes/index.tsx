@@ -63,10 +63,10 @@ function HomePage() {
               <span className="text-gradient-hero">human API between your tools.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-3xl text-[17px] leading-relaxed text-text-secondary">
-              Your work runs through Salesforce, HubSpot, Stripe, Jira, Notion, Slack, Zendesk, Gmail, Shopify, QuickBooks and more — and you're the one stitching it together.
+              Your work runs through Salesforce, HubSpot, Stripe, Jira, Notion, Slack, Zendesk, Gmail, Shopify, QuickBooks and more — and you're still the one stitching it together.
             </p>
             <p className="mx-auto mt-4 max-w-3xl text-[16px] leading-relaxed text-text-secondary">
-              IntegrateWise connects your tools into a governed <span className="text-foreground">Digital Memory</span> and an approval-gated <span className="text-foreground">AI Twin</span> that proposes the next move — with full evidence, on every account.
+              IntegrateWise pulls those tools into a governed <span className="text-foreground">Digital Memory</span> and an approval-gated <span className="text-foreground">AI Twin</span> that spots what changed, explains why it matters, and prepares the next move — with full evidence, on every account.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <button type="button" onClick={() => open("Home hero")} className="btn-primary-iw">
@@ -352,7 +352,7 @@ function HomePage() {
             <span className="badge-iw badge-iw-muted">Workspace</span>
             <h2 className="heading-h2 mt-4">You stop being the human API between tools.</h2>
             <p className="mt-4 text-[16px] text-text-secondary">
-              The system does the stitching; you stay in control.
+              The system does the stitching; you stay in control. One Accounts &amp; Revenue view for health, ARR, risk and renewal timelines — without building another fragile dashboard.
             </p>
           </Reveal>
           <Reveal className="mt-12">
