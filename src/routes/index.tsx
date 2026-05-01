@@ -61,53 +61,11 @@ const HERO_LOGOS = [
 ];
 
 /* ------------------------------------------------------------------ */
-/* On-page nav config                                                  */
-/* ------------------------------------------------------------------ */
-
-const ANCHOR_NAV: Array<{ id: string; label: string }> = [
-  { id: "why", label: "Why" },
-  { id: "product", label: "Product" },
-  { id: "solutions", label: "Solutions" },
-  { id: "pricing", label: "Pricing" },
-  { id: "security", label: "Security" },
-];
-
-function useActiveSection(ids: string[]): string {
-  const [active, setActive] = useState<string>(ids[0] ?? "");
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible[0]) setActive(visible[0].target.id);
-      },
-      { rootMargin: "-40% 0px -50% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] },
-    );
-    ids.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
-  }, [ids]);
-  return active;
-}
-
-function smoothScrollTo(id: string) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  const offset = 140; // sticky global header (60) + sub-nav (~52) + breathing room
-  const y = el.getBoundingClientRect().top + window.scrollY - offset;
-  window.scrollTo({ top: y, behavior: "smooth" });
-}
-
-/* ------------------------------------------------------------------ */
 /* Page                                                                */
 /* ------------------------------------------------------------------ */
 
 function HomePage() {
   const { open, openEarlyAccess, openWaitlist } = useDemoModal();
-  const active = useActiveSection(ANCHOR_NAV.map((n) => n.id));
 
   return (
     <>
