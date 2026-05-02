@@ -5,6 +5,7 @@ import { Container } from "@/components/site/Container";
 import { Section } from "@/components/site/Section";
 import { Badge } from "@/components/site/Badge";
 import { Reveal } from "@/components/site/Reveal";
+import { TierVisual, TierLadder } from "@/components/site/PageVisuals";
 import { useDemoModal } from "@/components/site/demo-modal-context";
 
 export const Route = createFileRoute("/pricing")({
@@ -29,6 +30,7 @@ export const Route = createFileRoute("/pricing")({
 const PLANS = [
   {
     name: "Starter",
+    tier: "starter" as const,
     audience: "1–5 users · 1 team",
     sync: "4h sync interval",
     connectors: "5 connectors",
@@ -39,6 +41,7 @@ const PLANS = [
   },
   {
     name: "Growth",
+    tier: "growth" as const,
     audience: "5–20 users · multi-team",
     sync: "1h sync interval",
     connectors: "20 connectors",
@@ -49,6 +52,7 @@ const PLANS = [
   },
   {
     name: "Command",
+    tier: "command" as const,
     audience: "Whole org · enterprise",
     sync: "15-min sync interval",
     connectors: "Unlimited connectors",
@@ -78,7 +82,11 @@ function PricingPage() {
             </p>
           </div>
 
-          <div className="mx-auto mt-12 grid max-w-5xl gap-5 md:grid-cols-3">
+          <Reveal className="mx-auto mt-10 max-w-5xl">
+            <TierLadder />
+          </Reveal>
+
+          <div className="mx-auto mt-10 grid max-w-5xl gap-5 md:grid-cols-3">
             {PLANS.map((p, i) => (
               <Reveal
                 key={p.name}
@@ -90,6 +98,9 @@ function PricingPage() {
                   {p.popular && <Badge>Most Popular</Badge>}
                 </div>
                 <p className="mt-2 text-[13px] text-text-secondary">{p.audience}</p>
+
+                <TierVisual tier={p.tier} className="mt-5" />
+
                 <ul className="mt-5 space-y-2.5 text-[14px] text-foreground/90">
                   {[p.sync, p.connectors, p.truth, p.history].map((line) => (
                     <li key={line} className="flex items-start gap-2">
