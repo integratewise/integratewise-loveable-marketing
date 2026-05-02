@@ -82,7 +82,11 @@ function PricingPage() {
             </p>
           </div>
 
-          <div className="mx-auto mt-12 grid max-w-5xl gap-5 md:grid-cols-3">
+          <Reveal className="mx-auto mt-10 max-w-5xl">
+            <TierLadder />
+          </Reveal>
+
+          <div className="mx-auto mt-10 grid max-w-5xl gap-5 md:grid-cols-3">
             {PLANS.map((p, i) => (
               <Reveal
                 key={p.name}
@@ -94,6 +98,9 @@ function PricingPage() {
                   {p.popular && <Badge>Most Popular</Badge>}
                 </div>
                 <p className="mt-2 text-[13px] text-text-secondary">{p.audience}</p>
+
+                <TierVisual tier={p.tier} className="mt-5" />
+
                 <ul className="mt-5 space-y-2.5 text-[14px] text-foreground/90">
                   {[p.sync, p.connectors, p.truth, p.history].map((line) => (
                     <li key={line} className="flex items-start gap-2">
