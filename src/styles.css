@@ -706,6 +706,19 @@
   0%, 100% { background-color: rgba(239,68,68,0.06); }
   50%      { background-color: rgba(239,68,68,0.16); }
 }
+@keyframes radar-sweep {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes dial-fill {
+  0%   { stroke-dashoffset: var(--dial-len, 220); }
+  60%  { stroke-dashoffset: var(--dial-end, 60); }
+  100% { stroke-dashoffset: var(--dial-end, 60); }
+}
+@keyframes tick {
+  0%, 70%, 100% { opacity: 0.25; }
+  35%           { opacity: 1; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .animate-\[orbit-slow_28s_linear_infinite\],
