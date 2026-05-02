@@ -30,6 +30,7 @@ export const Route = createFileRoute("/pricing")({
 const PLANS = [
   {
     name: "Starter",
+    tier: "starter" as const,
     audience: "1–5 users · 1 team",
     sync: "4h sync interval",
     connectors: "5 connectors",
@@ -40,6 +41,7 @@ const PLANS = [
   },
   {
     name: "Growth",
+    tier: "growth" as const,
     audience: "5–20 users · multi-team",
     sync: "1h sync interval",
     connectors: "20 connectors",
@@ -50,6 +52,7 @@ const PLANS = [
   },
   {
     name: "Command",
+    tier: "command" as const,
     audience: "Whole org · enterprise",
     sync: "15-min sync interval",
     connectors: "Unlimited connectors",
