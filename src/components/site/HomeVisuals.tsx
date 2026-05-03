@@ -208,7 +208,7 @@ export function StepWorkbench({ className = "" }: Props) {
           <span className="size-1 rounded-full bg-white/20" />
           <span className="size-1 rounded-full bg-white/20" />
           <span className="size-1 rounded-full bg-white/20" />
-          <span className="ml-1 text-[8px] text-text-secondary">workspace</span>
+          <span className="ml-1 text-[8px] text-text-secondary">workbench</span>
         </div>
         <div className="flex gap-1 p-1.5">
           <div className="h-8 w-1/3 rounded-sm bg-white/[0.04]" />

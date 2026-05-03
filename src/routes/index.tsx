@@ -217,7 +217,7 @@ function HomePage() {
               },
               {
                 Visual: VisualWorkbench,
-                title: "Workspace and Twin sit on top.",
+                title: "Workbench and Twin sit on top.",
                 body: "Every day starts with full context — not a blank tab.",
               },
             ].map((c) => (
@@ -303,12 +303,12 @@ function HomePage() {
                 n: "02",
                 title: "Workbench",
                 kicker: "The Product",
-                body: "Your workspace adapts around what your memory knows.",
+                body: "Your workbench adapts around what your memory knows.",
                 Visual: StepWorkbench,
               },
               {
                 n: "03",
-                title: "Twin",
+                title: "The Twin",
                 kicker: "The Intelligence",
                 body: "Watches what changes and proposes the next move (powered by Claude Opus 4.7).",
                 Visual: StepTwin,
@@ -361,7 +361,7 @@ function HomePage() {
       <section id="demo" className="scroll-mt-32 py-28 lg:py-40">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="badge-iw badge-iw-muted">Workspace · Intelligence</span>
+            <span className="badge-iw badge-iw-muted">Workbench · Intelligence</span>
             <h2 className="heading-h2 mt-5">See the full picture in one view.</h2>
             <p className="mt-6 text-[16px] text-text-secondary">
               A static preview of what your team sees on Monday morning — Truth, Context, and Twin's
@@ -554,7 +554,7 @@ function HomePage() {
               </button>
             </div>
 
-            {/* Personal Space */}
+            {/* Personal Ops */}
             <div className="reveal card-iw relative flex flex-col p-7">
               <span className="absolute right-5 top-5 rounded-full border border-brand-highlight/40 bg-brand-highlight/10 px-2.5 py-0.5 text-[11px] font-semibold text-brand-highlight">
                 Waitlist
@@ -562,7 +562,7 @@ function HomePage() {
               <div className="flex items-center gap-2">
                 <User size={20} className="text-brand-accent" />
                 <span className="text-[12px] font-semibold uppercase tracking-wider text-text-secondary">
-                  Personal Space
+                  Personal Ops
                 </span>
               </div>
               <h3 className="mt-3 text-[20px] font-semibold text-foreground">
@@ -578,7 +578,7 @@ function HomePage() {
               </div>
               <button
                 type="button"
-                onClick={() => openWaitlist("Solutions · Personal Space")}
+                onClick={() => openWaitlist("Solutions · Personal Ops")}
                 className="btn-secondary-iw mt-6 self-start"
               >
                 Join the Waitlist <ArrowRight size={14} />
@@ -742,7 +742,7 @@ function HomePage() {
 }
 
 /* ------------------------------------------------------------------ */
-/* Static Workspace preview                                            */
+/* Static Workbench preview                                            */
 /* ------------------------------------------------------------------ */
 
 const NAV_ITEMS = [
@@ -883,7 +883,7 @@ function ProductFrame() {
             </div>
           </div>
           <div className="mt-2 px-2 text-[10.5px] font-semibold uppercase tracking-wider text-text-secondary">
-            Workspace › Accounts
+            Workbench › Accounts
           </div>
           <ul className="mt-2 max-h-[420px] space-y-0.5 overflow-y-auto pr-1">
             {NAV_ITEMS.map((n) => (
@@ -904,7 +904,7 @@ function ProductFrame() {
           </ul>
         </aside>
 
-        {/* CENTER: Workspace */}
+        {/* CENTER: Workbench */}
         <div className="border-b border-border p-5 lg:border-b-0 lg:border-r">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>

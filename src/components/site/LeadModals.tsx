@@ -202,7 +202,7 @@ function WaitlistForm({ source, onDone }: { source: string; onDone: () => void }
 
   if (done)
     return (
-      <Done title="You're on the waitlist." body="Personal Space rolls out cohort by cohort." />
+      <Done title="You're on the waitlist." body="Personal Ops rolls out cohort by cohort." />
     );
 
   return (
@@ -210,7 +210,7 @@ function WaitlistForm({ source, onDone }: { source: string; onDone: () => void }
       <header>
         <h3 className="heading-h3">Join the Waitlist</h3>
         <p className="mt-1 text-[14px] text-text-secondary">
-          Personal Space is invite-only while we keep memory truly private.
+          Personal Ops is invite-only while we keep memory truly private.
         </p>
       </header>
       <Field label="Email" name="email" type="email" required />

@@ -12,13 +12,13 @@ export const Route = createFileRoute("/blog")({
       {
         name: "description",
         content:
-          "Stories about ending the Human API role: how scattered apps become Digital Memory, how Workspace replaces tab-switching, and how Twin proposes inside the Approval Gate.",
+          "Stories about ending the Human API role: how scattered apps become Digital Memory, how Workbench replaces tab-switching, and how Twin proposes inside the Approval Gate.",
       },
       { property: "og:title", content: "Blog — IntegrateWise" },
       {
         property: "og:description",
         content:
-          "Real-world stories about Digital Memory, Spine, Workspace, Twin, and Approval — written for operators, not generic AI thought-leadership.",
+          "Real-world stories about Digital Memory, Spine, Workbench, Twin, and Approval — written for operators, not generic AI thought-leadership.",
       },
     ],
   }),
@@ -37,7 +37,7 @@ const CATEGORIES = [
       "Why Memory comes before intelligence. How Truth, Context, and Session Summaries stay separate.",
   },
   {
-    tag: "Workspace in the real world",
+    tag: "Workbench in the real world",
     blurb:
       "Operator stories: a Monday in Business Ops, a CA firm running GST work from one screen.",
   },
@@ -64,14 +64,14 @@ const POSTS = [
     audience: "For founders and ops leads",
   },
   {
-    category: "Workspace in the real world",
+    category: "Workbench in the real world",
     title: "A Monday in Business Ops with IntegrateWise",
     summary:
-      "Twelve apps on Friday. One Workspace on Monday. Walk through how revenue, support tickets, and renewal risks land on a single screen.",
+      "Twelve apps on Friday. One Workbench on Monday. Walk through how revenue, support tickets, and renewal risks land on a single screen.",
     audience: "For BizOps and RevOps",
   },
   {
-    category: "Workspace in the real world",
+    category: "Workbench in the real world",
     title: "How a CA firm runs GST work from one screen",
     summary:
       "Tally, Sheets, WhatsApp, and email — stitched into a single client view. Filings, invoices, and chase-ups stop being a tab-hunt.",
@@ -88,7 +88,7 @@ const POSTS = [
     category: "Twin & Governed AI",
     title: "Confidence scores, evidence chains, and the Approval Gate",
     summary:
-      "What a Twin proposal actually looks like in the Workspace: severity, sources, confidence, and the gate that keeps execution in your hands.",
+      "What a Twin proposal actually looks like in the Workbench: severity, sources, confidence, and the gate that keeps execution in your hands.",
     audience: "For ops leads and admins",
   },
 ];
@@ -112,7 +112,7 @@ function BlogPage() {
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-[17px] leading-relaxed text-text-secondary">
               How real teams stop being the bridge between WhatsApp, Tally, Razorpay, Gmail, Sheets,
-              and a CRM — and how Digital Memory, Workspace, Twin, and Approval show up in their
+              and a CRM — and how Digital Memory, Workbench, Twin, and Approval show up in their
               day.
             </p>
           </Reveal>
@@ -126,7 +126,7 @@ function BlogPage() {
             <h2 className="heading-h2">Four threads we keep pulling.</h2>
             <p className="mt-4 text-[16px] text-text-secondary">
               Every post connects back to one flow: scattered apps → Spine → Digital Memory →
-              Workspace → Twin → Approval.
+              Workbench → Twin → Approval.
             </p>
           </Reveal>
           <div className="mx-auto mt-12 grid max-w-5xl gap-5 md:grid-cols-2">

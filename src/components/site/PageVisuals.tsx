@@ -215,9 +215,9 @@ export function TierLadder({ className = "" }: Cls) {
 /* -------------------------------------------------------------------------- */
 export function WhyLoopScene({ className = "" }: Cls) {
   const nodes = [
-    { label: "Spine", angle: -90 },
+    { label: "Adaptive Spine", angle: -90 },
     { label: "Memory", angle: -18 },
-    { label: "Twin", angle: 54 },
+    { label: "The Twin", angle: 54 },
     { label: "Approval", angle: 126 },
     { label: "Action", angle: 198 },
   ];

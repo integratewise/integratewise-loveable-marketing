@@ -2,11 +2,11 @@
 import type { ComponentType } from "react";
 import {
   Activity,
+  BookOpen,
   Boxes,
   Briefcase,
   Building2,
   CircuitBoard,
-  Cpu,
   Factory,
   FileText,
   Handshake,
@@ -32,14 +32,14 @@ import {
 export const SITE_NAME = "IntegrateWise";
 export const SITE_TAGLINE = "Stop being the human API between your tools.";
 export const SITE_DESCRIPTION =
-  "Every app runs on the Workspace. It turns raw data into scoped memory — relevant, stable, and ready to act on. AI doesn't work on raw data; it works on memory, proposing structured changes. The governance layer decides what becomes real and maintains a single active context — so work always happens in one clear state.";
+  "Every app runs on the Workbench. It turns raw data into scoped memory — relevant, stable, and ready to act on. AI doesn't work on raw data; it works on memory, proposing structured changes. The governance layer decides what becomes real and maintains a single active context — so work always happens in one clear state.";
 export const SITE_URL = "https://integratewise.ai";
 export const SITE_OG_IMAGE = `${SITE_URL}/og-image.png`;
 
 /* Canonical copy tokens — accumulating, reusable Digital Memory. */
 export const MEMORY_COPY = {
   primary:
-    "Digital Memory accumulates with every update, every decision, and every interaction — then gets reused by your Workspace, your Twin, and your team.",
+    "Digital Memory accumulates with every update, every decision, and every interaction — then gets reused by your Workbench, your Twin, and your team.",
   short: "Memory compounds. Context improves. Decisions get faster.",
 } as const;
 
@@ -90,8 +90,14 @@ export const SOLUTIONS_BY_USE_CASE: SolutionItem[] = [
     icon: Activity,
   },
   {
+    to: "/solutions/customer-success",
+    label: "Customer Success",
+    blurb: "Your entire business. One screen. Real-time.",
+    icon: LineChart,
+  },
+  {
     to: "/solutions/personal-space",
-    label: "Personal Space",
+    label: "Personal Ops",
     blurb: "Your day, finally assembled.",
     icon: User,
     waitlist: true,
@@ -117,7 +123,7 @@ export const SOLUTIONS_BY_OUTCOME: SolutionItem[] = [
   },
   {
     to: "/solutions/personal-space",
-    label: "Personal Space",
+    label: "Personal Ops",
     blurb: "Your day, finally assembled.",
     icon: User,
     waitlist: true,
@@ -268,14 +274,14 @@ export interface NavLeaf {
 export const PLATFORM_LINKS: NavLeaf[] = [
   {
     to: "/platform#spine",
-    label: "Spine",
+    label: "Adaptive Spine",
     blurb: "One layer connects every app.",
     icon: CircuitBoard,
   },
   {
     to: "/platform#how-it-works",
     label: "How it works",
-    blurb: "Apps → Spine → Memory → Workspace.",
+    blurb: "Apps → Spine → Memory → Workbench.",
     icon: Workflow,
   },
   {
@@ -283,12 +289,6 @@ export const PLATFORM_LINKS: NavLeaf[] = [
     label: "Digital Memory",
     blurb: "Accumulates and gets reused.",
     icon: Sparkles,
-  },
-  {
-    to: "/platform#connectors",
-    label: "Connectors",
-    blurb: "70+ schema-aware connectors.",
-    icon: Cpu,
   },
   {
     to: "/platform#security",
@@ -299,7 +299,7 @@ export const PLATFORM_LINKS: NavLeaf[] = [
   {
     to: "/platform#integrations",
     label: "Integrations",
-    blurb: "The tools you already use.",
+    blurb: "70+ schema-aware integrations.",
     icon: Package,
   },
 ];
@@ -307,8 +307,8 @@ export const PLATFORM_LINKS: NavLeaf[] = [
 /* All Product dropdown items are anchors on /product (single long page). */
 export const PRODUCT_LINKS: NavLeaf[] = [
   {
-    to: "/product#workspace",
-    label: "Workspace",
+    to: "/product#workbench",
+    label: "Workbench",
     blurb: "Your living work surface.",
     icon: LayoutDashboard,
   },
@@ -336,7 +336,7 @@ export const PRODUCT_LINKS: NavLeaf[] = [
 export const INTELLIGENCE_LINKS: NavLeaf[] = [
   {
     to: "/twin#twin",
-    label: "Twin",
+    label: "The Twin",
     blurb: "Intelligence layer that proposes.",
     icon: Sparkles,
   },
@@ -349,7 +349,7 @@ export const INTELLIGENCE_LINKS: NavLeaf[] = [
   {
     to: "/twin#digital-memory-reference",
     label: "Digital Memory Reference",
-    blurb: "Twin's read-only library.",
+    blurb: "The Twin's read-only library.",
     icon: FileText,
   },
   {
@@ -374,6 +374,7 @@ export const COMPANY_LINKS: NavLeaf[] = [
   { to: "/manifesto", label: "Manifesto", blurb: "Principles we build by.", icon: FileText },
   { to: "/customer-zero", label: "Customer Zero", blurb: "I run it on itself.", icon: Rocket },
   { to: "/why", label: "Why", blurb: "The category thesis.", icon: Star },
+  { to: "/resources", label: "Resources & Blog", blurb: "Guides, case studies, articles.", icon: BookOpen },
   { to: "/pricing", label: "Pricing", blurb: "Plans, sync intervals, ROI.", icon: Wallet },
   { to: "/contact", label: "Contact", blurb: "Founder-led contact.", icon: LifeBuoy },
 ];
@@ -408,11 +409,11 @@ export const PRIMARY_NAV: ReadonlyArray<NavGroup> = [
     groups: [
       {
         heading: "Overview",
-        items: pickLinks(PLATFORM_LINKS, ["Spine", "How it works", "Digital Memory"]),
+        items: pickLinks(PLATFORM_LINKS, ["Adaptive Spine", "How it works", "Digital Memory"]),
       },
       {
         heading: "Foundations",
-        items: pickLinks(PLATFORM_LINKS, ["Connectors", "Integrations", "Security"]),
+        items: pickLinks(PLATFORM_LINKS, ["Integrations", "Security"]),
       },
     ],
   },
@@ -422,7 +423,7 @@ export const PRIMARY_NAV: ReadonlyArray<NavGroup> = [
     groups: [
       {
         heading: "Surface",
-        items: pickLinks(PRODUCT_LINKS, ["Workspace", "How it works"]),
+        items: pickLinks(PRODUCT_LINKS, ["Workbench", "How it works"]),
       },
       {
         heading: "Foundations",
@@ -435,8 +436,8 @@ export const PRIMARY_NAV: ReadonlyArray<NavGroup> = [
     label: "Intelligence",
     groups: [
       {
-        heading: "Twin",
-        items: pickLinks(INTELLIGENCE_LINKS, ["Twin", "How it works", "Twin Execution"]),
+        heading: "The Twin",
+        items: pickLinks(INTELLIGENCE_LINKS, ["The Twin", "How it works", "Twin Execution"]),
       },
       {
         heading: "Foundations",
@@ -490,11 +491,11 @@ export const PRIMARY_NAV: ReadonlyArray<NavGroup> = [
     groups: [
       {
         heading: "Story",
-        items: pickLinks(COMPANY_LINKS, ["About", "Manifesto", "Why"]),
+        items: pickLinks(COMPANY_LINKS, ["About", "Manifesto", "Customer Zero", "Why"]),
       },
       {
         heading: "Engage",
-        items: pickLinks(COMPANY_LINKS, ["Customer Zero", "Pricing", "Contact"]),
+        items: pickLinks(COMPANY_LINKS, ["Resources & Blog", "Pricing", "Contact"]),
       },
     ],
   },

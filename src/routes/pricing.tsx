@@ -15,7 +15,7 @@ export const Route = createFileRoute("/pricing")({
       {
         name: "description",
         content:
-          "Pricing based on the kind of workspace you need. Starter, Growth, Command — sync intervals, connector counts, and TruthLayer access scale together.",
+          "Pricing based on the kind of workbench you need. Starter, Growth, Command — sync intervals, connector counts, and TruthLayer access scale together.",
       },
       { property: "og:title", content: "IntegrateWise Pricing" },
       {
@@ -74,7 +74,7 @@ function PricingPage() {
             <Badge variant="muted">Pricing</Badge>
             <h1 className="heading-h1 mt-5">
               Pricing based on the kind of{" "}
-              <span className="text-gradient-hero">workspace you need.</span>
+              <span className="text-gradient-hero">workbench you need.</span>
             </h1>
             <p className="mx-auto mt-5 text-[17px] leading-relaxed text-text-secondary">
               You are not just paying for features. You are paying for the kind of Memory,
@@ -147,7 +147,7 @@ function PricingPage() {
           >
             <h2 className="heading-h2">Talk through your stack with the founder.</h2>
             <p className="mx-auto mt-4 max-w-xl text-[16px] text-text-secondary">
-              30 minutes. Real conversation. Live Workspace scoped to your scenario.
+              30 minutes. Real conversation. Live Workbench scoped to your scenario.
             </p>
             <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
               <button

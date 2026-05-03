@@ -159,7 +159,7 @@ export function VisualMemory({ className = "" }: Props) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* 3. Workspace + Twin — mini workbench card with a Twin proposal             */
+/* 3. Workbench + Twin — mini workbench card with a Twin proposal             */
 /* -------------------------------------------------------------------------- */
 export function VisualWorkbench({ className = "" }: Props) {
   return (
@@ -178,7 +178,7 @@ export function VisualWorkbench({ className = "" }: Props) {
             <span className="size-2 rounded-full bg-white/15" />
             <span className="size-2 rounded-full bg-white/15" />
             <span className="ml-2 text-[10px] font-medium text-text-secondary">
-              Workspace · Acme Corp
+              Workbench · Acme Corp
             </span>
           </div>
 

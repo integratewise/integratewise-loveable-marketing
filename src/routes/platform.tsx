@@ -40,7 +40,7 @@ export const Route = createFileRoute("/platform")({
       {
         name: "description",
         content:
-          "The Spine connects the apps that run your business and turns their data into one living Digital Memory — so your team, your Workspace, and your Twin always start from the same truth.",
+          "The Spine connects the apps that run your business and turns their data into one living Digital Memory — so your team, your Workbench, and your Twin always start from the same truth.",
       },
       {
         property: "og:title",
@@ -126,7 +126,7 @@ const HOW_STEPS = [
     n: "05",
     title: "Expose to everything above",
     icon: Eye,
-    body: "Workspace, Twin, and reporting all read from this same Digital Memory — every view starts from shared truth, not a guess.",
+    body: "Workbench, Twin, and reporting all read from this same Digital Memory — every view starts from shared truth, not a guess.",
   },
 ];
 
@@ -208,20 +208,20 @@ function PlatformPage() {
             </h1>
             <p className="mx-auto mt-5 text-[17px] leading-relaxed text-text-secondary">
               Connect the apps that run your business. The Spine keeps them in sync and turns their
-              data into one living Digital Memory — so your Workspace, your Twin, and your team
+              data into one living Digital Memory — so your Workbench, your Twin, and your team
               always start from the same truth, no matter which tools you change above it.
             </p>
             <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
               <button onClick={() => open("Platform · hero")} className="btn-primary-iw">
                 Book a demo <ArrowRight size={16} />
               </button>
-              <a href="#connectors" className="btn-secondary-iw">
-                See connectors
+              <a href="#integrations" className="btn-secondary-iw">
+                See integrations
               </a>
             </div>
           </div>
 
-          {/* Hero diagram: Apps → Spine → Digital Memory → Workspace / Twin */}
+          {/* Hero diagram: Apps → Spine → Digital Memory → Workbench / Twin */}
           <Reveal className="mx-auto mt-12 max-w-5xl">
             <div className="card-iw p-6 md:p-8" style={{ background: "var(--bg-surface)" }}>
               <div className="grid items-center gap-6 lg:grid-cols-[1fr_auto_1fr_auto_1fr]">
@@ -272,8 +272,8 @@ function PlatformPage() {
                   </p>
                   <div className="space-y-2">
                     {[
-                      { label: "Workspace", body: "Your living work surface." },
-                      { label: "Twin", body: "Proposes; never writes without approval." },
+                      { label: "Workbench", body: "Your living work surface." },
+                      { label: "The Twin", body: "Proposes; never writes without approval." },
                       { label: "Team & reporting", body: "One shared truth." },
                     ].map((c) => (
                       <div
@@ -305,7 +305,7 @@ function PlatformPage() {
             </p>
             <p className="mt-3 text-[16px] leading-relaxed text-text-secondary">
               Apps plug into the Spine once. From there, it handles sync, conflict resolution, and
-              schema changes — so Workspace, Twin, and reporting can all read from the same
+              schema changes — so Workbench, Twin, and reporting can all read from the same
               Spine-backed Digital Memory.
             </p>
           </Reveal>
@@ -399,7 +399,7 @@ function PlatformPage() {
 
           <Reveal delay={200} className="mx-auto mt-10 max-w-3xl text-center">
             <p className="text-[16px] leading-relaxed text-foreground/90">
-              Digital Memory is what your Workspace and Twin actually consume.{" "}
+              Digital Memory is what your Workbench and Twin actually consume.{" "}
               <span className="text-brand-accent">
                 It does not reset when you swap tools or AI models.
               </span>
