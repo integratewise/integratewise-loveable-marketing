@@ -294,6 +294,11 @@ function Stat({
   );
 }
 
+// Use a fixed locale so SSR (Node) and client (browser) produce identical
+// strings. Using the default locale here previously caused hydration failures
+// for users whose browser locale formats numbers differently from Node
+// (e.g. "en-IN" → "$3,12,000" vs Node "en-US" → "$312,000").
+const FMT = new Intl.NumberFormat("en-US");
 function fmt(n: number) {
-  return `$${Math.round(n).toLocaleString()}`;
+  return `$${FMT.format(Math.round(n))}`;
 }
