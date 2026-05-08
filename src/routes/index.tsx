@@ -12,6 +12,9 @@ import {
 import { Container } from "@/components/site/Container";
 import { DashboardMockup } from "@/components/site/DashboardMockup";
 import { Reveal } from "@/components/site/Reveal";
+import { Particles } from "@/components/site/Particles";
+import { SectionDivider } from "@/components/site/SectionDivider";
+import { GradientHeading } from "@/components/site/GradientHeading";
 import { useDemoModal } from "@/components/site/demo-modal-context";
 import { CONNECTOR_LOGOS } from "@/components/site/ConnectorMarquee";
 import { StaggerGroup, StaggerItem } from "@/components/site/motion/Stagger";
