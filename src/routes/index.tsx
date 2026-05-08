@@ -384,7 +384,8 @@ function HomePage() {
       </section>
 
       {/* ========================= 6. TRUST & GOVERNANCE ========================= */}
-      <section id="trust" className="bg-bg-section-alt scroll-mt-32 py-28 lg:py-40">
+      <section id="trust" className="relative bg-bg-section-alt scroll-mt-32 py-28 lg:py-40">
+        <span aria-hidden className="orb orb-electric animate-orb-drift" style={{ width: 380, height: 380, top: -60, right: -100 }} />
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-electric">Trust &amp; Governance</span>
