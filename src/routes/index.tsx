@@ -12,6 +12,9 @@ import {
 import { Container } from "@/components/site/Container";
 import { DashboardMockup } from "@/components/site/DashboardMockup";
 import { Reveal } from "@/components/site/Reveal";
+import { Particles } from "@/components/site/Particles";
+import { SectionDivider } from "@/components/site/SectionDivider";
+import { GradientHeading } from "@/components/site/GradientHeading";
 import { useDemoModal } from "@/components/site/demo-modal-context";
 import { CONNECTOR_LOGOS } from "@/components/site/ConnectorMarquee";
 import { StaggerGroup, StaggerItem } from "@/components/site/motion/Stagger";
@@ -90,9 +93,15 @@ function HomePage() {
         />
         <span
           aria-hidden
-          className="orb orb-purple"
+          className="orb orb-cool animate-orb-drift"
           style={{ width: 520, height: 520, top: 80, left: -140 }}
         />
+        <span
+          aria-hidden
+          className="orb orb-electric animate-orb-drift"
+          style={{ width: 360, height: 360, bottom: -80, right: -60 }}
+        />
+        <Particles quantity={28} color="#FFE1CC" className="opacity-60" />
 
         <Container>
           <div className="fade-up mx-auto max-w-4xl text-center">
@@ -144,11 +153,13 @@ function HomePage() {
         </div>
       </section>
 
+      <SectionDivider variant="cool" />
+
       {/* ========================= 2. WHY / CORE PROBLEM ========================= */}
       <section id="why" className="bg-bg-section-alt scroll-mt-32 py-28 lg:py-40">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="badge-iw badge-iw-muted">2025</span>
+            <span className="badge-cool">2025</span>
             <h2 className="heading-h2 mt-5">The Core Problem of 2025</h2>
             <p className="mt-6 text-[17px] text-text-secondary">
               You are the bridge between your apps. And it's exhausting.
@@ -190,12 +201,15 @@ function HomePage() {
         </Container>
       </section>
 
+      <SectionDivider variant="warm" />
+
       {/* ========================= 3. SOLUTION OVERVIEW ========================= */}
-      <section id="overview" className="scroll-mt-32 py-28 lg:py-40">
+      <section id="overview" className="relative scroll-mt-32 py-28 lg:py-40">
+        <span aria-hidden className="orb orb-cool" style={{ width: 420, height: 420, top: -60, left: -120 }} />
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="badge-iw badge-iw-muted">Solution</span>
-            <h2 className="heading-h2 mt-5">One memory for your work.</h2>
+            <span className="badge-cool">Solution</span>
+            <GradientHeading variant="cool" as="h2" className="heading-h2 mt-5">One memory for your work.</GradientHeading>
           </Reveal>
 
           <div data-stagger className="mx-auto mt-14 grid max-w-5xl gap-6 md:grid-cols-3">
@@ -370,10 +384,11 @@ function HomePage() {
       </section>
 
       {/* ========================= 6. TRUST & GOVERNANCE ========================= */}
-      <section id="trust" className="bg-bg-section-alt scroll-mt-32 py-28 lg:py-40">
+      <section id="trust" className="relative bg-bg-section-alt scroll-mt-32 py-28 lg:py-40">
+        <span aria-hidden className="orb orb-electric animate-orb-drift" style={{ width: 380, height: 380, top: -60, right: -100 }} />
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="badge-iw">Trust &amp; Governance</span>
+            <span className="badge-electric">Trust &amp; Governance</span>
             <h2 className="heading-h2 mt-5">AI that cannot act without you.</h2>
             <p className="mt-6 text-[16px] text-text-secondary">
               Your Twin reads your Digital Memory but cannot write into systems or memory without
