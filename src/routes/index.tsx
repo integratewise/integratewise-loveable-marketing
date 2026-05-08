@@ -93,9 +93,15 @@ function HomePage() {
         />
         <span
           aria-hidden
-          className="orb orb-purple"
+          className="orb orb-cool animate-orb-drift"
           style={{ width: 520, height: 520, top: 80, left: -140 }}
         />
+        <span
+          aria-hidden
+          className="orb orb-electric animate-orb-drift"
+          style={{ width: 360, height: 360, bottom: -80, right: -60 }}
+        />
+        <Particles quantity={28} color="#FFE1CC" className="opacity-60" />
 
         <Container>
           <div className="fade-up mx-auto max-w-4xl text-center">
