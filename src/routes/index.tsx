@@ -153,12 +153,18 @@ function HomePage() {
         </div>
       </section>
 
+      <SectionDivider variant="cool" />
+
       {/* ========================= 2. WHY / CORE PROBLEM ========================= */}
       <section id="why" className="bg-bg-section-alt scroll-mt-32 py-28 lg:py-40">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="badge-iw badge-iw-muted">2025</span>
+            <span className="badge-cool">2025</span>
             <h2 className="heading-h2 mt-5">The Core Problem of 2025</h2>
+            <p className="mt-6 text-[17px] text-text-secondary">
+              You are the bridge between your apps. And it's exhausting.
+            </p>
+          </Reveal>
             <p className="mt-6 text-[17px] text-text-secondary">
               You are the bridge between your apps. And it's exhausting.
             </p>
