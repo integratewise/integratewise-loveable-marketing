@@ -455,7 +455,86 @@
   }
   .orb-peach { background: var(--gradient-orb-peach); }
   .orb-purple { background: var(--gradient-orb-purple); }
+  .orb-cool { background: var(--orb-cool); }
+  .orb-electric { background: var(--orb-electric); }
+  .orb-teal { background: var(--orb-teal); }
+
+  .glass-card-cool {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    transition: all 0.4s ease;
+  }
+  .glass-card-cool:hover {
+    border-color: rgba(129,140,248,0.25);
+    box-shadow: 0 20px 60px -15px rgba(129,140,248,0.12);
+    transform: translateY(-4px);
+  }
+  .glass-card-electric {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    transition: all 0.4s ease;
+  }
+  .glass-card-electric:hover {
+    border-color: rgba(192,132,252,0.25);
+    box-shadow: 0 20px 60px -15px rgba(192,132,252,0.12);
+    transform: translateY(-4px);
+  }
+
+  .text-gradient-cool {
+    background: var(--gradient-heading-cool);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .text-gradient-electric {
+    background: var(--gradient-heading-electric);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-glow-warm { text-shadow: 0 0 40px rgba(255,225,204,0.3), 0 0 80px rgba(255,225,204,0.15); }
+  .text-glow-cool { text-shadow: 0 0 40px rgba(129,140,248,0.3), 0 0 80px rgba(129,140,248,0.15); }
+  .text-glow-electric { text-shadow: 0 0 40px rgba(192,132,252,0.3), 0 0 80px rgba(192,132,252,0.15); }
+
+  .section-divider-warm { height: 1px; background: linear-gradient(90deg, transparent, rgba(255,225,204,0.3) 50%, transparent); }
+  .section-divider-cool { height: 1px; background: linear-gradient(90deg, transparent, rgba(129,140,248,0.3) 50%, transparent); }
+  .section-divider-electric { height: 1px; background: linear-gradient(90deg, transparent, rgba(192,132,252,0.3) 50%, transparent); }
+  .section-divider-subtle { height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08) 50%, transparent); }
+
+  .btn-cool {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--gradient-button-cool); color: #fff; border-radius: 12px;
+    padding: 14px 20px; font-weight: 600; font-size: 15px;
+    box-shadow: 0 10px 30px rgba(129,140,248,0.18);
+    transition: all 0.3s ease; border: 1px solid rgba(129,140,248,0.45); cursor: pointer;
+  }
+  .btn-cool:hover { box-shadow: 0 14px 36px rgba(129,140,248,0.24); transform: translateY(-2px); }
+  .btn-electric {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--gradient-button-electric); color: #fff; border-radius: 12px;
+    padding: 14px 20px; font-weight: 600; font-size: 15px;
+    box-shadow: 0 10px 30px rgba(192,132,252,0.18);
+    transition: all 0.3s ease; border: 1px solid rgba(192,132,252,0.45); cursor: pointer;
+  }
+  .btn-electric:hover { box-shadow: 0 14px 36px rgba(192,132,252,0.24); transform: translateY(-2px); }
+
+  .badge-cool { display: inline-flex; align-items: center; gap: 6px; background: rgba(129,140,248,0.12); color: var(--brand-indigo); border: 1px solid rgba(129,140,248,0.28); border-radius: 999px; padding: 6px 12px; font-size: 12px; font-weight: 600; letter-spacing: 0.01em; }
+  .badge-electric { display: inline-flex; align-items: center; gap: 6px; background: rgba(192,132,252,0.12); color: var(--brand-violet); border: 1px solid rgba(192,132,252,0.28); border-radius: 999px; padding: 6px 12px; font-size: 12px; font-weight: 600; letter-spacing: 0.01em; }
+  .badge-teal { display: inline-flex; align-items: center; gap: 6px; background: rgba(45,212,191,0.12); color: var(--brand-teal); border: 1px solid rgba(45,212,191,0.28); border-radius: 999px; padding: 6px 12px; font-size: 12px; font-weight: 600; letter-spacing: 0.01em; }
 }
+
+@keyframes orb-drift {
+  0% { transform: translate(0,0) scale(1); }
+  33% { transform: translate(20px,-15px) scale(1.05); }
+  66% { transform: translate(-10px,10px) scale(0.95); }
+  100% { transform: translate(0,0) scale(1); }
+}
+.animate-orb-drift { animation: orb-drift 20s ease-in-out infinite; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
