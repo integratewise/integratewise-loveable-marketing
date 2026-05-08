@@ -201,12 +201,15 @@ function HomePage() {
         </Container>
       </section>
 
+      <SectionDivider variant="warm" />
+
       {/* ========================= 3. SOLUTION OVERVIEW ========================= */}
-      <section id="overview" className="scroll-mt-32 py-28 lg:py-40">
+      <section id="overview" className="relative scroll-mt-32 py-28 lg:py-40">
+        <span aria-hidden className="orb orb-cool" style={{ width: 420, height: 420, top: -60, left: -120 }} />
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="badge-iw badge-iw-muted">Solution</span>
-            <h2 className="heading-h2 mt-5">One memory for your work.</h2>
+            <span className="badge-cool">Solution</span>
+            <GradientHeading variant="cool" as="h2" className="heading-h2 mt-5">One memory for your work.</GradientHeading>
           </Reveal>
 
           <div data-stagger className="mx-auto mt-14 grid max-w-5xl gap-6 md:grid-cols-3">
