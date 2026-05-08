@@ -387,7 +387,7 @@ function HomePage() {
       <section id="trust" className="bg-bg-section-alt scroll-mt-32 py-28 lg:py-40">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="badge-iw">Trust &amp; Governance</span>
+            <span className="badge-electric">Trust &amp; Governance</span>
             <h2 className="heading-h2 mt-5">AI that cannot act without you.</h2>
             <p className="mt-6 text-[16px] text-text-secondary">
               Your Twin reads your Digital Memory but cannot write into systems or memory without
