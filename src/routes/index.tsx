@@ -165,10 +165,6 @@ function HomePage() {
               You are the bridge between your apps. And it's exhausting.
             </p>
           </Reveal>
-            <p className="mt-6 text-[17px] text-text-secondary">
-              You are the bridge between your apps. And it's exhausting.
-            </p>
-          </Reveal>
 
           <StaggerGroup
             className="mx-auto mt-16 grid max-w-5xl gap-5 md:grid-cols-3"
