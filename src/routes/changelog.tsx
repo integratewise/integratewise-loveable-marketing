@@ -11,7 +11,7 @@ export const Route = createFileRoute("/changelog")({
       {
         name: "description",
         content:
-          "How IntegrateWise is learning with you. Every update is logged by Spine, Memory, Workbench, Twin, or Approval — with what changed and why it matters.",
+          "How IntegrateWise is learning with you. Every update is logged by Spine, Memory, Workspace, Twin, or Approval — with what changed and why it matters.",
       },
       { property: "og:title", content: "Changelog — IntegrateWise" },
       {
@@ -42,11 +42,11 @@ const CHANGELOG: MonthBlock[] = [
     month: "April 2026",
     entries: [
       {
-        tags: ["Workbench", "Account Success"],
+        tags: ["Workspace", "Account Success"],
         title: "GST filings now visible next to account revenue.",
-        what: "Accounts & Revenue view in the Workbench now shows GST filing status and due dates next to invoicing and ARR for each client.",
+        what: "Accounts & Revenue view in the Workspace now shows GST filing status and due dates next to invoicing and ARR for each client.",
         why: "CAs and founders no longer have to open Tally and Sheets just to see who is late and how much is at risk \u2014 the full picture is visible in one stitched client view.",
-        where: "In the Account Success Workbench under \u2018Accounts & Revenue\u2019.",
+        where: "In the Account Success Workspace under \u2018Accounts & Revenue\u2019.",
       },
       {
         tags: ["Spine", "Digital Memory"],
@@ -56,7 +56,7 @@ const CHANGELOG: MonthBlock[] = [
         where: "In Evidence panels across Account Success and Business Ops Workbenches.",
       },
       {
-        tags: ["The Twin", "Approval"],
+        tags: ["Twin", "Approval"],
         title: "Twin proposals always show Truth/Context/Session breakdown.",
         what: "Every Twin proposal now clearly labels which evidence came from Truth (records), Context (emails/chats), and Session Summaries (approved AI knowledge).",
         why: "You can see at a glance what is data, what is communication, and what is AI summary before you approve. This keeps AI separate from Memory and strengthens trust in each decision.",
@@ -75,10 +75,10 @@ const CHANGELOG: MonthBlock[] = [
         where: "In Account detail pages and Business Ops dashboards.",
       },
       {
-        tags: ["Workbench", "Solutions"],
-        title: "Personal Ops waitlist enabled.",
-        what: "The Personal Ops card on the Solutions page now opens a clean waitlist form instead of a demo CTA.",
-        why: "Personal Ops is launching after the Account Success and Business Ops rollouts \u2014 the waitlist keeps interested users in the loop without overpromising.",
+        tags: ["Workspace", "Solutions"],
+        title: "Personal Space waitlist enabled.",
+        what: "The Personal Space card on the Solutions page now opens a clean waitlist form instead of a demo CTA.",
+        why: "Personal Space is launching after the Account Success and Business Ops rollouts \u2014 the waitlist keeps interested users in the loop without overpromising.",
       },
       {
         tags: ["Approval"],
@@ -93,7 +93,7 @@ const CHANGELOG: MonthBlock[] = [
     month: "February 2026",
     entries: [
       {
-        tags: ["The Twin"],
+        tags: ["Twin"],
         title: "Confidence scores now include source breakdown.",
         what: "Twin confidence is now shown with the percentage contributed by Truth, Context, and Session Summaries separately.",
         why: "When two sources disagree, you can see exactly where the doubt is coming from before you approve or reject.",
@@ -131,7 +131,7 @@ function ChangelogPage() {
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-[17px] leading-relaxed text-text-secondary">
               Every update is about one thing: helping you stop being the Human API. We log changes
-              the way we think about the product \u2014 by Spine, Memory, Workbench, Twin, and
+              the way we think about the product \u2014 by Spine, Memory, Workspace, Twin, and
               Approval.
             </p>
           </Reveal>

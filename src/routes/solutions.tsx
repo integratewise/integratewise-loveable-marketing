@@ -3,7 +3,6 @@ import {
   ArrowRight,
   Users,
   Briefcase,
-  LineChart,
   User,
   Sparkles,
   Check,
@@ -38,7 +37,7 @@ export const Route = createFileRoute("/solutions")({
       {
         name: "description",
         content:
-          "Account Success, Business Ops, Personal Ops — three doors into the same Spine, Digital Memory, Workbench, Twin, and Approval Gate.",
+          "Account Success, Business Ops, Personal Space — three doors into the same Spine, Digital Memory, Workspace, Twin, and Approval Gate.",
       },
       { property: "og:title", content: "IntegrateWise Solutions" },
       {
@@ -64,16 +63,9 @@ const DOORS = [
     blurb: "Run the day from one screen — for founders, owners, and ops leaders.",
   },
   {
-    id: "customer-success",
-    icon: LineChart,
-    title: "Customer Success",
-    blurb: "Your entire business. One screen. Real-time — for founders, CEOs, COOs, CFOs, CTOs.",
-    to: "/solutions/customer-success",
-  },
-  {
     id: "personal-space",
     icon: User,
-    title: "Personal Ops",
+    title: "Personal Space",
     blurb: "Your own operating system — your private notes, tasks, and projects as Memory.",
     waitlist: true,
   },
@@ -94,7 +86,7 @@ function SolutionsPage() {
                 One Spine. <span className="text-gradient-hero">Many ways of working.</span>
               </h1>
               <p className="mx-auto mt-5 text-[17px] leading-relaxed text-text-secondary">
-                The Spine, Digital Memory, Workbench, and Twin are the same for everyone. Solutions
+                The Spine, Digital Memory, Workspace, and Twin are the same for everyone. Solutions
                 are just different doors into that foundation — tuned for how you work, not for one
                 job title.
               </p>
@@ -108,14 +100,13 @@ function SolutionsPage() {
               </div>
             </div>
 
-            <div className="mx-auto mt-12 grid max-w-6xl gap-5 lg:grid-cols-4">
+            <div className="mx-auto mt-12 grid max-w-6xl gap-5 lg:grid-cols-3">
               {DOORS.map((d, i) => {
                 const Icon = d.icon;
-                const href = "to" in d && d.to ? d.to : `#${d.id}`;
                 return (
                   <Reveal key={d.id} delay={i * 80}>
                     <a
-                      href={href}
+                      href={`#${d.id}`}
                       className="card-iw block h-full p-6 transition hover:border-brand-accent/40"
                     >
                       <div className="flex items-center justify-between">
@@ -152,7 +143,7 @@ function SolutionsPage() {
               <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
                 Whether you are a CA, SaaS CSM, agency owner, retail founder, or operations lead,
                 you face the same pattern: scattered data, no shared memory, too much manual
-                stitching. Each solution here uses the same Spine and Workbench to solve that
+                stitching. Each solution here uses the same Spine and Workspace to solve that
                 pattern for a different slice of your day.
               </p>
             </Reveal>
@@ -161,11 +152,11 @@ function SolutionsPage() {
               <div className="card-iw p-6 text-center" style={{ background: "var(--bg-surface)" }}>
                 <p className="text-[14px] text-foreground/90">
                   <span className="font-semibold text-brand-accent">Same foundation:</span> Adaptive
-                  Spine + Digital Memory + Workbench + Twin + Approval Gate.
+                  Spine + Digital Memory + Workspace + Twin + Approval Gate.
                 </p>
                 <p className="mt-1.5 text-[14px] text-foreground/90">
                   <span className="font-semibold">Different entry points:</span> Account Success,
-                  Business Ops, Personal Ops.
+                  Business Ops, Personal Space.
                 </p>
               </div>
             </Reveal>
@@ -219,7 +210,7 @@ function SolutionsPage() {
                       Notion into one client Memory.
                     </li>
                     <li>
-                      • The Account Success Workbench view shows every client with status, risk, and
+                      • The Account Success Workspace view shows every client with status, risk, and
                       next steps.
                     </li>
                   </ul>
@@ -289,7 +280,7 @@ function SolutionsPage() {
               <p className="mx-auto mt-5 text-[16px] leading-relaxed text-text-secondary">
                 Founders, owners, and operations leaders — in retail shops, agencies, SaaS,
                 professional services — all have the same problem: every Monday starts with
-                spreadsheets and tab-hunting. Business Ops uses Digital Memory and the Workbench to
+                spreadsheets and tab-hunting. Business Ops uses Digital Memory and the Workspace to
                 give you one practical view of business health.
               </p>
             </Reveal>
@@ -321,7 +312,7 @@ function SolutionsPage() {
                   <ul className="mt-4 space-y-3 text-[14px] leading-relaxed text-foreground/90">
                     <li>
                       • Business Ops reads from Org Memory — sales, payments, tickets, hiring, tasks
-                      — and arranges it into a simple daily Workbench.
+                      — and arranges it into a simple daily Workspace.
                     </li>
                     <li>
                       • You see sales, credit outstanding, key risks, and team capacity without
@@ -375,23 +366,23 @@ function SolutionsPage() {
           </Container>
         </Section>
 
-        {/* === SOLUTION 3 — Personal Ops === */}
+        {/* === SOLUTION 3 — Personal Space === */}
         <Section id="personal-space">
           <Container>
             <Reveal className="mx-auto max-w-3xl text-center">
               <div className="flex items-center justify-center gap-2">
-                <Badge variant="muted">Solution 3 · Personal Ops</Badge>
+                <Badge variant="muted">Solution 3 · Personal Space</Badge>
                 <span className="rounded-full border border-brand-highlight/30 bg-brand-highlight/10 px-2 py-0.5 text-[10.5px] font-semibold uppercase tracking-wider text-brand-highlight">
                   Waitlist
                 </span>
               </div>
               <h2 className="heading-h2 mt-4">
-                Personal Ops —{" "}
+                Personal Space —{" "}
                 <span className="text-gradient-hero">your own operating system.</span>
               </h2>
               <p className="mx-auto mt-5 text-[16px] leading-relaxed text-text-secondary">
                 Everyone has scattered personal work — side projects, learning, family tasks,
-                finances. Personal Ops uses the same Spine and Workbench, but just for you. Your
+                finances. Personal Space uses the same Spine and Workspace, but just for you. Your
                 notes, tasks, calendar, and links become Digital Memory, not messy lists.
               </p>
             </Reveal>
@@ -410,7 +401,7 @@ function SolutionsPage() {
                       one private Digital Memory.
                     </li>
                     <li>
-                      • Your Personal Workbench shows today's focus, upcoming deadlines, and a
+                      • Your Personal Workspace shows today's focus, upcoming deadlines, and a
                       simple view of each project.
                     </li>
                   </ul>
@@ -451,13 +442,13 @@ function SolutionsPage() {
                 </ul>
                 <div className="mt-6 flex flex-wrap items-center gap-3">
                   <button
-                    onClick={() => openWaitlist("Solutions · Personal Ops")}
+                    onClick={() => openWaitlist("Solutions · Personal Space")}
                     className="btn-primary-iw"
                   >
-                    Join Personal Ops waitlist <ArrowRight size={16} />
+                    Join Personal Space waitlist <ArrowRight size={16} />
                   </button>
                   <span className="text-[12.5px] text-text-secondary">
-                    Personal Ops is currently waitlisted — join early access.
+                    Personal Space is currently waitlisted — join early access.
                   </span>
                 </div>
               </Reveal>
@@ -472,9 +463,9 @@ function SolutionsPage() {
               <Badge variant="muted">One foundation</Badge>
               <h2 className="heading-h2 mt-4">One foundation. Three doors in.</h2>
               <p className="mx-auto mt-5 text-[16px] leading-relaxed text-text-secondary">
-                Account Success, Business Ops, and Personal Ops are three ways to enter the same
+                Account Success, Business Ops, and Personal Space are three ways to enter the same
                 IntegrateWise foundation. Under the hood, everyone uses the Spine, Digital Memory,
-                Workbench, Twin, and Approval Gate. Over time, your User, Work, and Org Memory grow
+                Workspace, Twin, and Approval Gate. Over time, your User, Work, and Org Memory grow
                 together — and your AI stays grounded in your own library.
               </p>
               <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
@@ -781,7 +772,7 @@ function PersonalView() {
   return (
     <div className="card-iw overflow-hidden" style={{ background: "var(--bg-surface)" }}>
       <div className="flex items-center justify-between border-b border-border px-4 py-2.5">
-        <span className="badge-iw badge-iw-muted !text-[11px]">Personal Workbench</span>
+        <span className="badge-iw badge-iw-muted !text-[11px]">Personal Workspace</span>
         <span className="text-[11px] text-text-secondary">Private · User Memory</span>
       </div>
       <div className="grid gap-3 p-4 md:grid-cols-2">

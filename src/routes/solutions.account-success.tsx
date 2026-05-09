@@ -92,10 +92,10 @@ function AccountSuccessPage() {
               "Spend 45 minutes building a one-off prep doc for each big account review.",
             ],
             with: [
-              "Account Workbench shows usage, tickets, billing, and key emails in one client view.",
+              "Account Workspace shows usage, tickets, billing, and key emails in one client view.",
               "Digital Memory stores all past renewals, escalations, and notes in one place.",
               "Twin flags churn-risk signals and suggests next steps before the call.",
-              "Prep becomes opening the account in Workbench — not building a new doc.",
+              "Prep becomes opening the account in Workspace — not building a new doc.",
             ],
           },
           {
@@ -108,7 +108,7 @@ function AccountSuccessPage() {
               "Spend evenings reconciling who paid, who didn't, and what's pending.",
             ],
             with: [
-              "Client Workbench shows filings, notices, invoices, and chats in one view per client.",
+              "Client Workspace shows filings, notices, invoices, and chats in one view per client.",
               "Digital Memory tracks every notice, deadline, and payment across Tally, email, and WhatsApp.",
               "Twin highlights upcoming filings and overdue payments before they slip.",
               "One screen replaces the Monday morning reconciliation ritual.",
@@ -124,10 +124,10 @@ function AccountSuccessPage() {
               "Owner becomes the Human API between team, client, and books.",
             ],
             with: [
-              "Account Workbench shows retainer health, project status, invoices, and chats in one view.",
+              "Account Workspace shows retainer health, project status, invoices, and chats in one view.",
               "Digital Memory connects every project, message, and payment per client.",
               "Twin flags slipping retainers and proposes outreach before clients churn.",
-              "Project meetings open with a single Workbench tab — no catch-up needed.",
+              "Project meetings open with a single Workspace tab — no catch-up needed.",
             ],
           },
           {
@@ -139,7 +139,7 @@ function AccountSuccessPage() {
               "Lose context every time you switch between projects.",
             ],
             with: [
-              "One Workbench shows every client's status, last message, and open invoice.",
+              "One Workspace shows every client's status, last message, and open invoice.",
               "Digital Memory keeps all your conversations and decisions per client.",
               "Twin reminds you who needs a follow-up — you approve before sending.",
             ],
@@ -153,7 +153,7 @@ function AccountSuccessPage() {
             body: [
               "Same Spine for all relationship owners — whether you manage tax clients, SaaS accounts, or agency retainers.",
               "Digital Memory holds invoices, payments, tickets, messages, and notes for each client.",
-              "The Account Success Workbench shows one stitched story per account, with risk and next steps.",
+              "The Account Success Workspace shows one stitched story per account, with risk and next steps.",
             ],
           },
           {
@@ -162,7 +162,7 @@ function AccountSuccessPage() {
             title: "For CSMs (SaaS, B2B).",
             body: [
               "Without: hunting across CRM, product analytics, support, billing, and Slack before every call.",
-              "With: one Workbench per account showing usage trend, open tickets, renewal date, and last conversation.",
+              "With: one Workspace per account showing usage trend, open tickets, renewal date, and last conversation.",
               "Twin proposes a check-in or escalation when usage drops or budget freeze appears in email.",
             ],
           },
@@ -172,7 +172,7 @@ function AccountSuccessPage() {
             title: "For CAs and tax professionals.",
             body: [
               "Without: filing trackers in Excel, notices in email, payments in Tally, chats on WhatsApp.",
-              "With: one Workbench per client showing filings, notices, invoices, and chats together.",
+              "With: one Workspace per client showing filings, notices, invoices, and chats together.",
               "Twin reminds you of upcoming GST and notice deadlines before they slip.",
             ],
           },
@@ -182,7 +182,7 @@ function AccountSuccessPage() {
             title: "For agencies and service providers.",
             body: [
               "Without: retainers in sheets, deliverables in Notion, invoices in books, chats on WhatsApp.",
-              "With: one Workbench per account showing retainer health, project status, invoices, and chats.",
+              "With: one Workspace per account showing retainer health, project status, invoices, and chats.",
               "Twin flags slipping retainers and proposes outreach — you approve before anything is sent.",
             ],
           },
@@ -191,7 +191,7 @@ function AccountSuccessPage() {
             group: "Industry",
             title: "For SaaS and subscription businesses.",
             body: [
-              "Account-level usage, billing, support, and conversations stitched into one Workbench view.",
+              "Account-level usage, billing, support, and conversations stitched into one Workspace view.",
               "Renewals, expansions, and at-risk accounts surfaced from Digital Memory — not a static dashboard.",
               "Twin connects usage drops with email and WhatsApp signals to surface churn risk early.",
             ],
@@ -202,7 +202,7 @@ function AccountSuccessPage() {
             title: "For CA and financial services firms.",
             body: [
               "Filings, notices, invoices, and client chats live together per client in Digital Memory.",
-              "The Workbench replaces Monday-morning Excel reconciliation with one stitched view.",
+              "The Workspace replaces Monday-morning Excel reconciliation with one stitched view.",
               "Twin surfaces overdue payments and upcoming notices, with full evidence from your tools.",
             ],
           },
@@ -217,7 +217,7 @@ function AccountSuccessPage() {
             ],
           },
         ]}
-        closeHeading="See your clients in one Memory and one Workbench, instead of ten tools."
+        closeHeading="See your clients in one Memory and one Workspace, instead of ten tools."
         closingPrimary={{ label: "Book a demo", kind: "demo" }}
       />
     </SolutionsLayout>

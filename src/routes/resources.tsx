@@ -22,7 +22,7 @@ export const Route = createFileRoute("/resources")({
       {
         name: "description",
         content:
-          "Docs, changelog, blog, and stories — one hub that ties everything back to scattered apps → Spine → Digital Memory → Workbench → Twin → Approval.",
+          "Docs, changelog, blog, and stories — one hub that ties everything back to scattered apps → Spine → Digital Memory → Workspace → Twin → Approval.",
       },
       { property: "og:title", content: "Resources — IntegrateWise" },
       {
@@ -51,7 +51,7 @@ const PRODUCT_LEARNING = [
   {
     to: "/docs",
     icon: Workflow,
-    label: "Getting started with the Workbench",
+    label: "Getting started with the Workspace",
     body: "How the adaptive screen reads from Memory and reshapes around your slice of work.",
   },
   {
@@ -64,7 +64,7 @@ const PRODUCT_LEARNING = [
 
 const CHANGELOG_HIGHLIGHTS = [
   {
-    tag: "Workbench",
+    tag: "Workspace",
     title: "GST filings in Accounts view",
     why: "CAs and founders see who is late and how much is at risk in one stitched client view.",
   },
@@ -74,7 +74,7 @@ const CHANGELOG_HIGHLIGHTS = [
     why: "Twin proposals can now show the exact budget-freeze emails as Evidence.",
   },
   {
-    tag: "The Twin",
+    tag: "Twin",
     title: "Clear Truth/Context/Session labels in proposals",
     why: "You can see what is data, what is communication, and what is AI summary before you approve.",
   },
@@ -109,15 +109,15 @@ const STORIES = [
 
 const TEMPLATES = [
   {
-    label: "Account Success Workbench example",
+    label: "Account Success Workspace example",
     body: "A CSM\u2019s Monday: accounts, churn risk, evidence, approvals.",
   },
   {
-    label: "Business Ops Workbench example",
+    label: "Business Ops Workspace example",
     body: "Revenue, filings, support, and renewals on one screen.",
   },
   {
-    label: "Personal Ops Workbench example",
+    label: "Personal Space Workspace example",
     body: "Your own operating system across personal apps and inboxes.",
   },
 ];
@@ -141,7 +141,7 @@ function ResourcesPage() {
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-[17px] leading-relaxed text-text-secondary">
               Docs, changelog, stories, and templates — all tied back to the same flow: scattered
-              apps → Spine → Digital Memory → Workbench → Twin → Approval.
+              apps → Spine → Digital Memory → Workspace → Twin → Approval.
             </p>
           </Reveal>
         </Container>

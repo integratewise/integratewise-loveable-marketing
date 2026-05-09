@@ -18,17 +18,17 @@ import {
 export const Route = createFileRoute("/docs")({
   head: () => ({
     meta: [
-      { title: "Docs — Workbench, scoped memory, Twin, governance" },
+      { title: "Docs — Workspace, scoped memory, Twin, governance" },
       {
         name: "description",
         content:
-          "How every app runs on the Workbench. How raw data becomes scoped memory — relevant, stable, ready to act on. How AI works on memory (never raw data) and proposes structured changes — and how governance decides what becomes real inside one active context.",
+          "How every app runs on the Workspace. How raw data becomes scoped memory — relevant, stable, ready to act on. How AI works on memory (never raw data) and proposes structured changes — and how governance decides what becomes real inside one active context.",
       },
       { property: "og:title", content: "Docs — IntegrateWise" },
       {
         property: "og:description",
         content:
-          "Concepts and reference for the Workbench. Scoped memory, Twin's structured proposals, governance layer, Session Summaries.",
+          "Concepts and reference for the Workspace. Scoped memory, Twin's structured proposals, governance layer, Session Summaries.",
       },
     ],
   }),
@@ -43,8 +43,8 @@ const GETTING_STARTED = [
   },
   {
     to: "/docs",
-    label: "Land in a live Workbench",
-    body: "How the Accounts & Revenue and Personal Workbench views appear on day one, before you customise anything.",
+    label: "Land in a live Workspace",
+    body: "How the Accounts & Revenue and Personal Workspace views appear on day one, before you customise anything.",
   },
   {
     to: "/docs",
@@ -61,12 +61,12 @@ const CONCEPTS = [
   },
   {
     icon: CircuitBoard,
-    label: "Adaptive Spine",
+    label: "Spine",
     body: "Platform layer that connects apps and accumulates Digital Memory. Starts as a clean schema, ingests only what it is designed to remember, and grows with you.",
   },
   {
     icon: LayoutDashboard,
-    label: "Workbench",
+    label: "Workspace",
     body: "Product layer that reads from Memory. One living screen where stitching between apps happens, so you stop being the Human API.",
   },
   {
@@ -83,14 +83,14 @@ const CONCEPTS = [
 
 const GUIDES = [
   {
-    label: "Account Success Workbench",
+    label: "Account Success Workspace",
     body: "One client story from many tools — usage, communication, and risk in a single view.",
   },
   {
-    label: "Business Ops Workbench",
+    label: "Business Ops Workspace",
     body: "Run the day from one screen — revenue, filings, support, renewals.",
   },
-  { label: "Personal Ops", body: "Your own operating system across personal apps and inboxes." },
+  { label: "Personal Space", body: "Your own operating system across personal apps and inboxes." },
 ];
 
 const REFERENCE = [
@@ -122,12 +122,12 @@ function DocsPage() {
           <Reveal className="mx-auto max-w-3xl text-center">
             <span className="badge-iw badge-iw-muted">Docs</span>
             <h1 className="heading-display mt-6">
-              <span className="block">Docs for the Knowledge Workbench</span>
+              <span className="block">Docs for the Knowledge Workspace</span>
               <span className="block text-gradient-hero">over the Spine.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-[17px] leading-relaxed text-text-secondary">
               These docs explain how IntegrateWise turns scattered tools into Digital Memory, how
-              your Workbench uses that Memory, and how your Twin proposes actions without ever
+              your Workspace uses that Memory, and how your Twin proposes actions without ever
               taking control away from you.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -221,7 +221,7 @@ function DocsPage() {
           </div>
 
           <div className="mx-auto mt-10 max-w-3xl rounded-xl border border-border bg-white/[0.02] p-5 text-center text-[14px] text-text-secondary">
-            Docs describe how we keep our promise: Spine writes your Digital Memory. Workbench
+            Docs describe how we keep our promise: Spine writes your Digital Memory. Workspace
             consumes it. Twin only reads and proposes. Approval Gate sits between AI and your tools.
           </div>
 

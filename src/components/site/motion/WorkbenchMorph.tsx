@@ -6,7 +6,7 @@
  * the Workbench, then snaps down into the frame (fades + translates into
  * the table area), encoding "context-switch reduction".
  *
- * The underlying ProductFrame (Workbench › Accounts table, Schema Drift
+ * The underlying ProductFrame (Workspace › Accounts table, Schema Drift
  * notice, Cognitive Layer panel, Approve/Deny buttons) is left untouched.
  */
 import { motion } from "framer-motion";

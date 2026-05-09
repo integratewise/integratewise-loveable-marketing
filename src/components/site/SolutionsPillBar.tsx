@@ -1,7 +1,7 @@
 /**
  * Solutions pill bar — sticky 3-row selector that mirrors the UXPilot mockups.
  *
- * Row 1 (Pillar): Account Success / Business Ops / Customer Success / Personal Ops.
+ * Row 1 (Pillar): Account Success / Business Operations / Personal Space.
  *   Pills navigate between routes (real <Link>s — preserves SEO).
  * Row 2 (Persona) and Row 3 (Industry): contextual to the active pillar.
  *   Pills update the SolutionsFilterContext (and URL hash); they do NOT
@@ -15,19 +15,14 @@ import { cn } from "@/lib/utils";
 import { useSolutionsFilter, type PillOption } from "./solutions-filter-context";
 
 export interface SolutionsPillarRoute {
-  to:
-    | "/solutions/account-success"
-    | "/solutions/business-ops"
-    | "/solutions/customer-success"
-    | "/solutions/personal-space";
+  to: "/solutions/account-success" | "/solutions/business-ops" | "/solutions/personal-space";
   label: string;
 }
 
 const PILLARS: ReadonlyArray<SolutionsPillarRoute> = [
   { to: "/solutions/account-success", label: "Account Success" },
-  { to: "/solutions/business-ops", label: "Business Ops" },
-  { to: "/solutions/customer-success", label: "Customer Success" },
-  { to: "/solutions/personal-space", label: "Personal Ops" },
+  { to: "/solutions/business-ops", label: "Business Operations" },
+  { to: "/solutions/personal-space", label: "Personal Space" },
 ];
 
 function PillRow({

@@ -2,260 +2,225 @@ import { createFileRoute } from "@tanstack/react-router";
 import {
   ArrowRight,
   Database,
+  Layers,
   ShieldCheck,
   Sparkles,
   Plug,
+  Filter,
+  BookOpen,
+  User,
+  Briefcase,
+  Building2,
   MessageSquare,
   Mail,
   FileSpreadsheet,
+  StickyNote,
   CreditCard,
   Receipt,
-  Users,
   LifeBuoy,
-  StickyNote,
+  Users,
   Lock,
   Globe,
   KeyRound,
   Cpu,
-  Workflow,
-  Layers,
-  RefreshCw,
-  Boxes,
-  GitBranch,
-  CheckCircle2,
-  Eye,
 } from "lucide-react";
 import { Container } from "@/components/site/Container";
 import { Section } from "@/components/site/Section";
 import { Badge } from "@/components/site/Badge";
 import { Reveal } from "@/components/site/Reveal";
-
-import { ConnectorMarquee, CONNECTOR_LOGOS } from "@/components/site/ConnectorMarquee";
+import { SectionNav } from "@/components/site/SectionNav";
+import { ConnectorOrbit } from "@/components/site/ConnectorOrbit";
+import { ConnectorMarquee } from "@/components/site/ConnectorMarquee";
+import { IntegrationsGrid } from "@/components/site/IntegrationsGrid";
 import { useDemoModal } from "@/components/site/demo-modal-context";
+import { MEMORY_COPY } from "@/lib/site";
 
 export const Route = createFileRoute("/platform")({
   head: () => ({
     meta: [
-      { title: "Platform — The Spine that turns your data into Digital Memory" },
+      { title: "Platform — The Workspace, scoped memory, governance" },
       {
         name: "description",
         content:
-          "The Spine connects the apps that run your business and turns their data into one living Digital Memory — so your team, your Workbench, and your Twin always start from the same truth.",
+          "Every app runs on the Workspace. It turns raw data into scoped memory — Truth, Context, and approved Session Summaries — relevant, stable, ready to act on. AI proposes structured changes against memory; the governance layer decides what becomes real.",
       },
-      {
-        property: "og:title",
-        content: "IntegrateWise Platform — Spine, Digital Memory, Connectors",
-      },
+      { property: "og:title", content: "IntegrateWise Platform — Workspace, Memory, Governance" },
       {
         property: "og:description",
         content:
-          "Connect your apps once. The Spine keeps them in sync and turns their data into one Digital Memory that survives tool and model changes.",
+          "Not ETL. Raw data becomes scoped memory. AI never works on raw data — only on memory. Governance decides what becomes real.",
       },
     ],
   }),
   component: PlatformPage,
 });
 
-/* ----------------------------- content tokens ----------------------------- */
-
-const SOURCE_APPS = [
-  { name: "Salesforce", icon: Users },
-  { name: "HubSpot", icon: Users },
-  { name: "Stripe", icon: CreditCard },
-  { name: "Zendesk", icon: LifeBuoy },
+const SOURCE_APPS: { name: string; icon: typeof MessageSquare }[] = [
+  { name: "WhatsApp", icon: MessageSquare },
+  { name: "Tally", icon: Receipt },
+  { name: "Razorpay", icon: CreditCard },
   { name: "Gmail", icon: Mail },
-  { name: "Slack", icon: MessageSquare },
+  { name: "Google Sheets", icon: FileSpreadsheet },
   { name: "Notion", icon: StickyNote },
-  { name: "Sheets", icon: FileSpreadsheet },
-  { name: "QuickBooks", icon: Receipt },
+  { name: "CRM", icon: Users },
+  { name: "Support", icon: LifeBuoy },
+  { name: "Billing", icon: Receipt },
 ];
 
-const MEMORY_LAYERS = [
+const THREE_LINES = [
   {
     title: "Truth",
     sub: "What is actually happening.",
-    body: "Revenue, usage, tickets, renewals, contracts — the events from the systems that run your business.",
+    body: "Transactions, usage, invoices, tickets, account records from your tools.",
+    color: "var(--state-success)",
     icon: Database,
   },
   {
     title: "Context",
     sub: "Why it is happening.",
-    body: "Emails, calls, meeting notes, QBR decks — the conversations sitting around every record.",
+    body: "Emails, WhatsApp messages, chats, docs, notes around that work.",
+    color: "var(--state-info)",
     icon: MessageSquare,
   },
   {
-    title: "Memory",
-    sub: "What you decided.",
-    body: "Summaries, playbooks, past actions and their results — the institutional knowledge worth keeping.",
+    title: "Session Summaries",
+    sub: "Governed AI knowledge.",
+    body: "Short AI-generated summaries you have reviewed and approved — never raw chat.",
+    color: "var(--brand-accent, var(--state-warning))",
     icon: Sparkles,
   },
 ];
 
-const SPINE_OUTCOMES = [
-  "No more reconciling the same account across CRM, billing, and support.",
-  "Tool changes or AI model swaps don't wipe out your history.",
-  "Every system, person, and view sees the same version of reality.",
+const SCOPES = [
+  {
+    title: "User Memory",
+    body: "Your personal notes, tasks, drafts, and focus — private by default.",
+    icon: User,
+  },
+  {
+    title: "Work Memory",
+    body: "Your professional work: clients, filings, accounts, deals — structured so you stop rebuilding the story every time.",
+    icon: Briefcase,
+  },
+  {
+    title: "Org Memory",
+    body: "Shared company memory that exists only when you intentionally create a team space.",
+    icon: Building2,
+  },
 ];
 
-const HOW_STEPS = [
-  {
-    n: "01",
-    title: "Connect sources",
-    icon: Plug,
-    body: "Connect your apps and systems with OAuth or API key — no CSV exports, no custom scripts.",
-  },
-  {
-    n: "02",
-    title: "Ingest & unify",
-    icon: RefreshCw,
-    body: "Data flows into the Spine. Duplicates merge, conflicts resolve, and each account, contact, and transaction becomes a single record of reality.",
-  },
-  {
-    n: "03",
-    title: "Add context",
-    icon: MessageSquare,
-    body: "Tickets, emails, meetings, and docs attach as context, so every change has a 'why' next to the 'what'.",
-  },
-  {
-    n: "04",
-    title: "Store as Digital Memory",
-    icon: Sparkles,
-    body: "Truth and context are stored as an independent Digital Memory that survives app swaps and AI model changes.",
-  },
-  {
-    n: "05",
-    title: "Expose to everything above",
-    icon: Eye,
-    body: "Workbench, Twin, and reporting all read from this same Digital Memory — every view starts from shared truth, not a guess.",
-  },
+const FLOW_STEPS = [
+  { n: "01", title: "Apps", body: "WhatsApp, Tally, Razorpay, Gmail, Sheets, Notion, CRM…" },
+  { n: "02", title: "Spine", body: "Cleans, dedupes, and links records across tools." },
+  { n: "03", title: "Digital Memory", body: "Truth + Context + approved Session Summaries." },
+  { n: "04", title: "Workspace", body: "Your living screen — built from Memory, not exports." },
+  { n: "05", title: "Twin", body: "Reads Memory, proposes, never writes without approval." },
+  { n: "06", title: "Approval → Loop", body: "You approve. Action runs. Memory learns." },
 ];
 
 const SECURITY_PILLARS = [
   {
-    title: "Tenant isolation",
-    icon: Lock,
-    body: "Each customer's Digital Memory is isolated by design — never co-mingled, never shared across tenants.",
-  },
-  {
-    title: "Drift detection",
-    icon: GitBranch,
-    body: "When a source changes shape, the Spine flags schema drift instead of failing silently or corrupting history.",
-  },
-  {
-    title: "Audit history",
-    icon: FileSpreadsheet,
-    body: "Every write into Digital Memory is logged with source, time, and actor — fully traceable, end to end.",
-  },
-  {
-    title: "Approval boundary",
-    icon: KeyRound,
-    body: "Models and automations read freely. Every write back to your apps or Memory must pass an explicit Approval Gate.",
-  },
-  {
-    title: "Compliance posture",
+    title: "SOC 2 Type II",
+    body: "Independently audited controls across security, availability, and confidentiality.",
     icon: ShieldCheck,
-    body: "Built with SOC 2 Type II controls and GDPR-ready data handling as defaults — not bolt-ons.",
   },
   {
-    title: "Edge-native runtime",
+    title: "GDPR-ready",
+    body: "Data subject rights, processor agreements, and EU-region storage on request.",
+    icon: Globe,
+  },
+  {
+    title: "Tenant isolation",
+    body: "Your Memory is yours alone — strict row-level isolation, never co-mingled with other customers.",
+    icon: Lock,
+  },
+  {
+    title: "Cloudflare Workers edge",
+    body: "Globally distributed compute, zero-trust network access, and DDoS-grade protection out of the box.",
     icon: Cpu,
-    body: "Runs on globally distributed compute with zero-trust network access and DDoS-grade protection out of the box.",
+  },
+  {
+    title: "Approval-gated execution",
+    body: "Twin proposes; you decide. Every action is logged with the evidence it was based on.",
+    icon: KeyRound,
   },
 ];
 
-const INTEGRATION_SERVICES = [
-  {
-    title: "Loader",
-    icon: Plug,
-    body: "Keeps each integration fed via OAuth or API key — handling pagination, backfills, and incremental syncs.",
-  },
-  {
-    title: "Adapter",
-    icon: Layers,
-    body: "Transforms each app's schema into a shared language for accounts, people, money, and activity.",
-  },
-  {
-    title: "Registry",
-    icon: Boxes,
-    body: "Tracks every data shape over time, detects drift, and automatically reconciles compatible changes.",
-  },
+const INTEGRATION_LOGOS = [
+  "Salesforce",
+  "HubSpot",
+  "Stripe",
+  "Jira",
+  "Notion",
+  "Slack",
+  "Zendesk",
+  "Gmail",
+  "Shopify",
+  "QuickBooks",
+  "Intercom",
+  "GitHub",
+  "Airtable",
+  "Asana",
+  "Google Drive",
 ];
-
-const INTEGRATION_OUTCOMES = [
-  "Fewer brittle, one-off scripts to maintain.",
-  "Integrations that survive schema changes.",
-  "Every integration contributes to one governed Digital Memory — never another silo.",
-];
-
-/* Live vs Coming Soon badging on the connector grid. */
-const COMING_SOON = new Set<string>(["Intercom", "GitHub"]);
-
-/* ---------------------------------- page ---------------------------------- */
 
 function PlatformPage() {
-  const { open, openEarlyAccess } = useDemoModal();
+  const { open } = useDemoModal();
 
   return (
     <>
-      {/* 0. Hero */}
-      <Section id="platform-hero" orbs className="!pt-20 lg:!pt-28">
+      {/* Hero */}
+      <Section orbs className="!pt-20 lg:!pt-28">
         <Container>
           <div className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Platform</Badge>
             <h1 className="heading-h1 mt-5">
-              The platform that turns your data into{" "}
-              <span className="text-gradient-hero">memory.</span>
+              Where scattered data becomes{" "}
+              <span className="text-gradient-hero">Digital Memory.</span>
             </h1>
             <p className="mx-auto mt-5 text-[17px] leading-relaxed text-text-secondary">
-              Connect the apps that run your business. The Spine keeps them in sync and turns their
-              data into one living Digital Memory — so your Workbench, your Twin, and your team
-              always start from the same truth, no matter which tools you change above it.
+              You use WhatsApp, Tally, Razorpay, email, Google Sheets, and more. The Spine connects
+              these apps and turns only what matters into Digital Memory — a clean, growing memory
+              of your work that lives in one place.
             </p>
             <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
               <button onClick={() => open("Platform · hero")} className="btn-primary-iw">
                 Book a demo <ArrowRight size={16} />
               </button>
-              <a href="#integrations" className="btn-secondary-iw">
-                See integrations
+              <a href="#how-it-works" className="btn-secondary-iw">
+                See how it works
               </a>
             </div>
           </div>
 
-          {/* Hero diagram: Apps → Spine → Digital Memory → Workbench / Twin */}
+          {/* Hero diagram */}
           <Reveal className="mx-auto mt-12 max-w-5xl">
             <div className="card-iw p-6 md:p-8" style={{ background: "var(--bg-surface)" }}>
-              <div className="grid items-center gap-6 lg:grid-cols-[1fr_auto_1fr_auto_1fr]">
-                {/* Apps */}
-                <div>
-                  <p className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-text-secondary">
-                    Apps
-                  </p>
-                  <div className="grid grid-cols-3 gap-2">
-                    {SOURCE_APPS.map(({ name, icon: Icon }) => (
-                      <div
-                        key={name}
-                        className="flex items-center gap-1.5 rounded-lg border border-border bg-elevated/50 px-2 py-1.5"
-                      >
-                        <Icon size={12} className="shrink-0 text-text-secondary" />
-                        <span className="truncate text-[11px] text-foreground/85">{name}</span>
-                      </div>
-                    ))}
-                  </div>
+              <div className="grid items-center gap-6 lg:grid-cols-[1fr_auto_1fr]">
+                <div className="grid grid-cols-3 gap-2.5">
+                  {SOURCE_APPS.map(({ name, icon: Icon }) => (
+                    <div
+                      key={name}
+                      className="flex items-center gap-2 rounded-lg border border-border bg-elevated/50 px-2.5 py-2"
+                    >
+                      <Icon size={14} className="text-text-secondary shrink-0" />
+                      <span className="truncate text-[12px] text-foreground/85">{name}</span>
+                    </div>
+                  ))}
                 </div>
-                <ArrowRight className="hidden lg:block text-brand-accent" />
-                {/* Spine → Digital Memory */}
-                <div className="rounded-2xl border border-brand-accent/25 bg-brand-accent/5 p-4">
+                <div className="hidden lg:flex items-center justify-center">
+                  <ArrowRight className="text-brand-accent" />
+                </div>
+                <div className="rounded-2xl border border-brand-accent/25 bg-brand-accent/5 p-5">
                   <p className="text-[11px] font-semibold uppercase tracking-wider text-brand-accent">
                     Spine
                   </p>
-                  <p className="mt-1 text-[14px] font-semibold text-foreground">
-                    → Digital Memory
-                  </p>
-                  <div className="mt-3 grid grid-cols-3 gap-1.5 text-center">
-                    {MEMORY_LAYERS.map((l) => (
+                  <p className="mt-1 text-[15px] font-semibold text-foreground">→ Digital Memory</p>
+                  <div className="mt-4 grid grid-cols-3 gap-2 text-center">
+                    {THREE_LINES.map((l) => (
                       <div
                         key={l.title}
-                        className="rounded-md border border-border bg-elevated/60 px-1.5 py-1.5"
+                        className="rounded-lg border border-border bg-elevated/60 px-2 py-2"
                       >
                         <p className="text-[10px] uppercase tracking-wider text-text-secondary">
                           {l.title}
@@ -264,58 +229,116 @@ function PlatformPage() {
                     ))}
                   </div>
                 </div>
-                <ArrowRight className="hidden lg:block text-brand-accent" />
-                {/* Consumers */}
-                <div>
-                  <p className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-text-secondary">
-                    Reads from Memory
-                  </p>
-                  <div className="space-y-2">
-                    {[
-                      { label: "Workbench", body: "Your living work surface." },
-                      { label: "The Twin", body: "Proposes; never writes without approval." },
-                      { label: "Team & reporting", body: "One shared truth." },
-                    ].map((c) => (
-                      <div
-                        key={c.label}
-                        className="rounded-lg border border-border bg-elevated/50 px-3 py-2"
-                      >
-                        <p className="text-[12px] font-semibold text-foreground">{c.label}</p>
-                        <p className="text-[11px] text-text-secondary">{c.body}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
               </div>
             </div>
           </Reveal>
         </Container>
       </Section>
 
+      {/* Sticky in-page nav */}
+      <SectionNav
+        items={[
+          { id: "spine", label: "Spine" },
+          { id: "how-it-works", label: "How it works" },
+          { id: "digital-memory", label: "Digital Memory" },
+          { id: "connectors", label: "Connectors" },
+          { id: "security", label: "Security" },
+          { id: "integrations", label: "Integrations" },
+        ]}
+      />
+
       {/* 1. Spine */}
       <Section id="spine" alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Spine</Badge>
-            <h2 className="heading-h2 mt-4">The Spine that holds everything together.</h2>
+            <h2 className="heading-h2 mt-4">Spine, not a data dump.</h2>
             <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
-              The Spine is the underlying platform. It connects your apps and systems, normalizes
-              and reconciles their data, and keeps a single, stable source of truth as your tools
-              and AI models evolve.
-            </p>
-            <p className="mt-3 text-[16px] leading-relaxed text-text-secondary">
-              Apps plug into the Spine once. From there, it handles sync, conflict resolution, and
-              schema changes — so Workbench, Twin, and reporting can all read from the same
-              Spine-backed Digital Memory.
+              One layer that connects every app — cleans, links, and time-stamps records into a
+              clean, growing schema. It is not ETL. It learns how you structure work and only
+              ingests what your Memory is designed to remember.
             </p>
           </Reveal>
 
-          <div className="mx-auto mt-10 grid max-w-4xl gap-3">
-            {SPINE_OUTCOMES.map((line, i) => (
-              <Reveal key={line} delay={i * 80}>
-                <div className="card-iw flex items-start gap-3 p-4">
-                  <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-brand-accent" />
-                  <p className="text-[15px] leading-relaxed text-foreground/90">{line}</p>
+          <div className="mx-auto mt-10 grid max-w-6xl gap-6 lg:grid-cols-2">
+            <Reveal>
+              <div className="card-iw h-full p-6">
+                <div className="flex items-center gap-2 text-brand-accent">
+                  <Layers size={16} />
+                  <p className="text-[12px] font-semibold uppercase tracking-wider">
+                    A growing schema
+                  </p>
+                </div>
+                <ul className="mt-4 space-y-3 text-[14px] leading-relaxed text-foreground/90">
+                  <li>• Starts as a clean schema, not a fake "instant knowledge base".</li>
+                  <li>
+                    • At first connect, pulls a minimal, meaningful slice of data: tasks, meetings,
+                    key clients/accounts, basic metrics.
+                  </li>
+                  <li>
+                    • As real data flows in, the Spine learns how you structure work and which
+                    fields matter.
+                  </li>
+                  <li>
+                    • Digital Memory grows with you — as you grow, the schema and Memory grow along
+                    with you.
+                  </li>
+                </ul>
+              </div>
+            </Reveal>
+
+            <Reveal delay={120}>
+              <div className="card-iw h-full p-6">
+                <div className="flex items-center gap-2 text-text-secondary">
+                  <Filter size={16} />
+                  <p className="text-[12px] font-semibold uppercase tracking-wider">
+                    Different from ETL tools
+                  </p>
+                </div>
+                <ul className="mt-4 space-y-3 text-[14px] leading-relaxed text-foreground/90">
+                  <li>• We don't copy every field from every system.</li>
+                  <li>• The Spine ingests only what its schema is designed to remember.</li>
+                  <li>• Everything else stays in source tools.</li>
+                  <li>• Clean, governed Memory instead of a noisy export.</li>
+                </ul>
+              </div>
+            </Reveal>
+          </div>
+
+          <Reveal delay={200} className="mx-auto mt-6 max-w-3xl text-center">
+            <p className="text-[14px] italic text-text-secondary">
+              We don't mirror every field; we ingest only what the Spine is designed to remember.
+            </p>
+          </Reveal>
+        </Container>
+      </Section>
+
+      {/* 2. How it works */}
+      <Section id="how-it-works">
+        <Container>
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <Badge variant="muted">How it works</Badge>
+            <h2 className="heading-h2 mt-4">
+              Apps → Spine → Memory → Workspace → Twin → Approval → Loop.
+            </h2>
+            <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
+              Data flows in. Memory accumulates. Workspace makes it usable. Twin proposes. You
+              approve. Every approved action becomes new Truth — and the loop closes.
+            </p>
+          </Reveal>
+
+          <div className="mx-auto mt-10 grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {FLOW_STEPS.map((s, i) => (
+              <Reveal key={s.n} delay={i * 60}>
+                <div className="card-iw h-full p-5">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[12px] font-semibold uppercase tracking-wider text-text-secondary">
+                      {s.n}
+                    </span>
+                    <Plug size={16} className="text-brand-accent" />
+                  </div>
+                  <h3 className="mt-3 text-[16px] font-semibold text-foreground">{s.title}</h3>
+                  <p className="mt-2 text-[13.5px] leading-relaxed text-foreground/85">{s.body}</p>
                 </div>
               </Reveal>
             ))}
@@ -323,72 +346,35 @@ function PlatformPage() {
         </Container>
       </Section>
 
-      {/* 2. Digital Memory */}
-      <Section id="digital-memory">
+      {/* 3. Digital Memory */}
+      <Section id="digital-memory" alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Digital Memory</Badge>
-            <h2 className="heading-h2 mt-4">From scattered data to one Digital Memory.</h2>
-          </Reveal>
-
-          {/* Before / After */}
-          <div className="mx-auto mt-10 grid max-w-6xl gap-5 lg:grid-cols-2">
-            <Reveal>
-              <div className="card-iw h-full p-6">
-                <p className="text-[12px] font-semibold uppercase tracking-wider text-text-secondary">
-                  Before
-                </p>
-                <h3 className="mt-2 text-[18px] font-semibold text-foreground">
-                  Truth scattered across every tool.
-                </h3>
-                <ul className="mt-4 space-y-2.5 text-[14px] leading-relaxed text-foreground/85">
-                  <li>• Account data lives across CRM, billing, support, docs, and chat.</li>
-                  <li>• Every decision means reconciling exports, dashboards, and DMs.</li>
-                  <li>• Context resets the moment you swap a tool or model.</li>
-                </ul>
-              </div>
-            </Reveal>
-            <Reveal delay={120}>
-              <div
-                className="card-iw h-full p-6"
-                style={{
-                  background:
-                    "linear-gradient(180deg, color-mix(in oklab, var(--brand-accent) 6%, transparent), transparent)",
-                }}
-              >
-                <p className="text-[12px] font-semibold uppercase tracking-wider text-brand-accent">
-                  After
-                </p>
-                <h3 className="mt-2 text-[18px] font-semibold text-foreground">
-                  One living Digital Memory.
-                </h3>
-                <ul className="mt-4 space-y-2.5 text-[14px] leading-relaxed text-foreground/90">
-                  <li>• The Spine ingests from every source.</li>
-                  <li>• Conflicts resolve. Records merge. History stays intact.</li>
-                  <li>• A live, consistent view of what's really happening — for everyone.</li>
-                </ul>
-              </div>
-            </Reveal>
-          </div>
-
-          {/* Three layers */}
-          <Reveal className="mx-auto mt-14 max-w-3xl text-center">
-            <h3 className="heading-h3">Memory has three layers.</h3>
-            <p className="mt-3 text-[15.5px] leading-relaxed text-text-secondary">
-              Each one stays distinct, sourced, and traceable — so AI never confuses what happened
-              with what someone said about it.
+            <h2 className="heading-h2 mt-4">
+              Memory that <span className="text-brand-accent">accumulates</span> — then gets reused.
+            </h2>
+            <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
+              {MEMORY_COPY.primary}
             </p>
           </Reveal>
-          <div className="mx-auto mt-8 grid max-w-6xl gap-5 lg:grid-cols-3">
-            {MEMORY_LAYERS.map((c, i) => {
+
+          <div className="mx-auto mt-10 grid max-w-6xl gap-5 lg:grid-cols-3">
+            {THREE_LINES.map((c, i) => {
               const Icon = c.icon;
               return (
                 <Reveal key={c.title} delay={i * 80}>
                   <div className="card-iw h-full p-6">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-elevated text-brand-accent">
+                    <div
+                      className="flex h-10 w-10 items-center justify-center rounded-lg"
+                      style={{
+                        background: `color-mix(in oklab, ${c.color} 14%, transparent)`,
+                        color: c.color,
+                      }}
+                    >
                       <Icon size={18} />
                     </div>
-                    <h4 className="mt-4 text-[20px] font-semibold text-foreground">{c.title}</h4>
+                    <h3 className="mt-4 text-[20px] font-semibold text-foreground">{c.title}</h3>
                     <p className="mt-1 text-[13px] font-medium text-text-secondary">{c.sub}</p>
                     <p className="mt-3 text-[14px] leading-relaxed text-foreground/85">{c.body}</p>
                   </div>
@@ -399,116 +385,106 @@ function PlatformPage() {
 
           <Reveal delay={200} className="mx-auto mt-10 max-w-3xl text-center">
             <p className="text-[16px] leading-relaxed text-foreground/90">
-              Digital Memory is what your Workbench and Twin actually consume.{" "}
+              Three lines meet in one place but never lose their identity or source.{" "}
               <span className="text-brand-accent">
-                It does not reset when you swap tools or AI models.
-              </span>
-            </p>
-          </Reveal>
-        </Container>
-      </Section>
-
-      {/* 3. Connectors */}
-      <Section id="connectors" alt>
-        <Container>
-          <Reveal className="mx-auto max-w-3xl text-center">
-            <Badge variant="muted">Connectors</Badge>
-            <h2 className="heading-h2 mt-4">Connect the apps that already run your work.</h2>
-            <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
-              The Spine plugs into the systems you already trust — CRM, billing, support, warehouse,
-              docs, and chat — then keeps them in sync so you don't have to stitch spreadsheets
-              together.
-            </p>
-          </Reveal>
-
-          {/* Connector grid with Live / Coming Soon badges */}
-          <div className="mx-auto mt-10 grid max-w-5xl grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-            {CONNECTOR_LOGOS.map((logo, i) => {
-              const isComing = COMING_SOON.has(logo.name);
-              return (
-                <Reveal
-                  key={logo.name}
-                  delay={i * 30}
-                  className="card-iw flex items-center justify-between gap-2 px-3 py-3"
-                >
-                  <div className="flex min-w-0 items-center gap-2.5">
-                    <img src={logo.src} alt="" aria-hidden className="h-6 w-auto shrink-0" />
-                    <span className="truncate text-[13.5px] font-medium text-foreground/90">
-                      {logo.name}
-                    </span>
-                  </div>
-                  {isComing ? (
-                    <span className="shrink-0 rounded-full border border-border bg-elevated px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-text-secondary">
-                      Soon
-                    </span>
-                  ) : (
-                    <span
-                      className="shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider"
-                      style={{
-                        background: "color-mix(in oklab, var(--state-success) 14%, transparent)",
-                        color: "var(--state-success)",
-                      }}
-                    >
-                      Live
-                    </span>
-                  )}
-                </Reveal>
-              );
-            })}
-          </div>
-
-          <Reveal delay={150} className="mx-auto mt-10 max-w-3xl text-center">
-            <p className="text-[15px] leading-relaxed text-text-secondary">
-              If a system changes, your Digital Memory stays intact.{" "}
-              <span className="text-foreground">
-                The Spine absorbs schema changes without throwing away history.
+                Raw AI chat never writes directly into Memory.
               </span>
             </p>
           </Reveal>
 
-          <div className="mt-10">
-            <ConnectorMarquee />
-          </div>
-        </Container>
-      </Section>
-
-      {/* 4. How it works */}
-      <Section id="how-it-works">
-        <Container>
-          <Reveal className="mx-auto max-w-3xl text-center">
-            <Badge variant="muted">How it works</Badge>
-            <h2 className="heading-h2 mt-4">How the Spine builds your Digital Memory.</h2>
-            <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
-              Five steps. Same loop, every day. Your Memory gets a little richer with every sync.
-            </p>
-          </Reveal>
-
-          <div className="mx-auto mt-10 grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {HOW_STEPS.map((s, i) => {
+          {/* Memory scopes (kept here as part of Memory story) */}
+          <div className="mx-auto mt-14 grid max-w-6xl gap-5 lg:grid-cols-3">
+            {SCOPES.map((s, i) => {
               const Icon = s.icon;
               return (
-                <Reveal key={s.n} delay={i * 60}>
-                  <div className="card-iw h-full p-5">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[12px] font-semibold uppercase tracking-wider text-text-secondary">
-                        {s.n}
-                      </span>
-                      <Icon size={16} className="text-brand-accent" />
+                <Reveal key={s.title} delay={i * 80}>
+                  <div className="card-iw h-full p-6">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-elevated text-brand-accent">
+                      <Icon size={18} />
                     </div>
-                    <h3 className="mt-3 text-[15px] font-semibold text-foreground">{s.title}</h3>
-                    <p className="mt-2 text-[13px] leading-relaxed text-foreground/85">{s.body}</p>
+                    <h3 className="mt-4 text-[18px] font-semibold text-foreground">{s.title}</h3>
+                    <p className="mt-2 text-[14px] leading-relaxed text-foreground/85">{s.body}</p>
                   </div>
                 </Reveal>
               );
             })}
           </div>
-
-          <Reveal delay={250} className="mx-auto mt-10 max-w-3xl text-center">
-            <p className="text-[17px] font-medium text-foreground">
-              Without the Spine, there is no Digital Memory.{" "}
-              <span className="text-text-secondary">Without memory, AI is guessing.</span>
+          <Reveal delay={250} className="mx-auto mt-6 max-w-3xl text-center">
+            <p className="text-[15px] font-medium text-foreground/90">
+              Private by architecture. Shared by choice. Governed by you.
             </p>
           </Reveal>
+
+          {/* AI library */}
+          <div className="mx-auto mt-14 grid max-w-5xl gap-5 lg:grid-cols-2">
+            <Reveal>
+              <div className="card-iw h-full p-6">
+                <div className="flex items-center gap-2">
+                  <BookOpen size={18} className="text-brand-accent" />
+                  <h3 className="text-[18px] font-semibold text-foreground">Your AI library</h3>
+                </div>
+                <p className="mt-3 text-[14px] leading-relaxed text-foreground/85">
+                  Your notes, tasks, messages, and work become "your AI library". Models answer
+                  based on your data — not random web pages.
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={120}>
+              <div className="card-iw h-full p-6">
+                <div className="flex items-center gap-2">
+                  <Building2 size={18} className="text-brand-accent" />
+                  <h3 className="text-[18px] font-semibold text-foreground">
+                    For your organisation
+                  </h3>
+                </div>
+                <p className="mt-3 text-[14px] leading-relaxed text-foreground/85">
+                  Org Memory becomes "your org AI" — a governed library of company data and
+                  decisions. Any allowed model can use it without mixing with other customers.
+                </p>
+              </div>
+            </Reveal>
+          </div>
+          <Reveal delay={200} className="mx-auto mt-8 max-w-3xl text-center">
+            <p className="text-[16px] font-medium text-foreground/90">
+              Models can change. Your Digital Memory and library stay.
+            </p>
+          </Reveal>
+        </Container>
+      </Section>
+
+      {/* 4. Connectors */}
+      <Section id="connectors">
+        <Container>
+          <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_1fr]">
+            <Reveal>
+              <Badge variant="muted">Connectors</Badge>
+              <h2 className="heading-h2 mt-4">70+ schema-aware connectors.</h2>
+              <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
+                Every connector is built on the same loader service and adapter pattern, mapped to
+                the Spine's schema registry. Connect once and the Spine handles change tracking,
+                deduplication, and entity resolution across tools.
+              </p>
+              <ul className="mt-5 space-y-2.5 text-[14px] text-foreground/90">
+                <li className="flex items-start gap-2">
+                  <Plug size={16} className="mt-0.5 shrink-0 text-brand-accent" />
+                  Connector framework — common loader, retries, observability.
+                </li>
+                <li className="flex items-start gap-2">
+                  <Filter size={16} className="mt-0.5 shrink-0 text-brand-accent" />
+                  Adapter pattern — each tool maps cleanly to the same schema.
+                </li>
+                <li className="flex items-start gap-2">
+                  <Database size={16} className="mt-0.5 shrink-0 text-brand-accent" />
+                  Schema registry — Memory grows; old data keeps working.
+                </li>
+              </ul>
+            </Reveal>
+            <Reveal delay={120}>
+              <div className="card-iw p-4 sm:p-6" style={{ background: "var(--bg-surface)" }}>
+                <ConnectorOrbit size={520} />
+              </div>
+            </Reveal>
+          </div>
         </Container>
       </Section>
 
@@ -517,10 +493,10 @@ function PlatformPage() {
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Security</Badge>
-            <h2 className="heading-h2 mt-4">Stable truth, governed access.</h2>
+            <h2 className="heading-h2 mt-4">Security and governance, by architecture.</h2>
             <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
-              The Spine and your Digital Memory are owned, auditable, and governed — never a black
-              box. Every read is scoped. Every write is approved.
+              Your Memory is yours. Tenant-isolated, audit-logged, approval-gated — built for
+              regulated work, not just demos.
             </p>
           </Reveal>
 
@@ -542,20 +518,6 @@ function PlatformPage() {
               );
             })}
           </div>
-
-          <Reveal delay={250} className="mx-auto mt-10 max-w-3xl text-center">
-            <div className="inline-flex flex-wrap items-center justify-center gap-2">
-              {["SOC 2 Type II", "GDPR-ready", "Tenant isolation", "Approval-gated"].map((t) => (
-                <span
-                  key={t}
-                  className="rounded-full border border-border bg-elevated/60 px-3 py-1.5 text-[12.5px] font-medium text-foreground/90"
-                >
-                  <ShieldCheck size={12} className="mr-1 inline -mt-0.5 text-brand-accent" />
-                  {t}
-                </span>
-              ))}
-            </div>
-          </Reveal>
         </Container>
       </Section>
 
@@ -564,81 +526,53 @@ function PlatformPage() {
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <Badge variant="muted">Integrations</Badge>
-            <h2 className="heading-h2 mt-4">
-              Integrations that behave like first-class citizens.
-            </h2>
+            <h2 className="heading-h2 mt-4">The tools you already use.</h2>
             <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
-              Every integration sits on top of the Spine through three cooperating services. The
-              result: connections that don't break the moment a vendor changes their API.
+              Salesforce, HubSpot, Stripe, Jira, Notion, Slack, Zendesk, Gmail, Shopify, QuickBooks,
+              Intercom, GitHub, Airtable, Asana, Google Drive — and more added every month based on
+              real customer demand.
             </p>
           </Reveal>
 
-          {/* Loader / Adapter / Registry */}
-          <div className="mx-auto mt-10 grid max-w-6xl gap-5 lg:grid-cols-3">
-            {INTEGRATION_SERVICES.map((s, i) => {
-              const Icon = s.icon;
-              return (
-                <Reveal key={s.title} delay={i * 80}>
-                  <div className="card-iw h-full p-6">
-                    <div className="flex items-center gap-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-elevated text-brand-accent">
-                        <Icon size={18} />
-                      </div>
-                      <h3 className="text-[18px] font-semibold text-foreground">{s.title}</h3>
-                    </div>
-                    <p className="mt-4 text-[14px] leading-relaxed text-foreground/85">{s.body}</p>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
-
-          {/* Outcomes */}
-          <div className="mx-auto mt-10 grid max-w-4xl gap-3">
-            {INTEGRATION_OUTCOMES.map((line, i) => (
-              <Reveal key={line} delay={i * 80}>
-                <div className="card-iw flex items-start gap-3 p-4">
-                  <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-brand-accent" />
-                  <p className="text-[15px] leading-relaxed text-foreground/90">{line}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal delay={200} className="mx-auto mt-10 max-w-3xl text-center">
-            <p className="text-[15px] leading-relaxed text-text-secondary">
-              <Workflow size={14} className="mr-1 inline -mt-0.5 text-brand-accent" />
-              Loader keeps data fresh. Adapter speaks each app's language. Registry remembers every
-              shape. Together: integrations that age well.
-            </p>
-          </Reveal>
-        </Container>
-      </Section>
-
-      {/* 7. Platform CTA / closer */}
-      <Section id="platform-cta" alt>
-        <Container>
-          <Reveal className="mx-auto max-w-3xl text-center">
-            <Badge variant="muted">Get started</Badge>
-            <h2 className="heading-h2 mt-4">See your Digital Memory on your own data.</h2>
-            <p className="mx-auto mt-4 text-[17px] leading-relaxed text-text-secondary">
-              One conversation, your key apps connected, and your Spine assembling a Digital Memory
-              on your own accounts — not a fake demo tenant.
-            </p>
-            <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
-              <button onClick={() => open("Platform · CTA")} className="btn-primary-iw">
-                Book a demo <ArrowRight size={16} />
-              </button>
-              <button
-                onClick={() => openEarlyAccess("Platform · CTA")}
-                className="btn-secondary-iw"
+          <Reveal
+            delay={120}
+            className="mx-auto mt-8 flex max-w-4xl flex-wrap justify-center gap-2"
+          >
+            {INTEGRATION_LOGOS.map((name) => (
+              <span
+                key={name}
+                className="rounded-full border border-border bg-elevated/50 px-3 py-1.5 text-[12.5px] text-foreground/90"
               >
-                Join Early Access
-              </button>
+                {name}
+              </span>
+            ))}
+          </Reveal>
+
+          <div className="mt-12">
+            <ConnectorMarquee />
+          </div>
+          <div className="mt-10">
+            <IntegrationsGrid />
+          </div>
+
+          <Reveal delay={150} className="mx-auto mt-12 max-w-3xl text-center">
+            <div className="card-iw p-6">
+              <h3 className="text-[20px] font-semibold text-foreground">
+                See your stack become accumulating Memory.
+              </h3>
+              <p className="mt-3 text-[15px] text-text-secondary">
+                In a live session we connect your tools, show what flows into the Spine, and walk
+                through the Workspace built on top.
+              </p>
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+                <button onClick={() => open("Platform · CTA")} className="btn-primary-iw">
+                  Book a demo <ArrowRight size={16} />
+                </button>
+                <button onClick={() => open("Platform · stack chat")} className="btn-secondary-iw">
+                  Talk about your stack
+                </button>
+              </div>
             </div>
-            <p className="mt-5 text-[13.5px] text-text-secondary">
-              Founder-led onboarding. No automation without your approval.
-            </p>
           </Reveal>
         </Container>
       </Section>

@@ -63,7 +63,7 @@ const PRINCIPLES = [
   {
     icon: Workflow,
     title: "Work, not vanity dashboards.",
-    body: "The Workbench is built to run your day, not to show pretty charts. It is shaped by a former CSM and a current Business Ops operator.",
+    body: "The Workspace is built to run your day, not to show pretty charts. It is shaped by a former CSM and a current Business Ops operator.",
   },
   {
     icon: Sparkles,
@@ -179,12 +179,12 @@ function CompanyPage() {
                 Not another dashboard. <span className="text-brand-accent">A Spine.</span>
               </p>
               <p className="mt-4">
-                A layer that could remember Truth and Context across tools and time. A Workbench
+                A layer that could remember Truth and Context across tools and time. A Workspace
                 that sat on this Spine and actually matched the day. An AI Twin that read this
                 Memory, prepared actions, and still waited for human approval.
               </p>
               <p className="mt-4">
-                That sketch became the Spine (Platform), Digital Memory, the Adaptive Workbench
+                That sketch became the Spine (Platform), Digital Memory, the Adaptive Workspace
                 (Product), and the Twin with an Approval Gate (Intelligence Layer).
               </p>
             </Reveal>
@@ -249,7 +249,7 @@ function CompanyPage() {
                   Raw AI chat never writes directly into Memory.
                 </p>
                 <p>
-                  On top of that, the Workbench consumes Memory and becomes your main working
+                  On top of that, the Workspace consumes Memory and becomes your main working
                   screen. The Twin reads from Memory, connects signals, and proposes actions —
                   always behind the Approval Gate.
                 </p>
@@ -338,7 +338,7 @@ function CompanyPage() {
 
           <Reveal delay={300} className="mx-auto mt-10 max-w-3xl text-center">
             <p className="text-[18px] leading-relaxed text-foreground">
-              End the Human API role. Give people a Memory and a Workbench that grow with them, plus
+              End the Human API role. Give people a Memory and a Workspace that grow with them, plus
               a Twin that helps — but never takes over.
             </p>
           </Reveal>
@@ -367,7 +367,7 @@ function CompanyPage() {
                       tools, support queues, and spreadsheets, not just in slide decks.
                     </p>
                     <p>
-                      The Spine, Workbench, and Twin are shaped from that operator's point of view,
+                      The Spine, Workspace, and Twin are shaped from that operator's point of view,
                       and are used every day to run this company.
                     </p>
                   </div>
@@ -386,7 +386,7 @@ function CompanyPage() {
             <h2 className="heading-h2 mt-4">See what work feels like with a Memory.</h2>
             <p className="mt-5 text-[16px] leading-relaxed text-text-secondary">
               In one session, we connect your tools, show how the Spine builds Digital Memory, how
-              the Workbench replaces your daily tab-switching, and how the Twin proposes actions
+              the Workspace replaces your daily tab-switching, and how the Twin proposes actions
               without taking control.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -411,7 +411,7 @@ function CompanyPage() {
 function ArchitectureStack() {
   const layers = [
     {
-      label: "Workbench",
+      label: "Workspace",
       sub: "Where you work",
       icon: Workflow,
     },

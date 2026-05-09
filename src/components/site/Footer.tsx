@@ -28,9 +28,10 @@ export function Footer() {
           <FooterCol
             title="Platform"
             links={[
-              { to: "/platform#spine", label: "Adaptive Spine" },
+              { to: "/platform#spine", label: "Spine" },
               { to: "/platform#how-it-works", label: "How it works" },
               { to: "/platform#digital-memory", label: "Digital Memory" },
+              { to: "/platform#connectors", label: "Connectors" },
               { to: "/platform#security", label: "Security" },
               { to: "/platform#integrations", label: "Integrations" },
             ]}
@@ -38,7 +39,7 @@ export function Footer() {
           <FooterCol
             title="Product"
             links={[
-              { to: "/product#workbench", label: "Workbench" },
+              { to: "/product#workspace", label: "Workspace" },
               { to: "/product#how-it-works", label: "How it works" },
               { to: "/product#digital-memory", label: "Digital Memory" },
               { to: "/product#security", label: "Security" },
@@ -47,7 +48,7 @@ export function Footer() {
           <FooterCol
             title="Intelligence"
             links={[
-              { to: "/twin#twin", label: "The Twin" },
+              { to: "/twin#twin", label: "Twin" },
               { to: "/twin#how-it-works", label: "How it works" },
               { to: "/twin#digital-memory-reference", label: "Digital Memory Reference" },
               { to: "/twin#twin-execution", label: "Twin Execution" },
@@ -59,8 +60,7 @@ export function Footer() {
             links={[
               { to: "/solutions/account-success", label: "Account Success" },
               { to: "/solutions/business-ops", label: "Business Ops" },
-              { to: "/solutions/customer-success", label: "Customer Success" },
-              { to: "/solutions/personal-space", label: "Personal Ops" },
+              { to: "/solutions/personal-space", label: "Personal Space" },
               { to: "/solutions", label: "All solutions" },
             ]}
           />
@@ -71,8 +71,6 @@ export function Footer() {
               { to: "/manifesto", label: "Manifesto" },
               { to: "/customer-zero", label: "Customer Zero" },
               { to: "/why", label: "Why" },
-              { to: "/resources", label: "Resources & Blog" },
-              { to: "/pricing", label: "Pricing" },
               { to: "/contact", label: "Contact" },
             ]}
           />

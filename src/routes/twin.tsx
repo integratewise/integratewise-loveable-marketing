@@ -18,7 +18,7 @@ import { Container } from "@/components/site/Container";
 import { Section } from "@/components/site/Section";
 import { Badge } from "@/components/site/Badge";
 import { Reveal } from "@/components/site/Reveal";
-
+import { SectionNav } from "@/components/site/SectionNav";
 import { useDemoModal } from "@/components/site/demo-modal-context";
 import { MEMORY_COPY } from "@/lib/site";
 
@@ -29,7 +29,7 @@ export const Route = createFileRoute("/twin")({
       {
         name: "description",
         content:
-          "Twin doesn't work on raw data. It reads scoped memory from the Workbench and proposes structured changes with linked evidence and confidence. The governance layer decides what becomes real — every action logged, outcome looped back as a Session Summary.",
+          "Twin doesn't work on raw data. It reads scoped memory from the Workspace and proposes structured changes with linked evidence and confidence. The governance layer decides what becomes real — every action logged, outcome looped back as a Session Summary.",
       },
       { property: "og:title", content: "IntegrateWise Twin — Intelligence Layer" },
       {
@@ -111,6 +111,17 @@ function TwinPage() {
           </div>
         </Container>
       </Section>
+
+      {/* Sticky in-page nav */}
+      <SectionNav
+        items={[
+          { id: "twin", label: "Twin" },
+          { id: "how-it-works", label: "How it works" },
+          { id: "digital-memory-reference", label: "Digital Memory Reference" },
+          { id: "twin-execution", label: "Twin Execution" },
+          { id: "security", label: "Security" },
+        ]}
+      />
 
       {/* 2. Core thesis */}
       <Section alt>
@@ -457,7 +468,7 @@ function TwinPage() {
             <h2 className="heading-h2 mt-4">Twin operates inside your perimeter.</h2>
             <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
               Twin reads only what your scopes already allow. Every proposal is auditable. Every
-              action requires your approval. Turn Twin off and your Workbench still works.
+              action requires your approval. Turn Twin off and your Workspace still works.
             </p>
           </Reveal>
 
@@ -480,7 +491,7 @@ function TwinPage() {
               <Sparkles size={20} className="text-brand-accent" />
               <p className="mt-3 text-[14px] font-semibold text-foreground">Optional layer</p>
               <p className="mt-1 text-[13px] text-text-secondary">
-                Workbench and Digital Memory work fully without Twin enabled.
+                Workspace and Digital Memory work fully without Twin enabled.
               </p>
             </div>
           </div>

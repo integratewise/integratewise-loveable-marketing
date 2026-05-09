@@ -8,7 +8,7 @@
  *
  * Direction is derived from the route group:
  *  - /platform/*     → translate up   (deeper into infrastructure)
- *  - /product/*      → translate left (across to the workbench)
+ *  - /product/*      → translate left (across to the workspace)
  *  - /twin           → translate from the right (intelligent panel)
  *  - everything else → small fade-up
  *

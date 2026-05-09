@@ -187,7 +187,7 @@ function IndustryDetailPage() {
             </h1>
             <p className="mx-auto mt-5 text-[17px] leading-relaxed text-text-secondary">
               {detail.name} teams rebuild context daily across {detail.tools}. Within seconds of
-              opening the Workbench, you see what changed. Twin connects, explains, and prepares the
+              opening the Workspace, you see what changed. Twin connects, explains, and prepares the
               next action.
             </p>
           </div>

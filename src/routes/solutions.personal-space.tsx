@@ -11,13 +11,13 @@ const PERSONAS = [
 export const Route = createFileRoute("/solutions/personal-space")({
   head: () => ({
     meta: [
-      { title: "Personal Ops — Your own operating system." },
+      { title: "Personal Space — Your own operating system." },
       {
         name: "description",
         content:
-          "Your notes, tasks, meetings, and links become Digital Memory — not messy lists. Personal Ops uses the same Spine and Workbench, scoped only to you.",
+          "Your notes, tasks, meetings, and links become Digital Memory — not messy lists. Personal Space uses the same Spine and Workspace, scoped only to you.",
       },
-      { property: "og:title", content: "Personal Ops — IntegrateWise" },
+      { property: "og:title", content: "Personal Space — IntegrateWise" },
       {
         property: "og:description",
         content: "A private operating system for your goals, projects, learning, and life admin.",
@@ -31,17 +31,17 @@ function PersonalSpacePage() {
   return (
     <SolutionsLayout personaOptions={PERSONAS}>
       <SolutionPage
-        preLabel="Solution · Personal Ops"
+        preLabel="Solution · Personal Space"
         h1Lead="Your own"
         h1Accent="operating system."
-        subcopy="Everyone has scattered personal work — side projects, learning, family tasks, finances. Personal Ops uses the same Spine and Workbench, but just for you. Your notes, tasks, meetings, and links become Digital Memory, not messy lists."
+        subcopy="Everyone has scattered personal work — side projects, learning, family tasks, finances. Personal Space uses the same Spine and Workspace, but just for you. Your notes, tasks, meetings, and links become Digital Memory, not messy lists."
         primaryCta={{ label: "Join waitlist", kind: "waitlist" }}
         secondaryCtaHref="#function-personal"
         secondaryCtaLabel="See how it works"
         menu={[
           {
             label: "Function",
-            links: [{ href: "#function-personal", label: "Personal Ops" }],
+            links: [{ href: "#function-personal", label: "Personal Space" }],
           },
           {
             label: "Role",
@@ -86,7 +86,7 @@ function PersonalSpacePage() {
               "Personal projects always lose to work because there's no shared view.",
             ],
             with: [
-              "Personal Workbench shows today's tasks, meetings, goals, and reading in one view.",
+              "Personal Workspace shows today's tasks, meetings, goals, and reading in one view.",
               "User Memory stores notes, links, decisions — all searchable and connected.",
               "Twin can suggest what to work on next, but only from your private Memory.",
               "Career goals stay visible alongside your week — not buried in a separate doc.",
@@ -101,7 +101,7 @@ function PersonalSpacePage() {
               "No way to see if you actually moved your personal project this month.",
             ],
             with: [
-              "Personal Workbench shows your side projects, today's focus, and weekly progress.",
+              "Personal Workspace shows your side projects, today's focus, and weekly progress.",
               "User Memory captures ideas, drafts, and links from across your tools.",
               "Twin proposes the next concrete step — you approve before it goes on your calendar.",
             ],
@@ -115,7 +115,7 @@ function PersonalSpacePage() {
               "Study plans never survive past the first week.",
             ],
             with: [
-              "Personal Workbench shows today's deadlines, study tasks, and learning progress in one view.",
+              "Personal Workspace shows today's deadlines, study tasks, and learning progress in one view.",
               "User Memory keeps notes, references, and decisions tied to each course or topic.",
               "Twin proposes a study plan you can approve and adjust — never one that runs on its own.",
             ],
@@ -129,7 +129,7 @@ function PersonalSpacePage() {
               "Tax season becomes a panic dig through email.",
             ],
             with: [
-              "Personal Workbench shows pending invoices, upcoming expenses, and tax checkpoints in one view.",
+              "Personal Workspace shows pending invoices, upcoming expenses, and tax checkpoints in one view.",
               "User Memory keeps every receipt, invoice, and decision linked.",
               "Twin reminds you to send invoices and prepare for tax dates — you always approve.",
             ],
@@ -139,11 +139,11 @@ function PersonalSpacePage() {
           {
             id: "function-personal",
             group: "Function",
-            title: "Personal Ops — same engine, scoped only to you.",
+            title: "Personal Space — same engine, scoped only to you.",
             body: [
-              "Same engine as the business side — Spine, Digital Memory, Workbench, Twin, Approval Gate — but scoped only to you.",
+              "Same engine as the business side — Spine, Digital Memory, Workspace, Twin, Approval Gate — but scoped only to you.",
               "User Memory keeps your life's Truth and Context in one place — tasks, calendar, notes, links.",
-              "Personal Workbench shows a simple, calming view of your day and projects.",
+              "Personal Workspace shows a simple, calming view of your day and projects.",
             ],
           },
           {
@@ -152,7 +152,7 @@ function PersonalSpacePage() {
             title: "For founders managing work and life.",
             body: [
               "Without: company work consumes everything; personal goals live in random Notes.",
-              "With: a Personal Workbench separate from your company space — your projects, learning, and life admin in one place.",
+              "With: a Personal Workspace separate from your company space — your projects, learning, and life admin in one place.",
               "Twin proposes the next step on your personal goals — you stay fully in control.",
             ],
           },
@@ -162,7 +162,7 @@ function PersonalSpacePage() {
             title: "For working professionals.",
             body: [
               "Without: career goals, side projects, and learning scattered across a dozen apps.",
-              "With: one Workbench showing today's focus, weekly progress, and your goals together.",
+              "With: one Workspace showing today's focus, weekly progress, and your goals together.",
               "User Memory keeps your reading, decisions, and career notes linked and searchable.",
             ],
           },
@@ -172,7 +172,7 @@ function PersonalSpacePage() {
             title: "For students and learners.",
             body: [
               "Without: deadlines in calendar, notes in Notion, tasks in another app, materials in Drive.",
-              "With: a Personal Workbench showing today's deadlines, study tasks, and progress in one view.",
+              "With: a Personal Workspace showing today's deadlines, study tasks, and progress in one view.",
               "Twin proposes a study plan you approve and adjust — never one that runs on its own.",
             ],
           },
@@ -182,7 +182,7 @@ function PersonalSpacePage() {
             title: "For freelancers.",
             body: [
               "Without: invoices, expenses, taxes, and personal projects across 5 different tools.",
-              "With: one Personal Workbench showing pending invoices, expenses, tax dates, and side projects.",
+              "With: one Personal Workspace showing pending invoices, expenses, tax dates, and side projects.",
               "Twin reminds you to send invoices and prepare for tax — you always approve.",
             ],
           },
@@ -192,7 +192,7 @@ function PersonalSpacePage() {
             title: "Side projects and startups.",
             body: [
               "Capture ideas, drafts, and links from across your tools into one User Memory.",
-              "Your Personal Workbench shows weekly progress on each project — no more 'did I move this?'",
+              "Your Personal Workspace shows weekly progress on each project — no more 'did I move this?'",
               "Twin proposes the next concrete step; you approve before it lands on your calendar.",
             ],
           },
@@ -202,7 +202,7 @@ function PersonalSpacePage() {
             title: "Career growth and learning.",
             body: [
               "User Memory holds your reading list, course notes, and career decisions — all searchable.",
-              "Personal Workbench shows your week alongside your career goals, not buried in a separate doc.",
+              "Personal Workspace shows your week alongside your career goals, not buried in a separate doc.",
               "Twin can propose a weekly review — you decide what makes it into the plan.",
             ],
           },
@@ -211,14 +211,14 @@ function PersonalSpacePage() {
             group: "Context",
             title: "Personal finance and admin.",
             body: [
-              "Track invoices, expenses, recurring bills, and tax dates from one Personal Workbench.",
+              "Track invoices, expenses, recurring bills, and tax dates from one Personal Workspace.",
               "User Memory keeps every receipt, invoice, and decision connected.",
               "Twin reminds you of upcoming dates and proposes reminders — every action goes through your approval.",
             ],
           },
         ]}
         closeHeading="Your private operating system — same engine, scoped only to you."
-        closingPrimary={{ label: "Join Personal Ops waitlist", kind: "waitlist" }}
+        closingPrimary={{ label: "Join Personal Space waitlist", kind: "waitlist" }}
       />
     </SolutionsLayout>
   );

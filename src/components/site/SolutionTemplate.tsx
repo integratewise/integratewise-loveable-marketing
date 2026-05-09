@@ -254,7 +254,7 @@ export function SolutionPage(props: SolutionPageProps) {
             <h2 className="heading-h2">Same foundation. Different ways of working.</h2>
             <ul className="mx-auto mt-6 max-w-2xl space-y-2 text-[15px] leading-relaxed text-text-secondary">
               <li>Spine builds your Digital Memory.</li>
-              <li>Workbench shows it in the shape of your day.</li>
+              <li>Workspace shows it in the shape of your day.</li>
               <li>Twin reads, connects, and proposes — always behind the Approval Gate.</li>
             </ul>
             <p className="mt-6 text-[16px] font-medium text-foreground">{props.closeHeading}</p>

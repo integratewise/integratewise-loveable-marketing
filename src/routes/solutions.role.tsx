@@ -14,7 +14,7 @@ export const Route = createFileRoute("/solutions/role")({
       {
         name: "description",
         content:
-          "Customer Success, Founders, RevOps, Operations, Finance, and Individual Professionals — same Memory, Workbench, and Twin, filtered for how each role actually works.",
+          "Customer Success, Founders, RevOps, Operations, Finance, and Individual Professionals — same Memory, Workspace, and Twin, filtered for how each role actually works.",
       },
       { property: "og:title", content: "IntegrateWise — Solutions by Role" },
       { property: "og:description", content: "One foundation, different roles." },
@@ -103,7 +103,7 @@ const ROLES: RoleDef[] = [
       "A Twin that respects your space — never sees Org or Work Memory unless you join them",
     ],
     twin: "Twin proposes follow-ups, prep, and review plans — every action through Approval Gate.",
-    cta: { label: "Join Personal Ops waitlist", source: "Role · Individual", waitlist: true },
+    cta: { label: "Join Personal Space waitlist", source: "Role · Individual", waitlist: true },
   },
 ];
 
@@ -185,7 +185,7 @@ function RoleSliderPage() {
               One foundation, <span className="text-gradient-hero">different roles.</span>
             </h1>
             <p className="mx-auto mt-5 text-[17px] leading-relaxed text-text-secondary">
-              Same Spine, Digital Memory, Workbench, and Twin. Filtered to the questions your role
+              Same Spine, Digital Memory, Workspace, and Twin. Filtered to the questions your role
               actually has to answer.
             </p>
           </div>
