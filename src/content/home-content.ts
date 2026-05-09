@@ -56,12 +56,12 @@ export const FEATURE_CARDS: FeatureCard[] = [
     icon: Eye,
   },
   {
-    title: "Workspace",
+    title: "Workbench",
     body: "Your unified work surface. Memory left, Twin right, action in the middle.",
     icon: LayoutDashboard,
   },
   {
-    title: "Twin",
+    title: "The Twin",
     body: "Connects what changed, explains why, and prepares what's next.",
     icon: Sparkles,
   },
@@ -154,7 +154,7 @@ export const TESTIMONIALS: Testimonial[] = [
     initials: "PM",
   },
   {
-    quote: "We replaced four standing meetings with one Workspace view.",
+    quote: "We replaced four standing meetings with one Workbench view.",
     who: "Karan S.",
     role: "Head of Ops",
     initials: "KS",
@@ -189,7 +189,7 @@ export const FAQS: FaqItem[] = [
   },
   {
     q: "How long does onboarding take?",
-    a: "Most teams see their first Workspace view within a week. Full Memory coverage typically lands in 2–4 weeks.",
+    a: "Most teams see their first Workbench view within a week. Full Memory coverage typically lands in 2–4 weeks.",
   },
   {
     q: "Do my private notes ever cross into shared spaces?",

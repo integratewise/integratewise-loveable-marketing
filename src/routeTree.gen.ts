@@ -30,6 +30,7 @@ import { Route as SolutionsRoleRouteImport } from './routes/solutions.role'
 import { Route as SolutionsPersonalSpaceRouteImport } from './routes/solutions.personal-space'
 import { Route as SolutionsIndustryRouteImport } from './routes/solutions.industry'
 import { Route as SolutionsFinanceOpsRouteImport } from './routes/solutions.finance-ops'
+import { Route as SolutionsCustomerSuccessRouteImport } from './routes/solutions.customer-success'
 import { Route as SolutionsByRoleRouteImport } from './routes/solutions.by-role'
 import { Route as SolutionsByIndustryRouteImport } from './routes/solutions.by-industry'
 import { Route as SolutionsBusinessOpsRouteImport } from './routes/solutions.business-ops'
@@ -149,6 +150,12 @@ const SolutionsFinanceOpsRoute = SolutionsFinanceOpsRouteImport.update({
   path: '/finance-ops',
   getParentRoute: () => SolutionsRoute,
 } as any)
+const SolutionsCustomerSuccessRoute =
+  SolutionsCustomerSuccessRouteImport.update({
+    id: '/customer-success',
+    path: '/customer-success',
+    getParentRoute: () => SolutionsRoute,
+  } as any)
 const SolutionsByRoleRoute = SolutionsByRoleRouteImport.update({
   id: '/by-role',
   path: '/by-role',
@@ -245,6 +252,7 @@ export interface FileRoutesByFullPath {
   '/solutions/business-ops': typeof SolutionsBusinessOpsRoute
   '/solutions/by-industry': typeof SolutionsByIndustryRouteWithChildren
   '/solutions/by-role': typeof SolutionsByRoleRoute
+  '/solutions/customer-success': typeof SolutionsCustomerSuccessRoute
   '/solutions/finance-ops': typeof SolutionsFinanceOpsRoute
   '/solutions/industry': typeof SolutionsIndustryRoute
   '/solutions/personal-space': typeof SolutionsPersonalSpaceRoute
@@ -281,6 +289,7 @@ export interface FileRoutesByTo {
   '/solutions/business-ops': typeof SolutionsBusinessOpsRoute
   '/solutions/by-industry': typeof SolutionsByIndustryRouteWithChildren
   '/solutions/by-role': typeof SolutionsByRoleRoute
+  '/solutions/customer-success': typeof SolutionsCustomerSuccessRoute
   '/solutions/finance-ops': typeof SolutionsFinanceOpsRoute
   '/solutions/industry': typeof SolutionsIndustryRoute
   '/solutions/personal-space': typeof SolutionsPersonalSpaceRoute
@@ -318,6 +327,7 @@ export interface FileRoutesById {
   '/solutions/business-ops': typeof SolutionsBusinessOpsRoute
   '/solutions/by-industry': typeof SolutionsByIndustryRouteWithChildren
   '/solutions/by-role': typeof SolutionsByRoleRoute
+  '/solutions/customer-success': typeof SolutionsCustomerSuccessRoute
   '/solutions/finance-ops': typeof SolutionsFinanceOpsRoute
   '/solutions/industry': typeof SolutionsIndustryRoute
   '/solutions/personal-space': typeof SolutionsPersonalSpaceRoute
@@ -356,6 +366,7 @@ export interface FileRouteTypes {
     | '/solutions/business-ops'
     | '/solutions/by-industry'
     | '/solutions/by-role'
+    | '/solutions/customer-success'
     | '/solutions/finance-ops'
     | '/solutions/industry'
     | '/solutions/personal-space'
@@ -392,6 +403,7 @@ export interface FileRouteTypes {
     | '/solutions/business-ops'
     | '/solutions/by-industry'
     | '/solutions/by-role'
+    | '/solutions/customer-success'
     | '/solutions/finance-ops'
     | '/solutions/industry'
     | '/solutions/personal-space'
@@ -428,6 +440,7 @@ export interface FileRouteTypes {
     | '/solutions/business-ops'
     | '/solutions/by-industry'
     | '/solutions/by-role'
+    | '/solutions/customer-success'
     | '/solutions/finance-ops'
     | '/solutions/industry'
     | '/solutions/personal-space'
@@ -604,6 +617,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SolutionsFinanceOpsRouteImport
       parentRoute: typeof SolutionsRoute
     }
+    '/solutions/customer-success': {
+      id: '/solutions/customer-success'
+      path: '/customer-success'
+      fullPath: '/solutions/customer-success'
+      preLoaderRoute: typeof SolutionsCustomerSuccessRouteImport
+      parentRoute: typeof SolutionsRoute
+    }
     '/solutions/by-role': {
       id: '/solutions/by-role'
       path: '/by-role'
@@ -749,6 +769,7 @@ interface SolutionsRouteChildren {
   SolutionsBusinessOpsRoute: typeof SolutionsBusinessOpsRoute
   SolutionsByIndustryRoute: typeof SolutionsByIndustryRouteWithChildren
   SolutionsByRoleRoute: typeof SolutionsByRoleRoute
+  SolutionsCustomerSuccessRoute: typeof SolutionsCustomerSuccessRoute
   SolutionsFinanceOpsRoute: typeof SolutionsFinanceOpsRoute
   SolutionsIndustryRoute: typeof SolutionsIndustryRoute
   SolutionsPersonalSpaceRoute: typeof SolutionsPersonalSpaceRoute
@@ -761,6 +782,7 @@ const SolutionsRouteChildren: SolutionsRouteChildren = {
   SolutionsBusinessOpsRoute: SolutionsBusinessOpsRoute,
   SolutionsByIndustryRoute: SolutionsByIndustryRouteWithChildren,
   SolutionsByRoleRoute: SolutionsByRoleRoute,
+  SolutionsCustomerSuccessRoute: SolutionsCustomerSuccessRoute,
   SolutionsFinanceOpsRoute: SolutionsFinanceOpsRoute,
   SolutionsIndustryRoute: SolutionsIndustryRoute,
   SolutionsPersonalSpaceRoute: SolutionsPersonalSpaceRoute,

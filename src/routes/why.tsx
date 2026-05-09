@@ -4,6 +4,13 @@ import { Container } from "@/components/site/Container";
 import { Section } from "@/components/site/Section";
 import { Badge } from "@/components/site/Badge";
 import { Reveal } from "@/components/site/Reveal";
+import {
+  WhyLoopScene,
+  WhyMemoryViz,
+  WhyTwinViz,
+  WhyApprovalViz,
+  WhyLoopMiniViz,
+} from "@/components/site/PageVisuals";
 import { useDemoModal } from "@/components/site/demo-modal-context";
 
 export const Route = createFileRoute("/why")({
@@ -44,33 +51,45 @@ function WhyPage() {
             </p>
           </div>
 
-          <div className="mx-auto mt-14 grid max-w-5xl gap-5 md:grid-cols-2">
+          <Reveal delay={120} className="mx-auto mt-12 max-w-5xl">
+            <WhyLoopScene />
+          </Reveal>
+
+          <div className="mx-auto mt-10 grid max-w-5xl gap-5 md:grid-cols-2">
             {[
               {
                 icon: Brain,
                 t: "Memory that never resets",
                 b: "Spine collects work, normalises it, links it. Memory grows — never restarts. Tomorrow starts smarter than today.",
+                viz: "memory" as const,
               },
               {
                 icon: Sparkles,
                 t: "AI that stays within bounds",
                 b: "The Twin connects what changed, explains why, prepares what to do next. It never rewrites Memory and never crosses spaces without permission.",
+                viz: "twin" as const,
               },
               {
                 icon: ShieldCheck,
                 t: "Humans in control",
                 b: "Approval Gate. Nothing executes until you say yes. Every action has an audit trail you own.",
+                viz: "approval" as const,
               },
               {
                 icon: Repeat,
                 t: "A loop that compounds",
                 b: "Spine → Memory → Attention → Twin → Approval → Action → Memory enriches. Every loop, the system gets sharper.",
+                viz: "loop" as const,
               },
             ].map((row, i) => (
               <Reveal key={row.t} delay={i * 60} className="card-iw p-6">
                 <row.icon size={20} className="text-brand-accent" />
                 <h2 className="mt-4 heading-h3">{row.t}</h2>
                 <p className="mt-2 text-[14.5px] leading-relaxed text-text-secondary">{row.b}</p>
+                {row.viz === "memory" && <WhyMemoryViz />}
+                {row.viz === "twin" && <WhyTwinViz />}
+                {row.viz === "approval" && <WhyApprovalViz />}
+                {row.viz === "loop" && <WhyLoopMiniViz />}
               </Reveal>
             ))}
           </div>

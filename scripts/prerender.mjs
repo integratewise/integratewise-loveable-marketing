@@ -51,6 +51,7 @@ const ROUTES = [
   "/solutions",
   "/solutions/account-success",
   "/solutions/business-ops",
+  "/solutions/customer-success",
   "/solutions/personal-space",
   "/solutions/by-role",
   "/solutions/by-industry",

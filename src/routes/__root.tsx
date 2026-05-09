@@ -7,8 +7,9 @@ import { Footer } from "@/components/site/Footer";
 import { DemoModalProvider } from "@/components/site/demo-modal-context";
 import { LeadModals } from "@/components/site/LeadModals";
 import { RouteTransition } from "@/components/site/RouteTransition";
-import { PageSubnav } from "@/components/site/PageSubnav";
+
 import { HashScroll } from "@/components/site/HashScroll";
+import { MotionGlobal } from "@/components/site/MotionGlobal";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_OG_IMAGE, SITE_TAGLINE, SITE_URL } from "@/lib/site";
 
 function NotFoundComponent() {
@@ -90,8 +91,8 @@ function RootComponent() {
         <div className="flex min-h-screen flex-col bg-background text-foreground">
           <Header />
           <HashScroll />
+          <MotionGlobal />
           <main className="flex-1 pt-[60px]">
-            <PageSubnav />
             <RouteTransition>
               <Outlet />
             </RouteTransition>

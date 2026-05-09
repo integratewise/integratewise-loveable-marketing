@@ -5,6 +5,7 @@ import { Container } from "@/components/site/Container";
 import { Section } from "@/components/site/Section";
 import { Badge } from "@/components/site/Badge";
 import { Reveal } from "@/components/site/Reveal";
+import { TierVisual, TierLadder } from "@/components/site/PageVisuals";
 import { useDemoModal } from "@/components/site/demo-modal-context";
 
 export const Route = createFileRoute("/pricing")({
@@ -14,7 +15,7 @@ export const Route = createFileRoute("/pricing")({
       {
         name: "description",
         content:
-          "Pricing based on the kind of workspace you need. Starter, Growth, Command — sync intervals, connector counts, and TruthLayer access scale together.",
+          "Pricing based on the kind of workbench you need. Starter, Growth, Command — sync intervals, connector counts, and TruthLayer access scale together.",
       },
       { property: "og:title", content: "IntegrateWise Pricing" },
       {
@@ -29,6 +30,7 @@ export const Route = createFileRoute("/pricing")({
 const PLANS = [
   {
     name: "Starter",
+    tier: "starter" as const,
     audience: "1–5 users · 1 team",
     sync: "4h sync interval",
     connectors: "5 connectors",
@@ -39,6 +41,7 @@ const PLANS = [
   },
   {
     name: "Growth",
+    tier: "growth" as const,
     audience: "5–20 users · multi-team",
     sync: "1h sync interval",
     connectors: "20 connectors",
@@ -49,6 +52,7 @@ const PLANS = [
   },
   {
     name: "Command",
+    tier: "command" as const,
     audience: "Whole org · enterprise",
     sync: "15-min sync interval",
     connectors: "Unlimited connectors",
@@ -70,7 +74,7 @@ function PricingPage() {
             <Badge variant="muted">Pricing</Badge>
             <h1 className="heading-h1 mt-5">
               Pricing based on the kind of{" "}
-              <span className="text-gradient-hero">workspace you need.</span>
+              <span className="text-gradient-hero">workbench you need.</span>
             </h1>
             <p className="mx-auto mt-5 text-[17px] leading-relaxed text-text-secondary">
               You are not just paying for features. You are paying for the kind of Memory,
@@ -78,7 +82,11 @@ function PricingPage() {
             </p>
           </div>
 
-          <div className="mx-auto mt-12 grid max-w-5xl gap-5 md:grid-cols-3">
+          <Reveal className="mx-auto mt-10 max-w-5xl">
+            <TierLadder />
+          </Reveal>
+
+          <div className="mx-auto mt-10 grid max-w-5xl gap-5 md:grid-cols-3">
             {PLANS.map((p, i) => (
               <Reveal
                 key={p.name}
@@ -90,6 +98,9 @@ function PricingPage() {
                   {p.popular && <Badge>Most Popular</Badge>}
                 </div>
                 <p className="mt-2 text-[13px] text-text-secondary">{p.audience}</p>
+
+                <TierVisual tier={p.tier} className="mt-5" />
+
                 <ul className="mt-5 space-y-2.5 text-[14px] text-foreground/90">
                   {[p.sync, p.connectors, p.truth, p.history].map((line) => (
                     <li key={line} className="flex items-start gap-2">
@@ -136,7 +147,7 @@ function PricingPage() {
           >
             <h2 className="heading-h2">Talk through your stack with the founder.</h2>
             <p className="mx-auto mt-4 max-w-xl text-[16px] text-text-secondary">
-              30 minutes. Real conversation. Live Workspace scoped to your scenario.
+              30 minutes. Real conversation. Live Workbench scoped to your scenario.
             </p>
             <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
               <button
@@ -283,6 +294,11 @@ function Stat({
   );
 }
 
+// Use a fixed locale so SSR (Node) and client (browser) produce identical
+// strings. Using the default locale here previously caused hydration failures
+// for users whose browser locale formats numbers differently from Node
+// (e.g. "en-IN" → "$3,12,000" vs Node "en-US" → "$312,000").
+const FMT = new Intl.NumberFormat("en-US");
 function fmt(n: number) {
-  return `$${Math.round(n).toLocaleString()}`;
+  return `$${FMT.format(Math.round(n))}`;
 }

@@ -57,7 +57,7 @@ export function Header() {
                 <Link
                   key={item.label}
                   to={item.to}
-                  className="rounded-md px-3 py-2 text-[15px] font-medium tracking-[-0.02em] text-white/50 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/50"
+                  className="rounded-md px-3 py-2 text-[15px] font-medium tracking-[-0.02em] text-white/85 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/50"
                   activeProps={{ className: "text-white" }}
                 >
                   {item.label}
@@ -75,7 +75,7 @@ export function Header() {
                 <button
                   type="button"
                   className={cn(
-                    "flex items-center gap-1 rounded-md px-3 py-2 text-[15px] font-medium tracking-[-0.02em] text-white/50 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/50",
+                    "flex items-center gap-1 rounded-md px-3 py-2 text-[15px] font-medium tracking-[-0.02em] text-white/85 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/50",
                     isOpen && "text-white",
                   )}
                   onFocus={() => handleEnter(item.label)}
@@ -99,7 +99,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => openDemo("Header")}
-            className="inline-flex h-[38px] items-center justify-center rounded-xl bg-primary px-4 text-[14px] font-semibold tracking-[-0.02em] text-white transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/50"
+            className="inline-flex h-[38px] items-center justify-center rounded-xl bg-primary px-4 text-[14px] font-semibold tracking-[-0.02em] text-white transition-[background-color,transform,box-shadow] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-[0_8px_24px_rgba(52,211,153,0.25)] active:translate-y-0 active:scale-[0.97] active:duration-100 focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/50"
             style={{ border: "1px solid rgba(52, 211, 153, 0.2)" }}
           >
             Book a demo
@@ -108,7 +108,7 @@ export function Header() {
             type="button"
             aria-label={open ? "Close menu" : "Open menu"}
             onClick={() => setOpen((v) => !v)}
-            className="rounded-md p-1.5 text-white/60 hover:text-white focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/50 lg:hidden"
+            className="rounded-md p-1.5 text-white/60 transition-colors duration-200 hover:text-white active:scale-90 focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/50 lg:hidden"
           >
             {open ? <X size={20} /> : <Menu size={20} />}
           </button>
@@ -142,7 +142,7 @@ export function Header() {
                     key={item.label}
                     className="border-b border-white/5 py-2 last:border-0"
                   >
-                    <p className="px-3 pb-2 pt-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/40">
+                    <p className="px-3 pb-2 pt-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/70">
                       {item.label}
                     </p>
                     {item.groups
@@ -188,7 +188,7 @@ function MegaMenu({ item }: { item: Extract<NavGroup, { kind: "menu" }> }) {
   const cols = item.groups.length;
   const width =
     cols >= 3
-      ? "w-[920px] max-w-[calc(100vw-2rem)]"
+      ? "w-[1040px] max-w-[calc(100vw-2rem)]"
       : cols === 2
         ? "w-[760px] max-w-[calc(100vw-2rem)]"
         : "w-[340px]";
@@ -200,11 +200,11 @@ function MegaMenu({ item }: { item: Extract<NavGroup, { kind: "menu" }> }) {
         width,
       )}
       style={{
-        background: "rgba(10, 11, 16, 0.92)",
+        background: "rgba(12, 14, 20, 0.98)",
         backdropFilter: "blur(20px) saturate(1.4)",
         WebkitBackdropFilter: "blur(20px) saturate(1.4)",
-        border: "1px solid rgba(255, 255, 255, 0.08)",
-        boxShadow: "0 12px 40px rgba(0, 0, 0, 0.5)",
+        border: "1px solid rgba(255, 255, 255, 0.12)",
+        boxShadow: "0 16px 48px rgba(0, 0, 0, 0.6)",
       }}
     >
       <div
@@ -215,7 +215,7 @@ function MegaMenu({ item }: { item: Extract<NavGroup, { kind: "menu" }> }) {
       >
         {item.groups.map((g) => (
           <div key={g.heading}>
-            <p className="px-2 pb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/40">
+            <p className="px-2 pb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/70">
               {g.heading}
             </p>
             <ul className="flex flex-col gap-0.5">
@@ -226,7 +226,7 @@ function MegaMenu({ item }: { item: Extract<NavGroup, { kind: "menu" }> }) {
                   <li key={leaf.to}>
                     <Link
                       to={leaf.to}
-                      className="group flex items-start gap-3 rounded-lg p-2.5 hover:bg-white/[0.06]"
+                      className="group flex items-start gap-3 rounded-lg p-2.5 hover:bg-white/[0.08]"
                     >
                       <leaf.icon size={16} className="mt-0.5 shrink-0 text-primary" />
                       <div className="min-w-0 flex-1">
@@ -240,7 +240,7 @@ function MegaMenu({ item }: { item: Extract<NavGroup, { kind: "menu" }> }) {
                             </span>
                           )}
                         </div>
-                        <p className="mt-0.5 text-[12.5px] leading-snug text-white/50">
+                        <p className="mt-0.5 text-[12.5px] leading-snug text-white/75">
                           {leaf.blurb}
                         </p>
                       </div>
@@ -254,7 +254,7 @@ function MegaMenu({ item }: { item: Extract<NavGroup, { kind: "menu" }> }) {
       </div>
 
       {item.footer && (
-        <div className="mt-3 border-t border-white/5 pt-3">
+        <div className="mt-3 border-t border-white/10 pt-3">
           <div className="flex items-center justify-between gap-3 px-2">
             <Link
               to={item.footer.to}
@@ -268,7 +268,7 @@ function MegaMenu({ item }: { item: Extract<NavGroup, { kind: "menu" }> }) {
                   <Link
                     key={c.slug}
                     to={c.to}
-                    className="rounded-full border border-white/10 bg-white/[0.03] px-2.5 py-1 text-[12px] text-white/60 hover:border-primary/40 hover:text-white"
+                    className="rounded-full border border-white/15 bg-white/[0.06] px-2.5 py-1 text-[12px] text-white/85 hover:border-primary/50 hover:text-white"
                   >
                     {c.label}
                   </Link>

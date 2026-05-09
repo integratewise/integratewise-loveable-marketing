@@ -47,7 +47,7 @@ export function Workbench({
       <div className="flex items-center justify-between border-b border-border px-5 py-3.5">
         <div className="flex items-center gap-3">
           <span className="badge-iw badge-iw-muted !py-1 !px-2 !text-[11px] uppercase tracking-wider">
-            Workspace
+            Workbench
           </span>
           <div>
             <p className="text-[11px] uppercase tracking-wider text-text-secondary">{entityType}</p>

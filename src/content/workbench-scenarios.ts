@@ -63,7 +63,7 @@ export const businessOpsScenario: WorkbenchScenario = {
 };
 
 export const personalScenario: WorkbenchScenario = {
-  entityType: "Personal Space",
+  entityType: "Personal Ops",
   entityName: "Your week",
   entityMeta: "Tue · 2:14 PM",
   memoryCards: [

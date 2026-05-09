@@ -1,6 +1,6 @@
 /**
  * ProductVideo — section container + custom HTML5 player for the
- * "day in the life" walkthrough (Apps → Spine → Memory → Workspace →
+ * "day in the life" walkthrough (Apps → Spine → Memory → Workbench →
  * Twin → Approval → Memory updates).
  *
  * Behaviour:
@@ -10,7 +10,7 @@
  *    big Play icon; tapping it loads and plays the video inline.
  *
  * Styling: 16:9 frame wrapped in a faux browser-window chrome (traffic
- * lights + URL pill) so it sits visually next to the existing Workspace
+ * lights + URL pill) so it sits visually next to the existing Workbench
  * mockups without competing with them. Calm, operator-first — no
  * autoplaying overlays, no flashy chrome.
  *
@@ -55,7 +55,7 @@ export function ProductVideo({
   src,
   webm,
   poster,
-  urlLabel = "workspace.integratewise.app/accounts",
+  urlLabel = "workbench.integratewise.app/accounts",
   alt = false,
 }: Props) {
   const isMobile = useIsMobile();
@@ -192,7 +192,7 @@ export function ProductVideo({
                   {poster ? (
                     <img
                       src={poster}
-                      alt="IntegrateWise Workspace preview"
+                      alt="IntegrateWise Workbench preview"
                       className="absolute inset-0 h-full w-full object-cover"
                     />
                   ) : (
