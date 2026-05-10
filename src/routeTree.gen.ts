@@ -17,6 +17,7 @@ import { Route as ProductRouteImport } from './routes/product'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PlatformRouteImport } from './routes/platform'
 import { Route as ManifestoRouteImport } from './routes/manifesto'
+import { Route as IndustriesRouteImport } from './routes/industries'
 import { Route as DocsRouteImport } from './routes/docs'
 import { Route as CustomerZeroRouteImport } from './routes/customer-zero'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -43,6 +44,7 @@ import { Route as PlatformSecurityRouteImport } from './routes/platform.security
 import { Route as PlatformMemoryRouteImport } from './routes/platform.memory'
 import { Route as PlatformIntegrationsRouteImport } from './routes/platform.integrations'
 import { Route as PlatformHowItWorksRouteImport } from './routes/platform.how-it-works'
+import { Route as IndustriesIndustryIdRouteImport } from './routes/industries_.$industryId'
 import { Route as SolutionsByIndustryIndustryRouteImport } from './routes/solutions.by-industry.$industry'
 
 const WhyRoute = WhyRouteImport.update({
@@ -83,6 +85,11 @@ const PlatformRoute = PlatformRouteImport.update({
 const ManifestoRoute = ManifestoRouteImport.update({
   id: '/manifesto',
   path: '/manifesto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndustriesRoute = IndustriesRouteImport.update({
+  id: '/industries',
+  path: '/industries',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DocsRoute = DocsRouteImport.update({
@@ -216,6 +223,11 @@ const PlatformHowItWorksRoute = PlatformHowItWorksRouteImport.update({
   path: '/how-it-works',
   getParentRoute: () => PlatformRoute,
 } as any)
+const IndustriesIndustryIdRoute = IndustriesIndustryIdRouteImport.update({
+  id: '/industries_/$industryId',
+  path: '/industries/$industryId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SolutionsByIndustryIndustryRoute =
   SolutionsByIndustryIndustryRouteImport.update({
     id: '/$industry',
@@ -232,6 +244,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/customer-zero': typeof CustomerZeroRoute
   '/docs': typeof DocsRoute
+  '/industries': typeof IndustriesRoute
   '/manifesto': typeof ManifestoRoute
   '/platform': typeof PlatformRouteWithChildren
   '/pricing': typeof PricingRoute
@@ -240,6 +253,7 @@ export interface FileRoutesByFullPath {
   '/solutions': typeof SolutionsRouteWithChildren
   '/twin': typeof TwinRoute
   '/why': typeof WhyRoute
+  '/industries/$industryId': typeof IndustriesIndustryIdRoute
   '/platform/how-it-works': typeof PlatformHowItWorksRoute
   '/platform/integrations': typeof PlatformIntegrationsRoute
   '/platform/memory': typeof PlatformMemoryRoute
@@ -269,6 +283,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/customer-zero': typeof CustomerZeroRoute
   '/docs': typeof DocsRoute
+  '/industries': typeof IndustriesRoute
   '/manifesto': typeof ManifestoRoute
   '/platform': typeof PlatformRouteWithChildren
   '/pricing': typeof PricingRoute
@@ -277,6 +292,7 @@ export interface FileRoutesByTo {
   '/solutions': typeof SolutionsRouteWithChildren
   '/twin': typeof TwinRoute
   '/why': typeof WhyRoute
+  '/industries/$industryId': typeof IndustriesIndustryIdRoute
   '/platform/how-it-works': typeof PlatformHowItWorksRoute
   '/platform/integrations': typeof PlatformIntegrationsRoute
   '/platform/memory': typeof PlatformMemoryRoute
@@ -307,6 +323,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/customer-zero': typeof CustomerZeroRoute
   '/docs': typeof DocsRoute
+  '/industries': typeof IndustriesRoute
   '/manifesto': typeof ManifestoRoute
   '/platform': typeof PlatformRouteWithChildren
   '/pricing': typeof PricingRoute
@@ -315,6 +332,7 @@ export interface FileRoutesById {
   '/solutions': typeof SolutionsRouteWithChildren
   '/twin': typeof TwinRoute
   '/why': typeof WhyRoute
+  '/industries_/$industryId': typeof IndustriesIndustryIdRoute
   '/platform/how-it-works': typeof PlatformHowItWorksRoute
   '/platform/integrations': typeof PlatformIntegrationsRoute
   '/platform/memory': typeof PlatformMemoryRoute
@@ -346,6 +364,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/customer-zero'
     | '/docs'
+    | '/industries'
     | '/manifesto'
     | '/platform'
     | '/pricing'
@@ -354,6 +373,7 @@ export interface FileRouteTypes {
     | '/solutions'
     | '/twin'
     | '/why'
+    | '/industries/$industryId'
     | '/platform/how-it-works'
     | '/platform/integrations'
     | '/platform/memory'
@@ -383,6 +403,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/customer-zero'
     | '/docs'
+    | '/industries'
     | '/manifesto'
     | '/platform'
     | '/pricing'
@@ -391,6 +412,7 @@ export interface FileRouteTypes {
     | '/solutions'
     | '/twin'
     | '/why'
+    | '/industries/$industryId'
     | '/platform/how-it-works'
     | '/platform/integrations'
     | '/platform/memory'
@@ -420,6 +442,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/customer-zero'
     | '/docs'
+    | '/industries'
     | '/manifesto'
     | '/platform'
     | '/pricing'
@@ -428,6 +451,7 @@ export interface FileRouteTypes {
     | '/solutions'
     | '/twin'
     | '/why'
+    | '/industries_/$industryId'
     | '/platform/how-it-works'
     | '/platform/integrations'
     | '/platform/memory'
@@ -458,6 +482,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   CustomerZeroRoute: typeof CustomerZeroRoute
   DocsRoute: typeof DocsRoute
+  IndustriesRoute: typeof IndustriesRoute
   ManifestoRoute: typeof ManifestoRoute
   PlatformRoute: typeof PlatformRouteWithChildren
   PricingRoute: typeof PricingRoute
@@ -466,6 +491,7 @@ export interface RootRouteChildren {
   SolutionsRoute: typeof SolutionsRouteWithChildren
   TwinRoute: typeof TwinRoute
   WhyRoute: typeof WhyRoute
+  IndustriesIndustryIdRoute: typeof IndustriesIndustryIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -524,6 +550,13 @@ declare module '@tanstack/react-router' {
       path: '/manifesto'
       fullPath: '/manifesto'
       preLoaderRoute: typeof ManifestoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industries': {
+      id: '/industries'
+      path: '/industries'
+      fullPath: '/industries'
+      preLoaderRoute: typeof IndustriesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/docs': {
@@ -708,6 +741,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlatformHowItWorksRouteImport
       parentRoute: typeof PlatformRoute
     }
+    '/industries_/$industryId': {
+      id: '/industries_/$industryId'
+      path: '/industries/$industryId'
+      fullPath: '/industries/$industryId'
+      preLoaderRoute: typeof IndustriesIndustryIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/solutions/by-industry/$industry': {
       id: '/solutions/by-industry/$industry'
       path: '/$industry'
@@ -803,6 +843,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   CustomerZeroRoute: CustomerZeroRoute,
   DocsRoute: DocsRoute,
+  IndustriesRoute: IndustriesRoute,
   ManifestoRoute: ManifestoRoute,
   PlatformRoute: PlatformRouteWithChildren,
   PricingRoute: PricingRoute,
@@ -811,6 +852,7 @@ const rootRouteChildren: RootRouteChildren = {
   SolutionsRoute: SolutionsRouteWithChildren,
   TwinRoute: TwinRoute,
   WhyRoute: WhyRoute,
+  IndustriesIndustryIdRoute: IndustriesIndustryIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
