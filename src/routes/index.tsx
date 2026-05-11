@@ -159,10 +159,10 @@ function HomePage() {
       <section id="why" className="bg-bg-section-alt scroll-mt-32 py-28 lg:py-40">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="badge-cool">2025</span>
-            <h2 className="heading-h2 mt-5">The Core Problem of 2025</h2>
+            <span className="badge-cool">The Problem</span>
+            <h2 className="heading-h2 mt-5">Information lives everywhere. Continuity lives nowhere.</h2>
             <p className="mt-6 text-[17px] text-text-secondary">
-              You are the bridge between your apps. And it's exhausting.
+              Operational truth is scattered across systems. Teams reconstruct context manually every day. AI without continuity stays reactive.
             </p>
           </Reveal>
 
@@ -172,18 +172,18 @@ function HomePage() {
           >
             {[
               {
-                title: "Data scattered.",
-                body: "You hunt across twelve tabs before every decision.",
+                title: "Fragmented systems.",
+                body: "Operational state is split across CRMs, tools, threads, and documents.",
                 Visual: PainScatter,
               },
               {
-                title: "Intelligence blind.",
-                body: "Without the full picture, AI nudges arrive late or wrong.",
+                title: "Reconstructed context.",
+                body: "Every meeting, every decision begins by rebuilding the picture by hand.",
                 Visual: PainBlind,
               },
               {
-                title: "Automation rogue.",
-                body: "Things fire without you, so trust quietly erodes.",
+                title: "Reactive intelligence.",
+                body: "AI without continuity answers in isolation, never from operational state.",
                 Visual: PainRogue,
               },
             ].map((p) => (
@@ -196,7 +196,7 @@ function HomePage() {
           </StaggerGroup>
 
           <Reveal className="mx-auto mt-10 max-w-2xl text-center text-[15px] text-text-secondary">
-            The answer is one Digital Memory underneath everything — so context stops resetting.
+            What's missing is continuity infrastructure — a unified operational layer beneath the organization.
           </Reveal>
         </Container>
       </section>
@@ -208,32 +208,33 @@ function HomePage() {
         <span aria-hidden className="orb orb-cool" style={{ width: 420, height: 420, top: -60, left: -120 }} />
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="badge-cool">Solution</span>
-            <GradientHeading variant="cool" as="h2" className="heading-h2 mt-5">One memory for your work.</GradientHeading>
+            <span className="badge-cool">The Spine</span>
+            <GradientHeading variant="cool" as="h2" className="heading-h2 mt-5">The unified operational layer beneath the organization.</GradientHeading>
+            <p className="mt-6 text-[16px] text-text-secondary">
+              Not ETL. Not middleware. Not a sync engine. The Spine is governed organizational memory — continuous, evidence-backed, and always live.
+            </p>
           </Reveal>
 
           <div data-stagger className="mx-auto mt-14 grid max-w-5xl gap-6 md:grid-cols-3">
             {[
               {
                 Visual: VisualConnect,
-                title: "Apps plug in once.",
-                body: "OAuth or API key. No CSVs. No code.",
+                title: "Connected operational context.",
+                body: "Systems, conversations, and signals unify into one continuity layer.",
               },
               {
                 Visual: VisualMemory,
-                title: "Data becomes Digital Memory.",
-                body: "One stable memory that survives app and AI changes.",
+                title: "Governed organizational memory.",
+                body: "Lineage, permissions, and approvals are architectural — not bolted on.",
               },
               {
                 Visual: VisualWorkbench,
-                title: "Workbench and Twin sit on top.",
-                body: "Every day starts with full context — not a blank tab.",
+                title: "Live operational state.",
+                body: "Every Workbench, every Twin proposal reads from the same source of truth.",
               },
             ].map((c) => (
               <Reveal key={c.title} className="card-iw overflow-hidden p-0">
-                {/* Finished, content-rich visual — never reads as a placeholder */}
                 <c.Visual />
-                {/* Caption */}
                 <div className="p-6">
                   <h3 className="text-[17px] font-semibold text-foreground">{c.title}</h3>
                   <p className="mt-2 text-[14px] leading-relaxed text-text-secondary">{c.body}</p>
@@ -292,10 +293,10 @@ function HomePage() {
       <section id="product" className="bg-bg-section-alt scroll-mt-32 py-28 lg:py-40">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="badge-iw badge-iw-muted">How it works</span>
-            <h2 className="heading-h2 mt-5">A loop that compounds, not a stack that resets.</h2>
+            <span className="badge-iw badge-iw-muted">The Loop</span>
+            <h2 className="heading-h2 mt-5">Execution becomes organizational knowledge.</h2>
             <p className="mt-6 text-[16px] text-text-secondary">
-              Five simple steps. Every loop, your Digital Memory and your Twin get sharper.
+              Tools feed the Spine. Twin reads continuity. Workbenches surface the next move. Approval governs every write. Execution returns to the Spine.
             </p>
           </Reveal>
 
@@ -303,37 +304,37 @@ function HomePage() {
             {[
               {
                 n: "01",
-                title: "Memory",
-                kicker: "The Platform",
-                body: "Data from your apps becomes a living Digital Memory.",
+                title: "Spine",
+                kicker: "Continuity Infrastructure",
+                body: "Systems, conversations, and signals unify into one governed operational layer.",
                 Visual: StepMemory,
               },
               {
                 n: "02",
-                title: "Workbench",
-                kicker: "The Product",
-                body: "Your workbench adapts around what your memory knows.",
-                Visual: StepWorkbench,
+                title: "Twin",
+                kicker: "Operational Intelligence",
+                body: "Continuously aware of state. Reads the Spine. Proposes evidence-backed moves.",
+                Visual: StepTwin,
               },
               {
                 n: "03",
-                title: "The Twin",
-                kicker: "The Intelligence",
-                body: "Watches what changes and proposes the next move (powered by Claude Opus 4.7).",
-                Visual: StepTwin,
+                title: "Workbench",
+                kicker: "Operational Surface",
+                body: "User, Twin, and Governance Workbenches present continuity in context.",
+                Visual: StepWorkbench,
               },
               {
                 n: "04",
                 title: "Approval",
-                kicker: "The Control",
-                body: "Every proposal comes with evidence. You approve or deny. AI cannot act alone.",
+                kicker: "Architectural Control",
+                body: "Every proposed write passes the Approval Gate. Humans remain accountable.",
                 Visual: StepApproval,
               },
               {
                 n: "05",
-                title: "The Loop",
-                kicker: "Compounds",
-                body: "Results return as new Truth. Tomorrow starts smarter than today.",
+                title: "Execution",
+                kicker: "Returns to the Spine",
+                body: "Approved actions execute in source systems and become new organizational memory.",
                 Visual: StepLoop,
               },
             ].map((step, i) => (
@@ -370,11 +371,10 @@ function HomePage() {
       <section id="demo" className="scroll-mt-32 py-28 lg:py-40">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="badge-iw badge-iw-muted">Workbench · Intelligence</span>
-            <h2 className="heading-h2 mt-5">See the full picture in one view.</h2>
+            <span className="badge-iw badge-iw-muted">The Workbenches</span>
+            <h2 className="heading-h2 mt-5">Three governed surfaces. One operational state.</h2>
             <p className="mt-6 text-[16px] text-text-secondary">
-              A static preview of what your team sees on Monday morning — Truth, Context, and Twin's
-              prepared next move.
+              The User Workbench unifies execution. The Twin Workbench surfaces continuously aware intelligence. The Governance Workbench enforces approvals, lineage, and oversight.
             </p>
           </Reveal>
           <Reveal className="mt-12">
@@ -388,11 +388,10 @@ function HomePage() {
         <span aria-hidden className="orb orb-electric animate-orb-drift" style={{ width: 380, height: 380, top: -60, right: -100 }} />
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="badge-electric">Trust &amp; Governance</span>
-            <h2 className="heading-h2 mt-5">AI that cannot act without you.</h2>
+            <span className="badge-electric">Governance</span>
+            <h2 className="heading-h2 mt-5">Approval is architecture.</h2>
             <p className="mt-6 text-[16px] text-text-secondary">
-              Your Twin reads your Digital Memory but cannot write into systems or memory without
-              passing the Approval Gate.
+              Twin reads the Spine continuously, but cannot mutate operational memory or write into source systems without passing the Approval Gate. Human accountability is constitutional.
             </p>
           </Reveal>
 
@@ -457,13 +456,12 @@ function HomePage() {
             <Reveal className="card-iw p-7">
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div className="max-w-xl">
-                  <span className="badge-iw badge-iw-muted">Security</span>
+                  <span className="badge-iw badge-iw-muted">Enterprise Trust</span>
                   <h3 className="mt-3 text-[22px] font-semibold text-foreground">
-                    Truth you own. AI you rent. Approval in between.
+                    Your data is yours. AI is rented.
                   </h3>
                   <p className="mt-3 text-[14.5px] leading-relaxed text-text-secondary">
-                    Your Digital Memory is isolated by design. Models are replaceable components on
-                    top of memory you own. Approval Gate sits between every proposal and any write.
+                    The Spine is provider-neutral by design. Models are replaceable components on top of operational memory you own. The Approval Gate sits between every proposal and any write.
                   </p>
                 </div>
                 <ul className="grid grid-cols-2 gap-2 text-[12.5px] text-foreground">
@@ -721,28 +719,26 @@ function HomePage() {
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
             <h2 className="heading-display">
-              <span className="block">Stop the reset.</span>
-              <span className="block text-gradient-hero">Start the loop.</span>
+              <span className="block">The continuity layer</span>
+              <span className="block text-gradient-hero">for AI-native organizations.</span>
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-[17px] leading-relaxed text-text-secondary">
-              Your work resets every day. IntegrateWise stops that. Your data becomes Digital
-              Memory. Your Twin connects what changed, explains why it matters, and prepares what to
-              do next — you approve every move.
+              Operational truth, organizational memory, governed intelligence — one continuous operational context. Teams stop reconstructing the picture. AI stops answering in isolation.
             </p>
             <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
               <button type="button" onClick={() => open("Final closer")} className="btn-primary-iw">
-                Book a Demo <ArrowRight size={16} />
+                See the System <ArrowRight size={16} />
               </button>
               <button
                 type="button"
                 onClick={() => openEarlyAccess("Final closer")}
                 className="btn-secondary-iw"
               >
-                Join Early Access
+                Get Started
               </button>
             </div>
             <p className="mt-10 text-[13px] uppercase tracking-[0.2em] text-text-secondary">
-              Truth you own · AI you rent · Approval in between
+              Your data is yours · AI is rented · Approval is the architecture in between
             </p>
           </Reveal>
         </Container>
