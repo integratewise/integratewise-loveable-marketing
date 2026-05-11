@@ -46,18 +46,18 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title: "IntegrateWise — Build memory for your work.",
+        title: "IntegrateWise — Operational Continuity Infrastructure",
       },
       {
         name: "description",
         content:
-          "Your data becomes Digital Memory. Your Twin proposes the next move. You approve every move. IntegrateWise is Work Memory for the AI era.",
+          "IntegrateWise turns fragmented systems, workflows, and operational signals into governed organizational memory — so teams and AI operate from one continuous operational context.",
       },
-      { property: "og:title", content: "IntegrateWise — Build memory for your work." },
+      { property: "og:title", content: "IntegrateWise — Operational Continuity Infrastructure" },
       {
         property: "og:description",
         content:
-          "Connect the apps you already use. Memory grows. Your Twin proposes. You approve. Nothing happens behind your back.",
+          "The Spine becomes the continuity layer. The Workbench is the operational surface. Twin proposes. You approve. Execution becomes organizational knowledge.",
       },
     ],
   }),
@@ -106,26 +106,26 @@ function HomePage() {
         <Container>
           <div className="fade-up mx-auto max-w-4xl text-center">
             <span className="badge-iw badge-iw-muted">
-              A new category — Work Memory for the AI era
+              Operational Continuity Infrastructure
             </span>
             <h1 className="heading-display mt-8">
-              <span className="block">Build memory</span>
-              <span className="block text-gradient-hero">for your work.</span>
+              <span className="block">Work resets every day.</span>
+              <span className="block text-gradient-hero">IntegrateWise restores continuity.</span>
             </h1>
             <p className="mx-auto mt-8 max-w-2xl text-[18px] leading-relaxed text-text-secondary">
-              Your data becomes your Digital Memory. Your Twin watches it and proposes what to do next.{" "}
-              <span className="text-foreground">You approve every move.</span>
+              IntegrateWise turns fragmented systems, workflows, conversations, and operational signals into governed organizational memory —{" "}
+              <span className="text-foreground">so teams and AI operate from one continuous operational context.</span>
             </p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
               <button type="button" onClick={() => open("Home hero")} className="btn-primary-iw">
-                Book a Demo <ArrowRight size={16} />
+                See the System <ArrowRight size={16} />
               </button>
               <button
                 type="button"
                 onClick={() => openEarlyAccess("Home hero")}
                 className="btn-secondary-iw"
               >
-                Join Early Access
+                Get Started
               </button>
             </div>
           </div>
@@ -136,7 +136,7 @@ function HomePage() {
       <section aria-label="Integrations" className="relative border-y border-white/5 bg-bg-section-alt/40 py-16 lg:py-20">
         <Container>
           <p className="text-center text-[12px] font-semibold uppercase tracking-[0.22em] text-text-secondary">
-            Connect the apps you already use
+            Continuity across the systems that run your business
           </p>
         </Container>
         <div className="marquee-mask relative mt-10 overflow-hidden">
