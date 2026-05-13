@@ -204,7 +204,7 @@ function PlatformPage() {
             <Badge variant="muted">Platform</Badge>
             <h1 className="heading-h1 mt-5">
               The platform that turns your data into{" "}
-              <span className="text-gradient-hero">memory.</span>
+              <span className="text-gradient-cool">memory.</span>
             </h1>
             <p className="mx-auto mt-5 text-[17px] leading-relaxed text-text-secondary">
               Connect the apps that run your business. The Spine keeps them in sync and turns their
@@ -296,8 +296,8 @@ function PlatformPage() {
       <Section id="spine" alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <Badge variant="muted">Spine</Badge>
-            <h2 className="heading-h2 mt-4">The Spine that holds everything together.</h2>
+            <span className="badge-cool">Spine</span>
+            <h2 className="heading-h2 mt-4 text-gradient-cool">The Spine that holds everything together.</h2>
             <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
               The Spine is the underlying platform. It connects your apps and systems, normalizes
               and reconciles their data, and keeps a single, stable source of truth as your tools
@@ -327,8 +327,8 @@ function PlatformPage() {
       <Section id="digital-memory">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <Badge variant="muted">Digital Memory</Badge>
-            <h2 className="heading-h2 mt-4">From scattered data to one Digital Memory.</h2>
+            <span className="badge-cool">Digital Memory</span>
+            <h2 className="heading-h2 mt-4 text-gradient-cool">From scattered data to one Digital Memory.</h2>
           </Reveal>
 
           {/* Before / After */}
@@ -412,7 +412,7 @@ function PlatformPage() {
       <Section id="connectors" alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <Badge variant="muted">Connectors</Badge>
+            <span className="badge-teal">Connectors</span>
             <h2 className="heading-h2 mt-4">Connect the apps that already run your work.</h2>
             <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
               The Spine plugs into the systems you already trust — CRM, billing, support, warehouse,
