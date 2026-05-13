@@ -85,10 +85,10 @@ function TwinPage() {
         <Container>
           <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_1fr]">
             <Reveal>
-              <Badge variant="muted">Twin</Badge>
+              <span className="badge-electric">Twin</span>
               <h1 className="heading-h1 mt-5">
                 Not usual AI.{" "}
-                <span className="text-gradient-hero">Your Twin reads your Digital Memory.</span>
+                <span className="text-gradient-electric">Your Twin reads your Digital Memory.</span>
               </h1>
               <p className="mt-5 text-[17px] leading-relaxed text-text-secondary">
                 Most AI guesses from the open internet and forgets everything you said. Your Twin
@@ -200,8 +200,8 @@ function TwinPage() {
       <Section alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <Badge variant="muted">AI library</Badge>
-            <h2 className="heading-h2 mt-4">
+            <span className="badge-electric">AI library</span>
+            <h2 className="heading-h2 mt-4 text-gradient-electric">
               Grounded in your AI library, not in the open internet.
             </h2>
             <p className="mt-4 text-[16px] leading-relaxed text-text-secondary">
@@ -274,7 +274,7 @@ function TwinPage() {
       <Section id="how-it-works">
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <Badge variant="muted">How signals form</Badge>
+            <span className="badge-electric">How signals form</span>
             <h2 className="heading-h2 mt-4">Connects signals you already have.</h2>
           </Reveal>
 
@@ -332,7 +332,7 @@ function TwinPage() {
       <Section id="digital-memory-reference" alt>
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <Badge variant="muted">Digital Memory Reference</Badge>
+            <span className="badge-cool">Digital Memory Reference</span>
             <h2 className="heading-h2 mt-4">
               Memory is Twin's reference library — read-only, evidence-first.
             </h2>

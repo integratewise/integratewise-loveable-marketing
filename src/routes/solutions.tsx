@@ -179,7 +179,7 @@ function SolutionsPage() {
               <Badge variant="muted">Solution 1 · Account Success</Badge>
               <h2 className="heading-h2 mt-4">
                 Account Success —{" "}
-                <span className="text-gradient-hero">one client story, many tools.</span>
+                <span className="text-gradient-cool">one client story, many tools.</span>
               </h2>
               <p className="mx-auto mt-5 text-[16px] leading-relaxed text-text-secondary">
                 Anyone who manages relationships — CAs, SaaS CSMs, service agencies, freelancers —
@@ -387,7 +387,7 @@ function SolutionsPage() {
               </div>
               <h2 className="heading-h2 mt-4">
                 Personal Ops —{" "}
-                <span className="text-gradient-hero">your own operating system.</span>
+                <span className="text-gradient-electric">your own operating system.</span>
               </h2>
               <p className="mx-auto mt-5 text-[16px] leading-relaxed text-text-secondary">
                 Everyone has scattered personal work — side projects, learning, family tasks,
