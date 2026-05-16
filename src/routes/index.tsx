@@ -1,89 +1,54 @@
 import { createFileRoute } from "@tanstack/react-router";
-
 import {
   ArrowRight,
+  Layers,
+  Workflow,
   ShieldCheck,
-  Activity,
-  Lock,
-  User,
-  Handshake,
-  ChevronRight,
+  Plug,
+  Eye,
+  CheckCircle2,
 } from "lucide-react";
 import { Container } from "@/components/site/Container";
-import { DashboardMockup } from "@/components/site/DashboardMockup";
 import { Reveal } from "@/components/site/Reveal";
 import { Particles } from "@/components/site/Particles";
 import { SectionDivider } from "@/components/site/SectionDivider";
-import { GradientHeading } from "@/components/site/GradientHeading";
 import { useDemoModal } from "@/components/site/demo-modal-context";
-import { CONNECTOR_LOGOS } from "@/components/site/ConnectorMarquee";
-import { StaggerGroup, StaggerItem } from "@/components/site/motion/Stagger";
-import { TwinSignals, ApprovalGate } from "@/components/site/motion/TwinSignals";
-import { FaqAccordion } from "@/components/site/FaqAccordion";
-import {
-  VisualConnect,
-  VisualMemory,
-  VisualWorkbench,
-} from "@/components/site/SolutionVisuals";
-import {
-  PainScatter,
-  PainBlind,
-  PainRogue,
-  ScopeUser,
-  ScopeWork,
-  ScopeOrg,
-  StepMemory,
-  StepWorkbench,
-  StepTwin,
-  StepApproval,
-  StepLoop,
-} from "@/components/site/HomeVisuals";
-import airtable from "@/assets/logos/airtable.svg";
-import asana from "@/assets/logos/asana.svg";
-import gdrive from "@/assets/logos/google-drive.svg";
+import { scrollToId } from "@/lib/scroll";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title: "IntegrateWise — Build memory for your work.",
+        title: "IntegrateWise — Stop being the human cable between your tools.",
       },
       {
         name: "description",
         content:
-          "Your data becomes Digital Memory. Your Twin proposes the next move. You approve every move. IntegrateWise is Work Memory for the AI era.",
+          "One governed workspace with continuity, memory, and approvals built in — so you act from a single clear picture instead of stitching it together by hand.",
       },
-      { property: "og:title", content: "IntegrateWise — Build memory for your work." },
+      {
+        property: "og:title",
+        content: "IntegrateWise — Stop being the human cable between your tools.",
+      },
       {
         property: "og:description",
         content:
-          "Connect the apps you already use. Memory grows. Your Twin proposes. You approve. Nothing happens behind your back.",
+          "Continuity, memory, and approvals across the apps you already use. Humans own outcomes. Agents own speed. Systems own consistency.",
       },
     ],
   }),
   component: HomePage,
 });
 
-const HERO_LOGOS = [
-  ...CONNECTOR_LOGOS,
-  { src: airtable, name: "Airtable" },
-  { src: asana, name: "Asana" },
-  { src: gdrive, name: "Google Drive" },
-];
-
-/* ------------------------------------------------------------------ */
-/* Page                                                                */
-/* ------------------------------------------------------------------ */
-
 function HomePage() {
-  const { open, openEarlyAccess, openWaitlist } = useDemoModal();
+  const { open } = useDemoModal();
 
   return (
     <>
-      {/* ========================= 1. HERO ========================= */}
+      {/* 1. HERO */}
       <section
         id="top"
-        className="relative overflow-hidden pt-24 pb-28 lg:pt-36 lg:pb-40"
+        className="relative overflow-hidden pt-24 pb-24 lg:pt-36 lg:pb-32"
         aria-label="Hero"
       >
         <span
@@ -96,658 +61,338 @@ function HomePage() {
           className="orb orb-cool animate-orb-drift"
           style={{ width: 520, height: 520, top: 80, left: -140 }}
         />
-        <span
-          aria-hidden
-          className="orb orb-electric animate-orb-drift"
-          style={{ width: 360, height: 360, bottom: -80, right: -60 }}
-        />
-        <Particles quantity={28} color="#FFE1CC" className="opacity-60" />
+        <Particles quantity={24} color="#FFE1CC" className="opacity-60" />
 
         <Container>
           <div className="fade-up mx-auto max-w-4xl text-center">
             <span className="badge-iw badge-iw-muted">
-              A new category — Work Memory for the AI era
+              From 13 years of being the person in the middle of tools that wouldn't talk
             </span>
             <h1 className="heading-display mt-8">
-              <span className="block">Build memory</span>
-              <span className="block text-gradient-hero">for your work.</span>
+              <span className="block">Stop being the human cable</span>
+              <span className="block text-gradient-hero">between your own technology.</span>
             </h1>
             <p className="mx-auto mt-8 max-w-2xl text-[18px] leading-relaxed text-text-secondary">
-              Your data becomes your Digital Memory. Your Twin watches it and proposes what to do next.{" "}
-              <span className="text-foreground">You approve every move.</span>
+              Every day, you jump between CRM, email, chat, docs, sheets, and AI tools just to
+              remember what is going on. IntegrateWise gives you{" "}
+              <span className="text-foreground">
+                one governed workspace with continuity, memory, and approvals built in
+              </span>
+              — so you act from a single clear picture instead of stitching it together by hand.
             </p>
+
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-              <button type="button" onClick={() => open("Home hero")} className="btn-primary-iw">
-                Book a Demo <ArrowRight size={16} />
+              <button
+                type="button"
+                onClick={() => open("Home hero")}
+                className="btn-primary-iw"
+              >
+                Book a demo <ArrowRight size={16} />
               </button>
               <button
                 type="button"
-                onClick={() => openEarlyAccess("Home hero")}
+                onClick={() => scrollToId("how")}
                 className="btn-secondary-iw"
               >
-                Join Early Access
+                See how it works
               </button>
             </div>
-          </div>
-        </Container>
-      </section>
 
-      {/* ========================= 1b. CONNECTOR MARQUEE (full-bleed) ========================= */}
-      <section aria-label="Integrations" className="relative border-y border-white/5 bg-bg-section-alt/40 py-16 lg:py-20">
-        <Container>
-          <p className="text-center text-[12px] font-semibold uppercase tracking-[0.22em] text-text-secondary">
-            Connect the apps you already use
-          </p>
-        </Container>
-        <div className="marquee-mask relative mt-10 overflow-hidden">
-          <div className="marquee-track flex w-max items-center gap-14 py-2">
-            {[...HERO_LOGOS, ...HERO_LOGOS, ...HERO_LOGOS].map((logo, i) => (
-              <div key={`${logo.name}-${i}`} className="flex items-center gap-3 opacity-60 transition-opacity hover:opacity-100">
-                <img src={logo.src} alt="" aria-hidden className="h-8 w-auto" />
-                <span className="whitespace-nowrap text-[14px] font-medium text-text-secondary">
-                  {logo.name}
-                </span>
-              </div>
-            ))}
+            <ul className="mx-auto mt-12 grid max-w-3xl gap-3 text-left sm:grid-cols-3">
+              {[
+                "One place to work from, instead of ten tabs.",
+                "Context that stays with the work, not lost in old threads.",
+                "AI that prepares and suggests, while you stay in control of decisions.",
+              ].map((point) => (
+                <li
+                  key={point}
+                  className="flex items-start gap-2.5 rounded-xl border border-border bg-white/[0.02] p-4 text-[14px] leading-relaxed text-text-secondary"
+                >
+                  <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-brand-accent" />
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
+        </Container>
       </section>
 
       <SectionDivider variant="cool" />
 
-      {/* ========================= 2. WHY / CORE PROBLEM ========================= */}
-      <section id="why" className="bg-bg-section-alt scroll-mt-32 py-28 lg:py-40">
+      {/* 2. PROBLEM — HUMAN API PAIN */}
+      <section
+        id="problem"
+        className="bg-bg-section-alt scroll-mt-32 py-24 lg:py-32"
+      >
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="badge-cool">2025</span>
-            <h2 className="heading-h2 mt-5">The Core Problem of 2025</h2>
-            <p className="mt-6 text-[17px] text-text-secondary">
-              You are the bridge between your apps. And it's exhausting.
+            <span className="badge-cool">The pain</span>
+            <h2 className="heading-h2 mt-5">
+              Are you juggling tabs and screens just to find what matters?
+            </h2>
+            <p className="mt-6 text-[17px] leading-relaxed text-text-secondary">
+              Your work is scattered across CRM, tickets, email, chat, spreadsheets, and shared
+              documents. One tab shows the customer record. Another shows the last conversation. A
+              third has billing. A fourth has tasks. None of these tools understand each other, so
+              the job of remembering, connecting, and following through falls back on people.
+            </p>
+            <p className="mt-5 text-[18px] font-semibold text-foreground">
+              You become the human API between your own apps.
             </p>
           </Reveal>
 
-          <StaggerGroup
-            className="mx-auto mt-16 grid max-w-5xl gap-5 md:grid-cols-3"
-            stagger={0.09}
-          >
+          <div className="mx-auto mt-14 grid max-w-5xl gap-5 md:grid-cols-3">
             {[
               {
-                title: "Data scattered.",
-                body: "You hunt across twelve tabs before every decision.",
-                Visual: PainScatter,
+                title: "Context gets scattered",
+                body: "Key details live in call notes, side chats, and personal docs that never make it back to the system of record.",
               },
               {
-                title: "Intelligence blind.",
-                body: "Without the full picture, AI nudges arrive late or wrong.",
-                Visual: PainBlind,
+                title: "Decisions get delayed",
+                body: "Renewals, escalations, and approvals slow down because nobody sees the full picture at once.",
               },
               {
-                title: "Automation rogue.",
-                body: "Things fire without you, so trust quietly erodes.",
-                Visual: PainRogue,
+                title: "Execution depends on memory",
+                body: "Follow-ups and commitments are tracked in people's heads and private lists, not in a shared, reliable flow.",
               },
-            ].map((p) => (
-              <StaggerItem key={p.title} className="card-iw p-6">
-                <p.Visual />
-                <h3 className="mt-5 text-[18px] font-semibold text-foreground">{p.title}</h3>
+            ].map((p, i) => (
+              <Reveal key={p.title} delay={i * 70} className="card-iw p-6">
+                <h3 className="text-[17px] font-semibold text-foreground">{p.title}</h3>
                 <p className="mt-2 text-[14.5px] leading-relaxed text-text-secondary">{p.body}</p>
-              </StaggerItem>
+              </Reveal>
             ))}
-          </StaggerGroup>
+          </div>
+        </Container>
+      </section>
 
-          <Reveal className="mx-auto mt-10 max-w-2xl text-center text-[15px] text-text-secondary">
-            The answer is one Digital Memory underneath everything — so context stops resetting.
+      <SectionDivider variant="warm" />
+
+      {/* 3. SOLUTION */}
+      <section id="solution" className="relative scroll-mt-32 py-24 lg:py-32">
+        <span
+          aria-hidden
+          className="orb orb-cool"
+          style={{ width: 420, height: 420, top: -60, left: -120 }}
+        />
+        <Container>
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <span className="badge-iw badge-iw-muted">What IntegrateWise does</span>
+            <h2 className="heading-h2 mt-5">
+              IntegrateWise brings your work back into one intelligent workspace.
+            </h2>
+            <p className="mt-6 text-[17px] leading-relaxed text-text-secondary">
+              IntegrateWise connects the places where work actually happens, keeps the right
+              context alive over time, and helps your team act with approvals and evidence instead
+              of guesswork. A Digital Memory system with an adaptive workspace on top — built so
+              humans can stop being the bridge between tools.
+            </p>
+          </Reveal>
+
+          <div className="mx-auto mt-14 grid max-w-5xl gap-6 md:grid-cols-3">
+            {[
+              {
+                Icon: Layers,
+                title: "Remember what matters",
+                body: "Continuity across records, conversations, files, and decisions — so anyone who opens an account or workflow sees what actually happened and what is due next.",
+              },
+              {
+                Icon: Workflow,
+                title: "Work from one place",
+                body: "Instead of jumping between tabs to rebuild context, your team gets one workspace that brings in the right data at the right time, inside the flow of work.",
+              },
+              {
+                Icon: ShieldCheck,
+                title: "Act with control",
+                body: "AI suggests next steps, drafts updates, and proposes actions — but important changes move only with human approval. Humans own outcomes, agents own speed.",
+              },
+            ].map((c, i) => (
+              <Reveal key={c.title} delay={i * 70} className="card-iw p-6">
+                <c.Icon size={22} className="text-brand-accent" />
+                <h3 className="mt-4 text-[18px] font-semibold text-foreground">{c.title}</h3>
+                <p className="mt-2 text-[14.5px] leading-relaxed text-text-secondary">{c.body}</p>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal className="mt-10 text-center">
+            <button
+              type="button"
+              onClick={() => open("Home · Solution micro-CTA")}
+              className="btn-secondary-iw"
+            >
+              Show me this in a demo <ArrowRight size={16} />
+            </button>
+          </Reveal>
+        </Container>
+      </section>
+
+      <SectionDivider variant="cool" />
+
+      {/* 4. WHO IT'S FOR */}
+      <section
+        id="who"
+        className="bg-bg-section-alt scroll-mt-32 py-24 lg:py-32"
+      >
+        <Container>
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <span className="badge-cool">Who it's for</span>
+            <h2 className="heading-h2 mt-5">Who IntegrateWise is for</h2>
+            <p className="mt-6 text-[17px] leading-relaxed text-text-secondary">
+              If your day disappears into juggling tools just to remember what is going on,
+              IntegrateWise is for you.
+            </p>
+          </Reveal>
+
+          <div className="mx-auto mt-14 grid max-w-5xl gap-5 md:grid-cols-3">
+            {[
+              {
+                title: "Account Success",
+                body: "Teams that cannot afford to miss renewal signals or lose context between calls. IntegrateWise keeps account memory, approvals, and follow-through in one place so nothing critical falls through the cracks.",
+              },
+              {
+                title: "Customer Success",
+                body: "CS teams that live across CRM, tickets, email, and calls, and need one view of the customer story that doesn't reset every time a tab closes.",
+              },
+              {
+                title: "Business Ops",
+                body: "Ops leaders who coordinate across sales, success, finance, and product, and are tired of being the human API between disconnected systems and teams.",
+              },
+            ].map((a, i) => (
+              <Reveal key={a.title} delay={i * 70} className="card-iw p-6">
+                <h3 className="text-[18px] font-semibold text-foreground">{a.title}</h3>
+                <p className="mt-2 text-[14.5px] leading-relaxed text-text-secondary">{a.body}</p>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <SectionDivider variant="warm" />
+
+      {/* 5. HOW THE DEMO WORKS */}
+      <section id="how" className="scroll-mt-32 py-24 lg:py-32">
+        <Container>
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <span className="badge-iw badge-iw-muted">What happens in a demo</span>
+            <h2 className="heading-h2 mt-5">Not a slide deck. Your own work.</h2>
+            <p className="mt-6 text-[17px] leading-relaxed text-text-secondary">
+              We use the demo to show you your own work, not theoretical screens.
+            </p>
+          </Reveal>
+
+          <div className="mx-auto mt-14 grid max-w-5xl gap-5 md:grid-cols-3">
+            {[
+              {
+                Icon: Eye,
+                step: "01",
+                title: "Bring one real workflow",
+                body: "Choose one real workflow or problem — for example, renewal tracking, escalations, or cross-team approvals.",
+              },
+              {
+                Icon: Plug,
+                step: "02",
+                title: "Connect one or two systems",
+                body: "In the session, we connect one or two of your existing tools into IntegrateWise in a guided way, so you see your own data and context.",
+              },
+              {
+                Icon: Layers,
+                step: "03",
+                title: "See how continuity feels",
+                body: "See how your context comes together, how decisions and approvals move, and what it looks like to work from one governed workspace instead of ten tabs.",
+              },
+            ].map((s, i) => (
+              <Reveal key={s.title} delay={i * 70} className="card-iw p-6">
+                <div className="flex items-center gap-3">
+                  <s.Icon size={20} className="text-brand-accent" />
+                  <span className="text-[12px] font-semibold tracking-wider text-brand-accent">
+                    {s.step}
+                  </span>
+                </div>
+                <h3 className="mt-4 text-[17px] font-semibold text-foreground">{s.title}</h3>
+                <p className="mt-2 text-[14.5px] leading-relaxed text-text-secondary">{s.body}</p>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal className="mt-12 text-center">
+            <button
+              type="button"
+              onClick={() => open("Home · How it works")}
+              className="btn-primary-iw"
+            >
+              Book a demo <ArrowRight size={16} />
+            </button>
+          </Reveal>
+        </Container>
+      </section>
+
+      <SectionDivider variant="cool" />
+
+      {/* 6. CUSTOMER ZERO */}
+      <section
+        id="proof"
+        className="bg-bg-section-alt scroll-mt-32 py-24 lg:py-32"
+      >
+        <Container>
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <span className="badge-cool">Customer Zero</span>
+            <h2 className="heading-h2 mt-5">We run our own work on IntegrateWise.</h2>
+            <p className="mt-6 text-[17px] leading-relaxed text-text-secondary">
+              IntegrateWise is not a concept slide. We use it ourselves to manage work, continuity,
+              and decisions across operations, engineering, marketing, and customer work. The same
+              workspace you see in the demo is what we rely on every day — so the product is
+              grounded in real use and real constraints.
+            </p>
+            <blockquote className="mx-auto mt-8 max-w-2xl border-l-2 border-brand-accent/60 pl-5 text-left text-[16px] italic leading-relaxed text-foreground/90">
+              "Our own operations run on IntegrateWise so we can see what breaks, what scales, and
+              what compounding memory really looks like before it ever reaches you."
+            </blockquote>
           </Reveal>
         </Container>
       </section>
 
       <SectionDivider variant="warm" />
 
-      {/* ========================= 3. SOLUTION OVERVIEW ========================= */}
-      <section id="overview" className="relative scroll-mt-32 py-28 lg:py-40">
-        <span aria-hidden className="orb orb-cool" style={{ width: 420, height: 420, top: -60, left: -120 }} />
-        <Container>
-          <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="badge-cool">Solution</span>
-            <GradientHeading variant="cool" as="h2" className="heading-h2 mt-5">One memory for your work.</GradientHeading>
-          </Reveal>
-
-          <div data-stagger className="mx-auto mt-14 grid max-w-5xl gap-6 md:grid-cols-3">
-            {[
-              {
-                Visual: VisualConnect,
-                title: "Apps plug in once.",
-                body: "OAuth or API key. No CSVs. No code.",
-              },
-              {
-                Visual: VisualMemory,
-                title: "Data becomes Digital Memory.",
-                body: "One stable memory that survives app and AI changes.",
-              },
-              {
-                Visual: VisualWorkbench,
-                title: "Workbench and Twin sit on top.",
-                body: "Every day starts with full context — not a blank tab.",
-              },
-            ].map((c) => (
-              <Reveal key={c.title} className="card-iw overflow-hidden p-0">
-                {/* Finished, content-rich visual — never reads as a placeholder */}
-                <c.Visual />
-                {/* Caption */}
-                <div className="p-6">
-                  <h3 className="text-[17px] font-semibold text-foreground">{c.title}</h3>
-                  <p className="mt-2 text-[14px] leading-relaxed text-text-secondary">{c.body}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          {/* Three scopes */}
-          <Reveal className="mx-auto mt-14 max-w-5xl">
-            <div className="card-iw p-7">
-              <div className="text-center">
-                <span className="badge-iw badge-iw-muted">Three memory scopes</span>
-                <h3 className="mt-3 text-[22px] font-semibold text-foreground">
-                  Private by architecture. Shared by choice.
-                </h3>
-              </div>
-              <div className="mt-7 grid gap-4 md:grid-cols-3">
-                {[
-                  {
-                    Visual: ScopeUser,
-                    title: "User Memory",
-                    body: "Private to you. No accidental leaks.",
-                  },
-                  {
-                    Visual: ScopeWork,
-                    title: "Work Memory",
-                    body: "Shared with your team. Patterns and context stay in context.",
-                  },
-                  {
-                    Visual: ScopeOrg,
-                    title: "Org Memory",
-                    body: "Company-wide signals and policies, with governed sharing.",
-                  },
-                ].map((s) => (
-                  <div
-                    key={s.title}
-                    className="overflow-hidden rounded-xl border border-border bg-white/[0.02] p-4"
-                  >
-                    <s.Visual />
-                    <div className="mt-3 text-[15.5px] font-semibold text-foreground">
-                      {s.title}
-                    </div>
-                    <p className="mt-1.5 text-[13.5px] leading-relaxed text-text-secondary">
-                      {s.body}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-        </Container>
-      </section>
-
-      {/* ========================= 4. HOW IT WORKS (5-PART LOOP) ========================= */}
-      <section id="product" className="bg-bg-section-alt scroll-mt-32 py-28 lg:py-40">
-        <Container>
-          <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="badge-iw badge-iw-muted">How it works</span>
-            <h2 className="heading-h2 mt-5">A loop that compounds, not a stack that resets.</h2>
-            <p className="mt-6 text-[16px] text-text-secondary">
-              Five simple steps. Every loop, your Digital Memory and your Twin get sharper.
-            </p>
-          </Reveal>
-
-          <div data-stagger className="mx-auto mt-16 grid max-w-6xl gap-4 md:grid-cols-5">
-            {[
-              {
-                n: "01",
-                title: "Memory",
-                kicker: "The Platform",
-                body: "Data from your apps becomes a living Digital Memory.",
-                Visual: StepMemory,
-              },
-              {
-                n: "02",
-                title: "Workbench",
-                kicker: "The Product",
-                body: "Your workbench adapts around what your memory knows.",
-                Visual: StepWorkbench,
-              },
-              {
-                n: "03",
-                title: "The Twin",
-                kicker: "The Intelligence",
-                body: "Watches what changes and proposes the next move (powered by Claude Opus 4.7).",
-                Visual: StepTwin,
-              },
-              {
-                n: "04",
-                title: "Approval",
-                kicker: "The Control",
-                body: "Every proposal comes with evidence. You approve or deny. AI cannot act alone.",
-                Visual: StepApproval,
-              },
-              {
-                n: "05",
-                title: "The Loop",
-                kicker: "Compounds",
-                body: "Results return as new Truth. Tomorrow starts smarter than today.",
-                Visual: StepLoop,
-              },
-            ].map((step, i) => (
-              <Reveal key={step.title} delay={i * 70}>
-                <div className="relative h-full card-iw p-4">
-                  <span className="text-[12px] font-semibold tracking-wider text-brand-accent">
-                    {step.n}
-                  </span>
-                  <div className="mt-3">
-                    <step.Visual />
-                  </div>
-                  <div className="mt-4 text-[17px] font-semibold text-foreground">{step.title}</div>
-                  <div className="text-[12px] uppercase tracking-wider text-text-secondary">
-                    {step.kicker}
-                  </div>
-                  <p className="mt-3 text-[13.5px] leading-relaxed text-text-secondary">
-                    {step.body}
-                  </p>
-                  {i < 4 && (
-                    <ChevronRight
-                      size={16}
-                      aria-hidden
-                      className="absolute -right-3 top-1/2 hidden -translate-y-1/2 text-white/30 md:block"
-                    />
-                  )}
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* ========================= 5. VISUAL DEMO / WORKSPACE PREVIEW ========================= */}
-      <section id="demo" className="scroll-mt-32 py-28 lg:py-40">
-        <Container>
-          <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="badge-iw badge-iw-muted">Workbench · Intelligence</span>
-            <h2 className="heading-h2 mt-5">See the full picture in one view.</h2>
-            <p className="mt-6 text-[16px] text-text-secondary">
-              A static preview of what your team sees on Monday morning — Truth, Context, and Twin's
-              prepared next move.
-            </p>
-          </Reveal>
-          <Reveal className="mt-12">
-            <DashboardMockup />
-          </Reveal>
-        </Container>
-      </section>
-
-      {/* ========================= 6. TRUST & GOVERNANCE ========================= */}
-      <section id="trust" className="relative bg-bg-section-alt scroll-mt-32 py-28 lg:py-40">
-        <span aria-hidden className="orb orb-electric animate-orb-drift" style={{ width: 380, height: 380, top: -60, right: -100 }} />
-        <Container>
-          <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="badge-electric">Trust &amp; Governance</span>
-            <h2 className="heading-h2 mt-5">AI that cannot act without you.</h2>
-            <p className="mt-6 text-[16px] text-text-secondary">
-              Your Twin reads your Digital Memory but cannot write into systems or memory without
-              passing the Approval Gate.
-            </p>
-          </Reveal>
-
-          <div className="mx-auto mt-10 max-w-3xl">
-            <TwinSignals>
-              <div className="card-iw p-6">
-                <div className="flex items-center gap-2 text-[13px] text-text-secondary">
-                  <span className="size-2 rounded-full bg-brand-highlight twin-pulse" />
-                  <span className="font-semibold text-foreground">Twin Recommendation</span>
-                  <span>·</span>
-                  <span>Renewal risk · FinanceFlow</span>
-                  <span>·</span>
-                  <span>2 min ago</span>
-                </div>
-                <blockquote className="mt-3 border-l-2 border-brand-accent/60 pl-4 text-[15.5px] leading-relaxed text-foreground/90">
-                  3 P1 tickets, champion silent 12 days, payment failed twice. Renewal in 29 days.
-                  Recommend escalation to VP with QBR deck and a billing-recovery flow.
-                </blockquote>
-                <div className="mt-3 text-[13px] text-text-secondary">
-                  Sources: Salesforce · Zendesk · Stripe · Confidence: 87%
-                </div>
-                <ApprovalGate />
-              </div>
-            </TwinSignals>
-
-            <p className="mx-auto mt-5 max-w-2xl text-center text-[13.5px] leading-relaxed text-text-secondary">
-              <span className="font-semibold text-foreground">After approval,</span> actions execute
-              in your apps. Results return as new Truth. Your Twin learns from every decision.
-            </p>
-          </div>
-
-          <ul className="mx-auto mt-14 grid max-w-4xl gap-3 md:grid-cols-3">
-            {[
-              {
-                title: "Full audit trail",
-                body: "Every decision logged with timestamp, evidence, and who approved.",
-              },
-              {
-                title: "Confidence scores",
-                body: "See exactly how certain the Twin is about each signal.",
-              },
-              {
-                title: "Impact preview",
-                body: "Understand what will happen — before you approve.",
-              },
-            ].map((t) => (
-              <li
-                key={t.title}
-                className="rounded-xl border border-border bg-white/[0.02] p-4"
-              >
-                <div className="flex items-center gap-2 text-[13.5px] font-semibold text-foreground">
-                  <ShieldCheck size={15} className="text-success" />
-                  {t.title}
-                </div>
-                <p className="mt-1.5 text-[13px] text-text-secondary">{t.body}</p>
-              </li>
-            ))}
-          </ul>
-
-          {/* Security sub-anchor */}
-          <div id="security" className="scroll-mt-32 mx-auto mt-14 max-w-5xl">
-            <Reveal className="card-iw p-7">
-              <div className="flex flex-wrap items-start justify-between gap-4">
-                <div className="max-w-xl">
-                  <span className="badge-iw badge-iw-muted">Security</span>
-                  <h3 className="mt-3 text-[22px] font-semibold text-foreground">
-                    Truth you own. AI you rent. Approval in between.
-                  </h3>
-                  <p className="mt-3 text-[14.5px] leading-relaxed text-text-secondary">
-                    Your Digital Memory is isolated by design. Models are replaceable components on
-                    top of memory you own. Approval Gate sits between every proposal and any write.
-                  </p>
-                </div>
-                <ul className="grid grid-cols-2 gap-2 text-[12.5px] text-foreground">
-                  {[
-                    "SOC 2 Type II",
-                    "GDPR Ready",
-                    "Tenant Isolation",
-                    "Approval-gated",
-                    "Edge-first",
-                    "Sub-50ms globally",
-                  ].map((t) => (
-                    <li
-                      key={t}
-                      className="flex items-center gap-2 rounded-md border border-border bg-white/[0.02] px-3 py-2"
-                    >
-                      <Lock size={13} className="text-brand-accent" />
-                      {t}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-          </div>
-        </Container>
-      </section>
-
-      {/* ========================= 7. SOLUTIONS / THREE DOORS ========================= */}
-      <section id="solutions" className="scroll-mt-32 py-28 lg:py-40">
-        <Container>
-          <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="badge-iw badge-iw-muted">Solutions</span>
-            <h2 className="heading-h2 mt-5">Three doors in.</h2>
-            <p className="mt-6 text-[16px] text-text-secondary">
-              Same Memory. Same Twin. Shaped for the work you actually do.
-            </p>
-          </Reveal>
-
-          <div data-stagger className="mx-auto mt-16 grid max-w-6xl gap-5 lg:grid-cols-3">
-            {/* Account Success */}
-            <div className="reveal card-iw flex flex-col p-7">
-              <div className="flex items-center gap-2">
-                <Handshake size={20} className="text-brand-accent" />
-                <span className="text-[12px] font-semibold uppercase tracking-wider text-text-secondary">
-                  Account Success
-                </span>
-              </div>
-              <h3 className="mt-3 text-[20px] font-semibold text-foreground">
-                Walk in already knowing what changed.
-              </h3>
-              <div className="mt-5 rounded-lg border border-border bg-white/[0.02] p-4 text-[13.5px]">
-                <p className="text-foreground/90">
-                  Usage dropped 40% + champion left + ticket spike.
-                </p>
-                <div className="mt-2 inline-flex rounded-md border border-destructive/30 bg-destructive/10 px-2 py-0.5 text-[12px] font-semibold text-destructive">
-                  Twin score: 87 · Critical
-                </div>
-                <p className="mt-2 text-text-secondary">
-                  Escalate to VP with a QBR deck and renewal-save plan.
-                </p>
-              </div>
-              <button
-                type="button"
-                onClick={() => open("Solutions · Account Success")}
-                className="btn-primary-iw mt-6 self-start"
-              >
-                Book a Demo <ArrowRight size={14} />
-              </button>
-            </div>
-
-            {/* Business Ops */}
-            <div className="reveal card-iw flex flex-col p-7">
-              <div className="flex items-center gap-2">
-                <Activity size={20} className="text-brand-accent" />
-                <span className="text-[12px] font-semibold uppercase tracking-wider text-text-secondary">
-                  Business Ops
-                </span>
-              </div>
-              <h3 className="mt-3 text-[20px] font-semibold text-foreground">
-                One screen. Everything that changed.
-              </h3>
-              <div className="mt-5 rounded-lg border border-border bg-white/[0.02] p-4 text-[13.5px]">
-                <p className="text-foreground/90">
-                  Deal unchanged 21 days + no activity + quarter ending.
-                </p>
-                <div className="mt-2 inline-flex rounded-md border border-brand-highlight/30 bg-brand-highlight/10 px-2 py-0.5 text-[12px] font-semibold text-brand-highlight">
-                  Twin score: 55 · Watch
-                </div>
-                <p className="mt-2 text-text-secondary">
-                  Verify the deal with the rep, update forecast confidence.
-                </p>
-              </div>
-              <button
-                type="button"
-                onClick={() => open("Solutions · Business Ops")}
-                className="btn-primary-iw mt-6 self-start"
-              >
-                Book a Demo <ArrowRight size={14} />
-              </button>
-            </div>
-
-            {/* Personal Ops */}
-            <div className="reveal card-iw relative flex flex-col p-7">
-              <span className="absolute right-5 top-5 rounded-full border border-brand-highlight/40 bg-brand-highlight/10 px-2.5 py-0.5 text-[11px] font-semibold text-brand-highlight">
-                Waitlist
-              </span>
-              <div className="flex items-center gap-2">
-                <User size={20} className="text-brand-accent" />
-                <span className="text-[12px] font-semibold uppercase tracking-wider text-text-secondary">
-                  Personal Ops
-                </span>
-              </div>
-              <h3 className="mt-3 text-[20px] font-semibold text-foreground">
-                Your day, finally assembled.
-              </h3>
-              <div className="mt-5 rounded-lg border border-border bg-white/[0.02] p-4 text-[13.5px]">
-                <p className="text-foreground/90">
-                  Your calendar, notes, and tasks stop resetting every Monday.
-                </p>
-                <p className="mt-2 text-text-secondary">
-                  Your own Work Memory helps you pick up exactly where you left off.
-                </p>
-              </div>
-              <button
-                type="button"
-                onClick={() => openWaitlist("Solutions · Personal Ops")}
-                className="btn-secondary-iw mt-6 self-start"
-              >
-                Join the Waitlist <ArrowRight size={14} />
-              </button>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* ========================= 8. ACCESS & PRICING SNAPSHOT ========================= */}
-      <section id="pricing" className="bg-bg-section-alt scroll-mt-32 py-28 lg:py-40">
-        <Container>
-          <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="badge-iw badge-iw-muted">Access &amp; Pricing</span>
-            <h2 className="heading-h2 mt-5">Founder-led access today.</h2>
-            <p className="mt-6 text-[16px] text-text-secondary">
-              We assemble your Digital Memory on your own data first. Then we onboard your team.
-            </p>
-          </Reveal>
-
-          <div data-stagger className="mx-auto mt-16 grid max-w-6xl gap-5 lg:grid-cols-3">
-            {[
-              {
-                name: "Starter",
-                pitch: "For small teams getting their first shared memory.",
-                rows: [
-                  ["Sync", "Every 4 hours"],
-                  ["History depth", "90 days"],
-                  ["Governance", "Read-only Truth"],
-                ],
-              },
-              {
-                name: "Growth",
-                pitch: "For revenue and ops teams running on shared memory.",
-                rows: [
-                  ["Sync", "Every hour"],
-                  ["History depth", "365 days"],
-                  ["Governance", "Limited write + audit"],
-                ],
-                highlight: true,
-              },
-              {
-                name: "Command",
-                pitch: "For organizations standardizing on Digital Memory.",
-                rows: [
-                  ["Sync", "Near real-time"],
-                  ["History depth", "Unlimited"],
-                  ["Governance", "Full Memory access + policies"],
-                ],
-              },
-            ].map((tier) => (
-              <Reveal
-                key={tier.name}
-                className={
-                  "card-iw p-7 " +
-                  (tier.highlight ? "border-brand-accent/50 shadow-[0_0_0_1px_rgba(255,225,204,0.2)]" : "")
-                }
-              >
-                <div className="flex items-center justify-between">
-                  <div className="text-[18px] font-semibold text-foreground">{tier.name}</div>
-                  {tier.highlight && (
-                    <span className="rounded-full border border-brand-accent/40 bg-brand-accent/10 px-2 py-0.5 text-[11px] font-semibold text-brand-accent">
-                      Popular
-                    </span>
-                  )}
-                </div>
-                <p className="mt-2 text-[13.5px] text-text-secondary">{tier.pitch}</p>
-                <ul className="mt-5 space-y-2.5 border-t border-border pt-5">
-                  {tier.rows.map(([label, value]) => (
-                    <li
-                      key={label}
-                      className="flex items-start justify-between gap-3 text-[13.5px]"
-                    >
-                      <span className="text-text-secondary">{label}</span>
-                      <span className="text-right font-semibold text-foreground">{value}</span>
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  type="button"
-                  onClick={() => open(`Pricing · ${tier.name}`)}
-                  className={
-                    (tier.highlight ? "btn-primary-iw" : "btn-secondary-iw") +
-                    " mt-6 w-full justify-center"
-                  }
-                >
-                  Book a Demo
-                </button>
-              </Reveal>
-            ))}
-          </div>
-
-          <p className="mt-8 text-center text-[13.5px] text-text-secondary">
-            Want to be first in line?{" "}
-            <button
-              type="button"
-              onClick={() => openEarlyAccess("Pricing footnote")}
-              className="font-semibold text-brand-accent underline-offset-4 hover:underline"
-            >
-              Join Early Access
-            </button>
-            .
-          </p>
-        </Container>
-      </section>
-
-      {/* ========================= 9. FAQ ========================= */}
-      <section id="faq" className="scroll-mt-32 py-28 lg:py-40">
-        <Container>
-          <Reveal className="mx-auto max-w-3xl text-center">
-            <span className="badge-iw badge-iw-muted">FAQ</span>
-            <h2 className="heading-h2 mt-5">Common questions, short answers.</h2>
-            <p className="mt-6 text-[16px] text-text-secondary">
-              The things teams ask before booking a call.
-            </p>
-          </Reveal>
-          <Reveal className="mx-auto mt-14 max-w-3xl">
-            <FaqAccordion />
-          </Reveal>
-        </Container>
-      </section>
-
-      {/* ========================= 10. FINAL CLOSER ========================= */}
-      <section className="relative overflow-hidden py-32 lg:py-44">
+      {/* 7. CLOSING CTA */}
+      <section
+        id="cta"
+        className="relative overflow-hidden scroll-mt-32 py-24 lg:py-32"
+      >
         <span
           aria-hidden
           className="orb orb-peach"
-          style={{ width: 720, height: 720, top: -240, left: "50%", transform: "translateX(-50%)" }}
+          style={{ width: 520, height: 520, top: -160, left: "20%" }}
+        />
+        <span
+          aria-hidden
+          className="orb orb-cool"
+          style={{ width: 460, height: 460, bottom: -200, right: "10%" }}
         />
         <Container>
           <Reveal className="mx-auto max-w-3xl text-center">
-            <h2 className="heading-display">
-              <span className="block">Stop the reset.</span>
-              <span className="block text-gradient-hero">Start the loop.</span>
+            <h2 className="heading-h1">
+              See your work from <span className="text-gradient-hero">one clear picture.</span>
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-[17px] leading-relaxed text-text-secondary">
-              Your work resets every day. IntegrateWise stops that. Your data becomes Digital
-              Memory. Your Twin connects what changed, explains why it matters, and prepares what to
-              do next — you approve every move.
+              Stop spending your day being the human cable between tools. Bring one real workflow,
+              and we'll show you what continuity feels like when your apps, AI, and people finally
+              work from the same Memory.
             </p>
             <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-              <button type="button" onClick={() => open("Final closer")} className="btn-primary-iw">
-                Book a Demo <ArrowRight size={16} />
-              </button>
               <button
                 type="button"
-                onClick={() => openEarlyAccess("Final closer")}
-                className="btn-secondary-iw"
+                onClick={() => open("Home · Closing CTA")}
+                className="btn-primary-iw"
               >
-                Join Early Access
+                Book a demo <ArrowRight size={16} />
               </button>
+              <a href="/pricing" className="btn-secondary-iw">
+                See pricing
+              </a>
             </div>
-            <p className="mt-10 text-[13px] uppercase tracking-[0.2em] text-text-secondary">
-              Truth you own · AI you rent · Approval in between
-            </p>
           </Reveal>
         </Container>
       </section>
     </>
   );
 }
-
