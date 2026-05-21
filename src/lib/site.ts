@@ -75,7 +75,7 @@ export const SOLUTIONS_OVERVIEW = {
   icon: LayoutDashboard,
 } as const;
 
-/* By Use Case — three doors into the /solutions hub. Used as first column of Solutions mega-menu. */
+/* Wedge solutions (locked) — Account Success, Business Ops, Sales Ops, RevOps. */
 export const SOLUTIONS_BY_USE_CASE: SolutionItem[] = [
   {
     to: "/solutions/account-success",
@@ -90,17 +90,16 @@ export const SOLUTIONS_BY_USE_CASE: SolutionItem[] = [
     icon: Activity,
   },
   {
-    to: "/solutions/customer-success",
-    label: "Customer Success",
-    blurb: "Your entire business. One screen. Real-time.",
+    to: "/solutions/sales-ops",
+    label: "Sales Ops",
+    blurb: "Pipeline movement with the story behind it.",
     icon: LineChart,
   },
   {
-    to: "/solutions/personal-space",
-    label: "Personal Ops",
-    blurb: "Your day, finally assembled.",
-    icon: User,
-    waitlist: true,
+    to: "/solutions/revops",
+    label: "RevOps",
+    blurb: "Pipeline, renewals, cash — connected.",
+    icon: Target,
   },
 ];
 
@@ -405,99 +404,59 @@ function pickLinks(source: NavLeaf[], labels: string[]): NavLeaf[] {
 export const PRIMARY_NAV: ReadonlyArray<NavGroup> = [
   {
     kind: "menu",
-    label: "Platform",
+    label: "Solutions",
     groups: [
       {
-        heading: "Overview",
-        items: pickLinks(PLATFORM_LINKS, ["Adaptive Spine", "How it works", "Digital Memory"]),
-      },
-      {
-        heading: "Foundations",
-        items: pickLinks(PLATFORM_LINKS, ["Integrations", "Security"]),
+        heading: "By team",
+        items: SOLUTIONS_BY_USE_CASE.map((s) => ({
+          to: s.to,
+          label: s.label,
+          blurb: s.blurb,
+          icon: s.icon,
+        })) as NavLeaf[],
       },
     ],
+    footer: { label: "See all solutions", to: "/solutions" },
   },
   {
     kind: "menu",
     label: "Product",
     groups: [
       {
-        heading: "Surface",
-        items: pickLinks(PRODUCT_LINKS, ["Workbench", "How it works"]),
-      },
-      {
-        heading: "Foundations",
-        items: pickLinks(PRODUCT_LINKS, ["Digital Memory", "Security"]),
+        heading: "Product",
+        items: [
+          {
+            to: "/product/how-it-works",
+            label: "How it works",
+            blurb: "From scattered tools to one picture.",
+            icon: Workflow,
+          },
+          {
+            to: "/product",
+            label: "Features",
+            blurb: "The workspace your team runs from.",
+            icon: LayoutDashboard,
+          },
+          {
+            to: "/platform/integrations",
+            label: "Integrations",
+            blurb: "Connect the tools you already use.",
+            icon: Package,
+          },
+          {
+            to: "/platform/security",
+            label: "Security",
+            blurb: "SOC 2, GDPR, approval-gated.",
+            icon: ShieldCheck,
+          },
+        ],
       },
     ],
   },
-  {
-    kind: "menu",
-    label: "Intelligence",
-    groups: [
-      {
-        heading: "The Twin",
-        items: pickLinks(INTELLIGENCE_LINKS, ["The Twin", "How it works", "Twin Execution"]),
-      },
-      {
-        heading: "Foundations",
-        items: pickLinks(INTELLIGENCE_LINKS, ["Digital Memory Reference", "Security"]),
-      },
-    ],
-  },
-  {
-    kind: "menu",
-    label: "Solutions",
-    groups: [
-      {
-        heading: "By Use Case",
-        items: SOLUTIONS_BY_USE_CASE.map((s) => ({
-          to: s.to,
-          label: s.label,
-          blurb: s.blurb,
-          icon: s.icon,
-          ...(s.waitlist ? { waitlist: true } : {}),
-        })) as NavLeaf[],
-      },
-      {
-        heading: "By Role",
-        items: SOLUTIONS_BY_ROLE.map((s) => ({
-          to: s.to,
-          label: s.label,
-          blurb: s.blurb,
-          icon: s.icon,
-        })) as NavLeaf[],
-      },
-      {
-        heading: "By Industry",
-        items: SOLUTIONS_BY_INDUSTRY.map((s) => ({
-          to: s.to,
-          label: s.label,
-          blurb: s.blurb,
-          icon: s.icon,
-        })) as NavLeaf[],
-      },
-    ],
-    footer: {
-      label: "See all solutions",
-      to: "/solutions",
-      chips: SOLUTIONS_INDUSTRIES,
-    },
-  },
-  
-  {
-    kind: "menu",
-    label: "Company",
-    groups: [
-      {
-        heading: "Story",
-        items: pickLinks(COMPANY_LINKS, ["About", "Manifesto", "Customer Zero", "Why"]),
-      },
-      {
-        heading: "Engage",
-        items: pickLinks(COMPANY_LINKS, ["Resources & Blog", "Pricing", "Contact"]),
-      },
-    ],
+  { kind: "link", label: "Pricing", to: "/pricing" },
+  { kind: "link", label: "Resources", to: "/resources" },
+  { kind: "link", label: "About", to: "/about" },
+];
   },
 ];
 

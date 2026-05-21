@@ -10,7 +10,7 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const { open: openDemo } = useDemoModal();
+  const { open: openDemo, openEarlyAccess } = useDemoModal();
   const { location } = useRouterState();
 
   useEffect(() => {
@@ -98,11 +98,11 @@ export function Header() {
         <div className="flex items-center gap-2">
           <button
             type="button"
-            onClick={() => openDemo("Header")}
+            onClick={() => openEarlyAccess("Header")}
             className="inline-flex h-[38px] items-center justify-center rounded-xl bg-primary px-4 text-[14px] font-semibold tracking-[-0.02em] text-white transition-[background-color,transform,box-shadow] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-[0_8px_24px_rgba(52,211,153,0.25)] active:translate-y-0 active:scale-[0.97] active:duration-100 focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-primary/50"
             style={{ border: "1px solid rgba(52, 211, 153, 0.2)" }}
           >
-            Book a demo
+            Request Early Access
           </button>
           <button
             type="button"
@@ -170,11 +170,11 @@ export function Header() {
               })}
               <button
                 type="button"
-                onClick={() => openDemo("Header mobile")}
+                onClick={() => openEarlyAccess("Header mobile")}
                 className="mt-3 inline-flex h-[42px] w-full items-center justify-center rounded-xl bg-primary text-[14px] font-semibold text-white hover:bg-primary/90"
                 style={{ border: "1px solid rgba(52, 211, 153, 0.2)" }}
               >
-                Book a demo
+                Request Early Access
               </button>
             </nav>
           </div>
