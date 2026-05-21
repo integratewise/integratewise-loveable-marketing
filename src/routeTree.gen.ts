@@ -27,6 +27,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SolutionsSalesOpsRouteImport } from './routes/solutions.sales-ops'
 import { Route as SolutionsRoleRouteImport } from './routes/solutions.role'
+import { Route as SolutionsRevopsRouteImport } from './routes/solutions.revops'
 import { Route as SolutionsPersonalSpaceRouteImport } from './routes/solutions.personal-space'
 import { Route as SolutionsIndustryRouteImport } from './routes/solutions.industry'
 import { Route as SolutionsFinanceOpsRouteImport } from './routes/solutions.finance-ops'
@@ -133,6 +134,11 @@ const SolutionsSalesOpsRoute = SolutionsSalesOpsRouteImport.update({
 const SolutionsRoleRoute = SolutionsRoleRouteImport.update({
   id: '/role',
   path: '/role',
+  getParentRoute: () => SolutionsRoute,
+} as any)
+const SolutionsRevopsRoute = SolutionsRevopsRouteImport.update({
+  id: '/revops',
+  path: '/revops',
   getParentRoute: () => SolutionsRoute,
 } as any)
 const SolutionsPersonalSpaceRoute = SolutionsPersonalSpaceRouteImport.update({
@@ -256,6 +262,7 @@ export interface FileRoutesByFullPath {
   '/solutions/finance-ops': typeof SolutionsFinanceOpsRoute
   '/solutions/industry': typeof SolutionsIndustryRoute
   '/solutions/personal-space': typeof SolutionsPersonalSpaceRoute
+  '/solutions/revops': typeof SolutionsRevopsRoute
   '/solutions/role': typeof SolutionsRoleRoute
   '/solutions/sales-ops': typeof SolutionsSalesOpsRoute
   '/solutions/by-industry/$industry': typeof SolutionsByIndustryIndustryRoute
@@ -293,6 +300,7 @@ export interface FileRoutesByTo {
   '/solutions/finance-ops': typeof SolutionsFinanceOpsRoute
   '/solutions/industry': typeof SolutionsIndustryRoute
   '/solutions/personal-space': typeof SolutionsPersonalSpaceRoute
+  '/solutions/revops': typeof SolutionsRevopsRoute
   '/solutions/role': typeof SolutionsRoleRoute
   '/solutions/sales-ops': typeof SolutionsSalesOpsRoute
   '/solutions/by-industry/$industry': typeof SolutionsByIndustryIndustryRoute
@@ -331,6 +339,7 @@ export interface FileRoutesById {
   '/solutions/finance-ops': typeof SolutionsFinanceOpsRoute
   '/solutions/industry': typeof SolutionsIndustryRoute
   '/solutions/personal-space': typeof SolutionsPersonalSpaceRoute
+  '/solutions/revops': typeof SolutionsRevopsRoute
   '/solutions/role': typeof SolutionsRoleRoute
   '/solutions/sales-ops': typeof SolutionsSalesOpsRoute
   '/solutions/by-industry/$industry': typeof SolutionsByIndustryIndustryRoute
@@ -370,6 +379,7 @@ export interface FileRouteTypes {
     | '/solutions/finance-ops'
     | '/solutions/industry'
     | '/solutions/personal-space'
+    | '/solutions/revops'
     | '/solutions/role'
     | '/solutions/sales-ops'
     | '/solutions/by-industry/$industry'
@@ -407,6 +417,7 @@ export interface FileRouteTypes {
     | '/solutions/finance-ops'
     | '/solutions/industry'
     | '/solutions/personal-space'
+    | '/solutions/revops'
     | '/solutions/role'
     | '/solutions/sales-ops'
     | '/solutions/by-industry/$industry'
@@ -444,6 +455,7 @@ export interface FileRouteTypes {
     | '/solutions/finance-ops'
     | '/solutions/industry'
     | '/solutions/personal-space'
+    | '/solutions/revops'
     | '/solutions/role'
     | '/solutions/sales-ops'
     | '/solutions/by-industry/$industry'
@@ -594,6 +606,13 @@ declare module '@tanstack/react-router' {
       path: '/role'
       fullPath: '/solutions/role'
       preLoaderRoute: typeof SolutionsRoleRouteImport
+      parentRoute: typeof SolutionsRoute
+    }
+    '/solutions/revops': {
+      id: '/solutions/revops'
+      path: '/revops'
+      fullPath: '/solutions/revops'
+      preLoaderRoute: typeof SolutionsRevopsRouteImport
       parentRoute: typeof SolutionsRoute
     }
     '/solutions/personal-space': {
@@ -773,6 +792,7 @@ interface SolutionsRouteChildren {
   SolutionsFinanceOpsRoute: typeof SolutionsFinanceOpsRoute
   SolutionsIndustryRoute: typeof SolutionsIndustryRoute
   SolutionsPersonalSpaceRoute: typeof SolutionsPersonalSpaceRoute
+  SolutionsRevopsRoute: typeof SolutionsRevopsRoute
   SolutionsRoleRoute: typeof SolutionsRoleRoute
   SolutionsSalesOpsRoute: typeof SolutionsSalesOpsRoute
 }
@@ -786,6 +806,7 @@ const SolutionsRouteChildren: SolutionsRouteChildren = {
   SolutionsFinanceOpsRoute: SolutionsFinanceOpsRoute,
   SolutionsIndustryRoute: SolutionsIndustryRoute,
   SolutionsPersonalSpaceRoute: SolutionsPersonalSpaceRoute,
+  SolutionsRevopsRoute: SolutionsRevopsRoute,
   SolutionsRoleRoute: SolutionsRoleRoute,
   SolutionsSalesOpsRoute: SolutionsSalesOpsRoute,
 }
@@ -815,12 +836,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}

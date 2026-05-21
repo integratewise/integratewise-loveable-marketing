@@ -17,7 +17,7 @@ export interface SolutionPageProps {
   promise?: string;
   attention: AttentionScenario;
   workbench: WorkbenchScenario;
-  primaryCta: { label: string; kind: "demo" | "waitlist" };
+  primaryCta: { label: string; kind: "demo" | "waitlist" | "early-access" };
   showWaitlistBadge?: boolean;
   trust?: string;
 }
@@ -34,9 +34,12 @@ export function SolutionPage({
   showWaitlistBadge = false,
   trust,
 }: SolutionPageProps) {
-  const { open, openWaitlist } = useDemoModal();
-  const fire = () =>
-    primaryCta.kind === "waitlist" ? openWaitlist(preHeadline) : open(preHeadline);
+  const { open, openWaitlist, openEarlyAccess } = useDemoModal();
+  const fire = () => {
+    if (primaryCta.kind === "waitlist") return openWaitlist(preHeadline);
+    if (primaryCta.kind === "early-access") return openEarlyAccess(preHeadline);
+    return open(preHeadline);
+  };
 
   return (
     <>
