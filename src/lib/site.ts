@@ -457,8 +457,6 @@ export const PRIMARY_NAV: ReadonlyArray<NavGroup> = [
   { kind: "link", label: "Resources", to: "/resources" },
   { kind: "link", label: "About", to: "/about" },
 ];
-  },
-];
 
 /* Industry icon map (used by /solutions hub display) */
 export const INDUSTRY_ICONS: Record<
