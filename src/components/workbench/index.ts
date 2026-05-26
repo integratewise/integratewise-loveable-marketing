@@ -1,0 +1,7 @@
+export { default as WorkbenchShell, WorkbenchSidebar } from './WorkbenchShell'
+export { default as UserWorkbench } from './UserWorkbench'
+export { default as TwinWorkbench } from './TwinWorkbench'
+export { default as CognitiveWorkbench } from './CognitiveWorkbench'
+export { default as BIInsightsWorkbench } from './BIInsightsWorkbench'
+export { default as BISearchWorkbench } from './BISearchWorkbench'
+export { default as BIHQWorkbench } from './BIHQWorkbench'

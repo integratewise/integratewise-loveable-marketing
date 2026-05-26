@@ -1,0 +1,381 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ── COLORS — Editorial paper palette + forest + gold ── */
+    --ink:          #0C0C0C;
+    --paper:        #F4F0E8;
+    --paper-warm:   #EBE5D8;
+    --paper-deep:   #E0D9C8;
+    --rule:         #C4BAA8;
+    --rule-light:   #D8D0C0;
+
+    --forest:        #1A3A2A;
+    --forest-mid:   #2D5A3D;
+    --forest-bright:#3D7A50;
+
+    --gold:         #B8943F;
+    --gold-light:   #D4AC5A;
+    --gold-pale:    #F0E0B0;
+
+    --slate:        #1A2E4A;
+    --slate-mid:    #2A4A6A;
+
+    --red:          #8B2020;
+    --red-pale:     #F5E0E0;
+
+    --ink-muted:    #5A5550;
+    --ink-ghost:    #8A8580;
+
+    /* Semantic */
+    --bg:               var(--paper);
+    --bg-elev-1:        var(--paper-warm);
+    --bg-elev-2:        var(--paper-deep);
+    --bg-inverse:       var(--ink);
+    --bg-accent:        var(--forest);
+    --bg-accent-cool:   var(--slate);
+    --fg:               var(--ink);
+    --fg-muted:         #2C2C2C;
+    --fg-subtle:        #555;
+    --fg-faint:         #888;
+    --fg-dim:           #999;
+    --fg-inverse:       var(--paper);
+    --border:           var(--rule);
+    --border-soft:      var(--rule-light);
+    --border-strong:    var(--ink);
+    --accent:           var(--forest-mid);
+    --accent-bright:    var(--forest-bright);
+    --accent-warm:      var(--gold);
+    --accent-cool:      var(--slate);
+    --warn:             var(--red);
+    --insight:          var(--gold);
+
+    /* ── TYPE ── */
+    --font-display: 'Bebas Neue', 'Impact', sans-serif;
+    --font-serif:   'DM Serif Display', Georgia, serif;
+    --font-sans:    'Instrument Sans', system-ui, sans-serif;
+    --font-mono:    'IBM Plex Mono', ui-monospace, monospace;
+
+    --fs-mono-9:    9px;
+    --fs-mono-10:   10px;
+    --fs-mono-11:   11px;
+    --fs-mono-12:   12px;
+    --fs-mono-13:   13px;
+    --fs-body-sm:   13px;
+    --fs-body:      14.5px;
+    --fs-body-lg:   16px;
+    --fs-serif-sm:  19px;
+    --fs-serif-md:  21px;
+    --fs-serif-lg:  27px;
+    --fs-serif-xl:  46px;
+    --fs-display-section: 72px;
+    --fs-display-hero:   clamp(80px, 11vw, 156px);
+
+    --tracking-loose:  0.24em;
+    --tracking-mid:    0.20em;
+    --tracking-tight:  0.06em;
+
+    --lh-tight:   1.0;
+    --lh-snug:    1.2;
+    --lh-normal:  1.6;
+    --lh-relaxed: 1.75;
+
+    /* Spacing */
+    --sp-9: 52px;
+    --sp-10: 64px;
+    --sp-11: 88px;
+
+    /* Borders */
+    --bw-hair:    1px;
+    --bw-strong:  2.5px;
+
+    /* Shadows — NONE on cards */
+    --shadow-none: none;
+    --shadow-node: 0 0 0 5px rgba(61, 122, 80, 0.12);
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-size: var(--fs-body);
+      line-height: var(--lh-relaxed);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  }
+}
+
+@layer components {
+  /* ── Eyebrow ── */
+  .iw-eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--fs-mono-10);
+    letter-spacing: var(--tracking-loose);
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  /* ── Label ── */
+  .iw-label {
+    font-family: var(--font-mono);
+    font-size: var(--fs-mono-9);
+    letter-spacing: var(--tracking-mid);
+    text-transform: uppercase;
+    color: var(--forest-mid);
+  }
+
+  /* ── Display heading (Bebas) ── */
+  .iw-display {
+    font-family: var(--font-display);
+    font-size: var(--fs-display-hero);
+    line-height: var(--lh-tight);
+    letter-spacing: 0.015em;
+    color: var(--ink);
+  }
+
+  /* ── Section title (DM Serif) ── */
+  .iw-section-title {
+    font-family: var(--font-serif);
+    font-size: var(--fs-serif-md);
+    line-height: var(--lh-snug);
+    color: var(--ink);
+  }
+
+  /* ── Body text ── */
+  .iw-body {
+    font-family: var(--font-sans);
+    font-size: var(--fs-body);
+    line-height: var(--lh-relaxed);
+    color: var(--fg-muted);
+  }
+  .iw-body strong {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* ── Section containers ── */
+  .iw-section {
+    padding: 88px 0;
+  }
+  .iw-section-sm {
+    padding: 52px 0;
+  }
+
+  /* ── Max widths ── */
+  .max-w-content-default {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 52px;
+    padding-right: 52px;
+  }
+  .max-w-content-narrow {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 52px;
+    padding-right: 52px;
+  }
+
+  /* ── Sidebar grid (260px sidebar) ── */
+  .iw-sidebar-grid {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  /* ── Primary button ── */
+  .iw-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 28px;
+    background: var(--forest);
+    color: var(--paper);
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    transition: background var(--t-fast, 0.15s) ease;
+  }
+  .iw-btn-primary:hover {
+    background: var(--forest-mid);
+  }
+
+  /* ── Secondary button ── */
+  .iw-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 28px;
+    background: transparent;
+    color: var(--fg-muted);
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    border: 1.5px solid var(--rule);
+    border-radius: 0;
+    cursor: pointer;
+    transition: all var(--t-fast, 0.15s) ease;
+  }
+  .iw-btn-secondary:hover {
+    border-color: var(--forest);
+    color: var(--forest);
+  }
+
+  /* ── Card — filled rectangle, NO border, NO shadow, NO radius ── */
+  .iw-card {
+    background: var(--paper-warm);
+    padding: 28px;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+  }
+
+  /* ── Hairline strong (masthead + footer) ── */
+  .iw-hairline-strong {
+    border-top: 2.5px solid var(--ink);
+  }
+
+  /* ── Callout gold ── */
+  .iw-callout-gold {
+    border-left: 3px solid var(--gold);
+    padding-left: 20px;
+  }
+
+  /* ── 2px rule grid background ── */
+  .iw-rule-grid {
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 39px,
+      var(--rule-light) 39px,
+      var(--rule-light) 40px
+    );
+  }
+
+  /* ── Nav link ── */
+  .iw-nav-link {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--fg-muted);
+    text-decoration: none;
+    transition: color 0.15s ease;
+    letter-spacing: 0.01em;
+  }
+  .iw-nav-link:hover {
+    color: var(--forest);
+  }
+
+  /* ── Product frame ── */
+  .iw-product-frame {
+    border: 1px solid var(--rule-light);
+    border-radius: 0;
+    overflow: hidden;
+  }
+
+  /* ── Tag / Pill ── */
+  .iw-tag {
+    font-family: var(--font-mono);
+    font-size: var(--fs-mono-9);
+    letter-spacing: var(--tracking-mid);
+    text-transform: uppercase;
+  }
+  .iw-tag-green {
+    color: var(--forest-bright);
+  }
+  .iw-tag-gold {
+    color: var(--gold);
+  }
+
+  /* ── Warm card variant ── */
+  .iw-card-warm {
+    background: var(--paper-warm);
+    padding: 28px;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+  }
+
+  /* ── Editorial table ── */
+  .iw-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-sans);
+    font-size: 13px;
+  }
+  .iw-table thead th {
+    text-align: left;
+    padding: 14px 20px;
+    font-family: var(--font-mono);
+    font-size: var(--fs-mono-10);
+    letter-spacing: var(--tracking-mid);
+    text-transform: uppercase;
+    color: var(--ink-ghost);
+    border-bottom: 1px solid var(--rule);
+    font-weight: 400;
+  }
+  .iw-table tbody td {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--rule-light);
+    color: var(--fg-muted);
+    line-height: var(--lh-snug);
+  }
+  .iw-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+}
+
+@layer utilities {
+  .font-display { font-family: var(--font-display); }
+  .font-serif { font-family: var(--font-serif); }
+  .font-sans { font-family: var(--font-sans); }
+  .font-mono { font-family: var(--font-mono); }
+}
+
+/* Grain overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.5;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .iw-sidebar-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .max-w-content-default,
+  .max-w-content-narrow {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .iw-section {
+    padding: 52px 0;
+  }
+  .iw-display {
+    font-size: clamp(48px, 12vw, 72px);
+  }
+}
